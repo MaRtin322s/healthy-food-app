@@ -3,7 +3,7 @@ import salmon from "./images/salmon.png";
 
 const Home = () => {
     return (
-        <main>
+        <>
             <section className="info">
                 <article className="time">
                     <i className="fas fa-clock" />
@@ -32,7 +32,7 @@ const Home = () => {
                         provision is reserved for additional nutrients to endure the short
                         length of leanness.
                     </p>
-                    <a className="about-link" href="">
+                    <a className="about-link" href="/">
                         Learn more
                     </a>
                 </article>
@@ -73,7 +73,7 @@ const Home = () => {
                     </a>
                 </article>
             </section>
-        </main>
+        </>
     );
 }
 
