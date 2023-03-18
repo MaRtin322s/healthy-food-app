@@ -15,22 +15,22 @@ const Header = () => {
                         <a href="/">Home</a>
                     </li>
                     <li className="nav-item">
-                        <a href="/">Recipes Calatog</a>
+                        <a href="/catalog">Recipes Calatog</a>
                     </li>
                     <li className="nav-item">
-                        <a href="/">Create Recipe</a>
+                        <a href="/create">Create Recipe</a>
                     </li>
                     <li className="nav-item">
-                        <a href="/">Profile</a>
+                        <a href="/profile">Profile</a>
                     </li>
                     <li className="nav-item">
-                        <a href="/">Logout</a>
+                        <a href="/logout">Logout</a>
                     </li>
                     <li className="nav-item">
-                        <a href="/">Log In</a>
+                        <a href="/login">Log In</a>
                     </li>
                     <li className="nav-item">
-                        <a href="/">Sign Up</a>
+                        <a href="/register">Sign Up</a>
                     </li>
                 </ul>
             </nav>
