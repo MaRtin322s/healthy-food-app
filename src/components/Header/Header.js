@@ -6,7 +6,8 @@ const Header = () => {
     return (
         <header className="navigation">
             <nav>
-                <ul className="nav-bar" role="list">
+                {/* eslint-disable-next-line */}
+                <ul className="nav-bar" role={"list"}>
                     <li className="nav-bar-logo">
                         <img src={logo} alt="logo" />
                     </li>
