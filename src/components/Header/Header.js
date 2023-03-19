@@ -30,7 +30,7 @@ const Header = () => {
                         <Link to="/login">Log In</Link>
                     </li>
                     <li className={styles["nav-item"]}>
-                        <a href="/register">Sign Up</a>
+                        <Link to="/register">Sign Up</Link>
                     </li>
                 </ul>
             </nav>
