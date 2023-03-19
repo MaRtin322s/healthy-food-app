@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styles from "./styles/login.module.css";
 import background from "./images/backgr.jpg";
 
@@ -55,10 +56,10 @@ const Login = () => {
                             />
                         </div>
                         <p>
-                            Don't have an account? <a href="/">Sign Up</a>
+                            Don't have an account? <Link to="/register">Sign Up</Link>
                         </p>
                         <p>
-                            Forgot your password? <a href="/">Click here</a>
+                            Forgot your password? <Link to="/">Click here</Link>
                         </p>
                         <input className={styles["btn-login"]} type="submit" value={"Login"} />
                     </article>

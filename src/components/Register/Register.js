@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styles from "./styles/register.module.css";
 import background from "./images/backgr.jpg"
 
@@ -92,7 +93,7 @@ const Register = () => {
                             />
                         </div>
                         <p>
-                            Already registered? <a href="/">Log in</a>
+                            Already registered? <Link to="/">Log in</Link>
                         </p>
                         <input className={styles["btn-register"]} type="submit" value={"Register"} />
                     </article>
