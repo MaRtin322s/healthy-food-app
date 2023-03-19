@@ -1,4 +1,5 @@
 import "./styles/home.css";
+import "./styles/responsive.css";
 import salmon from "./images/salmon.png";
 
 const Home = () => {
