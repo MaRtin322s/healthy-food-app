@@ -1,10 +1,9 @@
-import "./styles/footer.css";
-import "./styles/responsive.css";
+import styles from "./styles/footer.module.css";
 
 const Footer = () => {
     return (
         <footer>
-            <h1 className="footer_heading">NutriGit</h1>
+            <h1 className={styles["footer_heading"]}>NutriGit</h1>
             {/* eslint-disable-next-line */}
             <ul role={"list"}>
                 <li>About us</li>
@@ -15,9 +14,9 @@ const Footer = () => {
             {/* eslint-disable-next-line */}
             <ul role={"list"}>
                 <li>Follow us on</li>
-                <li className="footer-item">
+                <li className={styles["footer-item"]}>
                     <a
-                        className="footer-link"
+                        className={styles["footer-link"]}
                         href="https://github.com/MaRtin322s"
                         target="_blank"
                         rel="noreferrer"
@@ -25,9 +24,9 @@ const Footer = () => {
                         <i className="fab fa-github-square" />
                     </a>
                 </li>
-                <li className="footer-item">
+                <li className={styles["footer-item"]}>
                     <a
-                        className="footer-link"
+                        className={styles["footer-link"]}
                         href="https://www.facebook.com/profile.php?id=100009733451214"
                         target="_blank"
                         rel="noreferrer"
@@ -35,9 +34,9 @@ const Footer = () => {
                         <i className="fab fa-facebook-square" />
                     </a>
                 </li>
-                <li className="footer-item">
+                <li className={styles["footer-item"]}>
                     <a
-                        className="footer-link"
+                        className={styles["footer-link"]}
                         href="https://www.instagram.com/martin13s18/"
                         target="_blank"
                         rel="noreferrer"
