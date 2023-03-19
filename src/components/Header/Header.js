@@ -1,4 +1,5 @@
 import "./styles/header.css";
+import "./styles/responsive.css";
 import logo from "./images/logo.png";
 import backgrond from "./images/backgr.jpg";
 
