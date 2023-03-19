@@ -93,7 +93,7 @@ const Register = () => {
                             />
                         </div>
                         <p>
-                            Already registered? <Link to="/" replace>Log in</Link>
+                            Already registered? <Link to="/login" replace>Log in</Link>
                         </p>
                         <input className={styles["btn-register"]} type="submit" value={"Register"} />
                     </article>
