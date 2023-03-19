@@ -69,7 +69,7 @@ const Home = () => {
                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQR0rj8bAmN9DzOGOjQCxl0OSFB7ZLCSnx7ZA&usqp=CAU"
                         alt="cheseburger"
                     />
-                    <h3 className={styles["recipe-title"]}>cheseburger</h3>
+                    <h3 className={styles["recipe-title"]}>Cheseburger</h3>
                     <p className={styles["recipe-category"]}>Category: Main Dishes</p>
                     <a className={styles["last-recipes-btn"]} href="/">
                         Details
