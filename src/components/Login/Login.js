@@ -56,10 +56,10 @@ const Login = () => {
                             />
                         </div>
                         <p>
-                            Don't have an account? <Link to="/register">Sign Up</Link>
+                            Don't have an account? <Link to="/register" replace>Sign Up</Link>
                         </p>
                         <p>
-                            Forgot your password? <Link to="/">Click here</Link>
+                            Forgot your password? <Link to="/" replace>Click here</Link>
                         </p>
                         <input className={styles["btn-login"]} type="submit" value={"Login"} />
                     </article>
