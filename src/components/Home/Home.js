@@ -5,7 +5,8 @@ import background from "./images/backgr.jpg";
 const Home = () => {
     ;
     return (
-        <><img className={styles["background-img"]} src={background} alt="background" />
+        <>
+            <img className={styles["background-img"]} src={background} alt="background" />
             <article className={styles["heading-info"]}>
                 <h1 className={styles["heading"]}>Your favourite food - Delivered hot &amp; fresh</h1>
                 <p className={styles["heading-para"]}>
