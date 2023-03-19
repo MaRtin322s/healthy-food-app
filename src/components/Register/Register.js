@@ -4,7 +4,7 @@ import background from "./images/backgr.jpg"
 const Register = () => {
     return (
         <>
-            <img className={styles["background-img"]} src={background} alt="background" />
+            <img className={styles["register-background-img"]} src={background} alt="background" />
             <section className={styles["register-page"]}>
                 <ul className={styles["info-list"]}>
                     <li>Register users information</li>
@@ -56,6 +56,18 @@ const Register = () => {
                             />
                         </div>
 
+                        <label htmlFor="email">Email:</label>
+                        <div>
+                            <input
+                                className={styles["email"]}
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="Enter your email..."
+                                required
+                            />
+                        </div>
+
                         <label htmlFor="password">Password:</label>
                         <div className={styles["password-container"]}>
                             <input
@@ -64,7 +76,19 @@ const Register = () => {
                                 id="password"
                                 name="password"
                                 placeholder="Enter password..."
-                                required=""
+                                required
+                            />
+                        </div>
+
+                        <label htmlFor="confirm-password">Confirm Password:</label>
+                        <div className={styles["password-container"]}>
+                            <input
+                                className={styles["password"]}
+                                type="password"
+                                id="confirm-password"
+                                name="confirm-password"
+                                placeholder="Confirm your password..."
+                                required
                             />
                         </div>
                         <p>
