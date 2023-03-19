@@ -1,4 +1,5 @@
 import "./styles/footer.css";
+import "./styles/responsive.css";
 
 const Footer = () => {
     return (
