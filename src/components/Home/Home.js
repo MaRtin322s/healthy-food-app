@@ -1,9 +1,22 @@
 import styles from "./styles/home.module.css";
 import salmon from "./images/salmon.png";
+import background from "./images/backgr.jpg";
 
-const Home = () => {;
+const Home = () => {
+    ;
     return (
-        <>
+        <><img className={styles["background-img"]} src={background} alt="background" />
+            <article className={styles["heading-info"]}>
+                <h1 className={styles["heading"]}>Your favourite food - Delivered hot &amp; fresh</h1>
+                <p className={styles["heading-para"]}>
+                    Healthy switcher chefs do all the prep work like peeling, chopping &amp;
+                    marinating, so you can cook a fresh food.
+                </p>
+                <a className={styles["heading-link"]} href="/">
+                    Recipes Catalog
+                </a>
+                <div className={styles["header-empty"]} />
+            </article>
             <section className={styles["info"]}>
                 <article className={styles["time"]}>
                     <i className="fas fa-clock" />
