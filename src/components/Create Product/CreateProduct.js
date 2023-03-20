@@ -35,41 +35,43 @@ const CreateProduct = () => {
                     </div>
                     <label htmlFor="title">Title:</label>
                     <div>
-                        <input type="text" id="title" name="title" />
+                        <input type="text" id="title" name="title" placeholder="Title..."/>
                     </div>
-                    <label htmlFor="category">Category:</label>
+                    <label htmlFor="type">Type:</label>
                     <div>
-                        <input type="text" id="category" name="category" />
+                        <input type="text" id="type" name="type" placeholder="Fruits..."/>
                     </div>
                     <label htmlFor="imageUrl">Image Url:</label>
                     <div>
-                        <input type="text" id="imageUrl" name="imageUrl" />
+                        <input type="text" id="imageUrl" name="imageUrl" placeholder="https://..."/>
                     </div>
-                    <label htmlFor="ingredients">Ingredients:</label>
+                    <label htmlFor="nutrition">Nutrition information:</label>
                     <div>
                         <textarea
                             cols={20}
                             rows={5}
-                            id="ingredients"
-                            name="ingredients"
+                            id="nutrition"
+                            name="nutrition"
                             defaultValue={""}
+                            placeholder="Calories: 1500"
                         />
                     </div>
-                    <label htmlFor="preparation">Preparation:</label>
+                    <label htmlFor="description">Description:</label>
                     <div>
                         <textarea
                             cols={20}
                             rows={5}
-                            id="preparation"
-                            name="preparation"
+                            id="description"
+                            name="description"
                             defaultValue={""}
+                            placeholder="Product description..."
                         />
                     </div>
                     <div>
                         <input
                             className={styles["create-btn"]}
                             type="submit"
-                            value={"Create recipe"}
+                            value={"Create product"}
                         />
                     </div>
                 </form>

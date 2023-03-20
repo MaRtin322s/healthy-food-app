@@ -35,15 +35,15 @@ const CreateRecipe = () => {
                     </div>
                     <label htmlFor="title">Title:</label>
                     <div>
-                        <input type="text" id="title" name="title" />
+                        <input type="text" id="title" name="title" placeholder="Title..."/>
                     </div>
                     <label htmlFor="category">Category:</label>
                     <div>
-                        <input type="text" id="category" name="category" />
+                        <input type="text" id="category" name="category" placeholder="Main dish...."/>
                     </div>
                     <label htmlFor="imageUrl">Image Url:</label>
                     <div>
-                        <input type="text" id="imageUrl" name="imageUrl" />
+                        <input type="text" id="imageUrl" name="imageUrl" placeholder="https://..."/>
                     </div>
                     <label htmlFor="ingredients">Ingredients:</label>
                     <div>
@@ -53,6 +53,7 @@ const CreateRecipe = () => {
                             id="ingredients"
                             name="ingredients"
                             defaultValue={""}
+                            placeholder="1/2 teaspoon salt..."
                         />
                     </div>
                     <label htmlFor="preparation">Preparation:</label>
@@ -63,6 +64,7 @@ const CreateRecipe = () => {
                             id="preparation"
                             name="preparation"
                             defaultValue={""}
+                            placeholder="Cooking preparation..."
                         />
                     </div>
                     <div>

@@ -1,6 +1,7 @@
 import styles from "./styles/home.module.css";
 import salmon from "./images/salmon.png";
 import background from "./images/backgr.jpg";
+import { Link } from "react-router-dom";
 
 const Home = () => {
     ;
@@ -13,9 +14,9 @@ const Home = () => {
                     Healthy switcher chefs do all the prep work like peeling, chopping &amp;
                     marinating, so you can cook a fresh food.
                 </p>
-                <a className={styles["heading-link"]} href="/">
+                <Link className={styles["heading-link"]} to="/catalog-recipes">
                     Recipes Catalog
-                </a>
+                </Link>
                 <div className={styles["header-empty"]} />
             </article>
             <section className={styles["info"]}>
