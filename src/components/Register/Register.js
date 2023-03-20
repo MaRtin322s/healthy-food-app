@@ -22,7 +22,7 @@ const Register = () => {
                         Click on the "Submit" or "Register" button to complete the registration process.
                     </li>
                     <li>
-                        Start using the website/app! Once you have completed the registration process, 
+                        Start using the website/app! Once you have completed the registration process,
                         you should be able to log in and start using the features of the website/app.
                     </li>
                 </ul>
@@ -65,6 +65,18 @@ const Register = () => {
                                 id="email"
                                 name="email"
                                 placeholder="Enter your email..."
+                                required
+                            />
+                        </div>
+
+                        <label htmlFor="imageUrl">ImageUrl:</label>
+                        <div>
+                            <input
+                                className={styles["email"]}
+                                type="url"
+                                id="imageUrl"
+                                name="imageUrl"
+                                placeholder="https://..."
                                 required
                             />
                         </div>
