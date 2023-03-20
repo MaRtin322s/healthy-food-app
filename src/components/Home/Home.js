@@ -20,10 +20,6 @@ const Home = () => {
                 <div className={styles["header-empty"]} />
             </article>
             <section className={styles["info"]}>
-                <article className={styles["time"]}>
-                    <i className="fas fa-clock" />
-                    <p>07:00 - 22:00</p>
-                </article>
                 <article className={styles["address"]}>
                     <i className="fas fa-map-marker-alt" />
                     <p>Sofia, bul. Hristo Botev 72 Str.</p>

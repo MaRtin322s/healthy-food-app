@@ -21,10 +21,10 @@ const Header = () => {
                         <Link to="/create-recipes">Create</Link>
                     </li>
                     <li className={styles["nav-item"]}>
-                        <a href="/profile">Profile</a>
+                        <Link to="/profile">Profile</Link>
                     </li>
                     <li className={styles["nav-item"]}>
-                        <a href="/logout">Logout</a>
+                        <Link to="/logout">Logout</Link>
                     </li>
                     <li className={styles["nav-item"]}>
                         <Link to="/login">Log In</Link>
