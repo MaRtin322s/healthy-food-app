@@ -7,6 +7,10 @@ footer {
     gap: 40px;
 }
 
+footer div p {
+    margin-left: 0px;
+}
+
 .footer_heading {
     font-size: 45px;
 }

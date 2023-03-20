@@ -47,9 +47,13 @@ const Home = () => {
                         provision is reserved for additional nutrients to endure the short
                         length of leanness.
                     </p>
-                    <a className={styles["about-link"]} href="/">
+                    <Link
+                        className={styles["about-link"]}
+                        to="https://www.narayanahealth.org/blog/importance-of-balanced-diet-for-a-healthy-lifestyle/"
+                        target="_blank"
+                    >
                         Learn more
-                    </a>
+                    </Link>
                 </article>
             </section>
             <h2 className={styles["last-recipes-heading"]}>New recipes...</h2>

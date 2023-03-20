@@ -3,7 +3,10 @@ import styles from "./styles/footer.module.css";
 const Footer = () => {
     return (
         <footer>
-            <h1 className={styles["footer_heading"]}>NutriGit</h1>
+            <div>
+                <h1 className={styles["footer_heading"]}>NutriGit</h1>
+                <p>All rights reserved &copy; by Martin Sofroniev</p>
+            </div>
             {/* eslint-disable-next-line */}
             <ul role={"list"}>
                 <li>About us</li>
