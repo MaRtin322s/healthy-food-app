@@ -1,8 +1,9 @@
 import styles from "./styles/footer.module.css";
+import resp from "./styles/responsive.module.css";
 
 const Footer = () => {
     return (
-        <footer>
+        <footer className={`${styles["footer"]} ${resp["footer"]}`}>
             <div>
                 <h1 className={styles["footer_heading"]}>NutriGit</h1>
                 <p>All rights reserved &copy; by Martin Sofroniev</p>
