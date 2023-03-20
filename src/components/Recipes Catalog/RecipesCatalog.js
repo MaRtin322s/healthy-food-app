@@ -1,14 +1,15 @@
+import { Link } from "react-router-dom";
 import styles from "./styles/recipesCatalog.module.css";
 
 const RecipesCatalog = () => {
     return (
         <div className={styles["main-wrapper"]}>
-            <a className={styles["catalog-recipes"]} href="/">
+            <Link className={styles["catalog-recipes"]} to="/catalog-recipes" replace>
                 Catalog Recipes
-            </a>
-            <a className={styles["catalog-products"]} href="/">
+            </Link>
+            <Link className={styles["catalog-products"]} to="/catalog-products" replace>
                 Catalog Products
-            </a>
+            </Link>
             <section className={styles["catalog"]}>
                 <article className={styles["catalog-recipe"]}>
                     <img
