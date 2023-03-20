@@ -5,6 +5,7 @@ import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import Home from "./components/Home/Home";
 import Login from "./components/Login/Login";
+import NotFound from "./components/Not Found Page/NotFound";
 import ProductsCatalog from "./components/Products Catalog/ProductsCatalog";
 import RecipesCatalog from "./components/Recipes Catalog/RecipesCatalog";
 import Register from "./components/Register/Register";
@@ -22,6 +23,7 @@ function App() {
                     <Route path="/catalog-products" element={<ProductsCatalog />} />
                     <Route path="/create-recipes" element={<CreateRecipe />} />
                     <Route path="/create-products" element={<CreateProduct />} />
+                    <Route path="*" element={<NotFound />} />
                 </Routes>
             </main>
             <Footer />
