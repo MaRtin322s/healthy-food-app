@@ -1,4 +1,5 @@
 import styles from "./styles/header.module.css";
+import resp from "./styles/responsive.module.css";
 import logo from "./images/logo.png";
 import { Link } from "react-router-dom";
 
@@ -7,7 +8,7 @@ const Header = () => {
         <header className={styles["navigation"]}>
             <nav>
                 {/* eslint-disable-next-line */}
-                <ul className={styles["nav-bar"]}role={"list"}>
+                <ul className={`${styles["nav-bar"]} ${resp["nav-bar"]}`} role={"list"}>
                     <li className={styles["nav-bar-logo"]}>
                         <img src={logo} alt="logo" />
                     </li>
