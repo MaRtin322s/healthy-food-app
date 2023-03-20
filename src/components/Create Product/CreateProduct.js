@@ -8,18 +8,17 @@ const CreateProduct = () => {
             <section className={styles["create-page"]}>
                 <article className={styles["info"]}>
                     <ul className={styles["steps"]}>
-                        <li>Create recipe information:</li>
-                        <li>The title specifies the name of the recipe.</li>
+                        <li>Create products information:</li>
+                        <li>The title specifies the name of the product.</li>
                         <li>
-                            Ingredients list: A list of all the ingredients required for the recipe.
-                            NOTE: Every ingredient must be on the new line!
+                            Nutrition information list: A list of all the information of the products like calories, fat and ect.
+                            NOTE: Every nutrition must be on the new line!
                         </li>
                         <li>
-                            Preparation: Step-by-step instructions on how to prepare the recipe.
+                            Description: Products description.
                         </li>
                         <li>
-                            Category - specifies the type of the recipe - Appetizers, Soups and
-                            stews, Salads, Main dishes, Side dishes, Desserts, Beverages and ect.
+                            Type - specifies the type of the product - Vegetable, fruits and ect.
                         </li>
                     </ul>
                 </article>
