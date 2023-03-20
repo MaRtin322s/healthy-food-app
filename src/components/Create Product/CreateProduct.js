@@ -1,8 +1,8 @@
-import styles from "./styles/createRecipe.module.css";
-import background from "./images/backgr.jpg";
 import { Link } from "react-router-dom";
+import styles from "./styles/createProduct.module.css";
+import background from "./images/backgr.jpg";
 
-const CreateRecipe = () => {
+const CreateProduct = () => {
     return (
         <>
             <section className={styles["create-page"]}>
@@ -24,7 +24,7 @@ const CreateRecipe = () => {
                     </ul>
                 </article>
                 <form className={styles["create"]}>
-                    <h1 className={styles["create-heading"]}>Create Recipes</h1>
+                    <h1 className={styles["create-heading"]}>Create Products</h1>
                     <div className="links">
                         <Link className={styles["create-recipe"]} to="/create-recipes" replace>
                             Create Recipe
@@ -79,4 +79,4 @@ const CreateRecipe = () => {
     );
 }
 
-export default CreateRecipe;
+export default CreateProduct;

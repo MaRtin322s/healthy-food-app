@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import CreateProduct from "./components/Create Product/CreateProduct";
 import CreateRecipe from "./components/Create Recipe/CreateRecipe";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
@@ -20,6 +21,7 @@ function App() {
                     <Route path="/catalog-recipes" element={<RecipesCatalog />} />
                     <Route path="/catalog-products" element={<ProductsCatalog />} />
                     <Route path="/create-recipes" element={<CreateRecipe />} />
+                    <Route path="/create-products" element={<CreateProduct />} />
                 </Routes>
             </main>
             <Footer />
