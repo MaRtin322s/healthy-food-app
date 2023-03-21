@@ -18,7 +18,7 @@ const Header = () => {
                     <li className={styles["nav-item"]}>
                         <Link to="/catalog-recipes">Calatog</Link>
                     </li>
-                    <li className={styles["nav-item"]}>
+                    {/* <li className={styles["nav-item"]}>
                         <Link to="/create-recipes">Create</Link>
                     </li>
                     <li className={styles["nav-item"]}>
@@ -26,7 +26,7 @@ const Header = () => {
                     </li>
                     <li className={styles["nav-item"]}>
                         <Link to="/logout">Logout</Link>
-                    </li>
+                    </li> */}
                     <li className={styles["nav-item"]}>
                         <Link to="/login">Log In</Link>
                     </li>
