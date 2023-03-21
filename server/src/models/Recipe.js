@@ -1,12 +1,8 @@
 const mongoose = require('mongoose');
 
-const publicationSchema = new mongoose.Schema({
+const recipeSchema = new mongoose.Schema({
     title: {
         type: String, 
-        required: true
-    },
-    year: {
-        type: Number,
         required: true
     },
     category: {
@@ -17,11 +13,11 @@ const publicationSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    trailerUrl: {
+    ingredients: {
         type: String,
         required: true
     },
-    content: {
+    preparation: {
         type: String,
         required: true
     },
@@ -31,6 +27,6 @@ const publicationSchema = new mongoose.Schema({
     }
 });
 
-const Publication = mongoose.model('Publication', publicationSchema);
+const Recipe = mongoose.model('Recipe', recipeSchema);
 
-module.exports = Publication;
+module.exports = Recipe;

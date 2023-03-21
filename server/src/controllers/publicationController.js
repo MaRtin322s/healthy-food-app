@@ -6,19 +6,18 @@ const authService = require('../services/authServices');
 const { getOne } = require('../services/publicationServices');
 
 router.post('/create', async (req, res) => {
-    const { title, year, category, imageUrl, trailerUrl, content, _ownerId } = req.body;
+    const { title, category, imageUrl, ingredients, preparation, _ownerId } = req.body;
 
     try {
-        if (title == "" || category == "" || content == "" || imageUrl == "") {
+        if (title == "" || category == "" || imageUrl == "") {
             throw "All fields are required!"
         } else {
             const publication = await publicationService.createPublication({
                 title,
-                year,
                 category,
                 imageUrl,
-                trailerUrl,
-                content,
+                ingredients,
+                preparation,
                 _ownerId
             });
             res.json(publication);

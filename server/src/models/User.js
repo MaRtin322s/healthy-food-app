@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const userSchema = new mongoose.Schema({
     firstName: {
         type: String,
-        required: true
+        required: true 
     },
     lastName: {
         type: String,
@@ -13,12 +13,16 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    imageUrl: {
+        type: String,
+        required: true
+    },
     password: {
         type: String,
         required: true,
         minLength: [6, "The password must be at least 6 characters!"]
     },
-    savedFilms: [{
+    savedRecipes: [{
         type: mongoose.Types.ObjectId,
         ref: 'Publication'
     }]
