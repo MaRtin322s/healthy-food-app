@@ -1,4 +1,4 @@
-@media all and (max-width: 500px) {
+@media all and (max-width: 500px) and (min-width:300px) {
     .background-img {
         position: relative;
         right: 0px;
@@ -33,7 +33,7 @@
 
     .heading-link {
         position: relative;
-        top: -160px;
+        top: -120px;
         font-size: 15px;
         margin-left: 10px;
     }
