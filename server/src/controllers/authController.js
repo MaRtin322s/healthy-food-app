@@ -27,8 +27,8 @@ router.post('/register', async (req, res) => {
                     lastName: result.lastName,
                     accessToken: token
                 });
-            }
-        }
+            };
+        };
     } catch (err) {
         res.json(err);
     }
@@ -48,19 +48,18 @@ router.post('/login', async (req, res) => {
                 email: user.email,
                 firstName: user.firstName,
                 lastName: user.lastName,
-                username: user.username,
                 accessToken: token
             });
-        }
+        };
     } catch (err) {
         res.json({ message: err });
-    }
+    };
 });
 
 router.get('/logout', (req, res) => {
     if (req.headers['x-authorization']) {
         res.json();
-    }
+    };
 });
 
 module.exports = router;

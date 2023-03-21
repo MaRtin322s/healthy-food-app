@@ -1,8 +1,10 @@
 const router = require('express').Router();
 const authController = require('./controllers/authController');
-const publicationController = require('./controllers/publicationController');
+const recipeController = require('./controllers/recipeContreoller');
+const productsController = require('./controllers/productionController');
 
 router.use('/users', authController);
-router.use('/publications', publicationController);
+router.use('/recipes', recipeController);
+router.use('/products', productsController);
 
 module.exports = router;

@@ -15,13 +15,13 @@ exports.registerUser = async (userData) => {
         const user = await User.create({ ...userData, password: password });
         return user;
     }
-}
+};
 
 exports.loginUser = async ({ email, password }) => {
     const user = await User.findOne({ email: email });
 
     if (!user) {
-        return "User not found";
+        return "User not found!";
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
@@ -31,13 +31,13 @@ exports.loginUser = async ({ email, password }) => {
     } else {
         return user;
     }
-}
+};
 
 exports.generateToken = async (userData) => {
     const token = await jwtSign({ _id: userData._id }, SECRET, { expiresIn: '2d' });
     return token;
-}
+};
 
-exports.getAuthor = async (userId) => await User.findById({ _id: userId }).populate('savedFilms');
-exports.saveFilm = async (userId, data) => 
-    await User.findByIdAndUpdate({ _id: userId }, { $push: { savedFilms: data } }).populate('savedFilms');
+exports.getAuthor = async (userId) => await User.findById({ _id: userId }).populate('savedRecipes');
+exports.saveRecipe = async (userId, data) => 
+    await User.findByIdAndUpdate({ _id: userId }, { $push: { savedRecipes: data } }).populate('savedRecipes');
