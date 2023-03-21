@@ -27,6 +27,7 @@ const Profile = () => {
             <section className={styles["user-actions"]}>
                 <article className={styles["created-recipes"]}>
                     <h1>Created Recipes:</h1>
+                    {/* eslint-disable-next-line */}
                     <ul className={styles["user-action"]} role={"list"}>
                         <li>
                             <article className={styles["catalog-recipe"]}>
@@ -58,6 +59,7 @@ const Profile = () => {
                 </article>
                 <article className={styles["created-products"]}>
                     <h1>Created products:</h1>
+                    {/* eslint-disable-next-line */}
                     <ul className={styles["user-action"]} role={"list"}>
                         <li>
                             <article className={styles["catalog-recipe"]}>
@@ -76,6 +78,7 @@ const Profile = () => {
                 </article>
                 <article className={styles["saved-recipes"]}>
                     <h1>Saved Recipes:</h1>
+                    {/* eslint-disable-next-line */}
                     <ul className={styles["user-action"]} role={"list"}>
                         <li>
                             <article className={styles["catalog-recipe"]}>
