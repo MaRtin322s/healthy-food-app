@@ -126,7 +126,7 @@ const Register = () => {
                                 onBlur={() => validations.minLength(3, data.lastName, "lastName", setError)}
                             />
                             {error.lastName &&
-                                <p className={styles["form-error"]}>First name should be at least 3 characters long!</p>
+                                <p className={styles["form-error"]}>Last name should be at least 3 characters long!</p>
                             }
                         </div>
 
