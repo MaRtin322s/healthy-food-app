@@ -12,3 +12,12 @@ The application uses:
 - Mongoose library for the database communication.
 
 ## Application Endpoints
+- Base URL: http://localhost:3030/users
+# User authentication
+- /register - send POST request to the endpoint with required data. All fields must be filled with correct information. The server responds with following data: _id, email, firstName, lastName and accessToken to perform authorized requests.
+
+- /login - send POST request to the endpoint with required data (email and password). Both must be filled with correct information. The server responds with following data: _id, email, firstName, lastName and accessToken to perform authorized requests.
+
+- /logout - send authorized GET request to the endpoint with special header - [X-Authorization] containing the access token of the current user.
+
+# Recipe operations
