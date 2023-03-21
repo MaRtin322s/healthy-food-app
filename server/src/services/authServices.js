@@ -34,7 +34,7 @@ exports.loginUser = async ({ email, password }) => {
 };
 
 exports.generateToken = async (userData) => {
-    const token = await jwtSign({ _id: userData._id }, SECRET, { expiresIn: '2d' });
+    const token = await jwtSign({ _id: userData._id }, SECRET, { expiresIn: '2h' });
     return token;
 };
 

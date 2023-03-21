@@ -46,6 +46,10 @@
     background-color: #19e79c;
 }
 
+.catalog-recipe:hover {
+    transform: scale(1.1);
+}
+
 .catalog-recipe img {
     border-bottom: 3px solid black;
     border-radius: 6px;
