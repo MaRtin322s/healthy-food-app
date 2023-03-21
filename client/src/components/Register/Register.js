@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/UserContext";
 import * as validations from "./validations/validations";
+import * as service from "../../services/userServices";
 import styles from "./styles/register.module.css";
 import background from "./images/backgr.jpg"
 
@@ -15,7 +16,7 @@ const Register = () => {
         email: "",
         imageUrl: "",
         password: "",
-        conPassword: ""
+        rePass: ""
     });
 
     const [error, setError] = useState({
@@ -23,7 +24,7 @@ const Register = () => {
         lastName: false,
         email: false,
         imageUrl: false,
-        conPassword: false
+        rePass: false
     });
 
     const chnageHandler = (ev) => {
@@ -38,7 +39,26 @@ const Register = () => {
     const submitHandler = (ev, userData) => {
         ev.preventDefault();
 
-        console.log(userData);
+        if (userData.password !== userData.rePass) {
+            alert("Invalid data provided!");
+        } else {
+            try {
+                const emailRegExp = new RegExp('^([a-zA-Z0-9._%+-]+)@([a-zA-Z0-9.-]+.[a-zA-Z]{2})$');
+                if (emailRegExp.test(userData.email)) {
+                    service.registerUser(userData)
+                        .then(result => {
+                            if (typeof result !== "string") {
+                                userLogin(result);
+                                navigate("/", { replace: true });
+                            } else {
+                                alert("User with this name already exists!");
+                            }
+                        });
+                }
+            } catch (err) {
+                alert(err.message);
+            }
+        }
     };
 
     return (
@@ -170,15 +190,15 @@ const Register = () => {
                                 className={styles["password"]}
                                 type="password"
                                 id="confirm-password"
-                                name="conPassword"
+                                name="rePass"
                                 placeholder="Confirm your password..."
-                                value={data.conPassword}
+                                value={data.rePass}
                                 required
                                 onChange={(ev) => chnageHandler(ev)}
                                 onBlur={() =>
-                                    validations.passwordsMatch(data.password, data.conPassword, "conPassword", setError)}
+                                    validations.passwordsMatch(data.password, data.rePass, "rePass", setError)}
                             />
-                            {error.conPassword &&
+                            {error.rePass &&
                                 <p className={styles["form-error"]}>Passwords do not match!</p>
                             }
                         </div>

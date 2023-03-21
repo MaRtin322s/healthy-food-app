@@ -2,8 +2,11 @@ import styles from "./styles/header.module.css";
 import resp from "./styles/responsive.module.css";
 import logo from "./images/logo.png";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/UserContext";
 
 const Header = () => {
+    const { user } = useContext(AuthContext);
     return (
         <header className={styles["navigation"]}>
             <nav>
@@ -18,21 +21,29 @@ const Header = () => {
                     <li className={styles["nav-item"]}>
                         <Link to="/catalog-recipes">Calatog</Link>
                     </li>
-                    {/* <li className={styles["nav-item"]}>
-                        <Link to="/create-recipes">Create</Link>
-                    </li>
-                    <li className={styles["nav-item"]}>
-                        <Link to="/profile">Profile</Link>
-                    </li>
-                    <li className={styles["nav-item"]}>
-                        <Link to="/logout">Logout</Link>
-                    </li> */}
-                    <li className={styles["nav-item"]}>
-                        <Link to="/login">Log In</Link>
-                    </li>
-                    <li className={styles["nav-item"]}>
-                        <Link to="/register">Sign Up</Link>
-                    </li>
+                    {user.accessToken
+                        ?
+                        <>
+                            <li className={styles["nav-item"]}>
+                                <Link to="/create-recipes">Create</Link>
+                            </li>
+                            <li className={styles["nav-item"]}>
+                                <Link to="/profile">Profile</Link>
+                            </li>
+                            <li className={styles["nav-item"]}>
+                                <Link to="/logout">Logout</Link>
+                            </li>
+                        </>
+                        :
+                        <>
+                            <li className={styles["nav-item"]}>
+                                <Link to="/login">Log In</Link>
+                            </li>
+                            <li className={styles["nav-item"]}>
+                                <Link to="/register">Sign Up</Link>
+                            </li>
+                        </>
+                    }
                 </ul>
             </nav>
         </header>
