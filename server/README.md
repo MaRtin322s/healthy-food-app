@@ -44,3 +44,17 @@ The application uses:
 
 # Products operations
 - BaseUrl: http://localhost:3030/products.
+
+- /create - send authorized POST request to the endpoint with required data. All fields must be filled with correct information. The server responds with the newly created product.
+
+- /all - send GET request to the endpoint and it will return all products in the system.
+
+- /:productId - send GET request to the endpoint and it will return the product with the given id.
+
+- /profile/:ownerId send GET request to the endpoint and it will return an array with the created products by the given owner id.
+
+- /author/:userId - send GET request to the endpoint and it will return the author of the product.
+
+- /edit/:productId - send authorized PUT request to the endpoint with the correct data. It replaces old data with the newly given and return object containing the product to the client.
+
+- delete/:productId - send authorized DELETE request to the endpoint, it will delete the product from the system and return the deleted product as object.

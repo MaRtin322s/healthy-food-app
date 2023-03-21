@@ -54,13 +54,13 @@ router.get('/author/:id', async (req, res) => {
 router.put('/edit/:id', async (req, res) => {
     const data = req.body;
     const productId = req.params.id;
-    const editted = await productService.editProduct(productId, data);
+    const editted = await authService.editProduct(productId, data);
     res.json(editted);
 });
 
 router.delete('/delete/:id', async (req, res) => {
     const productId = req.params.id;
-    const deleted = await productService.deleteProduct(productId);
+    const deleted = await authService.deleteProduct(productId);
     res.json(deleted);
 });
 
