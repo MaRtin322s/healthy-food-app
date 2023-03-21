@@ -1,8 +1,46 @@
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../contexts/UserContext";
+import * as validations from "./validations/validations";
 import styles from "./styles/register.module.css";
 import background from "./images/backgr.jpg"
 
 const Register = () => {
+    const navigate = useNavigate();
+    const { userLogin } = useContext(AuthContext);
+
+    const [data, setData] = useState({
+        firstName: "",
+        lastName: "",
+        email: "",
+        imageUrl: "",
+        password: "",
+        conPassword: ""
+    });
+
+    const [error, setError] = useState({
+        firstName: false,
+        lastName: false,
+        email: false,
+        imageUrl: false,
+        conPassword: false
+    });
+
+    const chnageHandler = (ev) => {
+        ev.preventDefault();
+
+        setData(state => ({
+            ...state,
+            [ev.target.name]: ev.target.value
+        }));
+    }
+
+    const submitHandler = (ev, userData) => {
+        ev.preventDefault();
+
+        console.log(userData);
+    };
+
     return (
         <>
             <img className={styles["register-background-img"]} src={background} alt="background" />
@@ -26,7 +64,10 @@ const Register = () => {
                         you should be able to log in and start using the features of the website/app.
                     </li>
                 </ul>
-                <form className={styles["register"]}>
+                <form
+                    className={styles["register"]}
+                    onSubmit={(ev) => submitHandler(ev, data)}
+                >
                     <h1 className={styles["register-heading"]}>Register new users</h1>
                     <p className={styles["register-info"]}>
                         Hey, enter your details to get your new account.
@@ -41,8 +82,14 @@ const Register = () => {
                                 id="firstName"
                                 name="firstName"
                                 placeholder="Enter your first name..."
+                                value={data.firstName}
                                 required
+                                onChange={(ev) => chnageHandler(ev)}
+                                onBlur={() => validations.minLength(3, data.firstName, "firstName", setError)}
                             />
+                            {error.firstName &&
+                                <p className={styles["form-error"]}>First name should be at least 3 characters long!</p>
+                            }
                         </div>
 
                         <label htmlFor="lastName">Last Name:</label>
@@ -53,8 +100,14 @@ const Register = () => {
                                 id="lastName"
                                 name="lastName"
                                 placeholder="Enter your last name..."
+                                value={data.lastName}
                                 required
+                                onChange={(ev) => chnageHandler(ev)}
+                                onBlur={() => validations.minLength(3, data.lastName, "lastName", setError)}
                             />
+                            {error.lastName &&
+                                <p className={styles["form-error"]}>First name should be at least 3 characters long!</p>
+                            }
                         </div>
 
                         <label htmlFor="email">Email:</label>
@@ -65,8 +118,16 @@ const Register = () => {
                                 id="email"
                                 name="email"
                                 placeholder="Enter your email..."
+                                value={data.email}
                                 required
+                                onChange={(ev) => chnageHandler(ev)}
+                                onBlur={() =>
+                                    // eslint-disable-next-line
+                                    validations.regexValidator("^[A-Za-z0-9_\.]+@[A-Za-z]+\.[A-Za-z]{2,3}$", data.email, "email", setError)}
                             />
+                            {error.email &&
+                                <p className={styles["form-error"]}>Email is not valid!</p>
+                            }
                         </div>
 
                         <label htmlFor="imageUrl">ImageUrl:</label>
@@ -77,8 +138,16 @@ const Register = () => {
                                 id="imageUrl"
                                 name="imageUrl"
                                 placeholder="https://..."
+                                value={data.imageUrl}
                                 required
+                                onChange={(ev) => chnageHandler(ev)}
+                                onBlur={() =>
+                                    // eslint-disable-next-line
+                                    validations.urlValidator("https://", data.imageUrl, "imageUrl", setError)}
                             />
+                            {error.imageUrl &&
+                                <p className={styles["form-error"]}>URL address should start with https://...!</p>
+                            }
                         </div>
 
                         <label htmlFor="password">Password:</label>
@@ -89,7 +158,9 @@ const Register = () => {
                                 id="password"
                                 name="password"
                                 placeholder="Enter password..."
+                                value={data.password}
                                 required
+                                onChange={(ev) => chnageHandler(ev)}
                             />
                         </div>
 
@@ -99,10 +170,17 @@ const Register = () => {
                                 className={styles["password"]}
                                 type="password"
                                 id="confirm-password"
-                                name="confirm-password"
+                                name="conPassword"
                                 placeholder="Confirm your password..."
+                                value={data.conPassword}
                                 required
+                                onChange={(ev) => chnageHandler(ev)}
+                                onBlur={() =>
+                                    validations.passwordsMatch(data.password, data.conPassword, "conPassword", setError)}
                             />
+                            {error.conPassword &&
+                                <p className={styles["form-error"]}>Passwords do not match!</p>
+                            }
                         </div>
                         <p>
                             Already registered? <Link to="/login" replace>Log in</Link>
@@ -113,6 +191,6 @@ const Register = () => {
             </section>
         </>
     );
-}
+};
 
 export default Register;

@@ -36,7 +36,7 @@
     height: 690px;
     position: relative;
     right: -636px;
-    margin-bottom: 60px;
+    margin-bottom: 190px;
 }
 
 .register-heading {
@@ -108,4 +108,9 @@
 
 .user-info p {
     margin-bottom: 10px;
+}
+
+.form-error {
+    font-size: 13px;
+    color: red;
 }

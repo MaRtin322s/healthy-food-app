@@ -10,25 +10,28 @@ import ProductsCatalog from "./components/Products Catalog/ProductsCatalog";
 import Profile from "./components/Profile/Profile";
 import RecipesCatalog from "./components/Recipes Catalog/RecipesCatalog";
 import Register from "./components/Register/Register";
+import { AuthProvider } from "./contexts/UserContext";
 
 function App() {
     return (
         <>
-            <Header />
-            <main>
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/register" element={<Register />} />
-                    <Route path="/catalog-recipes" element={<RecipesCatalog />} />
-                    <Route path="/catalog-products" element={<ProductsCatalog />} />
-                    <Route path="/create-recipes" element={<CreateRecipe />} />
-                    <Route path="/create-products" element={<CreateProduct />} />
-                    <Route path="/profile" element={<Profile />} />
-                    <Route path="*" element={<NotFound />} />
-                </Routes>
-            </main>
-            <Footer />
+            <AuthProvider>
+                <Header />
+                <main>
+                    <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/login" element={<Login />} />
+                        <Route path="/register" element={<Register />} />
+                        <Route path="/catalog-recipes" element={<RecipesCatalog />} />
+                        <Route path="/catalog-products" element={<ProductsCatalog />} />
+                        <Route path="/create-recipes" element={<CreateRecipe />} />
+                        <Route path="/create-products" element={<CreateProduct />} />
+                        <Route path="/profile" element={<Profile />} />
+                        <Route path="*" element={<NotFound />} />
+                    </Routes>
+                </main>
+                <Footer />
+            </AuthProvider>
         </>
     );
 }
