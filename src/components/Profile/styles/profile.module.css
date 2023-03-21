@@ -8,6 +8,7 @@
 
 .profile-section {
     background-color: #d3fcfa;
+    padding-bottom: 30px;
 }
 
 .profile-info {
@@ -64,4 +65,60 @@
     border-right: 2px solid black;
     border-left: 2px solid black;
     padding: 10px 90px 10px 100px;
+}
+
+.catalog-recipe {
+    border: 3px solid black;
+    width: 220px;
+    border-radius: 8px;
+    padding-bottom: 20px;
+    background-color: #19e79c;
+    margin-bottom: 20px;
+    margin-top: 30px;
+}
+
+.catalog-recipe img {
+    border-bottom: 3px solid black;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+.catalog-recipe-title {
+    font-size: 26px;
+    margin-left: 10px;
+}
+
+.catalog-recipe-category {
+    margin-left: 10px;
+    margin-bottom: 15px;
+}
+
+.details-btn {
+    margin-bottom: 10px;
+    margin-left: 10px;
+    text-decoration: none;
+    border: 2px solid black;
+    padding: 5px 10px;
+    background-color: black;
+    color: white;
+    font-weight: 600;
+    border-radius: 40px;
+    transition: background-color 0.3s ease;
+}
+
+.details-btn:hover {
+    color: black;
+    background-color: white;
+}
+
+.user-action {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    border: 2px solid black;
+    padding-bottom: 20px;
+}
+
+.user-action li {
+    margin: auto;
 }

@@ -27,12 +27,83 @@ const Profile = () => {
             <section className={styles["user-actions"]}>
                 <article className={styles["created-recipes"]}>
                     <h1>Created Recipes:</h1>
+                    <ul className={styles["user-action"]} role={"list"}>
+                        <li>
+                            <article className={styles["catalog-recipe"]}>
+                                <img
+                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLpyUBeuso0JIz0uvwEUW8ieyBzNsnSe4GiA&usqp=CAU"
+                                    alt="pizza"
+                                />
+                                <h3 className={styles["catalog-recipe-title"]}>Pizza</h3>
+                                <p className={styles["catalog-recipe-category"]}>Category: Main Dishes</p>
+                                <a className={styles["details-btn"]} href="/">
+                                    Details
+                                </a>
+                            </article>
+                        </li>
+                        <li>
+                            <article className={styles["catalog-recipe"]}>
+                                <img
+                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLpyUBeuso0JIz0uvwEUW8ieyBzNsnSe4GiA&usqp=CAU"
+                                    alt="pizza"
+                                />
+                                <h3 className={styles["catalog-recipe-title"]}>Pizza</h3>
+                                <p className={styles["catalog-recipe-category"]}>Category: Main Dishes</p>
+                                <a className={styles["details-btn"]} href="/">
+                                    Details
+                                </a>
+                            </article>
+                        </li>
+                    </ul>
                 </article>
                 <article className={styles["created-products"]}>
                     <h1>Created products:</h1>
+                    <ul className={styles["user-action"]} role={"list"}>
+                        <li>
+                            <article className={styles["catalog-recipe"]}>
+                                <img
+                                    src="https://www.collinsdictionary.com/images/full/tomato_281240360.jpg"
+                                    alt="tomatoes"
+                                />
+                                <h3 className={styles["catalog-recipe-title"]}>Tomatoes</h3>
+                                <p className={styles["catalog-recipe-category"]}>Type: Vegetables</p>
+                                <a className={styles["details-btn"]} href="/">
+                                    Details
+                                </a>
+                            </article>
+                        </li>
+                    </ul>
                 </article>
                 <article className={styles["saved-recipes"]}>
-                    <h1>Saved Recipes:</h1>   
+                    <h1>Saved Recipes:</h1>
+                    <ul className={styles["user-action"]} role={"list"}>
+                        <li>
+                            <article className={styles["catalog-recipe"]}>
+                                <img
+                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLpyUBeuso0JIz0uvwEUW8ieyBzNsnSe4GiA&usqp=CAU"
+                                    alt="pizza"
+                                />
+                                <h3 className={styles["catalog-recipe-title"]}>Pizza</h3>
+                                <p className={styles["catalog-recipe-category"]}>Category: Main Dishes</p>
+                                <a className={styles["details-btn"]} href="/">
+                                    Details
+                                </a>
+                            </article>
+                        </li>
+                        <li>
+                            <article className={styles["catalog-recipe"]}>
+                                <img
+                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLpyUBeuso0JIz0uvwEUW8ieyBzNsnSe4GiA&usqp=CAU"
+                                    alt="pizza"
+                                />
+                                <h3 className={styles["catalog-recipe-title"]}>Pizza</h3>
+                                <p className={styles["catalog-recipe-category"]}>Category: Main Dishes</p>
+                                <a className={styles["details-btn"]} href="/">
+                                    Details
+                                </a>
+                            </article>
+                        </li>
+                    </ul>
                 </article>
             </section>
         </section>
