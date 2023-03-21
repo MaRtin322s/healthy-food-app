@@ -11,13 +11,18 @@ const ProductsCatalog = () => {
                 Catalog Products
             </Link>
             <section className={styles["catalog"]}>
+                <h1
+                    className={`${styles["no-content"]}`}
+                >
+                    There are no recipes created yet.
+                </h1>
                 <article className={styles["catalog-recipe"]}>
                     <img
                         src="https://www.collinsdictionary.com/images/full/tomato_281240360.jpg"
                         alt="tomatoes"
                     />
                     <h3 className={styles["catalog-recipe-title"]}>Tomatoes</h3>
-                    <p className={styles["catalog-recipe-category"]}>Category: Vegetables</p>
+                    <p className={styles["catalog-recipe-category"]}>Type: Vegetables</p>
                     <a className={styles["details-btn"]} href="/">
                         Details
                     </a>
@@ -28,7 +33,7 @@ const ProductsCatalog = () => {
                         alt="tomatoes"
                     />
                     <h3 className={styles["catalog-recipe-title"]}>Tomatoes</h3>
-                    <p className={styles["catalog-recipe-category"]}>Category: Vegetables</p>
+                    <p className={styles["catalog-recipe-category"]}>Type: Vegetables</p>
                     <a className={styles["details-btn"]} href="/">
                         Details
                     </a>
@@ -39,7 +44,7 @@ const ProductsCatalog = () => {
                         alt="tomatoes"
                     />
                     <h3 className={styles["catalog-recipe-title"]}>Tomatoes</h3>
-                    <p className={styles["catalog-recipe-category"]}>Category: Vegetables</p>
+                    <p className={styles["catalog-recipe-category"]}>Type: Vegetables</p>
                     <a className={styles["details-btn"]} href="/">
                         Details
                     </a>
@@ -50,7 +55,7 @@ const ProductsCatalog = () => {
                         alt="tomatoes"
                     />
                     <h3 className={styles["catalog-recipe-title"]}>Tomatoes</h3>
-                    <p className={styles["catalog-recipe-category"]}>Category: Vegetables</p>
+                    <p className={styles["catalog-recipe-category"]}>Type: Vegetables</p>
                     <a className={styles["details-btn"]} href="/">
                         Details
                     </a>
@@ -61,7 +66,7 @@ const ProductsCatalog = () => {
                         alt="tomatoes"
                     />
                     <h3 className={styles["catalog-recipe-title"]}>Tomatoes</h3>
-                    <p className={styles["catalog-recipe-category"]}>Category: Vegetables</p>
+                    <p className={styles["catalog-recipe-category"]}>Type: Vegetables</p>
                     <a className={styles["details-btn"]} href="/">
                         Details
                     </a>
@@ -72,7 +77,7 @@ const ProductsCatalog = () => {
                         alt="tomatoes"
                     />
                     <h3 className={styles["catalog-recipe-title"]}>Tomatoes</h3>
-                    <p className={styles["catalog-recipe-category"]}>Category: Vegetables</p>
+                    <p className={styles["catalog-recipe-category"]}>Type: Vegetables</p>
                     <a className={styles["details-btn"]} href="/">
                         Details
                     </a>
@@ -83,7 +88,7 @@ const ProductsCatalog = () => {
                         alt="tomatoes"
                     />
                     <h3 className={styles["catalog-recipe-title"]}>Tomatoes</h3>
-                    <p className={styles["catalog-recipe-category"]}>Category: Vegetables</p>
+                    <p className={styles["catalog-recipe-category"]}>Type: Vegetables</p>
                     <a className={styles["details-btn"]} href="/">
                         Details
                     </a>
@@ -94,7 +99,7 @@ const ProductsCatalog = () => {
                         alt="tomatoes"
                     />
                     <h3 className={styles["catalog-recipe-title"]}>Tomatoes</h3>
-                    <p className={styles["catalog-recipe-category"]}>Category: Vegetables</p>
+                    <p className={styles["catalog-recipe-category"]}>Type: Vegetables</p>
                     <a className={styles["details-btn"]} href="/">
                         Details
                     </a>
@@ -105,7 +110,7 @@ const ProductsCatalog = () => {
                         alt="tomatoes"
                     />
                     <h3 className={styles["catalog-recipe-title"]}>Tomatoes</h3>
-                    <p className={styles["catalog-recipe-category"]}>Category: Vegetables</p>
+                    <p className={styles["catalog-recipe-category"]}>Type: Vegetables</p>
                     <a className={styles["details-btn"]} href="/">
                         Details
                     </a>
@@ -116,7 +121,7 @@ const ProductsCatalog = () => {
                         alt="tomatoes"
                     />
                     <h3 className={styles["catalog-recipe-title"]}>Tomatoes</h3>
-                    <p className={styles["catalog-recipe-category"]}>Category: Vegetables</p>
+                    <p className={styles["catalog-recipe-category"]}>Type: Vegetables</p>
                     <a className={styles["details-btn"]} href="/">
                         Details
                     </a>
@@ -127,7 +132,7 @@ const ProductsCatalog = () => {
                         alt="tomatoes"
                     />
                     <h3 className={styles["catalog-recipe-title"]}>Tomatoes</h3>
-                    <p className={styles["catalog-recipe-category"]}>Category: Vegetables</p>
+                    <p className={styles["catalog-recipe-category"]}>Type: Vegetables</p>
                     <a className={styles["details-btn"]} href="/">
                         Details
                     </a>
@@ -138,7 +143,7 @@ const ProductsCatalog = () => {
                         alt="tomatoes"
                     />
                     <h3 className={styles["catalog-recipe-title"]}>Tomatoes</h3>
-                    <p className={styles["catalog-recipe-category"]}>Category: Vegetables</p>
+                    <p className={styles["catalog-recipe-category"]}>Type: Vegetables</p>
                     <a className={styles["details-btn"]} href="/">
                         Details
                     </a>

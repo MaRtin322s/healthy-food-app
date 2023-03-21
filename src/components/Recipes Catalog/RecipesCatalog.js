@@ -14,6 +14,11 @@ const RecipesCatalog = () => {
                 </Link>
             </div>
             <section className={`${styles["catalog"]} ${resp["catalog"]}`}>
+                <h1
+                    className={`${styles["no-content"]} ${resp["no-content"]}`}
+                >
+                    There are no recipes created yet.
+                </h1>
                 <article className={styles["catalog-recipe"]}>
                     <img
                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLpyUBeuso0JIz0uvwEUW8ieyBzNsnSe4GiA&usqp=CAU"
