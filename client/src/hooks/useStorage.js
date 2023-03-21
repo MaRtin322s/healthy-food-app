@@ -9,7 +9,7 @@ export const useStorage = (key, defaultValue) => {
     const setStorageData = (newValue) => {
         localStorage.setItem(key, JSON.stringify(newValue));
         setValue(newValue);
-    }
+    };
 
     return [value, setStorageData];
-}
+};
