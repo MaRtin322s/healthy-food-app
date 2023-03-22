@@ -50,6 +50,7 @@
     transform: scale(1.1);
     transition-property: transform;
     transition-duration: 0.1s;
+    cursor: pointer;
 }
 
 .catalog-recipe img {
