@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import CreateProduct from "./components/Create Product/CreateProduct";
 import CreateRecipe from "./components/Create Recipe/CreateRecipe";
+import Details from "./components/Details/Details";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import Home from "./components/Home/Home";
@@ -29,6 +30,7 @@ function App() {
                         <Route path="/create-products" element={<CreateProduct />} />
                         <Route path="/profile" element={<Profile />} />
                         <Route path="/logout" element={<Logout />} />
+                        <Route path="/details" element={<Details />} />
                         <Route path="*" element={<NotFound />} />
                     </Routes>
                 </main>

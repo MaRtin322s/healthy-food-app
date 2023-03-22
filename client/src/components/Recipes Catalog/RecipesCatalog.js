@@ -26,9 +26,9 @@ const RecipesCatalog = () => {
                     />
                     <h3 className={styles["catalog-recipe-title"]}>Pizza</h3>
                     <p className={styles["catalog-recipe-category"]}>Category: Main Dishes</p>
-                    <a className={styles["details-btn"]} href="/">
+                    <Link className={styles["details-btn"]} to="/details">
                         Details
-                    </a>
+                    </Link>
                 </article>
             </section>
         </div>

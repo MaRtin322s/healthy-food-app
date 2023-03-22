@@ -35,17 +35,18 @@ const CreateRecipe = () => {
                     </div>
                     <label htmlFor="title">Title:</label>
                     <div>
-                        <input type="text" id="title" name="title" placeholder="Title..."/>
+                        <input type="text" id="title" name="title" placeholder="Title..." />
                     </div>
                     <label htmlFor="category">Category:</label>
                     <div>
-                        <input type="text" id="category" name="category" placeholder="Main dish...."/>
+                        <input type="text" id="category" name="category" placeholder="Main dish...." />
                     </div>
                     <label htmlFor="imageUrl">Image Url:</label>
                     <div>
-                        <input type="text" id="imageUrl" name="imageUrl" placeholder="https://..."/>
+                        <input type="text" id="imageUrl" name="imageUrl" placeholder="https://..." />
                     </div>
                     <label htmlFor="ingredients">Ingredients:</label>
+                    <p className={styles["ingredients-note"]}>NOTE: Every ingredient must be on the new line!</p>
                     <div>
                         <textarea
                             cols={20}
