@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styles from "./styles/details.module.css";
 
 const Details = () => {
@@ -8,6 +9,7 @@ const Details = () => {
                 <article>
                     <h1 className={styles["details-heading"]}>Pizza "Margherita"</h1>
                     <section className={styles["recipe-data"]}>
+                        {/* eslint-disable-next-line */}
                         <ul className={styles["ingredients"]} role={"list"}>
                             <li><h2>Ingredients:</h2></li>
                             <li>flour - 225 g</li>
@@ -31,6 +33,11 @@ const Details = () => {
                             </p>
                         </div>
                     </section>
+                    <div className={styles["buttons"]}>
+                        <Link className={styles["btn-details"]} to="/"><i className="fas fa-bookmark"></i>Save</Link>
+                        <Link className={styles["btn-details"]} to="/"><i className="fas fa-edit"></i>Edit</Link>
+                        <Link className={styles["btn-details"]} to="/"><i className="fas fa-trash-alt"></i>Delete</Link>
+                    </div>
                 </article>
             </section>
         </div>

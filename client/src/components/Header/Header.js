@@ -16,7 +16,7 @@ const Header = () => {
                         <img src={logo} alt="logo" />
                     </li>
                     <li className={styles["nav-item"]}>
-                        <Link to="/">Home</Link>
+                        <Link to="/"><i class="fas fa-home"></i>Home</Link>
                     </li>
                     <li className={styles["nav-item"]}>
                         <Link to="/catalog-recipes">Calatog</Link>
@@ -28,10 +28,10 @@ const Header = () => {
                                 <Link to="/create-recipes">Create</Link>
                             </li>
                             <li className={styles["nav-item"]}>
-                                <Link to="/profile">Profile</Link>
+                                <Link to="/profile"><i class="fas fa-user-circle"></i>Profile</Link>
                             </li>
                             <li className={styles["nav-item"]}>
-                                <Link to="/logout">Logout</Link>
+                                <Link to="/logout"><i class="fas fa-sign-out-alt"></i>Logout</Link>
                             </li>
                         </>
                         :
@@ -40,7 +40,7 @@ const Header = () => {
                                 <Link to="/login">Log In</Link>
                             </li>
                             <li className={styles["nav-item"]}>
-                                <Link to="/register">Sign Up</Link>
+                                <Link to="/register"><i class="fas fa-user-plus"></i>Sign Up</Link>
                             </li>
                         </>
                     }
