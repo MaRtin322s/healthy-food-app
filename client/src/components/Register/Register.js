@@ -1,24 +1,29 @@
-import { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../contexts/UserContext";
+import { useCallback, useReducer, useState } from "react";
+import { Link } from "react-router-dom";
 import * as validations from "./validations/validations";
-import * as service from "../../services/userServices";
 import styles from "./styles/register.module.css";
-import background from "./images/backgr.jpg"
+import background from "./images/backgr.jpg";
+
+const initData = {
+    firstName: "",
+    lastName: "",
+    email: "",
+    imageUrl: "",
+    password: "",
+    rePass: ""
+};
+
+function reducer(state, action) {
+    switch (action.type) {
+        case 'SET_FIELD':
+            return { ...state, [action.field]: action.value };
+        default:
+            throw new Error(`Invalid action type: ${action.type}`);
+    }
+};
 
 const Register = () => {
-    const navigate = useNavigate();
-    const { userLogin } = useContext(AuthContext);
-
-    const [data, setData] = useState({
-        firstName: "",
-        lastName: "",
-        email: "",
-        imageUrl: "",
-        password: "",
-        rePass: ""
-    });
-
+    const [state, dispatch] = useReducer(reducer, initData);
     const [error, setError] = useState({
         firstName: false,
         lastName: false,
@@ -27,39 +32,10 @@ const Register = () => {
         rePass: false
     });
 
-    const chnageHandler = (ev) => {
-        ev.preventDefault();
-
-        setData(state => ({
-            ...state,
-            [ev.target.name]: ev.target.value
-        }));
-    }
-
-    const submitHandler = (ev, userData) => {
-        ev.preventDefault();
-
-        if (userData.password !== userData.rePass) {
-            alert("Invalid data provided!");
-        } else {
-            try {
-                const emailRegExp = new RegExp('^([a-zA-Z0-9._%+-]+)@([a-zA-Z0-9.-]+.[a-zA-Z]{2})$');
-                if (emailRegExp.test(userData.email)) {
-                    service.registerUser(userData)
-                        .then(result => {
-                            if (typeof result !== "string") {
-                                userLogin(result);
-                                navigate("/", { replace: true });
-                            } else {
-                                alert("User with this name already exists!");
-                            }
-                        });
-                }
-            } catch (err) {
-                alert(err.message);
-            }
-        }
-    };
+    const chnageHandler = useCallback((ev) => {
+        const { name, value } = ev.target;
+        dispatch({ type: 'SET_FIELD', field: name, value });
+    }, []);
 
     return (
         <>
@@ -86,7 +62,6 @@ const Register = () => {
                 </ul>
                 <form
                     className={styles["register"]}
-                    onSubmit={(ev) => submitHandler(ev, data)}
                 >
                     <h1 className={styles["register-heading"]}>Register new users</h1>
                     <p className={styles["register-info"]}>
@@ -102,10 +77,10 @@ const Register = () => {
                                 id="firstName"
                                 name="firstName"
                                 placeholder="Enter your first name..."
-                                value={data.firstName}
+                                value={state.firstName}
                                 required
                                 onChange={(ev) => chnageHandler(ev)}
-                                onBlur={() => validations.minLength(3, data.firstName, "firstName", setError)}
+                                onBlur={() => validations.minLength(3, state.firstName, "firstName", setError)}
                             />
                             {error.firstName &&
                                 <p className={styles["form-error"]}>First name should be at least 3 characters long!</p>
@@ -120,10 +95,10 @@ const Register = () => {
                                 id="lastName"
                                 name="lastName"
                                 placeholder="Enter your last name..."
-                                value={data.lastName}
+                                value={state.lastName}
                                 required
                                 onChange={(ev) => chnageHandler(ev)}
-                                onBlur={() => validations.minLength(3, data.lastName, "lastName", setError)}
+                                onBlur={() => validations.minLength(3, state.lastName, "lastName", setError)}
                             />
                             {error.lastName &&
                                 <p className={styles["form-error"]}>Last name should be at least 3 characters long!</p>
@@ -138,12 +113,12 @@ const Register = () => {
                                 id="email"
                                 name="email"
                                 placeholder="Enter your email..."
-                                value={data.email}
+                                value={state.email}
                                 required
                                 onChange={(ev) => chnageHandler(ev)}
                                 onBlur={() =>
                                     // eslint-disable-next-line
-                                    validations.regexValidator("^[A-Za-z0-9_\.]+@[A-Za-z]+\.[A-Za-z]{2,3}$", data.email, "email", setError)}
+                                    validations.regexValidator("^[A-Za-z0-9_\.]+@[A-Za-z]+\.[A-Za-z]{2,3}$", state.email, "email", setError)}
                             />
                             {error.email &&
                                 <p className={styles["form-error"]}>Email is not valid!</p>
@@ -158,12 +133,12 @@ const Register = () => {
                                 id="imageUrl"
                                 name="imageUrl"
                                 placeholder="https://..."
-                                value={data.imageUrl}
+                                value={state.imageUrl}
                                 required
                                 onChange={(ev) => chnageHandler(ev)}
                                 onBlur={() =>
                                     // eslint-disable-next-line
-                                    validations.urlValidator("https://", data.imageUrl, "imageUrl", setError)}
+                                    validations.urlValidator("https://", state.imageUrl, "imageUrl", setError)}
                             />
                             {error.imageUrl &&
                                 <p className={styles["form-error"]}>URL address should start with https://...!</p>
@@ -178,7 +153,7 @@ const Register = () => {
                                 id="password"
                                 name="password"
                                 placeholder="Enter password..."
-                                value={data.password}
+                                value={state.password}
                                 required
                                 onChange={(ev) => chnageHandler(ev)}
                             />
@@ -192,11 +167,11 @@ const Register = () => {
                                 id="confirm-password"
                                 name="rePass"
                                 placeholder="Confirm your password..."
-                                value={data.rePass}
+                                value={state.rePass}
                                 required
                                 onChange={(ev) => chnageHandler(ev)}
                                 onBlur={() =>
-                                    validations.passwordsMatch(data.password, data.rePass, "rePass", setError)}
+                                    validations.passwordsMatch(state.password, state.rePass, "rePass", setError)}
                             />
                             {error.rePass &&
                                 <p className={styles["form-error"]}>Passwords do not match!</p>
