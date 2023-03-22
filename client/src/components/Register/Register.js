@@ -39,8 +39,11 @@ const Register = () => {
                                 userLogin(result);
                                 navigate("/", { replace: true });
                             } else {
-                                alert("User with this name already exists!");
+                                throw result;
                             };
+                        })
+                        .catch((error) => {
+                            console.log(error);
                         });
                 };
             } catch (err) {
