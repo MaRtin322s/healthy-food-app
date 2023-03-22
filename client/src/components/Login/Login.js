@@ -1,8 +1,42 @@
-import { Link } from "react-router-dom";
+import { useCallback, useContext, useReducer } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./styles/login.module.css";
+import * as service from "../../services/userServices";
 import background from "./images/backgr.jpg";
+import { initData, reducer } from "./data/data";
+import { AuthContext } from "../../contexts/UserContext";
 
 const Login = () => {
+    const { userLogin } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const [state, dispatch] = useReducer(reducer, initData);
+
+    const changeHandler = useCallback((ev) => {
+        const { name, value } = ev.target;
+        dispatch({ type: 'SET_FIELD', field: name, value });
+    }, []);
+
+    const submitHandler = (ev, userData) => {
+        ev.preventDefault();
+
+        if (userData.email === "" || userData.password === "") {
+            alert("All fields are required!");
+        } else {
+            service.loginUser(userData)
+                .then(result => {
+                    if (result.message) {
+                        throw result.message;
+                    } else {
+                        userLogin(result);
+                        navigate("/", { replace: true });
+                    }
+                })
+                .catch((error) => {
+                    alert(error);
+                });
+        };
+    };
+
     return (
         <>
             <img className={styles["background-img"]} src={background} alt="background" />
@@ -26,7 +60,10 @@ const Login = () => {
                         and change it regularly to help protect your account.
                     </li>
                 </ul>
-                <form className={styles["login"]}>
+                <form
+                    className={styles["login"]}
+                    onSubmit={(ev) => submitHandler(ev, state)}
+                >
                     <h1 className={styles["login-heading"]}>Login for users</h1>
                     <p className={styles["login-info"]}>
                         Hey, enter your details to get sign in to your account.
@@ -41,7 +78,10 @@ const Login = () => {
                                 id="email"
                                 name="email"
                                 placeholder="Enter email..."
-                                required=""
+                                required
+                                value={state.email}
+                                onChange={(ev) => changeHandler(ev)}
+
                             />
                         </div>
                         <label htmlFor="password">Password:</label>
@@ -52,7 +92,9 @@ const Login = () => {
                                 id="password"
                                 name="password"
                                 placeholder="Enter password..."
-                                required=""
+                                required
+                                value={state.password}
+                                onChange={(ev) => changeHandler(ev)}
                             />
                         </div>
                         <p>
