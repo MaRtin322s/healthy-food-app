@@ -5,6 +5,7 @@ import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import Home from "./components/Home/Home";
 import Login from "./components/Login/Login";
+import Logout from "./components/Logout/Logout";
 import NotFound from "./components/Not Found Page/NotFound";
 import ProductsCatalog from "./components/Products Catalog/ProductsCatalog";
 import Profile from "./components/Profile/Profile";
@@ -27,6 +28,7 @@ function App() {
                         <Route path="/create-recipes" element={<CreateRecipe />} />
                         <Route path="/create-products" element={<CreateProduct />} />
                         <Route path="/profile" element={<Profile />} />
+                        <Route path="/logout" element={<Logout />} />
                         <Route path="*" element={<NotFound />} />
                     </Routes>
                 </main>

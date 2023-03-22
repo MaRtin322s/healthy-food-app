@@ -13,5 +13,5 @@ export function reducer(state, action) {
             return { ...state, [action.field]: action.value };
         default:
             throw new Error(`Invalid action type: ${action.type}`);
-    }
+    };
 };
