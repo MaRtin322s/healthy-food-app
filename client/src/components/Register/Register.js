@@ -41,9 +41,6 @@ const Register = () => {
                             } else {
                                 throw result;
                             };
-                        })
-                        .catch((error) => {
-                            console.log(error);
                         });
                 };
             } catch (err) {
