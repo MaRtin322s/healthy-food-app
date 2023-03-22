@@ -46,6 +46,7 @@ const CreateProduct = () => {
                         <input type="text" id="imageUrl" name="imageUrl" placeholder="https://..."/>
                     </div>
                     <label htmlFor="nutrition">Nutrition information:</label>
+                    <p className={styles["ingredients-note"]}>NOTE: Every nutrition must be on the new line!</p>
                     <div>
                         <textarea
                             cols={20}

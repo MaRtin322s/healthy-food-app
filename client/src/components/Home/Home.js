@@ -63,9 +63,9 @@ const Home = () => {
                     />
                     <h3 className={styles["recipe-title"]}>Pizza</h3>
                     <p className={styles["recipe-category"]}>Category: Main Dishes</p>
-                    <a className={styles["last-recipes-btn"]} href="/">
+                    <Link className={styles["last-recipes-btn"]} to="/details">
                         Details
-                    </a>
+                    </Link>
                 </article>
                 <article className={styles["recipe-two"]}>
                     <img
@@ -74,9 +74,9 @@ const Home = () => {
                     />
                     <h3 className={styles["recipe-title"]}>Cheseburger</h3>
                     <p className={styles["recipe-category"]}>Category: Main Dishes</p>
-                    <a className={styles["last-recipes-btn"]} href="/">
+                    <Link className={styles["last-recipes-btn"]} to="/details">
                         Details
-                    </a>
+                    </Link>
                 </article>
                 <article className={styles["recipe-three"]}>
                     <img
@@ -85,9 +85,9 @@ const Home = () => {
                     />
                     <h3 className={styles["recipe-title"]}>Choco Muffin</h3>
                     <p className={styles["recipe-category"]}>Category: Main Dishes</p>
-                    <a className={styles["last-recipes-btn"]} href="/">
+                    <Link className={styles["last-recipes-btn"]} to="/details">
                         Details
-                    </a>
+                    </Link>
                 </article>
             </section>
         </>

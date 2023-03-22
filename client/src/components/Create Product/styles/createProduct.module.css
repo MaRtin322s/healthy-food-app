@@ -86,3 +86,10 @@ input.create-btn:hover {
     color: white;
     background-color: black;
 }
+
+.ingredients-note {
+    width: 300px;
+    margin-left: 60px;
+    font-weight: 600;
+    color: red;
+}
