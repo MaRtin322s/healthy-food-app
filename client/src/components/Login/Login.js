@@ -1,4 +1,4 @@
-import { useCallback, useContext, useReducer } from "react";
+import { memo, useCallback, useContext, useReducer } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./styles/login.module.css";
 import * as service from "../../services/userServices";
@@ -6,7 +6,7 @@ import background from "./images/backgr.jpg";
 import { initData, reducer } from "./data/data";
 import { AuthContext } from "../../contexts/UserContext";
 
-const Login = () => {
+const Login = memo(() => {
     const { userLogin } = useContext(AuthContext);
     const navigate = useNavigate();
     const [state, dispatch] = useReducer(reducer, initData);
@@ -109,6 +109,6 @@ const Login = () => {
             </section>
         </>
     );
-}
+});
 
 export default Login;
