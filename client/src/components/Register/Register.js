@@ -1,26 +1,9 @@
 import { useCallback, useReducer, useState } from "react";
 import { Link } from "react-router-dom";
 import * as validations from "./validations/validations";
+import { initData, reducer } from "./data/data";
 import styles from "./styles/register.module.css";
 import background from "./images/backgr.jpg";
-
-const initData = {
-    firstName: "",
-    lastName: "",
-    email: "",
-    imageUrl: "",
-    password: "",
-    rePass: ""
-};
-
-function reducer(state, action) {
-    switch (action.type) {
-        case 'SET_FIELD':
-            return { ...state, [action.field]: action.value };
-        default:
-            throw new Error(`Invalid action type: ${action.type}`);
-    }
-};
 
 const Register = () => {
     const [state, dispatch] = useReducer(reducer, initData);
