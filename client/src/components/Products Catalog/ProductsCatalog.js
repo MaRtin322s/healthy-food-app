@@ -15,9 +15,9 @@ const ProductsCatalog = () => {
                 <h1
                     className={`${styles["no-content"]}`}
                 >
-                    There are no recipes created yet.
+                    There are no products created yet.
                 </h1>
-                <article className={styles["catalog-recipe"]}>
+                {/* <article className={styles["catalog-recipe"]}>
                     <img
                         src="https://www.collinsdictionary.com/images/full/tomato_281240360.jpg"
                         alt="tomatoes"
@@ -27,7 +27,7 @@ const ProductsCatalog = () => {
                     <Link className={styles["details-btn"]} to="/details">
                         Details
                     </Link>
-                </article>
+                </article> */}
             </section>
         </div>
 

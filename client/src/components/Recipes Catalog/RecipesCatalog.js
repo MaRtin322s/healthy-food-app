@@ -20,7 +20,7 @@ const RecipesCatalog = () => {
                 >
                     There are no recipes created yet.
                 </h1>
-                <article className={styles["catalog-recipe"]}>
+                {/* <article className={styles["catalog-recipe"]}>
                     <img
                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLpyUBeuso0JIz0uvwEUW8ieyBzNsnSe4GiA&usqp=CAU"
                         alt="pizza"
@@ -30,7 +30,7 @@ const RecipesCatalog = () => {
                     <Link className={styles["details-btn"]} to="/details">
                         Details
                     </Link>
-                </article>
+                </article> */}
             </section>
         </div>
 
