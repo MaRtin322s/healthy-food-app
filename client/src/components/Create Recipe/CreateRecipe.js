@@ -1,6 +1,7 @@
+import { Link } from "react-router-dom";
+
 import styles from "./styles/createRecipe.module.css";
 import background from "./images/backgr.jpg";
-import { Link } from "react-router-dom";
 
 const CreateRecipe = () => {
     return (

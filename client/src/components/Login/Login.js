@@ -1,10 +1,12 @@
 import { memo, useCallback, useContext, useReducer } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import styles from "./styles/login.module.css";
-import * as service from "../../services/userServices";
-import background from "./images/backgr.jpg";
-import { initData, reducer } from "./data/data";
+
 import { AuthContext } from "../../contexts/UserContext";
+import * as service from "../../services/userServices";
+import { initData, reducer } from "./data/data";
+
+import styles from "./styles/login.module.css";
+import background from "./images/backgr.jpg";
 
 const Login = memo(() => {
     const { userLogin } = useContext(AuthContext);

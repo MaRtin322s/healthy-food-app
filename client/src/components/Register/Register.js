@@ -1,9 +1,11 @@
 import { useCallback, useContext, useReducer, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+
 import { AuthContext } from "../../contexts/UserContext";
 import * as validations from "./validations/validations";
 import * as service from "../../services/userServices";
 import { initData, reducer } from "./data/data";
+
 import styles from "./styles/register.module.css";
 import background from "./images/backgr.jpg";
 

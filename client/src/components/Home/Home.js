@@ -1,8 +1,9 @@
+import { Link } from "react-router-dom";
+
 import styles from "./styles/home.module.css";
 import resp from "./styles/responsive.module.css";
 import salmon from "./images/salmon.png";
 import background from "./images/backgr.jpg";
-import { Link } from "react-router-dom";
 
 const Home = () => {
     ;

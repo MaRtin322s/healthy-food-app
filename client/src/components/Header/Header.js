@@ -1,9 +1,11 @@
+import { useContext } from "react";
+import { Link } from "react-router-dom";
+
+import { AuthContext } from "../../contexts/UserContext";
+
 import styles from "./styles/header.module.css";
 import resp from "./styles/responsive.module.css";
 import logo from "./images/logo.png";
-import { Link } from "react-router-dom";
-import { useContext } from "react";
-import { AuthContext } from "../../contexts/UserContext";
 
 const Header = () => {
     const { user } = useContext(AuthContext);
