@@ -1,11 +1,15 @@
-import { useCallback, useReducer, useState } from "react";
-import { Link } from "react-router-dom";
+import { useCallback, useContext, useReducer, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../contexts/UserContext";
 import * as validations from "./validations/validations";
+import * as service from "../../services/userServices";
 import { initData, reducer } from "./data/data";
 import styles from "./styles/register.module.css";
 import background from "./images/backgr.jpg";
 
 const Register = () => {
+    const navigate = useNavigate();
+    const { userLogin } = useContext(AuthContext);
     const [state, dispatch] = useReducer(reducer, initData);
     const [error, setError] = useState({
         firstName: false,
@@ -19,6 +23,31 @@ const Register = () => {
         const { name, value } = ev.target;
         dispatch({ type: 'SET_FIELD', field: name, value });
     }, []);
+
+    const submitHandler = (ev, userData) => {
+        ev.preventDefault();
+
+        if (userData.password !== userData.rePass) {
+            alert("Invalid data provided!");
+        } else {
+            try {
+                const emailRegExp = new RegExp('^([a-zA-Z0-9._%+-]+)@([a-zA-Z0-9.-]+.[a-zA-Z]{2})$');
+                if (emailRegExp.test(userData.email)) {
+                    service.registerUser(userData)
+                        .then(result => {
+                            if (typeof result !== "string") {
+                                userLogin(result);
+                                navigate("/", { replace: true });
+                            } else {
+                                alert("User with this name already exists!");
+                            }
+                        });
+                }
+            } catch (err) {
+                alert(err.message);
+            }
+        }
+    };
 
     return (
         <>
@@ -45,6 +74,7 @@ const Register = () => {
                 </ul>
                 <form
                     className={styles["register"]}
+                    onSubmit={(ev, state) => submitHandler(ev, state)}
                 >
                     <h1 className={styles["register-heading"]}>Register new users</h1>
                     <p className={styles["register-info"]}>
