@@ -40,13 +40,13 @@ const Register = () => {
                                 navigate("/", { replace: true });
                             } else {
                                 alert("User with this name already exists!");
-                            }
+                            };
                         });
-                }
+                };
             } catch (err) {
                 alert(err.message);
-            }
-        }
+            };
+        };
     };
 
     return (
@@ -74,7 +74,7 @@ const Register = () => {
                 </ul>
                 <form
                     className={styles["register"]}
-                    onSubmit={(ev, state) => submitHandler(ev, state)}
+                    onSubmit={(ev) => submitHandler(ev, state)}
                 >
                     <h1 className={styles["register-heading"]}>Register new users</h1>
                     <p className={styles["register-info"]}>
