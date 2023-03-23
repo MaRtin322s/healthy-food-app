@@ -25,9 +25,14 @@ const PasswordReset = () => {
         if (state.email !== "") {
             service.testForEmail({ email: state.email })
                 .then(result => {
-                    setUser(result);
-                });
-        }
+                    if (result.message) {
+                        throw result
+                    } else {
+                        setUser(result);
+                    }
+                })
+                .catch(err => alert(err.message));
+        };
 
         if (user._id) {
             service.resetPassword(passwordData)

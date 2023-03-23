@@ -65,7 +65,11 @@ router.get('/logout', (req, res) => {
 router.post('/email-test', async (req, res) => {
     const { email } = req.body;
     const user = await authService.getByEmail(email);
-    res.json(user[0]);
+    if (!user.message) {
+        res.json(user[0]);
+    } else {
+        res.json(user);
+    }
 });
 
 router.post('/reset', async (req, res) => {
