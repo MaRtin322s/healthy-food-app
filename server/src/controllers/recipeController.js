@@ -78,4 +78,11 @@ router.get('/save/:userId', async (req, res) => {
     res.json(author.savedRecipes);
 });
 
+router.post('/download', (req, res) => {
+    const filePath = '../pdf/text.pdf';
+    const { text } = req.body;
+    console.log(text);
+    //res.download(filePath);
+});
+
 module.exports = router;
