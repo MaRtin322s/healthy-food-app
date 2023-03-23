@@ -79,16 +79,4 @@ router.get('/save/:userId', async (req, res) => {
     res.json(author.savedRecipes);
 });
 
-router.post('/download', async (req, res) => {
-    const pdfPath = '/GitHub/healthy-food-app/server/src/pdf/text.pdf';
-    const text = req.body;
-    const content = `Title: ${text.title} \nIngredients:\n${text.ingredients.join("\n")} \nPreparation:\n${text.preparation}`;
-    fs.writeFile(pdfPath, content, (err) => {
-        if (err) {
-            throw err;
-        }
-    });
-    res.download(pdfPath, "Recipe.pdf");
-});
-
 module.exports = router;
