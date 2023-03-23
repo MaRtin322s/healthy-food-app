@@ -2,8 +2,23 @@ import { Link } from "react-router-dom";
 
 import styles from "./styles/createRecipe.module.css";
 import background from "./images/backgr.jpg";
+import { useCallback, useReducer } from "react";
+import { initData, reducer } from "./data/data";
 
 const CreateRecipe = () => {
+    const [state, dispatch] = useReducer(reducer, initData);
+
+    const changeHandler = useCallback((ev) => {
+        const { name, value } = ev.target;
+        dispatch({ type: 'SET_FIELD', field: name, value });
+    });
+
+    const submitHandler = (ev, data) => {
+        ev.preventDefault();
+        
+        
+    };
+
     return (
         <>
             <section className={styles["create-page"]}>
@@ -24,7 +39,10 @@ const CreateRecipe = () => {
                         </li>
                     </ul>
                 </article>
-                <form className={styles["create"]}>
+                <form 
+                    className={styles["create"]}
+                    onSubmit={(ev) => submitHandler(ev, state)}
+                >
                     <h1 className={styles["create-heading"]}>Create Recipes</h1>
                     <div className="links">
                         <Link className={styles["create-recipe"]} to="/create-recipes" replace>
@@ -36,15 +54,36 @@ const CreateRecipe = () => {
                     </div>
                     <label htmlFor="title">Title:</label>
                     <div>
-                        <input type="text" id="title" name="title" placeholder="Title..." />
+                        <input 
+                            type="text" 
+                            id="title" 
+                            name="title" 
+                            placeholder="Title..." 
+                            value={state.title}
+                            onChange={(ev) => changeHandler(ev)}
+                        />
                     </div>
                     <label htmlFor="category">Category:</label>
                     <div>
-                        <input type="text" id="category" name="category" placeholder="Main dish...." />
+                        <input 
+                            type="text" 
+                            id="category" 
+                            name="category" 
+                            placeholder="Main dish...." 
+                            value={state.category}
+                            onChange={(ev) => changeHandler(ev)}
+                        />
                     </div>
                     <label htmlFor="imageUrl">Image Url:</label>
                     <div>
-                        <input type="text" id="imageUrl" name="imageUrl" placeholder="https://..." />
+                        <input 
+                            type="text" 
+                            id="imageUrl" 
+                            name="imageUrl" 
+                            placeholder="https://..." 
+                            value={state.imageUrl}
+                            onChange={(ev) => changeHandler(ev)}
+                        />
                     </div>
                     <label htmlFor="ingredients">Ingredients:</label>
                     <p className={styles["ingredients-note"]}>NOTE: Every ingredient must be on the new line!</p>
@@ -54,8 +93,9 @@ const CreateRecipe = () => {
                             rows={5}
                             id="ingredients"
                             name="ingredients"
-                            defaultValue={""}
                             placeholder="1/2 teaspoon salt..."
+                            value={state.ingredients}
+                            onChange={(ev) => changeHandler(ev)}
                         />
                     </div>
                     <label htmlFor="preparation">Preparation:</label>
@@ -65,8 +105,9 @@ const CreateRecipe = () => {
                             rows={5}
                             id="preparation"
                             name="preparation"
-                            defaultValue={""}
                             placeholder="Cooking preparation..."
+                            value={state.preparation}
+                            onChange={(ev) => changeHandler(ev)}
                         />
                     </div>
                     <div>

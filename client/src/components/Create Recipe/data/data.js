@@ -2,7 +2,7 @@ export const initData = {
     title: "",
     category: "",
     imageUrl: "",
-    ingredients: "",
+    ingredients: [],
     preparation: ""
 };
 
@@ -13,4 +13,4 @@ export function reducer(state, action) {
         default:
             throw new Error(`Invalid action type: ${action.type}`);
     };
-};
+}
