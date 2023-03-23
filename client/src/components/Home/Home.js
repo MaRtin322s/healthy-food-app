@@ -11,10 +11,12 @@ const Home = () => {
         <>
             <img className={`${styles["background-img"]} ${resp["background-img"]}`} src={background} alt="background" />
             <article className={`${styles["heading-info"]} ${resp["heading-info"]}`}>
-                <h1 className={`${styles["heading"]} ${resp["heading"]}`}>Your favourite food - Delivered hot &amp; fresh</h1>
+                <h1 className={`${styles["heading"]} ${resp["heading"]}`}>NutriGit: Wholesome &amp; Tasty Meals for Your Body and Soul</h1>
                 <p className={`${styles["heading-para"]} ${resp["heading-para"]}`}>
-                    Healthy switcher chefs do all the prep work like peeling, chopping &amp;
-                    marinating, so you can cook a fresh food.
+                    At NutriChef, we believe that food should be both wholesome and tasty. 
+                    Our recipes are designed to nourish your body and soul, while also tantalizing 
+                    your taste buds. We use only the freshest ingredients, and our recipes are designed 
+                    to be easy to follow, even if you're not an experienced cook.
                 </p>
                 <Link className={`${styles["heading-link"]} ${resp["heading-link"]}`} to="/catalog-recipes">
                     Recipes Catalog
