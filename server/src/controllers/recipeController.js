@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const fs = require('fs');
 const { getAuthor } = require('../services/authServices');
 const router = require('express').Router();
 const recipeService = require('../services/recipeService');
@@ -78,11 +79,16 @@ router.get('/save/:userId', async (req, res) => {
     res.json(author.savedRecipes);
 });
 
-router.post('/download', (req, res) => {
-    const filePath = '../pdf/text.pdf';
-    const { text } = req.body;
-    console.log(text);
-    //res.download(filePath);
+router.post('/download', async (req, res) => {
+    const pdfPath = '/GitHub/healthy-food-app/server/src/pdf/text.pdf';
+    const text = req.body;
+    const content = `Title: ${text.title} \nIngredients:\n${text.ingredients.join("\n")} \nPreparation:\n${text.preparation}`;
+    fs.writeFile(pdfPath, content, (err) => {
+        if (err) {
+            throw err;
+        }
+    });
+    res.download(pdfPath, "Recipe.pdf");
 });
 
 module.exports = router;

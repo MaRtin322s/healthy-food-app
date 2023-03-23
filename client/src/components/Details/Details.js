@@ -36,7 +36,7 @@ const Details = () => {
                     </section>
                     <div className={styles["buttons"]}>
                         <Link className={styles["btn-details"]} to="/"><i className="fas fa-bookmark"></i>Save</Link>
-                        <Link className={styles["btn-details"]} to="/"><i class="fas fa-download"></i>Download</Link>
+                        <Link className={styles["btn-details"]} to="/" download><i class="fas fa-download"></i>Download</Link>
                         <Link className={styles["btn-details"]} to="/"><i className="fas fa-edit"></i>Edit</Link>
                         <Link className={styles["btn-details"]} to="/"><i className="fas fa-trash-alt"></i>Delete</Link>
                     </div>
