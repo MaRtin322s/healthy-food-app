@@ -13,7 +13,7 @@ router.post('/create', async (req, res) => {
         if (title == "" || category == "" || imageUrl == "") {
             throw "All fields are required!";
         } else {
-            const publication = await recipeService.createPublication({
+            const publication = await recipeService.createRecipe({
                 title,
                 category,
                 imageUrl,
