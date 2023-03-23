@@ -103,7 +103,7 @@ const Login = memo(() => {
                             Don't have an account? <Link to="/register" replace>Sign Up</Link>
                         </p>
                         <p>
-                            Forgot your password? <Link to="/" replace>Click here</Link>
+                            Forgot your password? <Link to="/password-reset" replace>Click here</Link>
                         </p>
                         <input className={styles["btn-login"]} type="submit" value={"Login"} />
                     </article>

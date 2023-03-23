@@ -8,6 +8,7 @@ import Home from "./components/Home/Home";
 import Login from "./components/Login/Login";
 import Logout from "./components/Logout/Logout";
 import NotFound from "./components/Not Found Page/NotFound";
+import PasswordReset from "./components/Password Reset/PasswordReset";
 import ProductsCatalog from "./components/Products Catalog/ProductsCatalog";
 import Profile from "./components/Profile/Profile";
 import RecipesCatalog from "./components/Recipes Catalog/RecipesCatalog";
@@ -31,6 +32,7 @@ function App() {
                         <Route path="/profile" element={<Profile />} />
                         <Route path="/logout" element={<Logout />} />
                         <Route path="/details" element={<Details />} />
+                        <Route path="/password-reset" element={<PasswordReset />} />
                         <Route path="*" element={<NotFound />} />
                     </Routes>
                 </main>
