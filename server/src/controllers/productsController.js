@@ -46,8 +46,8 @@ router.get('/profile/:ownerId', async (req, res) => {
 });
 
 router.get('/author/:id', async (req, res) => {
-    const userId = req.params.id;
-    const author = await getAuthor(userId);
+    const userId = mongoose.Types.ObjectId(req.params.id);
+    const author = await authService.getAuthor(userId);
     res.json(author);
 });
 

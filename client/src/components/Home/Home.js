@@ -58,39 +58,7 @@ const Home = () => {
             </section>
             <h2 className={styles["last-recipes-heading"]}>New recipes...</h2>
             <section className={`${styles["last-recipes"]} ${resp["last-recipes"]}`}>
-                <article className={styles["recipe-one"]}>
-                    <img
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLpyUBeuso0JIz0uvwEUW8ieyBzNsnSe4GiA&usqp=CAU"
-                        alt="pizza"
-                    />
-                    <h3 className={styles["recipe-title"]}>Pizza</h3>
-                    <p className={styles["recipe-category"]}>Category: Main Dishes</p>
-                    <Link className={styles["last-recipes-btn"]} to="/details">
-                        Details
-                    </Link>
-                </article>
-                <article className={styles["recipe-two"]}>
-                    <img
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQR0rj8bAmN9DzOGOjQCxl0OSFB7ZLCSnx7ZA&usqp=CAU"
-                        alt="cheseburger"
-                    />
-                    <h3 className={styles["recipe-title"]}>Cheseburger</h3>
-                    <p className={styles["recipe-category"]}>Category: Main Dishes</p>
-                    <Link className={styles["last-recipes-btn"]} to="/details">
-                        Details
-                    </Link>
-                </article>
-                <article className={styles["recipe-three"]}>
-                    <img
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSzVckk56tjs02IpGWe5352U7p7DsAx764vA&usqp=CAU"
-                        alt="muffin"
-                    />
-                    <h3 className={styles["recipe-title"]}>Choco Muffin</h3>
-                    <p className={styles["recipe-category"]}>Category: Main Dishes</p>
-                    <Link className={styles["last-recipes-btn"]} to="/details">
-                        Details
-                    </Link>
-                </article>
+                <h1>There are no recipes created yet.</h1>
             </section>
         </>
     );

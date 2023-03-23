@@ -52,3 +52,6 @@ export const testForEmail = (email) => {
     })
         .then(res => res.json());
 };
+
+export const getUser = (userId) => 
+    fetch(`${baseUrl}/${userId}`).then(res => res.json());

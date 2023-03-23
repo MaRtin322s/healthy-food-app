@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const router = require('express').Router();
 const authService = require('../services/authServices');
 
@@ -79,6 +80,12 @@ router.post('/reset', async (req, res) => {
         await authService.resetPassword(userId, user, password);
         res.json({ message: "Password successfully reset!" });
     }
+});
+
+router.get('/:userId', async (req, res) => {
+    const id = req.params.userId;
+    const author = await authService.getUser(id);
+    res.json(author);
 });
 
 module.exports = router;
