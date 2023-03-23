@@ -28,27 +28,33 @@ const Register = () => {
 
     const submitHandler = (ev, userData) => {
         ev.preventDefault();
-
-        if (userData.password !== userData.rePass) {
-            alert("Invalid data provided!");
+        if (userData.password.length < 8
+            || !/[A-Z]/.test(userData.password)
+            || !/[0-9]/.test(userData.password)
+        ) {
+            alert("Please enter a valid password!");
         } else {
-            try {
-                const emailRegExp = new RegExp('^([a-zA-Z0-9._%+-]+)@([a-zA-Z0-9.-]+.[a-zA-Z]{2})$');
-                if (emailRegExp.test(userData.email)) {
-                    service.registerUser(userData)
-                        .then(result => {
-                            if (typeof result !== "string") {
-                                userLogin(result);
-                                navigate("/", { replace: true });
-                            } else {
-                                throw result;
-                            };
-                        });
+            if (userData.password !== userData.rePass) {
+                alert("Invalid data provided!");
+            } else {
+                try {
+                    const emailRegExp = new RegExp('^([a-zA-Z0-9._%+-]+)@([a-zA-Z0-9.-]+.[a-zA-Z]{2})$');
+                    if (emailRegExp.test(userData.email)) {
+                        service.registerUser(userData)
+                            .then(result => {
+                                if (typeof result !== "string") {
+                                    userLogin(result);
+                                    navigate("/", { replace: true });
+                                } else {
+                                    throw result;
+                                };
+                            });
+                    };
+                } catch (err) {
+                    alert(err.message);
                 };
-            } catch (err) {
-                alert(err.message);
             };
-        };
+        }
     };
 
     return (
@@ -161,6 +167,32 @@ const Register = () => {
                         </div>
 
                         <label htmlFor="password">Password:</label>
+                        <div>
+                            <p
+                                className={`
+                                    ${styles["characters"]}
+                                    ${state.password.length >= 8 ? styles["correct"] : styles["wrong"]}
+                                `}
+                            >
+                                1. At least 8 characters long
+                            </p>
+                            <p
+                                className={`
+                                    ${styles["upper-case"]}
+                                    ${/[A-Z]/.test(state.password) ? styles["correct"] : styles["wrong"]}
+                                `}
+                            >
+                                2. At least 1 upper case character
+                            </p>
+                            <p
+                                className={`
+                                    ${styles["numeric"]}
+                                    ${/[0-9]/.test(state.password) ? styles["correct"] : styles["wrong"]}
+                                `}
+                            >
+                                3. At least 1 numeric character
+                            </p>
+                        </div>
                         <div className={styles["password-container"]}>
                             <input
                                 className={styles["password"]}
