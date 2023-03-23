@@ -39,5 +39,13 @@ exports.generateToken = async (userData) => {
 };
 
 exports.getAuthor = async (userId) => await User.findById({ _id: userId }).populate('savedRecipes');
-exports.saveRecipe = async (userId, data) => 
+exports.getUser = async (userId) => await User.findById({ _id: userId });
+exports.saveRecipe = async (userId, data) =>
     await User.findByIdAndUpdate({ _id: userId }, { $push: { savedRecipes: data } }).populate('savedRecipes');
+exports.resetPassword = async (userId, userData, password) => {
+    const passwordReset = await bcrypt.hash(password, SALT_ROUNDS);
+    userData.password = passwordReset;
+    const newUser = await User.findByIdAndUpdate({ _id: userId }, userData, { new: true });
+    return newUser;
+};
+exports.getByEmail = async (email) => await User.find({ email: email });

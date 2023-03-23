@@ -1,4 +1,5 @@
 export const initData = {
+    email: "",
     password: "",
     rePass: ""
 };

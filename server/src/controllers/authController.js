@@ -62,4 +62,19 @@ router.get('/logout', (req, res) => {
     };
 });
 
+router.post('/email-test', async (req, res) => {
+    const { email } = req.body;
+    const user = await authService.getByEmail(email);
+    res.json(user[0]);
+});
+
+router.post('/reset', async (req, res) => {
+    const { password, rePass, userId } = req.body;
+    const user = await authService.getUser(userId);
+    if (password === rePass) {
+        await authService.resetPassword(userId, user, password);
+        res.json({ message: "Password successfully reset!" });
+    }
+});
+
 module.exports = router;
