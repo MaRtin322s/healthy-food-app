@@ -6,11 +6,16 @@ import * as service from "../../services/userServices";
 import { initData, reducer } from "./data/data";
 import styles from "./styles/password.module.css";
 import background from "./images/backgr.jpg";
+import Error from "../Error/Error";
 
 const PasswordReset = () => {
     const [state, dispatch] = useReducer(reducer, initData);
     const navigate = useNavigate();
     const [user, setUser] = useState({});
+    const [showComponent, setShowComponent] = useState({
+        title: "",
+        show: false
+    });
 
     const changeHandler = useCallback((ev) => {
         const { name, value } = ev.target;
@@ -19,32 +24,58 @@ const PasswordReset = () => {
 
     const passwordData = { password: state.password, rePass: state.rePass, userId: user._id };
 
-    const submitHandler = (ev, data) => {
+    const submitHandler = (ev) => {
         ev.preventDefault();
 
         if (state.email !== "") {
             service.testForEmail({ email: state.email })
                 .then(result => {
                     if (result.message) {
-                        throw result
+                        throw result;
                     } else {
                         setUser(result);
                     }
                 })
-                .catch(err => alert(err.message));
+                .catch(err => {
+                    setShowComponent(() => ({
+                        title: err.message,
+                        show: true
+                    }));
+                    setTimeout(() => {
+                        setShowComponent(() => ({
+                            title: "",
+                            show: false
+                        }));
+                    }, [3000]);
+                });
         };
 
         if (user._id) {
             service.resetPassword(passwordData)
                 .then(result => {
-                    alert(`${result.message} Please log in to your account.`);
-                    navigate("/login", { replace: true });
+                    setShowComponent(() => ({
+                        title: `${result.message} 
+                        You will be redirected to the log in page.`,
+                        show: true
+                    }));
+                    setTimeout(() => {
+                        setShowComponent(() => ({
+                            title: "",
+                            show: false
+                        }));
+                    }, [3000])
+                    setTimeout(() => {
+                        navigate("/login", { replace: true });
+                    }, 2700);
                 });
         };
     };
 
     return (
         <>
+            {showComponent.show &&
+                <Error message={showComponent.title} />
+            }
             <img className={styles["background-img"]} src={background} alt="background" />
             <section className={styles["login-page"]}>
                 <ul className={styles["info-list"]}>

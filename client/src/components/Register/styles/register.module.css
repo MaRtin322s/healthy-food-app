@@ -5,6 +5,7 @@
 .info-list {
     position: absolute;
     top: 10%;
+    z-index: -1;
 }
 
 .info-list li:first-child {
