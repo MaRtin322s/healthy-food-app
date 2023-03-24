@@ -1,9 +1,31 @@
-import { Link } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./styles/createProduct.module.css";
 import background from "./images/backgr.jpg";
+import { AuthContext } from "../../contexts/UserContext";
+import * as service from "../../services/productService";
+import { initData, reducer } from "./data/data";
+import { useCallback, useContext, useReducer } from "react";
 
 const CreateProduct = () => {
+    const [state, dispatch] = useReducer(reducer, initData);
+    const navigate = useNavigate();
+    const { user } = useContext(AuthContext);
+
+    const changeHandler = useCallback((ev) => {
+        const { name, value } = ev.target;
+        dispatch({ type: "SET_FIELD", field: name, value });
+    }, []);
+
+    const submitHandler = (ev, data) => {
+        ev.preventDefault();
+        const nutrition = data.nutrition.split("\n");
+        
+        service.createProduct({ ...data, nutrition }, user.accessToken)
+            .then(() => {
+                navigate("/catalog-products", { replace: true });
+            });
+    };
+
     return (
         <>
             <section className={styles["create-page"]}>
@@ -23,7 +45,10 @@ const CreateProduct = () => {
                         </li>
                     </ul>
                 </article>
-                <form className={styles["create"]}>
+                <form 
+                    className={styles["create"]}
+                    onSubmit={(ev) => submitHandler(ev, state)}
+                >
                     <h1 className={styles["create-heading"]}>Create Products</h1>
                     <div className="links">
                         <Link className={styles["create-recipe"]} to="/create-recipes" replace>
@@ -35,15 +60,36 @@ const CreateProduct = () => {
                     </div>
                     <label htmlFor="title">Title:</label>
                     <div>
-                        <input type="text" id="title" name="title" placeholder="Title..."/>
+                        <input 
+                            type="text" 
+                            id="title" 
+                            name="title" 
+                            placeholder="Title..."
+                            onChange={(ev) => changeHandler(ev)}
+                            value={state.title}
+                        />
                     </div>
                     <label htmlFor="type">Type:</label>
                     <div>
-                        <input type="text" id="type" name="type" placeholder="Fruits..."/>
+                        <input 
+                            type="text" 
+                            id="type" 
+                            name="type" 
+                            placeholder="Fruits..."
+                            onChange={(ev) => changeHandler(ev)}
+                            value={state.type}
+                        />
                     </div>
                     <label htmlFor="imageUrl">Image Url:</label>
                     <div>
-                        <input type="text" id="imageUrl" name="imageUrl" placeholder="https://..."/>
+                        <input 
+                            type="text" 
+                            id="imageUrl" 
+                            name="imageUrl" 
+                            placeholder="https://..."
+                            onChange={(ev) => changeHandler(ev)}
+                            value={state.imageUrl}
+                        />
                     </div>
                     <label htmlFor="nutrition">Nutrition information:</label>
                     <p className={styles["ingredients-note"]}>NOTE: Every nutrition must be on the new line!</p>
@@ -53,8 +99,9 @@ const CreateProduct = () => {
                             rows={5}
                             id="nutrition"
                             name="nutrition"
-                            defaultValue={""}
                             placeholder="Calories: 1500"
+                            onChange={(ev) => changeHandler(ev)}
+                            value={state.nutrition}
                         />
                     </div>
                     <label htmlFor="description">Description:</label>
@@ -64,8 +111,9 @@ const CreateProduct = () => {
                             rows={5}
                             id="description"
                             name="description"
-                            defaultValue={""}
                             placeholder="Product description..."
+                            onChange={(ev) => changeHandler(ev)}
+                            value={state.description}
                         />
                     </div>
                     <div>
