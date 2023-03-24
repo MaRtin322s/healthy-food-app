@@ -1,5 +1,7 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import styles from "./styles/productsCatalog.module.css";
+import { AuthContext } from "../../contexts/UserContext";
 
 export const ProductItem = ({
     title,
@@ -7,6 +9,8 @@ export const ProductItem = ({
     type,
     _id
 }) => {
+    const { user } = useContext(AuthContext);
+
     return (
         <article className={styles["catalog-recipe"]}>
             <img
@@ -15,9 +19,15 @@ export const ProductItem = ({
             />
             <h3 className={styles["catalog-recipe-title"]}>{title}</h3>
             <p className={styles["catalog-recipe-category"]}>Type: {type}</p>
-            <Link className={styles["details-btn"]} to={`/details/${_id}`}>
-                Details
-            </Link>
+            {user.accessToken
+                ?
+                <>
+                    <Link className={styles["details-btn"]} to={`/details/${_id}`}>
+                        Details
+                    </Link>
+                </>
+                : null
+            }
         </article>
     );
 };
