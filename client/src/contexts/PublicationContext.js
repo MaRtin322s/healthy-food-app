@@ -3,14 +3,14 @@ import * as service from "../services/productService";
 
 export const PublicContext = createContext();
 
-export const PrublicProvider = ({ children }) => {
+export const PublicProvider = ({ children }) => {
     const getAllProducts = async () => {
         const recipes = await service.getAll();
         return recipes;
     };
 
-    const getOneProduct = async (recipeId) => {
-        const recipe = await service.getOne(recipeId);
+    const getOneProduct = async (productId) => {
+        const recipe = await service.getOne(productId);
         return recipe;
     };
 

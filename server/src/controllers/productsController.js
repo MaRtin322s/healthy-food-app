@@ -34,7 +34,7 @@ router.get('/all', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
     const productId = req.params.id;
-    const product = await getOne(productId);
+    const product = await productService.getOne(productId);
     res.json(product);
 });
 

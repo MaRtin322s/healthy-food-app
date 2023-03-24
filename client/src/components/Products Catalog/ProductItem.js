@@ -22,7 +22,7 @@ export const ProductItem = ({
             {user.accessToken
                 ?
                 <>
-                    <Link className={styles["details-btn"]} to={`/details/${_id}`}>
+                    <Link className={styles["details-btn"]} to={`/details/products/${_id}`}>
                         Details
                     </Link>
                 </>

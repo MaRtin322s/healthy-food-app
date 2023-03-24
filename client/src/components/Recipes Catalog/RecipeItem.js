@@ -22,7 +22,7 @@ const RecipeCatalogItem = ({
             {user.accessToken
                 ?
                 <>
-                    <Link className={styles["details-btn"]} to={`/details/${_id}`}>
+                    <Link className={styles["details-btn"]} to={`/details/recipes/${_id}`}>
                         Details
                     </Link>
                 </>

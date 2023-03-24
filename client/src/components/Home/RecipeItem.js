@@ -21,7 +21,7 @@ const RecipeItem = ({
             {user.accessToken
                 ?
                 <>
-                    <Link className={styles["last-recipes-btn"]} to={`/details/${_id}`}>
+                    <Link className={styles["last-recipes-btn"]} to={`/details/recipes/${_id}`}>
                         Details
                     </Link>
                 </>

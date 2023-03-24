@@ -13,5 +13,5 @@ export const createProduct = (productData, token) => {
 };
 
 export const getAll = () => fetch(`${baseUrl}/all`).then(res => res.json());
-export const getOne = (recipeId) => fetch(`${baseUrl}/${recipeId}`).then(res => res.json());
+export const getOne = (id) => fetch(`${baseUrl}/${id}`).then(res => res.json());
 export const getOwned = (userId) => fetch(`${baseUrl}/profile/${userId}`).then(res => res.json());

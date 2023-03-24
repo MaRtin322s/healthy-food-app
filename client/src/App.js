@@ -13,14 +13,15 @@ import ProductsCatalog from "./components/Products Catalog/ProductsCatalog";
 import Profile from "./components/Profile/Profile";
 import RecipesCatalog from "./components/Recipes Catalog/RecipesCatalog";
 import Register from "./components/Register/Register";
-import { PrublicProvider } from "./contexts/PublicationContext";
+import { PublicProvider } from "./contexts/PublicationContext";
 import { AuthProvider } from "./contexts/UserContext";
+import ProductDetails from "./components/Product Details/ProductDetails";
 
 function App() {
     return (
         <>
             <AuthProvider>
-                <PrublicProvider>
+                <PublicProvider>
                     <Header />
                     <main>
                         <Routes>
@@ -33,13 +34,14 @@ function App() {
                             <Route path="/create-products" element={<CreateProduct />} />
                             <Route path="/profile" element={<Profile />} />
                             <Route path="/logout" element={<Logout />} />
-                            <Route path="/details/:recipeId" element={<Details />} />
+                            <Route path="/details/recipes/:recipeId" element={<Details />} />
+                            <Route path="/details/products/:productId" element={<ProductDetails />} />
                             <Route path="/password-reset" element={<PasswordReset />} />
                             <Route path="*" element={<NotFound />} />
                         </Routes>
                     </main>
                     <Footer />
-                </PrublicProvider>
+                </PublicProvider>
             </AuthProvider>
         </>
     );
