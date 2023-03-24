@@ -1,9 +1,10 @@
 export const initData = {
-    title: "",
-    category: "",
+    firstName: "",
+    lastName: "",
+    email: "",
     imageUrl: "",
-    ingredients: "",
-    preparation: ""
+    password: "",
+    rePass: ""
 };
 
 export function reducer(state, action) {

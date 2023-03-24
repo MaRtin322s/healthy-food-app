@@ -1,17 +1,23 @@
-import styles from "./RecipeItem";
+import { Link } from "react-router-dom";
+import styles from "./styles/profile.module.css";
 
-const RecipeItem = () => {
+const RecipeItem = ({
+    imageUrl,
+    title,
+    category,
+    _id
+}) => {
     return (
         <article className={styles["catalog-recipe"]}>
             <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLpyUBeuso0JIz0uvwEUW8ieyBzNsnSe4GiA&usqp=CAU"
-                alt="pizza"
+                src={imageUrl}
+                alt={title}
             />
-            <h3 className={styles["catalog-recipe-title"]}>Pizza</h3>
-            <p className={styles["catalog-recipe-category"]}>Category: Main Dishes</p>
-            <a className={styles["details-btn"]} href="/">
+            <h3 className={styles["catalog-recipe-title"]}>{title}</h3>
+            <p className={styles["catalog-recipe-category"]}>Category: {category}</p>
+            <Link className={styles["details-btn"]} to={`/details/${_id}`}>
                 Details
-            </a>
+            </Link>
         </article>
     );
 }
