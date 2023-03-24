@@ -13,7 +13,7 @@ const RecipesCatalog = () => {
     useEffect(() => {
         getAllRecipes()
             .then(result => setRecipes(result));
-    }, []);
+    }, [getAllRecipes]);
 
     return (
         <div className={`${styles["main-wrapper"]} ${resp["main-wrapper"]}`}>

@@ -14,9 +14,20 @@ export const AuthProvider = ({ children }) => {
         return recipes;
     };
 
+    const getOneRecipe = async (recipeId) => {
+        const recipe = await service.getOne(recipeId);
+        return recipe;
+    };
+
     return (
         <AuthContext.Provider
-            value={{ user: auth, userLogin, userLogout, getAllRecipes }}
+            value={{ 
+                user: auth, 
+                userLogin, 
+                userLogout, 
+                getAllRecipes,
+                getOneRecipe
+            }}
         >
             {children}
         </AuthContext.Provider>

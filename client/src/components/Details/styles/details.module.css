@@ -68,3 +68,8 @@
 .buttons {
     margin-top: 50px;
 }
+
+.first-item {
+    font-weight: 600;
+    font-size: 24px;
+}

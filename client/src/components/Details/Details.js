@@ -1,28 +1,30 @@
-import { Link } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import { AuthContext } from "../../contexts/UserContext";
 
 import styles from "./styles/details.module.css";
 
 const Details = () => {
+    const { recipeId } = useParams();
+    const { getOneRecipe } = useContext(AuthContext);
+    const [recipe, setRecipe] = useState({});
+
+    useEffect(() => {
+        getOneRecipe(recipeId)
+            .then(result => setRecipe(result));
+    }, [getOneRecipe, recipeId]);
+
     return (
         <div className={styles["wrap-main"]}>
             <section className={styles["details"]}>
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLpyUBeuso0JIz0uvwEUW8ieyBzNsnSe4GiA&usqp=CAU" alt="pizza" />
+                <img src={recipe.imageUrl} alt="pizza" />
                 <article>
-                    <h1 className={styles["details-heading"]}>Pizza "Margherita"</h1>
+                    <h1 className={styles["details-heading"]}>{recipe.title}</h1>
                     <section className={styles["recipe-data"]}>
                         {/* eslint-disable-next-line */}
                         <ul className={styles["ingredients"]} role={"list"}>
-                            <li><h2>Ingredients:</h2></li>
-                            <li>flour - 225 g</li>
-                            <li>left - 1 tsp.</li>
-                            <li>May - 1 tsp dry</li>
-                            <li>olive oil</li>
-                            <li>water - 6 tbsp. lukewarm</li>
-                            <li>tomatoes - 6 pcs. sliced</li>
-                            <li>mozzarella - 175 g</li>
-                            <li>pepper</li>
-                            <li>olive oil</li>
-                            <li>basil</li>
+                            <li className={styles["first-item"]}>Ingredients: </li>
+                            {recipe.ingredients?.map(x => <li key={x}>{x}</li>)}
                         </ul>
                         <div>
                             <h2>Preparation:</h2>
