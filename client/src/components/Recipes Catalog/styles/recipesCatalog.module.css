@@ -55,8 +55,9 @@
     cursor: pointer;
 }
 
-.catalog-recipe:hover .details-btn {
-    transform: none;
+.catalog-recipe:hover .catalog-recipe-title {
+    text-decoration: underline;
+    color: orange;
 }
 
 .catalog-recipe img {
