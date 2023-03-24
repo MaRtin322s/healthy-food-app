@@ -8,6 +8,7 @@ const Details = () => {
     const { recipeId } = useParams();
     const { getOneRecipe } = useContext(AuthContext);
     const [recipe, setRecipe] = useState({});
+    const { user } = useContext(AuthContext);
 
     useEffect(() => {
         getOneRecipe(recipeId)
@@ -37,10 +38,18 @@ const Details = () => {
                         </div>
                     </section>
                     <div className={styles["buttons"]}>
-                        <Link className={styles["btn-details"]} to="/"><i className="fas fa-bookmark"></i>Save</Link>
-                        <Link className={styles["btn-details"]} to="/" download><i className="fas fa-download"></i>Download</Link>
-                        <Link className={styles["btn-details"]} to="/"><i className="fas fa-edit"></i>Edit</Link>
-                        <Link className={styles["btn-details"]} to="/"><i className="fas fa-trash-alt"></i>Delete</Link>
+                        {user._id === recipe._ownerId
+                            ?
+                            <>
+                                <Link className={styles["btn-details"]} to="/"><i className="fas fa-edit"></i>Edit</Link>
+                                <Link className={styles["btn-details"]} to="/"><i className="fas fa-trash-alt"></i>Delete</Link>
+                            </>
+                            :
+                            <>
+                                <Link className={styles["btn-details"]} to="/"><i className="fas fa-bookmark"></i>Save</Link>
+                                <Link className={styles["btn-details"]} to="/" download><i className="fas fa-download"></i>Download</Link>
+                            </>
+                        }
                     </div>
                 </article>
             </section>
