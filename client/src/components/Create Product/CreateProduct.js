@@ -67,6 +67,7 @@ const CreateProduct = () => {
                             placeholder="Title..."
                             onChange={(ev) => changeHandler(ev)}
                             value={state.title}
+                            required
                         />
                     </div>
                     <label htmlFor="type">Type:</label>
@@ -78,6 +79,7 @@ const CreateProduct = () => {
                             placeholder="Fruits..."
                             onChange={(ev) => changeHandler(ev)}
                             value={state.type}
+                            required
                         />
                     </div>
                     <label htmlFor="imageUrl">Image Url:</label>
@@ -89,6 +91,7 @@ const CreateProduct = () => {
                             placeholder="https://..."
                             onChange={(ev) => changeHandler(ev)}
                             value={state.imageUrl}
+                            required
                         />
                     </div>
                     <label htmlFor="nutrition">Nutrition information:</label>
@@ -102,6 +105,7 @@ const CreateProduct = () => {
                             placeholder="Calories: 1500"
                             onChange={(ev) => changeHandler(ev)}
                             value={state.nutrition}
+                            required
                         />
                     </div>
                     <label htmlFor="description">Description:</label>
@@ -114,6 +118,7 @@ const CreateProduct = () => {
                             placeholder="Product description..."
                             onChange={(ev) => changeHandler(ev)}
                             value={state.description}
+                            required
                         />
                     </div>
                     <div>
