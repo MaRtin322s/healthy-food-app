@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-
 import styles from "./styles/home.module.css";
 import resp from "./styles/responsive.module.css";
 import salmon from "./images/salmon.png";
@@ -7,6 +6,7 @@ import background from "./images/backgr.jpg";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../contexts/UserContext";
 import RecipeItem from "./RecipeItem";
+import Error from "../Error/Error";
 
 const Home = () => {
     const [lastThree, setLastThree] = useState([]);
@@ -21,6 +21,7 @@ const Home = () => {
 
     return (
         <>
+            <Error />
             <img className={`${styles["background-img"]} ${resp["background-img"]}`} src={background} alt="background" />
             <article className={`${styles["heading-info"]} ${resp["heading-info"]}`}>
                 <h1 className={`${styles["heading"]} ${resp["heading"]}`}>NutriGit: Wholesome &amp; Tasty Meals for Your Body and Soul</h1>
