@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/UserContext";
 import RecipeCatalogItem from "./RecipeItem";
+import Spinner from "../Spinner/Spinner";
 
 import styles from "./styles/recipesCatalog.module.css";
 import resp from "./styles/responsive.module.css";
@@ -9,10 +10,17 @@ import resp from "./styles/responsive.module.css";
 const RecipesCatalog = () => {
     const { getAllRecipes } = useContext(AuthContext);
     const [recipes, setRecipes] = useState([]);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        getAllRecipes()
-            .then(result => setRecipes(result));
+        setLoading(true);
+        setTimeout(() => {
+            getAllRecipes()
+                .then(result => {
+                    setRecipes(result);
+                    setLoading(false);
+                });
+        }, 1500);
     }, [getAllRecipes]);
 
     return (
@@ -26,18 +34,25 @@ const RecipesCatalog = () => {
                 </Link>
             </div>
             <section className={`${styles["catalog"]} ${resp["catalog"]}`}>
-                {recipes.length > 0
+                {loading
                     ?
-                    recipes.map(recipe => (
-                            <RecipeCatalogItem key={recipe._id} {...recipe} />
-                    ))
+                    <Spinner />
                     :
                     <>
-                        <h1
-                            className={`${styles["no-content"]} ${resp["no-content"]}`}
-                        >
-                            There are no recipes created yet.
-                        </h1>
+                        {recipes.length > 0
+                            ?
+                            recipes.map(recipe => (
+                                <RecipeCatalogItem key={recipe._id} {...recipe} />
+                            ))
+                            :
+                            <>
+                                <h1
+                                    className={`${styles["no-content"]} ${resp["no-content"]}`}
+                                >
+                                    There are no recipes created yet.
+                                </h1>
+                            </>
+                        }
                     </>
                 }
             </section>

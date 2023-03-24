@@ -4,18 +4,30 @@ import styles from "./styles/home.module.css";
 import resp from "./styles/responsive.module.css";
 import salmon from "./images/salmon.png";
 import background from "./images/backgr.jpg";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../contexts/UserContext";
+import RecipeItem from "./RecipeItem";
 
 const Home = () => {
-    ;
+    const [lastThree, setLastThree] = useState([]);
+    const { getAllRecipes } = useContext(AuthContext);
+
+    useEffect(() => {
+        getAllRecipes()
+            .then(result => {
+                setLastThree(result.slice(-3));
+            });
+    }, [getAllRecipes]);
+
     return (
         <>
             <img className={`${styles["background-img"]} ${resp["background-img"]}`} src={background} alt="background" />
             <article className={`${styles["heading-info"]} ${resp["heading-info"]}`}>
                 <h1 className={`${styles["heading"]} ${resp["heading"]}`}>NutriGit: Wholesome &amp; Tasty Meals for Your Body and Soul</h1>
                 <p className={`${styles["heading-para"]} ${resp["heading-para"]}`}>
-                    At NutriChef, we believe that food should be both wholesome and tasty. 
-                    Our recipes are designed to nourish your body and soul, while also tantalizing 
-                    your taste buds. We use only the freshest ingredients, and our recipes are designed 
+                    At NutriChef, we believe that food should be both wholesome and tasty.
+                    Our recipes are designed to nourish your body and soul, while also tantalizing
+                    your taste buds. We use only the freshest ingredients, and our recipes are designed
                     to be easy to follow, even if you're not an experienced cook.
                 </p>
                 <Link className={`${styles["heading-link"]} ${resp["heading-link"]}`} to="/catalog-recipes">
@@ -58,7 +70,12 @@ const Home = () => {
             </section>
             <h2 className={styles["last-recipes-heading"]}>New recipes...</h2>
             <section className={`${styles["last-recipes"]} ${resp["last-recipes"]}`}>
-                <h1>There are no recipes created yet.</h1>
+                {lastThree.length > 0
+                    ?
+                    lastThree.map(x => <RecipeItem key={x._id} {...x} />)
+                    :
+                    <h1>There are no recipes created yet.</h1>
+                }
             </section>
         </>
     );
