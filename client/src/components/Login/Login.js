@@ -1,10 +1,10 @@
-import { memo, useCallback, useContext, useReducer } from "react";
+import { memo, useCallback, useContext, useReducer, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import { AuthContext } from "../../contexts/UserContext";
 import * as service from "../../services/userServices";
 import { initData, reducer } from "./data/data";
-
+import Error from "../Error/Error";
 import styles from "./styles/login.module.css";
 import background from "./images/backgr.jpg";
 
@@ -12,6 +12,10 @@ const Login = memo(() => {
     const { userLogin } = useContext(AuthContext);
     const navigate = useNavigate();
     const [state, dispatch] = useReducer(reducer, initData);
+    const [showComponent, setShowComponent] = useState({
+        title: "",
+        show: false
+    });
 
     const changeHandler = useCallback((ev) => {
         const { name, value } = ev.target;
@@ -34,13 +38,25 @@ const Login = memo(() => {
                     }
                 })
                 .catch((error) => {
-                    alert(error);
+                    setShowComponent(() => ({
+                        title: error,
+                        show: true
+                    }));
+                    setTimeout(() => {
+                        setShowComponent(() => ({
+                            title: "",
+                            show: false
+                        }));
+                    }, [3000]);
                 });
         };
     };
 
     return (
         <>
+            {showComponent.show &&
+                <Error message={showComponent.title} />
+            }
             <img className={styles["background-img"]} src={background} alt="background" />
             <section className={styles["login-page"]}>
                 <ul className={styles["info-list"]}>
