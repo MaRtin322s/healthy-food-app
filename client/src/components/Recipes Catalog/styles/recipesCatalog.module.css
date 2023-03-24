@@ -44,34 +44,41 @@
     border-radius: 8px;
     padding-bottom: 20px;
     background-color: #19e79c;
+    display: flex;
+    flex-direction: column;
 }
 
 .catalog-recipe:hover {
     transform: scale(1.1);
     transition-property: transform;
-    transition-duration: 0.1s;
+    transition-duration: 0.3s;
     cursor: pointer;
+}
+
+.catalog-recipe:hover .details-btn {
+    transform: none;
 }
 
 .catalog-recipe img {
     border-bottom: 3px solid black;
     border-radius: 6px;
     margin-bottom: 10px;
+    height: 166px;
 }
 
 .catalog-recipe-title {
     font-size: 26px;
     margin-left: 10px;
+    height: 75px;
 }
 
 .catalog-recipe-category {
     margin-left: 10px;
-    margin-bottom: 15px;
+    margin-bottom: 22px;
 }
 
 .details-btn {
-    margin-bottom: 10px;
-    margin-left: 10px;
+    margin-bottom: -7px;
     text-decoration: none;
     border: 2px solid black;
     padding: 5px 10px;
@@ -80,6 +87,7 @@
     font-weight: 600;
     border-radius: 40px;
     transition: background-color 0.3s ease;
+    text-align: center;
 }
 
 .details-btn:hover {

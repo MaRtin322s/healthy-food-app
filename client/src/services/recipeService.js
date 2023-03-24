@@ -11,3 +11,5 @@ export const createRecipe = (token, data) => {
     })
         .then(res => res.json());
 };
+
+export const getAll = () => fetch(`${baseUrl}/all`).then(res => res.json());

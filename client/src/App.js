@@ -31,7 +31,7 @@ function App() {
                         <Route path="/create-products" element={<CreateProduct />} />
                         <Route path="/profile" element={<Profile />} />
                         <Route path="/logout" element={<Logout />} />
-                        <Route path="/details" element={<Details />} />
+                        <Route path="/details/:recipeId" element={<Details />} />
                         <Route path="/password-reset" element={<PasswordReset />} />
                         <Route path="*" element={<NotFound />} />
                     </Routes>
