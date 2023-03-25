@@ -12,6 +12,7 @@ const Profile = () => {
     const [data, setData] = useState({});
     const [ownRecipes, setRecipes] = useState([]);
     const [ownProducts, setProducts] = useState([]);
+    const [saved, setSaved] = useState([]);
 
     useEffect(() => {
         service.getUser(user._id)
@@ -20,6 +21,8 @@ const Profile = () => {
             .then(result => setRecipes(result));
         productService.getOwned(user._id)
             .then(result => setProducts(result));
+            recipeService.getSavedRecipes(user._id)
+                .then(result => setSaved(result))
     }, [user._id]);
 
     return (
@@ -73,7 +76,13 @@ const Profile = () => {
                 <article className={styles["saved-recipes"]}>
                     <h1>Saved Recipes:</h1>
                     {/* eslint-disable-next-line */}
-                    <ul className={styles["user-action"]} role={"list"}></ul>
+                    <ul className={styles["user-action"]} role={"list"}>
+                        {saved.length > 0
+                            ?
+                            saved.map(x => <li key={x._id}><RecipeItem {...x} /></li>)
+                            : null
+                        }
+                    </ul>
                 </article>
             </section>
         </section>

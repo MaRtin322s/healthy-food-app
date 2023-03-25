@@ -17,7 +17,11 @@ const Details = () => {
     useEffect(() => {
         getOneRecipe(recipeId)
             .then(result => setRecipe(result));
-    }, [getOneRecipe, recipeId]);
+        service.getSavedRecipes(user._id)
+            .then(result => setSaved(result.map(x => {
+                return x._id;
+            })));
+    }, [getOneRecipe, recipeId, user._id]);
 
     const deleteHandler = (ev, recipeId, token) => {
         ev.preventDefault();
@@ -37,15 +41,14 @@ const Details = () => {
     const saveHandler = (ev, recipeId, userId, token) => {
         ev.preventDefault();
         service.saveRecipe(recipeId, userId, token)
-            .then(() => {
-                service.getSavedRecipes(userId)
-                    .then(result => {
-                        setSaved(result);
-                        navigate(`/details/recipes/${recipeId}`, { replace: true });
-                    });
+            .then((result) => {
+                setSaved(result.map(x => {
+                    return x._id;
+                }));
+                navigate(`/details/recipes/${recipeId}`, { replace: true })
             });
-    };
-    console.log(saved);
+    }
+
     return (
         <>
             {showDelete &&
@@ -80,7 +83,10 @@ const Details = () => {
                         </section>
                         {saved.includes(recipeId)
                             ?
-                            <p>This recipe is saved to your profile. You can see it <Link to="/profile" replace>here</Link>.</p>
+                            <p>
+                                This recipe is saved to your profile.
+                                You can see it <Link to="/profile" replace>here</Link>.
+                            </p>
                             : null
                         }
                         <div className={styles["buttons"]}>

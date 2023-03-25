@@ -69,13 +69,14 @@ router.post('/save/:recipeId', async (req, res) => {
     const { userId } = req.body;
     const recipeId = req.params.recipeId;
     const recipe = await recipeService.getOne(recipeId);
-    const author = await authService.saveRecipe(userId, recipe);
+    await authService.saveRecipe(userId, recipe);
+    const author = await authService.getUser(userId);
     res.json(author.savedRecipes);
 });
 
 router.get('/save/:userId', async (req, res) => {
     const userId = req.params.userId;
-    const author = await authService.getAuthor(userId);
+    const author = await authService.getUser(userId);
     res.json(author.savedRecipes);
 });
 
