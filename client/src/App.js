@@ -16,6 +16,8 @@ import Register from "./components/Register/Register";
 import { PublicProvider } from "./contexts/PublicationContext";
 import { AuthProvider } from "./contexts/UserContext";
 import ProductDetails from "./components/Product Details/ProductDetails";
+import PrivateRoute from "./guards/PrivateRoute";
+import RouteGuard from "./guards/RouteGuard";
 
 function App() {
     return (
@@ -30,16 +32,79 @@ function App() {
                             <Route path="/catalog-products" element={<ProductsCatalog />} />
                             <Route path="*" element={<NotFound />} />
 
-                            <Route path="/login" element={<Login />} />
-                            <Route path="/register" element={<Register />} />
+                            <Route
+                                path="/login"
+                                element={
+                                    <RouteGuard>
+                                        <Login />
+                                    </RouteGuard>
+                                }
+                            />
+                            <Route
+                                path="/register"
+                                element={
+                                    <RouteGuard>
+                                        <Register />
+                                    </RouteGuard>
+                                }
+                            />
 
-                            <Route path="/create-recipes" element={<CreateRecipe />} />
-                            <Route path="/create-products" element={<CreateProduct />} />
-                            <Route path="/profile" element={<Profile />} />
-                            <Route path="/logout" element={<Logout />} />
-                            <Route path="/details/recipes/:recipeId" element={<Details />} />
-                            <Route path="/details/products/:productId" element={<ProductDetails />} />
-                            <Route path="/password-reset" element={<PasswordReset />} />
+                            <Route
+                                path="/create-recipes"
+                                element={
+                                    <PrivateRoute>
+                                        <CreateRecipe />
+                                    </PrivateRoute>
+                                }
+                            />
+                            <Route
+                                path="/create-products"
+                                element={
+                                    <PrivateRoute>
+                                        <CreateProduct />
+                                    </PrivateRoute>
+                                }
+                            />
+                            <Route
+                                path="/profile"
+                                element={
+                                    <PrivateRoute>
+                                        <Profile />
+                                    </PrivateRoute>
+                                }
+                            />
+                            <Route
+                                path="/logout"
+                                element={
+                                    <PrivateRoute>
+                                        <Logout />
+                                    </PrivateRoute>
+                                }
+                            />
+                            <Route
+                                path="/details/recipes/:recipeId"
+                                element={
+                                    <PrivateRoute>
+                                        <Details />
+                                    </PrivateRoute>
+                                }
+                            />
+                            <Route
+                                path="/details/products/:productId"
+                                element={
+                                    <PrivateRoute>
+                                        <ProductDetails />
+                                    </PrivateRoute>
+                                }
+                            />
+                            <Route
+                                path="/password-reset"
+                                element={
+                                    <PrivateRoute>
+                                        <PasswordReset />
+                                    </PrivateRoute>
+                                }
+                            />
                         </Routes>
                     </main>
                     <Footer />

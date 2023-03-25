@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { Navigate } from "react-router-dom";
 import { AuthContext } from "../contexts/UserContext";
 
-const RouteGuard = ({ children }) => {
+const PrivateRoute = ({ children }) => {
     const { user } = useContext(AuthContext);
 
     if (!user.accessToken) {
@@ -12,4 +12,4 @@ const RouteGuard = ({ children }) => {
     return children;
 };
 
-export default RouteGuard;
+export default PrivateRoute;
