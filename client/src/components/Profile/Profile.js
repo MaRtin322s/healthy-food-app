@@ -5,6 +5,7 @@ import * as recipeService from "../../services/recipeService";
 import * as productService from "../../services/productService";
 import styles from "./styles/profile.module.css";
 import RecipeItem from "./RecipeItem";
+import ProductItem from "./ProductItem";
 
 const Profile = () => {
     const { user } = useContext(AuthContext);
@@ -63,7 +64,7 @@ const Profile = () => {
                     <ul className={styles["user-action"]} role={"list"}>
                         {ownProducts.length > 0
                             ?
-                            ownProducts.map(x => <li key={x._id}><RecipeItem {...x} /></li>)
+                            ownProducts.map(x => <li key={x._id}><ProductItem {...x} /></li>)
                             :
                             null
                         }
