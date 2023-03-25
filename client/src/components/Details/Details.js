@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../../contexts/UserContext";
-import Delete from "../Delete Details/DeleteDetails";
+import Delete from "../Delete Recipes/DeleteRecipes";
 import styles from "./styles/details.module.css";
 import * as service from "../../services/recipeService";
 

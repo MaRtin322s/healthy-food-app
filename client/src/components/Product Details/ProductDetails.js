@@ -1,12 +1,14 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../contexts/UserContext";
 import styles from "./styles/productDetails.module.css";
+import * as service from "../../services/productService";
 import { PublicContext } from "../../contexts/PublicationContext";
-import Delete from "../Delete Details/DeleteDetails";
+import Delete from "../Delete Products/DeleteProducts";
 
 const ProductDetails = () => {
     const { user } = useContext(AuthContext);
+    const navigate = useNavigate();
     const { productId } = useParams();
     const [product, setProduct] = useState([]);
     const [showDelete, setShowDelete] = useState(false);
@@ -17,17 +19,29 @@ const ProductDetails = () => {
             .then(result => setProduct(result));
     }, [getOneProduct, productId]);
 
+    const deleteHandler = (ev, productId, token) => {
+        ev.preventDefault();
+        service.deleteProduct(productId, token)
+            .then(() => navigate("/catalog-products", { replace: true }));
+    }
+
     const closeHandler = () => {
         setShowDelete(false);
     }
 
+    const showDeleteProduct = () => {
+        setShowDelete(true);
+    }
+
     return (
         <>
-            {showDelete && 
-                <Delete 
-                    closeHandler={closeHandler} 
-                    title={product.title} 
+            {showDelete &&
+                <Delete
+                    closeHandler={closeHandler}
+                    title={product.title}
                     type="product"
+                    deleteHandler={deleteHandler}
+                    _id={productId}
                 />
             }
             <div className={styles["wrap-main"]}>
@@ -51,8 +65,9 @@ const ProductDetails = () => {
                                 ?
                                 <>
                                     <Link className={styles["btn-details"]} to="/"><i className="fas fa-edit"></i>Edit</Link>
-                                    <Link 
-                                        className={styles["btn-details"]} 
+                                    <Link
+                                        className={styles["btn-details"]}
+                                        onClick={() => showDeleteProduct()}
                                     >
                                         <i className="fas fa-trash-alt"></i>
                                         Delete

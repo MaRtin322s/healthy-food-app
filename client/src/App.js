@@ -16,7 +16,6 @@ import Register from "./components/Register/Register";
 import { PublicProvider } from "./contexts/PublicationContext";
 import { AuthProvider } from "./contexts/UserContext";
 import ProductDetails from "./components/Product Details/ProductDetails";
-import Delete from "./components/Delete Details/DeleteDetails";
 
 function App() {
     return (

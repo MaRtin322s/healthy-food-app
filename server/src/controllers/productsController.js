@@ -60,7 +60,7 @@ router.put('/edit/:id', async (req, res) => {
 
 router.delete('/delete/:id', async (req, res) => {
     const productId = req.params.id;
-    const deleted = await authService.deleteProduct(productId);
+    const deleted = await productService.deleteProduct(productId);
     res.json(deleted);
 });
 

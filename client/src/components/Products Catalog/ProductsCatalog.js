@@ -14,8 +14,6 @@ const ProductsCatalog = () => {
             .then(result => setProducts(result));
     }, [getAllProducts]);
 
-    console.log(products);
-
     return (
         <div className={styles["main-wrapper"]}>
             <Link className={styles["catalog-recipes"]} to="/catalog-recipes">
