@@ -26,10 +26,13 @@ function App() {
                     <main>
                         <Routes>
                             <Route path="/" element={<Home />} />
-                            <Route path="/login" element={<Login />} />
-                            <Route path="/register" element={<Register />} />
                             <Route path="/catalog-recipes" element={<RecipesCatalog />} />
                             <Route path="/catalog-products" element={<ProductsCatalog />} />
+                            <Route path="*" element={<NotFound />} />
+
+                            <Route path="/login" element={<Login />} />
+                            <Route path="/register" element={<Register />} />
+
                             <Route path="/create-recipes" element={<CreateRecipe />} />
                             <Route path="/create-products" element={<CreateProduct />} />
                             <Route path="/profile" element={<Profile />} />
@@ -37,7 +40,6 @@ function App() {
                             <Route path="/details/recipes/:recipeId" element={<Details />} />
                             <Route path="/details/products/:productId" element={<ProductDetails />} />
                             <Route path="/password-reset" element={<PasswordReset />} />
-                            <Route path="*" element={<NotFound />} />
                         </Routes>
                     </main>
                     <Footer />
