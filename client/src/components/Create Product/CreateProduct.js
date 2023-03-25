@@ -20,7 +20,7 @@ const CreateProduct = () => {
         ev.preventDefault();
         const nutrition = data.nutrition.split("\n");
         
-        service.createProduct({ ...data, nutrition }, user.accessToken)
+        service.createProduct({ ...data, nutrition }, user.accessToken, user._id)
             .then(() => {
                 navigate("/catalog-products", { replace: true });
             });

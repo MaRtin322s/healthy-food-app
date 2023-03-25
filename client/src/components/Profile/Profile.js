@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../contexts/UserContext";
 import * as service from "../../services/userServices";
 import * as recipeService from "../../services/recipeService";
+import * as productService from "../../services/productService";
 import styles from "./styles/profile.module.css";
 import RecipeItem from "./RecipeItem";
 
@@ -9,12 +10,15 @@ const Profile = () => {
     const { user } = useContext(AuthContext);
     const [data, setData] = useState({});
     const [ownRecipes, setRecipes] = useState([]);
+    const [ownProducts, setProducts] = useState([]);
 
     useEffect(() => {
         service.getUser(user._id)
             .then(result => setData(result));
         recipeService.getOwned(user._id)
             .then(result => setRecipes(result));
+        productService.getOwned(user._id)
+            .then(result => setProducts(result));
     }, [user._id]);
 
     return (
@@ -56,7 +60,14 @@ const Profile = () => {
                 <article className={styles["created-products"]}>
                     <h1>Created products:</h1>
                     {/* eslint-disable-next-line */}
-                    <ul className={styles["user-action"]} role={"list"}></ul>
+                    <ul className={styles["user-action"]} role={"list"}>
+                        {ownProducts.length > 0
+                            ?
+                            ownProducts.map(x => <li key={x._id}><RecipeItem {...x} /></li>)
+                            :
+                            null
+                        }
+                    </ul>
                 </article>
                 <article className={styles["saved-recipes"]}>
                     <h1>Saved Recipes:</h1>

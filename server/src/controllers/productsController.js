@@ -41,7 +41,7 @@ router.get('/:id', async (req, res) => {
 router.get('/profile/:ownerId', async (req, res) => {
     const _ownerId = mongoose.Types.ObjectId(req.params.ownerId);
     const products = await productService.getAll();
-    const owned = products.filter(product => product._ownerId.toString() === _ownerId.toString());
+    const owned = products.filter(product => product._ownerId?.toString() === _ownerId.toString());
     res.json(owned);
 });
 
