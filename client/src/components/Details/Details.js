@@ -10,6 +10,7 @@ const Details = () => {
     const navigate = useNavigate();
     const { getOneRecipe } = useContext(AuthContext);
     const [recipe, setRecipe] = useState({});
+    const [saved, setSaved] = useState([]);
     const [showDelete, setShowDelete] = useState(false);
     const { user } = useContext(AuthContext);
 
@@ -33,6 +34,18 @@ const Details = () => {
         setShowDelete(false);
     }
 
+    const saveHandler = (ev, recipeId, userId, token) => {
+        ev.preventDefault();
+        service.saveRecipe(recipeId, userId, token)
+            .then(() => {
+                service.getSavedRecipes(userId)
+                    .then(result => {
+                        setSaved(result);
+                        navigate(`/details/recipes/${recipeId}`, { replace: true });
+                    });
+            });
+    };
+    console.log(saved);
     return (
         <>
             {showDelete &&
@@ -65,12 +78,17 @@ const Details = () => {
                                 </p>
                             </div>
                         </section>
+                        {saved.includes(recipeId)
+                            ?
+                            <p>This recipe is saved to your profile. You can see it <Link to="/profile" replace>here</Link>.</p>
+                            : null
+                        }
                         <div className={styles["buttons"]}>
                             {user._id === recipe._ownerId
                                 ?
                                 <>
-                                    <Link 
-                                        className={styles["btn-details"]} 
+                                    <Link
+                                        className={styles["btn-details"]}
                                         to={`/details/edit/${recipe._id}`}
                                         replace
                                     >
@@ -87,7 +105,20 @@ const Details = () => {
                                 </>
                                 :
                                 <>
-                                    <Link className={styles["btn-details"]} to="/"><i className="fas fa-bookmark"></i>Save</Link>
+                                    {!saved.includes(recipeId)
+                                        ?
+                                        <>
+                                            <Link
+                                                className={styles["btn-details"]}
+                                                onClick={(ev) =>
+                                                    saveHandler(ev, recipeId, user._id, user.accessToken)}
+                                            >
+                                                <i className="fas fa-bookmark"></i>
+                                                Save
+                                            </Link>
+                                        </>
+                                        : null
+                                    }
                                     <Link className={styles["btn-details"]} to="/" download><i className="fas fa-download"></i>Download</Link>
                                 </>
                             }

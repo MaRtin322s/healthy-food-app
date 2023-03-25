@@ -37,3 +37,17 @@ export const editRecipe = (recipeData, token, id) => {
     })
         .then(res => res.json());
 };
+
+export const saveRecipe = (recipeId, userId, token) => {
+    return fetch(`${baseUrl}/save/${recipeId}`, {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Authorization': token
+        },
+        body: JSON.stringify({ userId })
+    })
+        .then(res => res.json());
+};
+
+export const getSavedRecipes = (userId) => fetch(`${baseUrl}/save/${userId}`).then(res => res.json());

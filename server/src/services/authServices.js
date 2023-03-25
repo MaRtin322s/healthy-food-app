@@ -38,7 +38,7 @@ exports.generateToken = async (userData) => {
     return token;
 };
 
-exports.getAuthor = async (userId) => await User.findById({ _id: userId }).populate('savedRecipes');
+exports.getAuthor = async (userId) => await User.findById({ _id: userId });
 exports.getUser = async (userId) => await User.findById({ _id: userId });
 exports.saveRecipe = async (userId, data) =>
     await User.findByIdAndUpdate({ _id: userId }, { $push: { savedRecipes: data } }).populate('savedRecipes');
