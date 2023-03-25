@@ -18,6 +18,7 @@ import { AuthProvider } from "./contexts/UserContext";
 import ProductDetails from "./components/Product Details/ProductDetails";
 import PrivateRoute from "./guards/PrivateRoute";
 import RouteGuard from "./guards/RouteGuard";
+import EditRecipe from "./components/Edit Recipe/EditRecipe";
 
 function App() {
     return (
@@ -102,6 +103,14 @@ function App() {
                                 element={
                                     <PrivateRoute>
                                         <PasswordReset />
+                                    </PrivateRoute>
+                                }
+                            />
+                            <Route 
+                                path="/details/edit/:recipeId"
+                                element={
+                                    <PrivateRoute>
+                                        <EditRecipe />
                                     </PrivateRoute>
                                 }
                             />

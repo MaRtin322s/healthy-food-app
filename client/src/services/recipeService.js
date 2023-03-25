@@ -25,3 +25,15 @@ export const deleteRecipe = (id, token) => {
     })
         .then(res => res.json());
 };
+
+export const editRecipe = (recipeData, token, id) => {
+    return fetch(`${baseUrl}/edit/${id}`, {
+        method: "PUT",
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Authorization': token
+        },
+        body: JSON.stringify(recipeData)
+    })
+        .then(res => res.json());
+};

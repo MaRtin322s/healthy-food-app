@@ -16,7 +16,7 @@ const CreateRecipe = () => {
     const changeHandler = useCallback((ev) => {
         const { name, value } = ev.target;
         dispatch({ type: 'SET_FIELD', field: name, value });
-    });
+    }, []);
 
     const submitHandler = (ev, data, token, userId) => {
         ev.preventDefault();

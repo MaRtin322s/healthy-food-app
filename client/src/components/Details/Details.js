@@ -69,7 +69,14 @@ const Details = () => {
                             {user._id === recipe._ownerId
                                 ?
                                 <>
-                                    <Link className={styles["btn-details"]} to="/"><i className="fas fa-edit"></i>Edit</Link>
+                                    <Link 
+                                        className={styles["btn-details"]} 
+                                        to={`/details/edit/${recipe._id}`}
+                                        replace
+                                    >
+                                        <i className="fas fa-edit"></i>
+                                        Edit
+                                    </Link>
                                     <Link
                                         className={styles["btn-details"]}
                                         onClick={() => showDeleteRecipe()}
