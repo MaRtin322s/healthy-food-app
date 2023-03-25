@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../contexts/UserContext";
 import styles from "./styles/productDetails.module.css";
 import { PublicContext } from "../../contexts/PublicationContext";
-import Delete from "../Delete/Delete";
+import Delete from "../Delete Details/DeleteDetails";
 
 const ProductDetails = () => {
     const { user } = useContext(AuthContext);
@@ -17,18 +17,19 @@ const ProductDetails = () => {
             .then(result => setProduct(result));
     }, [getOneProduct, productId]);
 
-    const deleteHandler = (ev, id) => {
-        ev.preventDefault();
-        setShowDelete(true);
-    };
-
     const closeHandler = () => {
         setShowDelete(false);
     }
 
     return (
         <>
-            {showDelete && <Delete closeHandler={closeHandler} title={product.title} type="product" />}
+            {showDelete && 
+                <Delete 
+                    closeHandler={closeHandler} 
+                    title={product.title} 
+                    type="product"
+                />
+            }
             <div className={styles["wrap-main"]}>
                 <section className={styles["details"]}>
                     <img src={product.imageUrl} alt="pizza" />
@@ -52,7 +53,6 @@ const ProductDetails = () => {
                                     <Link className={styles["btn-details"]} to="/"><i className="fas fa-edit"></i>Edit</Link>
                                     <Link 
                                         className={styles["btn-details"]} 
-                                        onClick={(ev) => deleteHandler(ev, productId)}
                                     >
                                         <i className="fas fa-trash-alt"></i>
                                         Delete

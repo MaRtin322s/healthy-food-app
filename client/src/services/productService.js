@@ -15,3 +15,13 @@ export const createProduct = (productData, token) => {
 export const getAll = () => fetch(`${baseUrl}/all`).then(res => res.json());
 export const getOne = (id) => fetch(`${baseUrl}/${id}`).then(res => res.json());
 export const getOwned = (userId) => fetch(`${baseUrl}/profile/${userId}`).then(res => res.json());
+
+export const deleteProduct = (id, token) => {
+    return fetch(`${baseUrl}/delete/${id}`, {
+        method: "DELETE",
+        headers: {
+            'X-Authorization': token
+        }
+    })
+        .then(res => res.json());
+};

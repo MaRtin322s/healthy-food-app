@@ -15,3 +15,13 @@ export const createRecipe = (token, data) => {
 export const getAll = () => fetch(`${baseUrl}/all`).then(res => res.json());
 export const getOne = (recipeId) => fetch(`${baseUrl}/${recipeId}`).then(res => res.json());
 export const getOwned = (userId) => fetch(`${baseUrl}/profile/${userId}`).then(res => res.json());
+
+export const deleteRecipe = (id, token) => {
+    return fetch(`${baseUrl}/delete/${id}`, {
+        method: "DELETE",
+        headers: {
+            'X-Authorization': token
+        }
+    })
+        .then(res => res.json());
+};

@@ -16,7 +16,7 @@ import Register from "./components/Register/Register";
 import { PublicProvider } from "./contexts/PublicationContext";
 import { AuthProvider } from "./contexts/UserContext";
 import ProductDetails from "./components/Product Details/ProductDetails";
-import Delete from "./components/Delete/Delete";
+import Delete from "./components/Delete Details/DeleteDetails";
 
 function App() {
     return (
@@ -38,7 +38,6 @@ function App() {
                             <Route path="/details/recipes/:recipeId" element={<Details />} />
                             <Route path="/details/products/:productId" element={<ProductDetails />} />
                             <Route path="/password-reset" element={<PasswordReset />} />
-                            <Route path="/details/delete/:recipeId" element={<Delete />} />
                             <Route path="*" element={<NotFound />} />
                         </Routes>
                     </main>

@@ -1,11 +1,13 @@
 import { useContext, useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../../contexts/UserContext";
-import Delete from "../Delete/Delete";
+import Delete from "../Delete Details/DeleteDetails";
 import styles from "./styles/details.module.css";
+import * as service from "../../services/recipeService";
 
 const Details = () => {
     const { recipeId } = useParams();
+    const navigate = useNavigate();
     const { getOneRecipe } = useContext(AuthContext);
     const [recipe, setRecipe] = useState({});
     const [showDelete, setShowDelete] = useState(false);
@@ -16,10 +18,16 @@ const Details = () => {
             .then(result => setRecipe(result));
     }, [getOneRecipe, recipeId]);
 
-    const deleteHandler = (ev, id) => {
+    const deleteHandler = (ev, recipeId, token) => {
         ev.preventDefault();
+
+        service.deleteRecipe(recipeId, token)
+            .then(() => navigate("/catalog-recipes", { replace: true }));
+    }
+
+    const showDeleteRecipe = () => {
         setShowDelete(true);
-    };
+    }
 
     const closeHandler = () => {
         setShowDelete(false);
@@ -27,7 +35,15 @@ const Details = () => {
 
     return (
         <>
-            {showDelete && <Delete closeHandler={closeHandler} title={recipe.title} type="recipe" />}
+            {showDelete &&
+                <Delete
+                    closeHandler={closeHandler}
+                    title={recipe.title}
+                    type="recipe"
+                    deleteHandler={deleteHandler}
+                    _id={recipeId}
+                />
+            }
             <div className={styles["wrap-main"]}>
                 <section className={styles["details"]}>
                     <img src={recipe.imageUrl} alt="pizza" />
@@ -56,7 +72,7 @@ const Details = () => {
                                     <Link className={styles["btn-details"]} to="/"><i className="fas fa-edit"></i>Edit</Link>
                                     <Link
                                         className={styles["btn-details"]}
-                                        onClick={(ev) => deleteHandler(ev, recipeId)}
+                                        onClick={() => showDeleteRecipe()}
                                     >
                                         <i className="fas fa-trash-alt"></i>
                                         Delete
