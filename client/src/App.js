@@ -102,9 +102,7 @@ function App() {
                             <Route
                                 path="/password-reset"
                                 element={
-                                    <PrivateRoute>
-                                        <PasswordReset />
-                                    </PrivateRoute>
+                                    <PasswordReset />
                                 }
                             />
                             <Route 
