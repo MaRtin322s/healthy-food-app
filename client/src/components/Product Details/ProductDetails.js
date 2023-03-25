@@ -61,7 +61,7 @@ const ProductDetails = () => {
                             </div>
                         </section>
                         <div className={styles["buttons"]}>
-                            {user._id
+                            {user._id === product._ownerId
                                 ?
                                 <>
                                     <Link className={styles["btn-details"]} to="/"><i className="fas fa-edit"></i>Edit</Link>
