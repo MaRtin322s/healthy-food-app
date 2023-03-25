@@ -6,8 +6,9 @@
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: #19e79c;
-    border: 1px solid #ccc;
+    border: 2px solid black;
     padding: 20px;
+    border-radius: 10px;
 }
 
 .backdrop {
@@ -39,6 +40,7 @@
     margin-right: 10px;
     cursor: pointer;
     border: 2px solid black;
+    border-radius: 50px;
 }
 
 .modal-container button:hover {

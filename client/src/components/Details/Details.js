@@ -27,7 +27,7 @@ const Details = () => {
 
     return (
         <>
-            {showDelete && <Delete closeHandler={closeHandler} />}
+            {showDelete && <Delete closeHandler={closeHandler} title={recipe.title} type="recipe" />}
             <div className={styles["wrap-main"]}>
                 <section className={styles["details"]}>
                     <img src={recipe.imageUrl} alt="pizza" />
