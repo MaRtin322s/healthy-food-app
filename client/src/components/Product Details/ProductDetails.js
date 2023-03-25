@@ -64,7 +64,13 @@ const ProductDetails = () => {
                             {user._id === product._ownerId
                                 ?
                                 <>
-                                    <Link className={styles["btn-details"]} to="/"><i className="fas fa-edit"></i>Edit</Link>
+                                    <Link 
+                                        className={styles["btn-details"]} 
+                                        to={`/details/edit/products/${productId}`}
+                                    >
+                                        <i className="fas fa-edit"></i>
+                                        Edit
+                                    </Link>
                                     <Link
                                         className={styles["btn-details"]}
                                         onClick={() => showDeleteProduct()}

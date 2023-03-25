@@ -19,6 +19,7 @@ import ProductDetails from "./components/Product Details/ProductDetails";
 import PrivateRoute from "./guards/PrivateRoute";
 import RouteGuard from "./guards/RouteGuard";
 import EditRecipe from "./components/Edit Recipe/EditRecipe";
+import EditProduct from "./components/Edit Product/EditProduct";
 
 function App() {
     return (
@@ -111,6 +112,14 @@ function App() {
                                 element={
                                     <PrivateRoute>
                                         <EditRecipe />
+                                    </PrivateRoute>
+                                }
+                            />
+                            <Route 
+                                path="/details/edit/products/:productId"
+                                element={
+                                    <PrivateRoute>
+                                        <EditProduct />
                                     </PrivateRoute>
                                 }
                             />

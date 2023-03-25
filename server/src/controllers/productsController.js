@@ -1,9 +1,7 @@
 const mongoose = require('mongoose');
-const { getAuthor } = require('../services/authServices');
 const router = require('express').Router();
 const productService = require('../services/productService');
 const authService = require('../services/authServices');
-const { getOne } = require('../services/recipeService');
 
 router.post('/create', async (req, res) => {
     const { title, type, imageUrl, nutrition, description, _ownerId } = req.body;
@@ -54,7 +52,7 @@ router.get('/author/:id', async (req, res) => {
 router.put('/edit/:id', async (req, res) => {
     const data = req.body;
     const productId = req.params.id;
-    const editted = await authService.editProduct(productId, data);
+    const editted = await productService.editProduct(productId, data);
     res.json(editted);
 });
 

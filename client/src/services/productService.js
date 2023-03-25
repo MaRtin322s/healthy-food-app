@@ -25,3 +25,15 @@ export const deleteProduct = (id, token) => {
     })
         .then(res => res.json());
 };
+
+export const editProduct = (productData, token, id) => {
+    return fetch(`${baseUrl}/edit/${id}`, {
+        method: "PUT",
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Authorization': token
+        },
+        body: JSON.stringify(productData)
+    })
+        .then(res => res.json());
+};
