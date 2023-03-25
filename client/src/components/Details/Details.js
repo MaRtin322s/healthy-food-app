@@ -125,7 +125,7 @@ const Details = () => {
                                         </>
                                         : null
                                     }
-                                    <Link className={styles["btn-details"]} to="/" download><i className="fas fa-download"></i>Download</Link>
+                                    <Link className={styles["btn-details"]} to="/"><i class="far fa-calendar-times"></i>Unsave</Link>
                                 </>
                             }
                         </div>

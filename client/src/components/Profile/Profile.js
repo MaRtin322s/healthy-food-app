@@ -41,8 +41,8 @@ const Profile = () => {
                     <li>Email: {data.email}</li>
                     <div className={styles["actions"]}>
                         <h1>Created Recipes: {ownRecipes.length}</h1>
-                        <h1>Saved Recipes: 0</h1>
-                        <h1>Created Products: 0</h1>
+                        <h1>Saved Recipes: {saved.length}</h1>
+                        <h1>Created Products: {ownProducts.length}</h1>
                     </div>
                 </ul>
             </article>
