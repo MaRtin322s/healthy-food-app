@@ -3,6 +3,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../../contexts/UserContext";
 import Delete from "../Delete Recipes/DeleteRecipes";
 import styles from "./styles/details.module.css";
+import * as userService from "../../services/userServices";
 import * as service from "../../services/recipeService";
 
 const Details = () => {
@@ -32,7 +33,7 @@ const Details = () => {
 
     const showDeleteRecipe = () => {
         setShowDelete(true);
-    }
+    };
 
     const closeHandler = () => {
         setShowDelete(false);
@@ -47,7 +48,17 @@ const Details = () => {
                 }));
                 navigate(`/details/recipes/${recipeId}`, { replace: true })
             });
-    }
+    };
+
+    const unsaveHandler = (ev, recipeId, userId, token) => {
+        ev.preventDefault();
+        service.getSavedRecipes(userId)
+            .then(recipes => {
+                const save = recipes.filter(x => x._id !== recipeId);
+                userService.unsaveRecipe(save, userId, token)
+                    .then(recipes => setSaved(recipes));
+            })
+    };
 
     return (
         <>
@@ -123,9 +134,16 @@ const Details = () => {
                                                 Save
                                             </Link>
                                         </>
-                                        : null
+                                        : <Link
+                                            className={styles["btn-details"]}
+                                            
+                                            onClick={(ev) => 
+                                                unsaveHandler(ev, recipeId, user._id, user.accessToken)}
+                                        >
+                                            <i className="far fa-calendar-times"></i>
+                                            Unsave
+                                        </Link>
                                     }
-                                    <Link className={styles["btn-details"]} to="/"><i class="far fa-calendar-times"></i>Unsave</Link>
                                 </>
                             }
                         </div>

@@ -88,4 +88,14 @@ router.get('/:userId', async (req, res) => {
     res.json(author);
 });
 
+router.post("/unsave/:userId", async (req, res) => {
+    let recipes = req.body;
+    recipes = recipes.map(x => {
+        return x._id;
+    });
+    const author = await authService.unsave(req.params.userId, recipes);
+    const user = await authService.getUser(author._id);
+    res.json(user.savedRecipes);
+});
+
 module.exports = router;

@@ -56,3 +56,10 @@ exports.getByEmail = async (email) => {
         return user;
     };
 };
+
+exports.unsave = async (userId, data) =>
+    await User.findByIdAndUpdate(
+        { _id: userId },
+        { $set: { savedRecipes: data } },
+        { new: true }
+    );

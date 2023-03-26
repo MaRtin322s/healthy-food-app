@@ -55,3 +55,15 @@ export const testForEmail = (email) => {
 
 export const getUser = (userId) => 
     fetch(`${baseUrl}/${userId}`).then(res => res.json());
+
+export const unsaveRecipe = (recipeData, userId, token) => {
+        return fetch(`${baseUrl}/unsave/${userId}`, {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+                'X-Authorization': token
+            },
+            body: JSON.stringify(recipeData)
+        })
+            .then(res => res.json());
+    };
