@@ -10,7 +10,7 @@ const Logout = memo(() => {
 
     useEffect(() => {
         navigate("/", { replace: true });
-    }, [userLogout]);
+    }, [userLogout, navigate]);
 
     service.logoutUser(user.accessToken)
         .then(() => {

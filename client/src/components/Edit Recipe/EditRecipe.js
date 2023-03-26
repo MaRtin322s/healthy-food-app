@@ -33,8 +33,7 @@ const EditRecipe = () => {
 
     const submitHandler = (ev, data, token, recipeId) => {
         ev.preventDefault();
-        const ingredients = data.ingredients.split(',');
-        service.editRecipe({ ...data, ingredients }, token, recipeId)
+        service.editRecipe(data, token, recipeId)
             .then(() => navigate(`/details/recipes/${recipeId}`, { replace: true }));
     };
 
