@@ -6,6 +6,7 @@ import styles from "./styles/details.module.css";
 import * as userService from "../../services/userServices";
 import * as service from "../../services/recipeService";
 import { saveAs } from "file-saver";
+import ProgressBar from "../Progress Bar/ProgressBar";
 
 const Details = () => {
     const { recipeId } = useParams();
@@ -15,6 +16,7 @@ const Details = () => {
     const [saved, setSaved] = useState([]);
     const [showDelete, setShowDelete] = useState(false);
     const { user } = useContext(AuthContext);
+    const [isDownloading, setIsDownloading] = useState(false);
 
     useEffect(() => {
         getOneRecipe(recipeId)
@@ -63,11 +65,14 @@ const Details = () => {
 
     const downloadPdf = (ev, data, token) => {
         ev.preventDefault();
-
-        service.download(data, token)
-            .then(blob => {
-                saveAs(blob, `${data.title}.pdf`);
-            });
+        setIsDownloading(true);
+        setTimeout(() => {
+            service.download(data, token)
+                .then(blob => {
+                    setIsDownloading(false);
+                    saveAs(blob, `${data.title}.pdf`);
+                });
+        }, 11000);
     };
 
     const backHandleClick = () => {
@@ -76,6 +81,11 @@ const Details = () => {
 
     return (
         <>
+            {isDownloading
+                ?
+                <ProgressBar  />
+                : null
+            }
             {showDelete &&
                 <Delete
                     closeHandler={closeHandler}
