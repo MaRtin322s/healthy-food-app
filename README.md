@@ -1,4 +1,4 @@
-## Healthy-food-app
+## Healthy food application - NutriGit
 # Introduction
 The Healthy Food App is a social platform that allows users to share recipes, products and other health-related information. Our app is designed to promote healthy eating and provide users with access to a wide range of recipes and products that support a healthy lifestyle.
 

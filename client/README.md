@@ -1,54 +1,26 @@
-## Getting Started with Create React App
+## Healthy food application - NutriGit
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## UI/UX Components
 # Home Page Component
-- The component contains several sections with information about the app and its features. The first section is a heading with a tagline for the app, followed by a paragraph describing the philosophy behind the app's recipes. This section also includes a link to the app's recipe catalog.
-
-- The second section displays contact information for the app, including an address and phone number.
-
-- The third section provides more information about the importance of a balanced diet, with a paragraph of text and a link to an external resource for further reading. This section also includes an image of a salmon fish.
-
--  Finally, the component displays the three most recent recipes added to the app, in the form of a list 
-of RecipeItem components. If there are no recipes available, the component will display a message indicating this.
-
-- The component uses React hooks, including useState and useEffect, to manage its state and lifecycle methods. It also relies on a context object called "AuthContext" to retrieve the list of recipes from the app's API.
-
-- Overall, this component provides a clear and visually appealing introduction to the healthy food app, highlighting its key features and encouraging users to explore its recipe catalog.
+- This component showcases a healthy food app with a tagline and paragraph on its philosophy, a contact section, an informative section on balanced diets with an external resource link and a salmon fish image, and the three latest recipes displayed as RecipeItem components. It uses React hooks and an AuthContext context object to manage state and retrieve recipes from the API. It's an attractive and engaging way to introduce the app and its features to users.
 
 # Register Page Component
-- This is a React functional component that renders a registration form for users. It uses hooks like useState, useCallback, useReducer and useContext to manage its state and dispatch actions. It also imports and calls a validations object that contains validation functions for different form fields.
-
-- The Register component uses a navigate constant from the useNavigate hook and a userLogin function from the AuthContext to handle user authentication.
-
-- The state constant is an object that holds the user's input values, and it is updated through the dispatch function by using the reducer function. error is another constant that holds the state of errors that can occur during user input.
-
-- The submitHandler function is called when the user submits the form. It checks if the user's input values are valid and uses a service object to send a request to a server and register the user. If the registration is successful, it logs the user in, and navigates to the home page. If not, it throws an error message.
-
-- The changeHandler function is called whenever a user types in a form field. It updates the state by calling the dispatch function.
-
-- The component returns a form element that has input fields for the user to fill in their personal details, such as their first name, last name, email, image URL, and password. The form also has a submit button.
+- The Register component is a React functional component that renders a form for user registration. It manages state using hooks like useState, useCallback, useReducer, and useContext, and uses a validations object for form field validation. It also uses navigate and userLogin constants for authentication. The form has input fields for personal details like name, email, image URL, and password, and a submit button. The submitHandler function sends a request to the server to register the user and logs them in if successful. The changeHandler function updates the state when a user types in a form field.
 
 # Login/Logout Page Component
 -Login Component
-- The Login component is a functional component that is used to display a login form to the user. It is wrapped with the memo HOC to optimize performance by preventing unnecessary re-renders.
-
-- This component uses React hooks such as useContext, useNavigate, useReducer, and useState to manage state and handle user actions. It also uses a custom reducer function reducer to update the state based on the action dispatched.
-
-- The Login component receives the userLogin function from the AuthContext, which is used to authenticate the user upon successful login. It also uses the navigate hook from react-router-dom to redirect the user to the home page upon successful login.
-
-- The component has a submitHandler function that is called when the user submits the login form. This function first checks if the email and password fields are not empty. If either of them is empty, an alert message is displayed to the user.
-
-- If both fields are not empty, the service.loginUser function is called to authenticate the user. If the authentication is successful, the userLogin function is called, and the user is redirected to the home page. If there is an error during the authentication process, an error message is displayed to the user using the Error component.
+- The Login component is a memoized functional component that displays a login form to the user. It uses hooks such as useContext, useNavigate, useReducer, and useState to manage state and handle user actions. It receives the userLogin function from AuthContext and uses navigate to redirect the user upon successful login. The submitHandler function checks for empty fields and authenticates the user using service.loginUser. It displays an error message using the Error component if there's an error.
 
 -Logout component
-- This is a React functional component called Logout that logs out the currently authenticated user by making an API call to the backend using the service object provided.
+- This is a React functional component called Logout that logs out the currently authenticated user by making an API call to the backend using the service object provided. It utilizes the useContext hook to access the AuthContext and get the current user and the userLogout function to update the authentication state when the user logs out. The component also uses the useNavigate hook to navigate the user back to the home page after they have logged out. The useEffect hook is used to navigate the user to the home page whenever userLogout changes.
 
-- It utilizes the useContext hook to access the AuthContext and get the current user and the userLogout function to update the authentication state when the user logs out.
+# Catalogs Compoennts Recipes/Products
+- Recipes Catalog
+- The RecipesCatalog component is a functional component that displays a catalog of recipes. It uses the useContext hook to retrieve the getAllRecipes function from the AuthContext. The component manages state using the useState hook and sets a loading state to display a spinner while the recipes are being fetched.
+The useEffect hook is used to fetch recipes from the API by calling getAllRecipes and setting the recipes state when the data is returned. If there are no recipes available, a message is displayed indicating this.
+The component renders two links to other pages, a section to display the recipes, and either a spinner or a list of RecipeCatalogItem components based on the loading state. The RecipeCatalogItem component is used to display information about individual recipes.
 
-- The component also uses the useNavigate hook to navigate the user back to the home page after they have logged out.
-
-- The useEffect hook is used to navigate the user to the home page whenever userLogout changes.
-
-
+- Catalog Products
+- The ProductsCatalog component is a functional component that displays a catalog of products. It uses the useState, useContext, and useEffect hooks to manage state and fetch data. It also uses the PublicContext to access the getAllProducts function. The component displays a spinner while fetching data and renders a list of product items once the data is received. If there are no products, it displays a message. The component also includes links to switch between the products and recipes catalogs.
