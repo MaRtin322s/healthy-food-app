@@ -2,7 +2,7 @@
 
 .wrap-main {
     background-color: #a5d8ff;
-    padding: 50px ;
+    padding: 50px;
 }
 
 .details {
@@ -73,4 +73,23 @@
 .first-item {
     font-weight: 600;
     font-size: 24px;
+}
+
+.back-btn {
+    padding: 10px 30px;
+    color: black;
+    font-weight: 600;
+    background-color: #fced81;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 22px;
+}
+
+.back-btn i {
+    margin-right: 5px;
+}
+
+.back-btn:hover {
+    background-color: #19e79c;
+    color: black
 }

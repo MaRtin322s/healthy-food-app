@@ -60,6 +60,10 @@ const Details = () => {
             })
     };
 
+    const backHandleClick = () => {
+        navigate(-1);
+    }
+
     return (
         <>
             {showDelete &&
@@ -72,6 +76,13 @@ const Details = () => {
                 />
             }
             <div className={styles["wrap-main"]}>
+                <button
+                    className={styles["back-btn"]}
+                    onClick={(ev) => backHandleClick()}
+                >
+                    <i class="fas fa-arrow-alt-circle-left"></i>
+                    Back
+                </button>
                 <section className={styles["details"]}>
                     <img src={recipe.imageUrl} alt="pizza" />
                     <article>
@@ -136,8 +147,8 @@ const Details = () => {
                                         </>
                                         : <Link
                                             className={styles["btn-details"]}
-                                            
-                                            onClick={(ev) => 
+
+                                            onClick={(ev) =>
                                                 unsaveHandler(ev, recipeId, user._id, user.accessToken)}
                                         >
                                             <i className="far fa-calendar-times"></i>
