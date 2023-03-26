@@ -36,7 +36,7 @@ The application uses:
 
 - /edit/:recipeId - send authorized PUT request to the endpoint with the correct data. It replaces old data with the newly given and return object containing to the client.
 
-- delete/:recipeId - send authorized DELETE request to the endpoint, it will delete the recipe from the system and return the deleted recipe as object.
+- /delete/:recipeId - send authorized DELETE request to the endpoint, it will delete the recipe from the system and return the deleted recipe as object.
 
 - /save/:recipeId - send authorized POST request to the endpoint, containing the userId in the body, the recipe will be added to the users saved recipes and it will return an array containing all saved recipes of the current user.
 
@@ -57,4 +57,4 @@ The application uses:
 
 - /edit/:productId - send authorized PUT request to the endpoint with the correct data. It replaces old data with the newly given and return object containing the product to the client.
 
-- delete/:productId - send authorized DELETE request to the endpoint, it will delete the product from the system and return the deleted product as object.
+- /delete/:productId - send authorized DELETE request to the endpoint, it will delete the product from the system and return the deleted product as object.
