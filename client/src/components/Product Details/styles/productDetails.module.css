@@ -11,7 +11,7 @@
     width: 1400px;
     padding: 20px 50px;
     gap: 40px;
-    margin: 70px auto;
+    margin: 40px auto 70px auto;
     padding-left: 25px;
     background-color: #fced81;
     border-radius: 20px;
@@ -72,4 +72,23 @@
 .first-item {
     font-weight: 600;
     font-size: 24px;
+}
+
+.back-btn {
+    padding: 10px 30px;
+    color: black;
+    font-weight: 600;
+    background-color: #fced81;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 22px;
+}
+
+.back-btn i {
+    margin-right: 5px;
+}
+
+.back-btn:hover {
+    background-color: #19e79c;
+    color: black
 }

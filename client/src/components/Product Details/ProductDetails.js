@@ -33,6 +33,10 @@ const ProductDetails = () => {
         setShowDelete(true);
     }
 
+    const backHandleClick = () => {
+        navigate(-1);
+    }
+
     return (
         <>
             {showDelete &&
@@ -45,6 +49,13 @@ const ProductDetails = () => {
                 />
             }
             <div className={styles["wrap-main"]}>
+                <button 
+                    className={styles["back-btn"]}
+                    onClick={(ev) => backHandleClick()}
+                >
+                    <i class="fas fa-arrow-alt-circle-left"></i>
+                    Back
+                </button>
                 <section className={styles["details"]}>
                     <img src={product.imageUrl} alt="pizza" />
                     <article>
@@ -64,8 +75,8 @@ const ProductDetails = () => {
                             {user._id === product._ownerId
                                 ?
                                 <>
-                                    <Link 
-                                        className={styles["btn-details"]} 
+                                    <Link
+                                        className={styles["btn-details"]}
                                         to={`/details/edit/products/${productId}`}
                                     >
                                         <i className="fas fa-edit"></i>
@@ -79,11 +90,7 @@ const ProductDetails = () => {
                                         Delete
                                     </Link>
                                 </>
-                                :
-                                <>
-                                    <Link className={styles["btn-details"]} to="/"><i className="fas fa-bookmark"></i>Save</Link>
-                                    <Link className={styles["btn-details"]} to="/"><i class="far fa-calendar-times"></i>Unsave</Link>
-                                </>
+                                : null
                             }
                         </div>
                     </article>
