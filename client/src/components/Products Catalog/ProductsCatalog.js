@@ -9,6 +9,12 @@ const ProductsCatalog = () => {
     const [products, setProducts] = useState([]);
     const { getAllProducts } = useContext(PublicContext);
     const [loading, setLoading] = useState(false);
+    const [currentPage, setCurrentPage] = useState(1);
+
+    const totalPages = Math.ceil(products.length / 12);
+    const indexOfLastItem = currentPage * 12;
+    const indexOfFirstItem = indexOfLastItem - 12;
+    const currentItems = products.slice(indexOfFirstItem, indexOfLastItem);
 
     useEffect(() => {
         setLoading(true);
@@ -23,12 +29,33 @@ const ProductsCatalog = () => {
 
     return (
         <div className={styles["main-wrapper"]}>
-            <Link className={styles["catalog-recipes"]} to="/catalog-recipes">
-                Catalog Recipes
-            </Link>
-            <Link className={styles["catalog-products"]} to="/catalog-products">
-                Catalog Products
-            </Link>
+            <div>
+                <Link className={styles["catalog-recipes"]} to="/catalog-recipes">
+                    Catalog Recipes
+                </Link>
+                <Link className={styles["catalog-products"]} to="/catalog-products">
+                    Catalog Products
+                </Link>
+            </div>
+            {currentPage > 1 && (
+                <button
+                    className={styles["btn-pagination"]}
+                    onClick={() => setCurrentPage(currentPage - 1)}
+                >
+                    Previous Page
+                </button>
+            )}
+            {currentPage < totalPages && (
+                <>
+                    <button
+                        className={styles["btn-pagination"]}
+                        onClick={() => setCurrentPage(currentPage + 1)}
+                    >
+                        Next Page
+                    </button>
+                </>
+            )}
+            <h1 className={styles["curr-page"]}>Current Page: {currentPage}</h1>
             <section className={styles["catalog"]}>
                 {loading
                     ? <Spinner />
@@ -38,7 +65,7 @@ const ProductsCatalog = () => {
                             products.length > 0
                                 ?
                                 <>
-                                    {products.map(product => <ProductItem key={product._id} {...product} />)}
+                                    {currentItems.map(product => <ProductItem key={product._id} {...product} />)}
                                 </>
                                 :
                                 <>

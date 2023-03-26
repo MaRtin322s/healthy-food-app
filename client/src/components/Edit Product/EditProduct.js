@@ -30,9 +30,7 @@ const EditProduct = () => {
 
     const submitHandler = (ev, data, token, id) => {
         ev.preventDefault();
-        const nutrition = data.nutrition.split(",");
-        
-        service.editProduct({ ...data, nutrition }, token, id)
+        service.editProduct(data, token, id)
             .then(() => navigate(`/details/products/${productId}`, { replace: true }));
     };
 
