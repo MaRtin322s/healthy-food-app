@@ -1,25 +1,27 @@
+import React from "react";
 import { Route, Routes } from "react-router-dom";
+import { PublicProvider } from "./contexts/PublicationContext";
+import { AuthProvider } from "./contexts/UserContext";
 import CreateProduct from "./components/Create Product/CreateProduct";
 import CreateRecipe from "./components/Create Recipe/CreateRecipe";
-import Details from "./components/Details/Details";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import Home from "./components/Home/Home";
 import Login from "./components/Login/Login";
-import Logout from "./components/Logout/Logout";
 import NotFound from "./components/Not Found Page/NotFound";
-import PasswordReset from "./components/Password Reset/PasswordReset";
 import ProductsCatalog from "./components/Products Catalog/ProductsCatalog";
 import Profile from "./components/Profile/Profile";
 import RecipesCatalog from "./components/Recipes Catalog/RecipesCatalog";
 import Register from "./components/Register/Register";
-import { PublicProvider } from "./contexts/PublicationContext";
-import { AuthProvider } from "./contexts/UserContext";
 import ProductDetails from "./components/Product Details/ProductDetails";
 import PrivateRoute from "./guards/PrivateRoute";
 import RouteGuard from "./guards/RouteGuard";
-import EditRecipe from "./components/Edit Recipe/EditRecipe";
-import EditProduct from "./components/Edit Product/EditProduct";
+
+const Logout = React.lazy(() => import("./components/Logout/Logout"));
+const Details = React.lazy(() => import("./components/Details/Details"));
+const PasswordReset = React.lazy(() => import("./components/Password Reset/PasswordReset"));
+const EditRecipe = React.lazy(() => import("./components/Edit Recipe/EditRecipe"));
+const EditProduct = React.lazy(() => import("./components/Edit Product/EditProduct"));
 
 function App() {
     return (
@@ -105,7 +107,7 @@ function App() {
                                     <PasswordReset />
                                 }
                             />
-                            <Route 
+                            <Route
                                 path="/details/edit/:recipeId"
                                 element={
                                     <PrivateRoute>
@@ -113,7 +115,7 @@ function App() {
                                     </PrivateRoute>
                                 }
                             />
-                            <Route 
+                            <Route
                                 path="/details/edit/products/:productId"
                                 element={
                                     <PrivateRoute>
