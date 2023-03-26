@@ -67,7 +67,7 @@ const Home = () => {
                     </Link>
                 </article>
             </section>
-            <h2 className={styles["last-recipes-heading"]}>New recipes...</h2>
+            <h2 className={styles["last-recipes-heading"]}>Last 3 recipes created...</h2>
             <section className={`${styles["last-recipes"]} ${resp["last-recipes"]}`}>
                 {lastThree.length > 0
                     ?
