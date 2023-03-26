@@ -80,7 +80,7 @@ const Details = () => {
                     className={styles["back-btn"]}
                     onClick={(ev) => backHandleClick()}
                 >
-                    <i class="fas fa-arrow-alt-circle-left"></i>
+                    <i className="fas fa-arrow-alt-circle-left"></i>
                     Back
                 </button>
                 <section className={styles["details"]}>

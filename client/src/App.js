@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 import { PublicProvider } from "./contexts/PublicationContext";
 import { AuthProvider } from "./contexts/UserContext";
@@ -16,6 +16,7 @@ import Register from "./components/Register/Register";
 import ProductDetails from "./components/Product Details/ProductDetails";
 import PrivateRoute from "./guards/PrivateRoute";
 import RouteGuard from "./guards/RouteGuard";
+import Spinner from "./components/Spinner/Spinner";
 
 const Logout = React.lazy(() => import("./components/Logout/Logout"));
 const Details = React.lazy(() => import("./components/Details/Details"));
@@ -81,7 +82,9 @@ function App() {
                                 path="/logout"
                                 element={
                                     <PrivateRoute>
-                                        <Logout />
+                                        <Suspense fallback={<Spinner />}>
+                                            <Logout />
+                                        </Suspense>
                                     </PrivateRoute>
                                 }
                             />
@@ -89,7 +92,9 @@ function App() {
                                 path="/details/recipes/:recipeId"
                                 element={
                                     <PrivateRoute>
-                                        <Details />
+                                        <Suspense fallback={<Spinner />}>
+                                            <Details />
+                                        </Suspense>
                                     </PrivateRoute>
                                 }
                             />
@@ -104,14 +109,18 @@ function App() {
                             <Route
                                 path="/password-reset"
                                 element={
-                                    <PasswordReset />
+                                    <Suspense fallback={<Spinner />}>
+                                        <PasswordReset />
+                                    </Suspense>
                                 }
                             />
                             <Route
                                 path="/details/edit/:recipeId"
                                 element={
                                     <PrivateRoute>
-                                        <EditRecipe />
+                                        <Suspense fallback={<Spinner />}>
+                                            <EditRecipe />
+                                        </Suspense>
                                     </PrivateRoute>
                                 }
                             />
@@ -119,7 +128,9 @@ function App() {
                                 path="/details/edit/products/:productId"
                                 element={
                                     <PrivateRoute>
-                                        <EditProduct />
+                                        <Suspense fallback={<Spinner />}>
+                                            <EditProduct />
+                                        </Suspense>
                                     </PrivateRoute>
                                 }
                             />

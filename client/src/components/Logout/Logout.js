@@ -1,4 +1,4 @@
-import { memo, useContext } from "react";
+import { memo, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { AuthContext } from "../../contexts/UserContext";
@@ -8,10 +8,13 @@ const Logout = memo(() => {
     const { user, userLogout } = useContext(AuthContext);
     const navigate = useNavigate();
 
+    useEffect(() => {
+        navigate("/", { replace: true });
+    }, [userLogout]);
+
     service.logoutUser(user.accessToken)
         .then(() => {
             userLogout();
-            navigate("/", { replace: true });
         });
 });
 
