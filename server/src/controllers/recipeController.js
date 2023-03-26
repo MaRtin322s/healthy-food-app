@@ -5,6 +5,7 @@ const router = require('express').Router();
 const recipeService = require('../services/recipeService');
 const authService = require('../services/authServices');
 const { getOne } = require('../services/recipeService');
+const PDFDocument = require('pdfkit');
 
 router.post('/create', async (req, res) => {
     const { title, category, imageUrl, ingredients, preparation, _ownerId } = req.body;
@@ -78,6 +79,18 @@ router.get('/save/:userId', async (req, res) => {
     const userId = req.params.userId;
     const author = await authService.getUser(userId);
     res.json(author.savedRecipes);
+});
+
+router.post('/download', (req, res) => {
+    const data = req.body;
+    const doc = new PDFDocument();
+    const content = `${data.title}\n\nCategory: ${data.category}\n\nIngredients:\n${data.ingredients.join('\n')}\n\nPreparation:\n${data.preparation}`;
+    doc.title = 'Recipe PDF';
+    doc.text(content);
+    res.setHeader('Content-Disposition', `attachment; filename=${data.title}.pdf`);
+    res.setHeader('Content-Type', 'application/pdf');
+    doc.pipe(res);
+    doc.end();
 });
 
 module.exports = router;

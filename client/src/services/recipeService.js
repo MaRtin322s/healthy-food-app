@@ -51,3 +51,15 @@ export const saveRecipe = (recipeId, userId, token) => {
 };
 
 export const getSavedRecipes = (userId) => fetch(`${baseUrl}/save/${userId}`).then(res => res.json());
+
+export const download = (recipeData, token) => {
+    return fetch(`${baseUrl}/download`, {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Authorization': token
+        },
+        body: JSON.stringify(recipeData)
+    })
+        .then(res => res.blob());
+}

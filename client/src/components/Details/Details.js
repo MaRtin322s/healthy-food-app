@@ -5,6 +5,7 @@ import Delete from "../Delete Recipes/DeleteRecipes";
 import styles from "./styles/details.module.css";
 import * as userService from "../../services/userServices";
 import * as service from "../../services/recipeService";
+import { saveAs } from "file-saver";
 
 const Details = () => {
     const { recipeId } = useParams();
@@ -58,6 +59,15 @@ const Details = () => {
                 userService.unsaveRecipe(save, userId, token)
                     .then(recipes => setSaved(recipes));
             })
+    };
+
+    const downloadPdf = (ev, data, token) => {
+        ev.preventDefault();
+
+        service.download(data, token)
+            .then(blob => {
+                saveAs(blob, `${data.title}.pdf`);
+            });
     };
 
     const backHandleClick = () => {
@@ -155,6 +165,13 @@ const Details = () => {
                                             Unsave
                                         </Link>
                                     }
+                                    <Link
+                                        className={styles["btn-details"]}
+                                        onClick={(ev) => downloadPdf(ev, recipe, user.accessToken)}
+                                        download
+                                    >
+                                        <i className="fas fa-download"></i>Download
+                                    </Link>
                                 </>
                             }
                         </div>
