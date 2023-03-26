@@ -30,7 +30,25 @@ of RecipeItem components. If there are no recipes available, the component will 
 
 - The component returns a form element that has input fields for the user to fill in their personal details, such as their first name, last name, email, image URL, and password. The form also has a submit button.
 
+# Login/Logout Page Component
+-Login Component
+- The Login component is a functional component that is used to display a login form to the user. It is wrapped with the memo HOC to optimize performance by preventing unnecessary re-renders.
 
+- This component uses React hooks such as useContext, useNavigate, useReducer, and useState to manage state and handle user actions. It also uses a custom reducer function reducer to update the state based on the action dispatched.
 
+- The Login component receives the userLogin function from the AuthContext, which is used to authenticate the user upon successful login. It also uses the navigate hook from react-router-dom to redirect the user to the home page upon successful login.
+
+- The component has a submitHandler function that is called when the user submits the login form. This function first checks if the email and password fields are not empty. If either of them is empty, an alert message is displayed to the user.
+
+- If both fields are not empty, the service.loginUser function is called to authenticate the user. If the authentication is successful, the userLogin function is called, and the user is redirected to the home page. If there is an error during the authentication process, an error message is displayed to the user using the Error component.
+
+-Logout component
+- This is a React functional component called Logout that logs out the currently authenticated user by making an API call to the backend using the service object provided.
+
+- It utilizes the useContext hook to access the AuthContext and get the current user and the userLogout function to update the authentication state when the user logs out.
+
+- The component also uses the useNavigate hook to navigate the user back to the home page after they have logged out.
+
+- The useEffect hook is used to navigate the user to the home page whenever userLogout changes.
 
 
