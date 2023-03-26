@@ -1,7 +1,8 @@
+import React from 'react';
 import styles from "./styles/footer.module.css";
 import resp from "./styles/responsive.module.css";
 
-const Footer = () => {
+const Footer = React.memo(() => {
     return (
         <footer className={`${styles["footer"]} ${resp["footer"]}`}>
             <div>
@@ -51,6 +52,6 @@ const Footer = () => {
             </ul>
         </footer>
     );
-}
+});
 
 export default Footer;

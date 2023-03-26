@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 import styles from "./styles/notFound.module.css";
 import oops from "./images/oops.png";
 import background from "./images/backgr.jpg";
+import React from "react";
 
-const NotFound = () => {
+const NotFound = React.memo(() => {
     return (
         <>
             <img className={styles["background-img"]} src={background} alt="backg" />
@@ -19,6 +20,6 @@ const NotFound = () => {
             </div>
         </>
     );
-}
+});
 
 export default NotFound;

@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, memo } from "react";
 import { AuthContext } from "../../contexts/UserContext";
 import * as service from "../../services/userServices";
 import * as recipeService from "../../services/recipeService";
@@ -7,7 +7,7 @@ import styles from "./styles/profile.module.css";
 import RecipeItem from "./RecipeItem";
 import ProductItem from "./ProductItem";
 
-const Profile = () => {
+const Profile = memo(() => {
     const { user } = useContext(AuthContext);
     const [data, setData] = useState({});
     const [ownRecipes, setRecipes] = useState([]);
@@ -21,8 +21,8 @@ const Profile = () => {
             .then(result => setRecipes(result));
         productService.getOwned(user._id)
             .then(result => setProducts(result));
-            recipeService.getSavedRecipes(user._id)
-                .then(result => setSaved(result))
+        recipeService.getSavedRecipes(user._id)
+            .then(result => setSaved(result))
     }, [user._id]);
 
     return (
@@ -87,6 +87,6 @@ const Profile = () => {
             </section>
         </section>
     );
-}
+});
 
 export default Profile;

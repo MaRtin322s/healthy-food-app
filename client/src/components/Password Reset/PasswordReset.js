@@ -1,4 +1,4 @@
-import { useCallback, useReducer, useState } from "react";
+import { memo, useCallback, useReducer, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import * as service from "../../services/userServices";
@@ -8,7 +8,7 @@ import styles from "./styles/password.module.css";
 import background from "./images/backgr.jpg";
 import Error from "../Error/Error";
 
-const PasswordReset = () => {
+const PasswordReset = memo(() => {
     const [state, dispatch] = useReducer(reducer, initData);
     const navigate = useNavigate();
     const [user, setUser] = useState({});
@@ -164,6 +164,6 @@ const PasswordReset = () => {
             </section>
         </>
     );
-};
+});
 
 export default PasswordReset;
