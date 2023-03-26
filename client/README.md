@@ -41,10 +41,10 @@ The component renders two links to other pages, a section to display the recipes
 
 # Edit components for Products/Recipes
 - Edit Products
-- 
+- This is a React component called "EditProduct". It renders a form that allows users to edit product information such as title, type, image URL, nutrition information, and description. It retrieves the product data from the server based on the product ID parameter in the URL. When the form is submitted, it sends the updated product data to the server for persistence. The component uses state hooks to manage the form data and navigation hooks to redirect the user to the product details page after editing.
 
 - Edit Recipes
--
+- This is a React functional component called EditRecipe that allows the user to edit a recipe. It uses the useState and useEffect hooks to manage state and fetch data, respectively. It also utilizes useContext and useNavigate hooks to manage authentication and navigate between pages. The component renders a form with input fields for the title, category, image URL, ingredients, and preparation. The user can edit the recipe details and submit the form, which will trigger a submitHandler function. The function will update the recipe in the database and navigate to the details page of the edited recipe.
 
 # Details components for Products/Recipes
 - Details Products
