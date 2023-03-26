@@ -10,6 +10,8 @@ The application uses:
 - Cors library for the Cross-Origin Resource Sharing restrictions.
 - JsonWebToken library for the user authentication access token.
 - Mongoose library for the database communication.
+- The use the server you have to run "npm install" for the required technologies.
+- To start the server in development mode, you have to run "npm start".
 
 ## Application Endpoints
 # User authentication
