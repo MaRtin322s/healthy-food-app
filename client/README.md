@@ -16,7 +16,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 -Logout component
 - This is a React functional component called Logout that logs out the currently authenticated user by making an API call to the backend using the service object provided. It utilizes the useContext hook to access the AuthContext and get the current user and the userLogout function to update the authentication state when the user logs out. The component also uses the useNavigate hook to navigate the user back to the home page after they have logged out. The useEffect hook is used to navigate the user to the home page whenever userLogout changes.
 
-# Catalogs Compoennts Recipes/Products
+# Catalogs Components for Recipes/Products
 - Recipes Catalog
 - The RecipesCatalog component is a functional component that displays a catalog of recipes. It uses the useContext hook to retrieve the getAllRecipes function from the AuthContext. The component manages state using the useState hook and sets a loading state to display a spinner while the recipes are being fetched.
 The useEffect hook is used to fetch recipes from the API by calling getAllRecipes and setting the recipes state when the data is returned. If there are no recipes available, a message is displayed indicating this.
@@ -24,3 +24,30 @@ The component renders two links to other pages, a section to display the recipes
 
 - Catalog Products
 - The ProductsCatalog component is a functional component that displays a catalog of products. It uses the useState, useContext, and useEffect hooks to manage state and fetch data. It also uses the PublicContext to access the getAllProducts function. The component displays a spinner while fetching data and renders a list of product items once the data is received. If there are no products, it displays a message. The component also includes links to switch between the products and recipes catalogs.
+
+# Create components for Products/Recipes
+- Create Recipes
+- The code is a React functional component that creates a form for users to input recipe information. It uses React hooks such as useContext, useNavigate, and useReducer to manage the state of the form data. The component also validates user input before submitting the form and sends the data to a backend service via an API. The code also includes basic HTML structure, CSS classes, and inline styles for styling the form.
+
+- Create Products
+- This code is a React functional component called "CreateProduct", which creates a form for users to input information about a product, such as its title, type, image URL, nutrition information, and description. When the form is submitted, the data is sent to a server using a service, and the user is redirected to the catalog of products page. The component uses several React hooks, including useState, useReducer, useCallback, useContext, and useNavigate, and it also imports a CSS module and an image.
+
+# Delete components for Products/Recipes
+- Delete Products
+-This is a React component called "Delete". It takes in some props, including closeHandler, title, type, deleteHandler, and _id. It uses the useContext hook to get the user's access token from AuthContext. It returns a JSX element with a modal that asks the user to confirm the deletion of an item, along with buttons to confirm or cancel the deletion.
+
+- Delete Recipes
+- This is a React functional component that renders a confirmation modal dialog for deleting an item. It receives several props including a close handler, title, type, delete handler, and item id. It also accesses the user object from the AuthContext. The component returns a backdrop and a modal container with a title, message, and two buttons to confirm or cancel the delete action. The confirm button triggers the delete handler passing the item id and the user access token.
+
+# Edit components for Products/Recipes
+- Edit Products
+- 
+
+- Edit Recipes
+-
+
+# Details components for Products/Recipes
+- Details Products
+- Details Recipes
+
+# Password Reset
