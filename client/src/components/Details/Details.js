@@ -170,7 +170,7 @@ const Details = () => {
                                         onClick={(ev) => downloadPdf(ev, recipe, user.accessToken)}
                                         download
                                     >
-                                        <i className="fas fa-download"></i>Download
+                                        <i className="fas fa-download"></i>Download PDF
                                     </Link>
                                 </>
                             }
