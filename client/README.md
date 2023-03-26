@@ -2,7 +2,9 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## UI/UX Components
+## UI/UX Main Components
+- User authentication, CRUD (Catalogs, Create, Edit, Delete) operations for Recipes/Catalogs.
+
 # Home Page Component
 - This component showcases a healthy food app with a tagline and paragraph on its philosophy, a contact section, an informative section on balanced diets with an external resource link and a salmon fish image, and the three latest recipes displayed as RecipeItem components. It uses React hooks and an AuthContext context object to manage state and retrieve recipes from the API. It's an attractive and engaging way to introduce the app and its features to users.
 
@@ -46,8 +48,5 @@ The component renders two links to other pages, a section to display the recipes
 - Edit Recipes
 - This is a React functional component called EditRecipe that allows the user to edit a recipe. It uses the useState and useEffect hooks to manage state and fetch data, respectively. It also utilizes useContext and useNavigate hooks to manage authentication and navigate between pages. The component renders a form with input fields for the title, category, image URL, ingredients, and preparation. The user can edit the recipe details and submit the form, which will trigger a submitHandler function. The function will update the recipe in the database and navigate to the details page of the edited recipe.
 
-# Details components for Products/Recipes
-- Details Products
-- Details Recipes
-
 # Password Reset
+- The PasswordReset component is a React functional component that allows a user to reset their password. It uses several hooks and manages state using a reducer. The component renders a form that prompts the user to enter their email and, if the email exists, their new password and a confirmation of that password. The component also includes error handling for incorrect email addresses and displays error messages to the user as needed. Once the user has entered their information and clicked the submit button, the component sends the information to the server to reset the password.
