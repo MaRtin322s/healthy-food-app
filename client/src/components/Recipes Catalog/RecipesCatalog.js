@@ -11,6 +11,12 @@ const RecipesCatalog = () => {
     const { getAllRecipes } = useContext(AuthContext);
     const [recipes, setRecipes] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [currentPage, setCurrentPage] = useState(1);
+
+    const totalPages = Math.ceil(recipes.length / 12);
+    const indexOfLastItem = currentPage * 12;
+    const indexOfFirstItem = indexOfLastItem - 12;
+    const currentItems = recipes.slice(indexOfFirstItem, indexOfLastItem);
 
     useEffect(() => {
         setLoading(true);
@@ -33,6 +39,25 @@ const RecipesCatalog = () => {
                     Catalog Products
                 </Link>
             </div>
+            {currentPage > 1 && (
+                <button
+                    className={styles["btn-pagination"]}
+                    onClick={() => setCurrentPage(currentPage - 1)}
+                >
+                    Previous Page
+                </button>
+            )}
+            {currentPage < totalPages && (
+                <>
+                    <button
+                        className={styles["btn-pagination"]}
+                        onClick={() => setCurrentPage(currentPage + 1)}
+                    >
+                        Next Page
+                    </button>
+                </>
+            )}
+            <h1 className={styles["curr-page"]}>Current Page: {currentPage}</h1>
             <section className={`${styles["catalog"]} ${resp["catalog"]}`}>
                 {loading
                     ?
@@ -41,7 +66,7 @@ const RecipesCatalog = () => {
                     <>
                         {recipes.length > 0
                             ?
-                            recipes.map(recipe => (
+                            currentItems.map(recipe => (
                                 <RecipeCatalogItem key={recipe._id} {...recipe} />
                             ))
                             :

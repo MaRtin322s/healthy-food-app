@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Foundation:wght@600&display=swap');
 
 .wrap-main {
-    background-color: #a5d8ff;
+    background-color: rgb(108, 204, 244);
     padding: 50px;
 }
 
@@ -79,7 +79,7 @@
     padding: 10px 30px;
     color: black;
     font-weight: 600;
-    background-color: #fced81;
+    background-color: #19e79c;
     border-radius: 4px;
     cursor: pointer;
     font-size: 22px;
@@ -90,6 +90,6 @@
 }
 
 .back-btn:hover {
-    background-color: #19e79c;
-    color: black
+    background-color: black;
+    color: white
 }

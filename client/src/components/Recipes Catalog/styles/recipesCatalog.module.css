@@ -1,5 +1,5 @@
 .main-wrapper {
-    background-color: #fced81;
+    background-color: rgb(207, 241, 255);
     padding-bottom: 180px;
     padding-top: 30px;
 }
@@ -11,11 +11,12 @@
     justify-content: center;
     flex-wrap: wrap;
     margin-left: 170px;
-    margin-top: 110px;
-    border: 4px solid black;
+    margin-top: 30px;
+    border: 2px solid black;
     padding: 60px 30px;
-    background-color: #baf8e9;
+    background-color: #7dd0f0;
     width: 1200px;
+    box-shadow: 20px -15px 29px grey;
 }
 
 .catalog-recipes,
@@ -54,12 +55,6 @@
     transition-duration: 0.3s;
     cursor: pointer;
 }
-
-.catalog-recipe:hover .catalog-recipe-title {
-    text-decoration: underline;
-    color: orange;
-}
-
 .catalog-recipe img {
     border-bottom: 3px solid black;
     border-radius: 6px;
@@ -99,5 +94,26 @@
 .no-content {
     width: 1000px;
     font-size: 35px;
+    text-align: center;
+}
+
+button.btn-pagination {
+    padding: 10px 15px;
+    background-color: rgb(183, 180, 180);
+    color: black;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 600;
+    margin-left: 20px;
+    margin-bottom: 50px;
+}
+
+.btn-pagination:hover {
+    background-color: black;
+    color: white;
+}
+
+.curr-page {
+    font-size: 25px;
     text-align: center;
 }
