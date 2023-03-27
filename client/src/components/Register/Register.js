@@ -79,6 +79,11 @@ const Register = () => {
                         Start using the website/app! Once you have completed the registration process,
                         you should be able to log in and start using the features of the website/app.
                     </li>
+                    <li>
+                        The secret word is used for backup symbol of the account.
+                        In case of forgotten password or stolen account, it can be used to change your
+                        user data.
+                    </li>
                 </ul>
                 <form
                     className={styles["register"]}
