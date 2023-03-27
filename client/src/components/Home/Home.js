@@ -14,7 +14,7 @@ const Home = () => {
     useEffect(() => {
         getAllRecipes()
             .then(result => {
-                setLastThree(result.slice(-3));
+                setLastThree(result.slice(-3).reverse());
             });
     }, [getAllRecipes]);
 
