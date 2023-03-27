@@ -22,7 +22,7 @@ const ProductsCatalog = () => {
             getAllProducts()
                 .then(result => {
                     setLoading(false);
-                    setProducts(result)
+                    setProducts(result.reverse());
                 });
         }, [1500]);
     }, [getAllProducts]);

@@ -23,7 +23,7 @@ const RecipesCatalog = () => {
         setTimeout(() => {
             getAllRecipes()
                 .then(result => {
-                    setRecipes(result);
+                    setRecipes(result.reverse());
                     setLoading(false);
                 });
         }, 1500);
