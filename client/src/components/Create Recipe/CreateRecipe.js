@@ -20,12 +20,12 @@ const CreateRecipe = () => {
 
     const submitHandler = (ev, data, token, userId) => {
         ev.preventDefault();
-        
+
         const ingredients = state.ingredients.split("\n");
         if (Object.values(data).some(x => x === "")) {
             alert("All fields are required!");
         } else {
-            service.createRecipe(token, {...data, ingredients, _ownerId: userId })
+            service.createRecipe(token, { ...data, ingredients, _ownerId: userId })
                 .then(() => navigate("/catalog-recipes", { replace: true }));
         }
     };
@@ -36,21 +36,31 @@ const CreateRecipe = () => {
                 <article className={styles["info"]}>
                     <ul className={styles["steps"]}>
                         <li>Create recipe information:</li>
-                        <li>The title specifies the name of the recipe.</li>
                         <li>
-                            Ingredients list: A list of all the ingredients required for the recipe.
-                            NOTE: Every ingredient must be on the new line!
+                            <p>
+                                The title specifies the name of the recipe.
+                            </p>
                         </li>
                         <li>
-                            Preparation: Step-by-step instructions on how to prepare the recipe.
+                            <p>
+                                Ingredients list: A list of all the ingredients required for the recipe.
+                                NOTE: Every ingredient must be on the new line!
+                            </p>
                         </li>
                         <li>
-                            Category - specifies the type of the recipe - Appetizers, Soups and
-                            stews, Salads, Main dishes, Side dishes, Desserts, Beverages and ect.
+                            <p>
+                                Preparation: Step-by-step instructions on how to prepare the recipe.
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                Category - specifies the type of the recipe - Appetizers, Soups and
+                                stews, Salads, Main dishes, Side dishes, Desserts, Beverages and ect.
+                            </p>
                         </li>
                     </ul>
                 </article>
-                <form 
+                <form
                     className={styles["create"]}
                     onSubmit={(ev) => submitHandler(ev, state, token, userId)}
                 >
@@ -65,11 +75,11 @@ const CreateRecipe = () => {
                     </div>
                     <label htmlFor="title">Title:</label>
                     <div>
-                        <input 
-                            type="text" 
-                            id="title" 
-                            name="title" 
-                            placeholder="Title..." 
+                        <input
+                            type="text"
+                            id="title"
+                            name="title"
+                            placeholder="Title..."
                             value={state.title}
                             onChange={(ev) => changeHandler(ev)}
                             required
@@ -77,11 +87,11 @@ const CreateRecipe = () => {
                     </div>
                     <label htmlFor="category">Category:</label>
                     <div>
-                        <input 
-                            type="text" 
-                            id="category" 
-                            name="category" 
-                            placeholder="Main dish...." 
+                        <input
+                            type="text"
+                            id="category"
+                            name="category"
+                            placeholder="Main dish...."
                             value={state.category}
                             onChange={(ev) => changeHandler(ev)}
                             required
@@ -89,11 +99,11 @@ const CreateRecipe = () => {
                     </div>
                     <label htmlFor="imageUrl">Image Url:</label>
                     <div>
-                        <input 
-                            type="text" 
-                            id="imageUrl" 
-                            name="imageUrl" 
-                            placeholder="https://..." 
+                        <input
+                            type="text"
+                            id="imageUrl"
+                            name="imageUrl"
+                            placeholder="https://..."
                             value={state.imageUrl}
                             onChange={(ev) => changeHandler(ev)}
                             required

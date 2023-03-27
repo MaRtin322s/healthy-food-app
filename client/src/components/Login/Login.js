@@ -62,20 +62,28 @@ const Login = memo(() => {
                 <ul className={styles["info-list"]}>
                     <li>Login Information</li>
                     <li>
-                        Enter your email and password in the appropriate fields on the login page.
+                        <p>
+                            Enter your email and password in the appropriate fields on the login page.
+                        </p>
                     </li>
                     <li>
-                        If you've forgotten your password, click the "Forgot password" link and
-                        follow the instructions to reset your password.
+                        <p>
+                            If you've forgotten your password, click the "Forgot password" link and
+                            follow the instructions to reset your password.
+                        </p>
                     </li>
                     <li>
-                        If you're having trouble logging in, double-check that you're entering the
-                        correct email or username and password combination. Remember that
-                        passwords are case-sensitive.
+                        <p>
+                            If you're having trouble logging in, double-check that you're entering the
+                            correct email or username and password combination. Remember that
+                            passwords are case-sensitive.
+                        </p>
                     </li>
                     <li>
-                        Do not share your login credentials with anyone. Keep your password secure
-                        and change it regularly to help protect your account.
+                        <p>
+                            Do not share your login credentials with anyone. Keep your password secure
+                            and change it regularly to help protect your account.
+                        </p>
                     </li>
                 </ul>
                 <form

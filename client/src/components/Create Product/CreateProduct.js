@@ -19,7 +19,7 @@ const CreateProduct = () => {
     const submitHandler = (ev, data) => {
         ev.preventDefault();
         const nutrition = data.nutrition.split("\n");
-        
+
         service.createProduct({ ...data, nutrition }, user.accessToken, user._id)
             .then(() => {
                 navigate("/catalog-products", { replace: true });
@@ -32,20 +32,30 @@ const CreateProduct = () => {
                 <article className={styles["info"]}>
                     <ul className={styles["steps"]}>
                         <li>Create products information:</li>
-                        <li>The title specifies the name of the product.</li>
                         <li>
-                            Nutrition information list: A list of all the information of the products like calories, fat and ect.
-                            NOTE: Every nutrition must be on the new line!
+                            <p>
+                                The title specifies the name of the product.
+                            </p>
                         </li>
                         <li>
-                            Description: Products description.
+                            <p>
+                                Nutrition information list: A list of all the information of the products like calories, fat and ect.
+                                NOTE: Every nutrition must be on the new line!
+                            </p>
                         </li>
                         <li>
-                            Type - specifies the type of the product - Vegetable, fruits and ect.
+                            <p>
+                                Description: Products description.
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                Type - specifies the type of the product - Vegetable, fruits and ect.
+                            </p>
                         </li>
                     </ul>
                 </article>
-                <form 
+                <form
                     className={styles["create"]}
                     onSubmit={(ev) => submitHandler(ev, state)}
                 >
@@ -60,10 +70,10 @@ const CreateProduct = () => {
                     </div>
                     <label htmlFor="title">Title:</label>
                     <div>
-                        <input 
-                            type="text" 
-                            id="title" 
-                            name="title" 
+                        <input
+                            type="text"
+                            id="title"
+                            name="title"
                             placeholder="Title..."
                             onChange={(ev) => changeHandler(ev)}
                             value={state.title}
@@ -72,10 +82,10 @@ const CreateProduct = () => {
                     </div>
                     <label htmlFor="type">Type:</label>
                     <div>
-                        <input 
-                            type="text" 
-                            id="type" 
-                            name="type" 
+                        <input
+                            type="text"
+                            id="type"
+                            name="type"
                             placeholder="Fruits..."
                             onChange={(ev) => changeHandler(ev)}
                             value={state.type}
@@ -84,10 +94,10 @@ const CreateProduct = () => {
                     </div>
                     <label htmlFor="imageUrl">Image Url:</label>
                     <div>
-                        <input 
-                            type="text" 
-                            id="imageUrl" 
-                            name="imageUrl" 
+                        <input
+                            type="text"
+                            id="imageUrl"
+                            name="imageUrl"
                             placeholder="https://..."
                             onChange={(ev) => changeHandler(ev)}
                             value={state.imageUrl}
