@@ -65,11 +65,12 @@ router.get('/logout', (req, res) => {
 
 router.post('/email-test', async (req, res) => {
     const { email } = req.body;
-    const user = await authService.getByEmail(email);
-    if (!user.message) {
+    const user = await authService.getByEmail(email.email, email.secretWord);
+    if (!user.message) { 
         res.json(user[0]);
     } else {
         res.json(user);
+        
     }
 });
 

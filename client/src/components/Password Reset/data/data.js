@@ -1,7 +1,8 @@
 export const initData = {
     email: "",
     password: "",
-    rePass: ""
+    rePass: "",
+    secretWord: ""
 };
 
 export function reducer(state, action) {

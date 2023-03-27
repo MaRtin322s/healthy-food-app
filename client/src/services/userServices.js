@@ -42,13 +42,13 @@ export const resetPassword = (passwordData) => {
         .then(res => res.json());
 };
 
-export const testForEmail = (email) => {
+export const testForEmail = (email, secretWord) => {
     return fetch(`${baseUrl}/email-test`, {
         method: "POST",
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(email)
+        body: JSON.stringify({email, secretWord })
     })
         .then(res => res.json());
 };

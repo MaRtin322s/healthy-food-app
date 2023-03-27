@@ -25,7 +25,11 @@ const userSchema = new mongoose.Schema({
     savedRecipes: [{
         type: mongoose.Types.ObjectId,
         ref: 'Recipe'
-    }]
+    }],
+    secretWord: {
+        type: String,
+        required: true
+    }
 });
 
 const User = mongoose.model('User', userSchema);

@@ -28,7 +28,7 @@ const PasswordReset = memo(() => {
         ev.preventDefault();
 
         if (state.email !== "") {
-            service.testForEmail({ email: state.email })
+            service.testForEmail({ email: state.email, secretWord: state.secretWord })
                 .then(result => {
                     if (result.message) {
                         throw result;
@@ -70,7 +70,7 @@ const PasswordReset = memo(() => {
                 });
         };
     };
-
+    
     return (
         <>
             {showComponent.show &&
@@ -119,6 +119,19 @@ const PasswordReset = memo(() => {
                                 placeholder="Enter your email..."
                                 required
                                 value={state.email}
+                                onChange={(ev) => changeHandler(ev)}
+                            />
+                        </div>
+                        <label htmlFor="secret">Secret word:</label>
+                        <div>
+                            <input
+                                className={styles["email"]}
+                                type="text"
+                                id="secret"
+                                name="secretWord"
+                                placeholder="Enter your secret word..."
+                                required
+                                value={state.secretWord}
                                 onChange={(ev) => changeHandler(ev)}
                             />
                         </div>
