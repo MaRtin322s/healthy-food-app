@@ -8,17 +8,17 @@ const EditRecipe = () => {
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
     const { recipeId } = useParams();
-    const [recipe, setRecipe] = useState({
+    const [newValues, setNewValues] = useState({
         title: "",
         category: "",
         imageUrl: "",
-        ingredients: [],
+        ingredients: "",
         preparation: ""
     });
 
     const changeHandler = (ev) => {
-        setRecipe(recipe => ({ 
-            ...recipe, 
+        setNewValues(state => ({
+            ...state,
             [ev.target.name]: ev.target.value,
 
         }));
@@ -27,13 +27,18 @@ const EditRecipe = () => {
     useEffect(() => {
         service.getOne(recipeId)
             .then(result => {
-                setRecipe(result);
+                setNewValues(state => ({
+                    ...state,
+                    ...result,
+                    ingredients: result.ingredients.join("\n")
+                }));
             });
     }, [recipeId]);
 
     const submitHandler = (ev, data, token, recipeId) => {
         ev.preventDefault();
-        service.editRecipe(data, token, recipeId)
+        const ingredients = data.ingredients.split("\n");
+        service.editRecipe({ ...newValues, ingredients }, token, recipeId)
             .then(() => navigate(`/details/recipes/${recipeId}`, { replace: true }));
     };
 
@@ -59,7 +64,7 @@ const EditRecipe = () => {
                 </article>
                 <form
                     className={styles["create"]}
-                    onSubmit={(ev) => submitHandler(ev, recipe, user.accessToken, recipeId)}
+                    onSubmit={(ev) => submitHandler(ev, newValues, user.accessToken, recipeId)}
                 >
                     <h1 className={styles["create-heading"]}>Edit Recipes</h1>
                     <label htmlFor="title">Title:</label>
@@ -69,7 +74,7 @@ const EditRecipe = () => {
                             id="title"
                             name="title"
                             placeholder="Title..."
-                            value={recipe.title}
+                            value={newValues.title}
                             onChange={(ev) => changeHandler(ev)}
                             required
                         />
@@ -81,7 +86,7 @@ const EditRecipe = () => {
                             id="category"
                             name="category"
                             placeholder="Main dish...."
-                            value={recipe.category}
+                            value={newValues.category}
                             onChange={(ev) => changeHandler(ev)}
                             required
                         />
@@ -93,7 +98,7 @@ const EditRecipe = () => {
                             id="imageUrl"
                             name="imageUrl"
                             placeholder="https://..."
-                            value={recipe.imageUrl}
+                            value={newValues.imageUrl}
                             onChange={(ev) => changeHandler(ev)}
                             required
                         />
@@ -108,7 +113,7 @@ const EditRecipe = () => {
                                 id="ingredients"
                                 name="ingredients"
                                 placeholder="1/2 teaspoon salt..."
-                                value={recipe.ingredients}
+                                value={newValues.ingredients}
                                 onChange={(ev) => changeHandler(ev)}
                                 required
                             />
@@ -121,7 +126,7 @@ const EditRecipe = () => {
                                 id="preparation"
                                 name="preparation"
                                 placeholder="Cooking preparation..."
-                                value={recipe.preparation}
+                                value={newValues.preparation}
                                 onChange={(ev) => changeHandler(ev)}
                                 required
                             />
