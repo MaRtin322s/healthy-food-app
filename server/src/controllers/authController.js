@@ -8,6 +8,7 @@ router.post('/register', async (req, res) => {
         lastName,
         email,
         imageUrl,
+        secretWord,
         password,
         rePass } = req.body;
 
@@ -15,7 +16,14 @@ router.post('/register', async (req, res) => {
         if (password !== rePass) {
             return res.status(400).json({ message: 'Passwords do not match' });
         } else {
-            const result = await authService.registerUser({ firstName, lastName, email, imageUrl, password });
+            const result = await authService.registerUser({ 
+                firstName, 
+                lastName, 
+                email, 
+                imageUrl, 
+                secretWord, 
+                password 
+            });
 
             if (typeof result === 'string') {
                 throw result;

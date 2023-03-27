@@ -3,6 +3,7 @@ export const initData = {
     lastName: "",
     email: "",
     imageUrl: "",
+    secretWord: "",
     password: "",
     rePass: ""
 };

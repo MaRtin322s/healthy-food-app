@@ -166,6 +166,20 @@ const Register = () => {
                             }
                         </div>
 
+                        <label htmlFor="secret">Secret Word:</label>
+                        <div>
+                            <input
+                                className={styles["email"]}
+                                type="text"
+                                id="secret"
+                                name="secretWord"
+                                placeholder="Secret word..."
+                                value={state.secretWord}
+                                onChange={(ev) => chnageHandler(ev)}
+                                required
+                            />
+                        </div>
+
                         <label htmlFor="password">Password:</label>
                         <div>
                             <p
