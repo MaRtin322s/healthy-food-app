@@ -63,3 +63,5 @@ exports.unsave = async (userId, data) =>
         { $set: { savedRecipes: data } },
         { new: true }
     );
+
+exports.deleteUser = async (userId) => await User.findByIdAndDelete({ _id: userId });

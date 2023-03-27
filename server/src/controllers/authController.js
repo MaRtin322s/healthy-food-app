@@ -107,4 +107,10 @@ router.post("/unsave/:userId", async (req, res) => {
     res.json(user.savedRecipes);
 });
 
+router.delete("/delete/:userId", async (req, res) => {
+    const userId = req.params.userId;
+    const user = await authService.deleteUser(userId);
+    res.json(user);
+});
+
 module.exports = router;

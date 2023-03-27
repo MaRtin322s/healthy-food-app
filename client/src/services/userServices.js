@@ -65,5 +65,15 @@ export const unsaveRecipe = (recipeData, userId, token) => {
             },
             body: JSON.stringify(recipeData)
         })
-            .then(res => res.json());
+            .then(res => res.json())
     };
+
+export const deleteAccount = (userId, token) => {
+    return fetch(`${baseUrl}/delete/${userId}`, {
+        method: "DELETE",
+        headers: {
+            'X-Authorization': token
+        }
+    })
+        .then(res => res.json());
+};
