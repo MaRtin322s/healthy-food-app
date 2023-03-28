@@ -4,6 +4,7 @@ import { PublicContext } from "../../contexts/PublicationContext";
 import ProductItem from "./ProductItem";
 import Spinner from "../Spinner/Spinner";
 import styles from "./styles/productsCatalog.module.css";
+import resp from "./styles/responsive.module.css";
 
 const ProductsCatalog = () => {
     const [products, setProducts] = useState([]);
@@ -28,18 +29,24 @@ const ProductsCatalog = () => {
     }, [getAllProducts]);
 
     return (
-        <div className={styles["main-wrapper"]}>
-            <div>
-                <Link className={styles["catalog-recipes"]} to="/catalog-recipes">
+        <div className={`${styles["main-wrapper"]} ${resp["main-wrapper"]}`}>
+            <div className={`${styles["links-wrapper"]} ${resp["links-wrapper"]}`}>
+                <Link
+                    className={`${styles["catalog-recipes"]} ${resp["catalog-recipes"]}`}
+                    to="/catalog-recipes"
+                >
                     Catalog Recipes
                 </Link>
-                <Link className={styles["catalog-products"]} to="/catalog-products">
+                <Link
+                    className={`${styles["catalog-products"]} ${resp["catalog-products"]}`}
+                    to="/catalog-products"
+                >
                     Catalog Products
                 </Link>
             </div>
             {currentPage > 1 && (
                 <button
-                    className={styles["btn-pagination"]}
+                    className={`${styles["btn-pagination"]} ${resp["btn-pagination"]}`}
                     onClick={() => setCurrentPage(currentPage - 1)}
                 >
                     Previous Page
@@ -48,15 +55,15 @@ const ProductsCatalog = () => {
             {currentPage < totalPages && (
                 <>
                     <button
-                        className={styles["btn-pagination"]}
+                        className={`${styles["btn-pagination"]} ${resp["btn-pagination"]}`}
                         onClick={() => setCurrentPage(currentPage + 1)}
                     >
                         Next Page
                     </button>
                 </>
             )}
-            <h1 className={styles["curr-page"]}>Current Page: {currentPage}</h1>
-            <section className={styles["catalog"]}>
+            <h1 className={`${styles["curr-page"]} ${resp["curr-page"]}`}>Current Page: {currentPage}</h1>
+            <section className={`${styles["catalog"]} ${resp["catalog"]}`}>
                 {loading
                     ? <Spinner />
                     :
@@ -70,7 +77,7 @@ const ProductsCatalog = () => {
                                 :
                                 <>
                                     <h1
-                                        className={`${styles["no-content"]}`}
+                                        className={`${styles["no-content"]} ${resp["no-content"]}`}
                                     >
                                         There are no products created yet.
                                     </h1>

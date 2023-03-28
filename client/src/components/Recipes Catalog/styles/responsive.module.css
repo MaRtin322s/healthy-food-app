@@ -17,7 +17,7 @@
         flex-direction: column;
         margin-left: 70px;
         margin-top: 30px;
-        
+
     }
 
     .catalog-recipes,
@@ -33,5 +33,17 @@
         border-bottom: 2px solid black;
         width: 270px;
         padding-bottom: 20px;
+    }
+
+    button.btn-pagination {
+        padding: 5px 10px;
+        background-color: rgb(183, 180, 180);
+        color: black;
+        cursor: pointer;
+        font-size: 20px;
+        font-weight: 600;
+        margin-left: 57px;
+        margin-bottom: 50px;
+        width: 300px;
     }
 }
