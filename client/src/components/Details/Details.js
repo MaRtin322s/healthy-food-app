@@ -7,16 +7,21 @@ import * as userService from "../../services/userServices";
 import * as service from "../../services/recipeService";
 import { saveAs } from "file-saver";
 import ProgressBar from "../Progress Bar/ProgressBar";
+import { PublicContext } from "../../contexts/PublicationContext";
 
 const Details = () => {
     const { recipeId } = useParams();
     const navigate = useNavigate();
-    const { getOneRecipe } = useContext(AuthContext);
+    const { user, getOneRecipe } = useContext(AuthContext);
+    const {
+        closeHandler,
+        showDeleteProduct,
+        showDelete,
+        isDownloading,
+        setIsDownloading
+    } = useContext(PublicContext);
     const [recipe, setRecipe] = useState({});
     const [saved, setSaved] = useState([]);
-    const [showDelete, setShowDelete] = useState(false);
-    const { user } = useContext(AuthContext);
-    const [isDownloading, setIsDownloading] = useState(false);
 
     useEffect(() => {
         getOneRecipe(recipeId)
@@ -29,17 +34,8 @@ const Details = () => {
 
     const deleteHandler = (ev, recipeId, token) => {
         ev.preventDefault();
-
         service.deleteRecipe(recipeId, token)
             .then(() => navigate("/catalog-recipes", { replace: true }));
-    }
-
-    const showDeleteRecipe = () => {
-        setShowDelete(true);
-    };
-
-    const closeHandler = () => {
-        setShowDelete(false);
     }
 
     const saveHandler = (ev, recipeId, userId, token) => {
@@ -83,7 +79,7 @@ const Details = () => {
         <>
             {isDownloading
                 ?
-                <ProgressBar  />
+                <ProgressBar />
                 : null
             }
             {showDelete &&
@@ -145,7 +141,7 @@ const Details = () => {
                                     </Link>
                                     <Link
                                         className={styles["btn-details"]}
-                                        onClick={() => showDeleteRecipe()}
+                                        onClick={() => showDeleteProduct()}
                                     >
                                         <i className="fas fa-trash-alt"></i>
                                         Delete

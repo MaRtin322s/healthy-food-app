@@ -11,8 +11,13 @@ const ProductDetails = () => {
     const navigate = useNavigate();
     const { productId } = useParams();
     const [product, setProduct] = useState([]);
-    const [showDelete, setShowDelete] = useState(false);
-    const { getOneProduct } = useContext(PublicContext);
+    const {
+        getOneProduct,
+        closeHandler,
+        showDelete,
+        backHandleClick,
+        showDeleteProduct
+    } = useContext(PublicContext);
 
     useEffect(() => {
         getOneProduct(productId)
@@ -23,18 +28,6 @@ const ProductDetails = () => {
         ev.preventDefault();
         service.deleteProduct(productId, token)
             .then(() => navigate("/catalog-products", { replace: true }));
-    }
-
-    const closeHandler = () => {
-        setShowDelete(false);
-    }
-
-    const showDeleteProduct = () => {
-        setShowDelete(true);
-    }
-
-    const backHandleClick = () => {
-        navigate(-1);
     }
 
     return (
@@ -49,7 +42,7 @@ const ProductDetails = () => {
                 />
             }
             <div className={styles["wrap-main"]}>
-                <button 
+                <button
                     className={styles["back-btn"]}
                     onClick={(ev) => backHandleClick()}
                 >
