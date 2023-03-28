@@ -1,11 +1,11 @@
 import { memo, useCallback, useContext, useReducer, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
+import styles from "./styles/login.module.css";
+import resp from "./styles/responsive.module.css";
 import { AuthContext } from "../../contexts/UserContext";
 import * as service from "../../services/userServices";
 import { initData, reducer } from "./data/data";
 import Error from "../Error/Error";
-import styles from "./styles/login.module.css";
 import background from "./images/backgr.jpg";
 
 const Login = memo(() => {
@@ -57,9 +57,9 @@ const Login = memo(() => {
             {showComponent.show &&
                 <Error message={showComponent.title} />
             }
-            <img className={styles["background-img"]} src={background} alt="background" />
-            <section className={styles["login-page"]}>
-                <ul className={styles["info-list"]}>
+            <img className={`${styles["background-img"]} ${resp["background-img"]}`} src={background} alt="background" />
+            <section className={`${styles["login-page"]} ${resp["login-page"]}`}>
+                <ul className={`${styles["info-list"]} ${resp["info-list"]}`}>
                     <li>Login Information</li>
                     <li>
                         <p>
@@ -87,19 +87,19 @@ const Login = memo(() => {
                     </li>
                 </ul>
                 <form
-                    className={styles["login"]}
+                    className={`${styles["login"]} ${resp["login"]}`}
                     onSubmit={(ev) => submitHandler(ev, state)}
                 >
-                    <h1 className={styles["login-heading"]}>Login for users</h1>
-                    <p className={styles["login-info"]}>
+                    <h1 className={`${styles["login-heading"]} ${resp["login-heading"]}`}>Login for users</h1>
+                    <p className={`${styles["login-info"]} ${resp["login-info"]}`}>
                         Hey, enter your details to get sign in to your account.
                     </p>
-                    <article className={styles["user-info"]}>
+                    <article className={`${styles["user-info"]} ${resp["user-info"]}`}>
                         <h4>User Information</h4>
                         <label htmlFor="email">Email:</label>
                         <div>
                             <input
-                                className={styles["email"]}
+                                className={`${styles["email"]} ${resp["email"]}`}
                                 type="email"
                                 id="email"
                                 name="email"
@@ -111,9 +111,9 @@ const Login = memo(() => {
                             />
                         </div>
                         <label htmlFor="password">Password:</label>
-                        <div className={styles["password-container"]}>
+                        <div className={`${styles["password-container"]} ${resp["password-container"]}`}>
                             <input
-                                className={styles["password"]}
+                                className={`${styles["password"]} ${resp["password"]}`}
                                 type="password"
                                 id="password"
                                 name="password"
@@ -129,7 +129,12 @@ const Login = memo(() => {
                         <p>
                             Forgot your password? <Link to="/password-reset" replace>Click here</Link>
                         </p>
-                        <input className={styles["btn-login"]} type="submit" value={"Login"} />
+                        <input
+                            className={`
+                                ${styles["btn-login"]} 
+                                ${resp["btn-login"]}`
+                            } type="submit"
+                            value={"Login"} />
                     </article>
                 </form>
             </section>
