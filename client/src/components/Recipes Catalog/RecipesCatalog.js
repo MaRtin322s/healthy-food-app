@@ -44,7 +44,7 @@ const RecipesCatalog = () => {
                     className={`${styles["btn-pagination"]} ${resp["btn-pagination"]}`}
                     onClick={() => setCurrentPage(currentPage - 1)}
                 >
-                    Previous Page
+                    Previous Page {currentPage - 1}
                 </button>
             )}
             {currentPage < totalPages && (
@@ -53,7 +53,7 @@ const RecipesCatalog = () => {
                         className={`${styles["btn-pagination"]} ${resp["btn-pagination"]}`}
                         onClick={() => setCurrentPage(currentPage + 1)}
                     >
-                        Next Page
+                        Next Page {currentPage + 1}
                     </button>
                 </>
             )}
