@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const fs = require('fs');
 const { getAuthor } = require('../services/authServices');
 const router = require('express').Router();
 const recipeService = require('../services/recipeService');
