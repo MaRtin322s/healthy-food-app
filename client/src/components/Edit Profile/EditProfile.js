@@ -1,7 +1,5 @@
 import { useCallback, useState } from "react";
 import styles from "./styles/editProfile.module.css";
-import * as service from "../../services/userServices";
-import { useNavigate } from "react-router-dom";
 
 const EditProfile = ({
     closeEditModal,
@@ -12,7 +10,6 @@ const EditProfile = ({
     _id,
     submitHandler
 }) => {
-    const navigate = useNavigate();
     const [values, setValues] = useState({
         firstName: firstName,
         lastName: lastName,
