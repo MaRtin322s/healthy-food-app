@@ -9,20 +9,20 @@ const EditProfile = ({
             <div id={styles["delete-modal"]} className={styles["modal-container"]}>
                 <form>
                     <h2>Edit profile:</h2>
+                    <label htmlFor="firstName">First Name:</label>
                     <div>
-                        <label htmlFor="firstName">First Name:</label>
                         <input type="text" id="firstName" />
                     </div>
+                    <label htmlFor="lastName">Last Name:</label>
                     <div>
-                        <label htmlFor="lastName">Last Name:</label>
                         <input type="text" id="lastName" />
                     </div>
+                    <label htmlFor="email">Email:</label>
                     <div>
-                        <label htmlFor="email">Email:</label>
                         <input type="text" id="email" />
                     </div>
+                    <label htmlFor="imageUrl">ImageUrl:</label>
                     <div>
-                        <label htmlFor="imageUrl">ImageUrl:</label>
                         <input type="text" id="imageUrl" />
                     </div>
                 </form>
