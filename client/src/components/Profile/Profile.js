@@ -54,14 +54,28 @@ const Profile = memo(() => {
             });
     };
 
+    const submitHandler = (ev, data, id) => {
+        ev.preventDefault();
+
+        service.updateUser(id, data)
+            .then(() => {
+                service.getUser(id)
+                    .then((res) => {
+                        setData(res);
+                    })
+                closeEditModal();
+                navigate("/profile", { replace: true })
+            });
+    };
+
     return (
         <>
-            {showDelete && 
+            {showDelete &&
                 <Delete userId={user._id} closeHandler={closeHandler} deleteHandler={deleteHandler} />
             }
 
             {showEdit &&
-                <EditProfile closeEditModal={closeEditModal} />
+                <EditProfile closeEditModal={closeEditModal} {...data} submitHandler={submitHandler} />
             }
             <section className={styles["profile-section"]}>
                 <h1 className={styles["profile-heading"]}>Personal Information:</h1>
@@ -73,7 +87,7 @@ const Profile = memo(() => {
                     />
                     {/* eslint-disable-next-line */}
                     <ul className={styles["personal-info"]} role={"list"}>
-                        <button 
+                        <button
                             className={styles["delete-account"]}
                             onClick={() => showDeleteModal()}
                         >
@@ -82,8 +96,8 @@ const Profile = memo(() => {
                         <button
                             className={styles["edit-account"]}
                             onClick={() => showEditModal()}
-                            >
-                                <i className="fas fa-edit"></i>
+                        >
+                            <i className="fas fa-edit"></i>
                         </button>
                         <li>First Name: {data.firstName}</li>
                         <li>Last Name: {data.lastName}</li>

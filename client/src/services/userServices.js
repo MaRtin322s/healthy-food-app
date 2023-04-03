@@ -77,3 +77,14 @@ export const deleteAccount = (userId, token) => {
     })
         .then(res => res.json());
 };
+
+export const updateUser = (userId, userData) => {
+    return fetch(`${baseUrl}/update/${userId}`, {
+        method: "PATCH",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(userData)
+    })
+        .then(res => res.json());
+};

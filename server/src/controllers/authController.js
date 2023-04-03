@@ -112,4 +112,11 @@ router.delete("/delete/:userId", async (req, res) => {
     res.json(user);
 });
 
+router.patch("/update/:userId", async (req, res) => {
+    const userId = req.params.userId;
+    const newData = req.body;
+    const user = await authService.getAuthor(userId)
+    const updatedUser = await authService.updateUser(userId, Object.assign(user, newData));
+    res.json(updatedUser);
+});
 module.exports = router;
