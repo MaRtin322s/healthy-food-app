@@ -23,9 +23,6 @@ const Header = () => {
                     <li className={styles["nav-item"]}>
                         <Link to="/catalog-recipes">Calatog</Link>
                     </li>
-                    <li className={styles["nav-item"]}>
-                        <Link to="/forum"><i className="fab fa-wpforms"></i>Food-Forum</Link>
-                    </li>
                     {user.accessToken
                         ?
                         <>
