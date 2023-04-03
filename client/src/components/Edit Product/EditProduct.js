@@ -25,12 +25,17 @@ const EditProduct = () => {
 
     useEffect(() => {
         service.getOne(productId)
-            .then(result => setProduct(result));
+            .then(result => setProduct(state => ({
+                ...state,
+                ...result,
+                nutrition: result.nutrition.join("\n")
+            })));
     }, [productId]);
 
     const submitHandler = (ev, data, token, id) => {
         ev.preventDefault();
-        service.editProduct(data, token, id)
+        const nutrition = data.nutrition.split("\n");
+        service.editProduct({ ...data, nutrition }, token, id)
             .then(() => navigate(`/details/products/${productId}`, { replace: true }));
     };
 
