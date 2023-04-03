@@ -8,6 +8,7 @@ import RecipeItem from "./RecipeItem";
 import ProductItem from "./ProductItem";
 import Delete from "./Delete";
 import { useNavigate } from "react-router-dom";
+import EditProfile from "../Edit Profile/EditProfile";
 
 const Profile = memo(() => {
     const { user, userLogout } = useContext(AuthContext);
@@ -17,6 +18,7 @@ const Profile = memo(() => {
     const [ownProducts, setProducts] = useState([]);
     const [saved, setSaved] = useState([]);
     const [showDelete, setShowDelete] = useState(false);
+    const [showEdit, setShowEdit] = useState(false);
 
     useEffect(() => {
         service.getUser(user._id)
@@ -37,6 +39,10 @@ const Profile = memo(() => {
         setShowDelete(false);
     }
 
+    const showEditModal = () => {
+        setShowEdit(true);
+    }
+
     const deleteHandler = (userId) => {
         service.deleteAccount(userId)
             .then(() => {
@@ -49,6 +55,10 @@ const Profile = memo(() => {
         <>
             {showDelete && 
                 <Delete userId={user._id} closeHandler={closeHandler} deleteHandler={deleteHandler} />
+            }
+
+            {showEdit &&
+                <EditProfile />
             }
             <section className={styles["profile-section"]}>
                 <h1 className={styles["profile-heading"]}>Personal Information:</h1>
@@ -68,6 +78,7 @@ const Profile = memo(() => {
                         </button>
                         <button
                             className={styles["edit-account"]}
+                            onClick={() => showEditModal()}
                             >
                                 <i className="fas fa-edit"></i>
                         </button>
