@@ -61,5 +61,5 @@ export const download = async (recipeData, token) => {
         },
         body: JSON.stringify(recipeData)
     });
-    return await res.json();    
+    return await res.blob();    
 };
