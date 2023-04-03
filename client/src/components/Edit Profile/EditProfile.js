@@ -1,22 +1,40 @@
 import styles from "./styles/editProfile.module.css";
 
-const EditProfile = ({ 
-
+const EditProfile = ({
+    closeEditModal
 }) => {
     return (
-        <>  
-            <div className={styles["backdrop"]}></div>
+        <>
+            <div className={styles["backdrop"]} onClick={() => closeEditModal()}></div>
             <div id={styles["delete-modal"]} className={styles["modal-container"]}>
-                <h2>Delete</h2>
-                <p>Are you sure you want to delete this?</p>
-                <button 
-                    id={styles["delete-confirm"]} 
+                <form>
+                    <h2>Edit profile:</h2>
+                    <div>
+                        <label htmlFor="firstName">First Name:</label>
+                        <input type="text" id="firstName" />
+                    </div>
+                    <div>
+                        <label htmlFor="lastName">Last Name:</label>
+                        <input type="text" id="lastName" />
+                    </div>
+                    <div>
+                        <label htmlFor="email">Email:</label>
+                        <input type="text" id="email" />
+                    </div>
+                    <div>
+                        <label htmlFor="imageUrl">ImageUrl:</label>
+                        <input type="text" id="imageUrl" />
+                    </div>
+                </form>
+                <button
+                    id={styles["delete-confirm"]}
                 >
-                    Yes, delete it
+                    Edit profile
                 </button>
 
-                <button 
-                    id={styles["delete-cancel"]} 
+                <button
+                    id={styles["delete-cancel"]}
+                    onClick={() => closeEditModal()}
                 >
                     Cancel
                 </button>

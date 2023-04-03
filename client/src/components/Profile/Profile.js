@@ -42,6 +42,9 @@ const Profile = memo(() => {
     const showEditModal = () => {
         setShowEdit(true);
     }
+    const closeEditModal = () => {
+        setShowEdit(false);
+    }
 
     const deleteHandler = (userId) => {
         service.deleteAccount(userId)
@@ -58,7 +61,7 @@ const Profile = memo(() => {
             }
 
             {showEdit &&
-                <EditProfile />
+                <EditProfile closeEditModal={closeEditModal} />
             }
             <section className={styles["profile-section"]}>
                 <h1 className={styles["profile-heading"]}>Personal Information:</h1>
