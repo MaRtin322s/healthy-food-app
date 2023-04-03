@@ -66,6 +66,11 @@ const Profile = memo(() => {
                         >
                             <i className="fas fa-trash-alt"></i>
                         </button>
+                        <button
+                            className={styles["edit-account"]}
+                            >
+                                <i className="fas fa-edit"></i>
+                        </button>
                         <li>First Name: {data.firstName}</li>
                         <li>Last Name: {data.lastName}</li>
                         <li>Email: {data.email}</li>
