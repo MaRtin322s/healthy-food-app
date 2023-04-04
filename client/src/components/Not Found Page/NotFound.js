@@ -1,9 +1,9 @@
+import React from "react";
 import { Link } from "react-router-dom";
 
 import styles from "./styles/notFound.module.css";
 import oops from "./images/oops.png";
 import background from "./images/backgr.jpg";
-import React from "react";
 
 const NotFound = React.memo(() => {
     return (

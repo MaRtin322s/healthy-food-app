@@ -10,7 +10,6 @@ const Delete = ({
     _id
 }) => {
     const { user } = useContext(AuthContext);
-
     return (
         <>  
             <div className={styles["backdrop"]} onClick={() => closeHandler()}></div>

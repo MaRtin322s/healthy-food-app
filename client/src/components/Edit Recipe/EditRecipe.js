@@ -1,8 +1,10 @@
+import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+
 import * as service from "../../services/recipeService";
 import { AuthContext } from "../../contexts/UserContext";
+
 import styles from "./styles/edit.module.css";
-import { useContext, useEffect, useState } from "react";
 
 const EditRecipe = () => {
     const { user } = useContext(AuthContext);

@@ -1,8 +1,10 @@
-import { useNavigate, useParams } from "react-router-dom";
-import styles from "./styles/editProduct.module.css";
-import { AuthContext } from "../../contexts/UserContext";
-import * as service from "../../services/productService";
 import { useCallback, useContext, useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+
+import * as service from "../../services/productService";
+import { AuthContext } from "../../contexts/UserContext";
+
+import styles from "./styles/editProduct.module.css";
 
 const EditProduct = () => {
     const navigate = useNavigate();

@@ -1,12 +1,13 @@
-import { useContext, useEffect, useReducer, useState } from "react";
+import { useContext, useEffect, useReducer } from "react";
 import { Link } from "react-router-dom";
+
 import { AuthContext } from "../../contexts/UserContext";
+import { initialState, reducer } from "./data/data";
 import RecipeCatalogItem from "./RecipeItem";
 import Spinner from "../Spinner/Spinner";
 
 import styles from "./styles/recipesCatalog.module.css";
 import resp from "./styles/responsive.module.css";
-import { initialState, reducer } from "./data/data";
 
 const RecipesCatalog = () => {
     const [state, dispatch] = useReducer(reducer, initialState);

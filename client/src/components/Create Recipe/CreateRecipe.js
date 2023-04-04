@@ -1,10 +1,12 @@
+import { useCallback, useContext, useReducer } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import * as service from "../../services/recipeService";
+
 import { AuthContext } from "../../contexts/UserContext";
+import * as service from "../../services/recipeService";
+import { initData, reducer } from "./data/data";
+
 import styles from "./styles/createRecipe.module.css";
 import background from "./images/backgr.jpg";
-import { useCallback, useContext, useReducer } from "react";
-import { initData, reducer } from "./data/data";
 
 const CreateRecipe = () => {
     const { user } = useContext(AuthContext);

@@ -1,10 +1,12 @@
+import { useCallback, useContext, useReducer } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import styles from "./styles/createProduct.module.css";
-import background from "./images/backgr.jpg";
+
 import { AuthContext } from "../../contexts/UserContext";
 import * as service from "../../services/productService";
 import { initData, reducer } from "./data/data";
-import { useCallback, useContext, useReducer } from "react";
+
+import styles from "./styles/createProduct.module.css";
+import background from "./images/backgr.jpg";
 
 const CreateProduct = () => {
     const [state, dispatch] = useReducer(reducer, initData);

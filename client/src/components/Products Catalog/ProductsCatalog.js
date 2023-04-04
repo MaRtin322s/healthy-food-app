@@ -1,11 +1,13 @@
 import { useContext, useEffect, useReducer } from "react";
 import { Link } from "react-router-dom";
+
 import { PublicContext } from "../../contexts/PublicationContext";
-import ProductItem from "./ProductItem";
 import Spinner from "../Spinner/Spinner";
+import ProductItem from "./ProductItem";
+import { initialState, reducer } from "./data/data";
+
 import styles from "./styles/productsCatalog.module.css";
 import resp from "./styles/responsive.module.css";
-import { initialState, reducer } from "./data/data";
 
 const ProductsCatalog = () => {
     const [state, dispatch] = useReducer(reducer, initialState);

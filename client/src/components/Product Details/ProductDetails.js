@@ -1,10 +1,12 @@
-import { Link, useNavigate, useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../contexts/UserContext";
-import styles from "./styles/productDetails.module.css";
+import { Link, useNavigate, useParams } from "react-router-dom";
+
 import * as service from "../../services/productService";
+import { AuthContext } from "../../contexts/UserContext";
 import { PublicContext } from "../../contexts/PublicationContext";
 import Delete from "../Delete Products/DeleteProducts";
+
+import styles from "./styles/productDetails.module.css";
 
 const ProductDetails = () => {
     const { user } = useContext(AuthContext);

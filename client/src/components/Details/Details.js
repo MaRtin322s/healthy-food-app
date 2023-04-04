@@ -1,10 +1,12 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
+
 import { AuthContext } from "../../contexts/UserContext";
 import { PublicContext } from "../../contexts/PublicationContext";
 import * as service from "../../services/recipeService";
 import * as userService from "../../services/userServices";
 import { saveAs } from "file-saver";
+
 import Delete from "../Delete Recipes/DeleteRecipes";
 import ProgressBar from "../Progress Bar/ProgressBar";
 import styles from "./styles/details.module.css";

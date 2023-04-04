@@ -1,15 +1,17 @@
 import { useContext, useEffect, memo, useReducer } from "react";
+import { useNavigate } from "react-router-dom";
+
 import { AuthContext } from "../../contexts/UserContext";
 import * as service from "../../services/userServices";
 import * as recipeService from "../../services/recipeService";
 import * as productService from "../../services/productService";
-import styles from "./styles/profile.module.css";
 import RecipeItem from "./RecipeItem";
 import ProductItem from "./ProductItem";
 import Delete from "./Delete";
-import { useNavigate } from "react-router-dom";
 import EditProfile from "../Edit Profile/EditProfile";
 import { initialState, reducer } from "./data/data";
+
+import styles from "./styles/profile.module.css";
 
 const Profile = memo(() => {
     const [state, dispatch] = useReducer(reducer, initialState);
