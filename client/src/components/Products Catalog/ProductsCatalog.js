@@ -22,7 +22,7 @@ const ProductsCatalog = () => {
             getAllProducts()
                 .then(result => {
                     dispatch({ type: "SET_LOADING", value: false });
-                    dispatch({ type: "SET_PRODUCTS", products: result.revers() });
+                    dispatch({ type: "SET_PRODUCTS", products: result.reverse() });
                 });
         }, [1500]);
     }, [getAllProducts]);
@@ -75,7 +75,9 @@ const ProductsCatalog = () => {
                             state.products.length > 0
                                 ?
                                 <>
-                                    {currentItems.map(product => <ProductItem key={product._id} {...product} />)}
+                                    {currentItems.map(product => 
+                                        <ProductItem key={product._id} {...product} />)
+                                    }
                                 </>
                                 :
                                 <>

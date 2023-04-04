@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useReducer, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/UserContext";
 import RecipeCatalogItem from "./RecipeItem";
@@ -6,25 +6,24 @@ import Spinner from "../Spinner/Spinner";
 
 import styles from "./styles/recipesCatalog.module.css";
 import resp from "./styles/responsive.module.css";
+import { initialState, reducer } from "./data/data";
 
 const RecipesCatalog = () => {
+    const [state, dispatch] = useReducer(reducer, initialState);
     const { getAllRecipes } = useContext(AuthContext);
-    const [recipes, setRecipes] = useState([]);
-    const [loading, setLoading] = useState(false);
-    const [currentPage, setCurrentPage] = useState(1);
 
-    const totalPages = Math.ceil(recipes.length / 12);
-    const indexOfLastItem = currentPage * 12;
+    const totalPages = Math.ceil(state.recipes.length / 12);
+    const indexOfLastItem = state.currentPage * 12;
     const indexOfFirstItem = indexOfLastItem - 12;
-    const currentItems = recipes.slice(indexOfFirstItem, indexOfLastItem);
+    const currentItems = state.recipes.slice(indexOfFirstItem, indexOfLastItem);
 
     useEffect(() => {
-        setLoading(true);
+        dispatch({ type: "SET_LOADING", value: true });
         setTimeout(() => {
             getAllRecipes()
                 .then(result => {
-                    setRecipes(result.reverse());
-                    setLoading(false);
+                    dispatch({ type: "SET_RECIPES", recipes: result.reverse() });
+                    dispatch({ type: "SET_LOADING", value: false });
                 });
         }, 1500);
     }, [getAllRecipes]);
@@ -39,32 +38,36 @@ const RecipesCatalog = () => {
                     Catalog Products
                 </Link>
             </div>
-            {currentPage > 1 && (
+            {state.currentPage > 1 && (
                 <button
                     className={`${styles["btn-pagination"]} ${resp["btn-pagination"]}`}
-                    onClick={() => setCurrentPage(currentPage - 1)}
+                    onClick={() => 
+                        dispatch({ type: "SET_CURRENT_PAGE", currentPage: state.currentPage - 1 })
+                    }
                 >
-                    Previous Page {currentPage - 1}
+                    Previous Page
                 </button>
             )}
-            {currentPage < totalPages && (
+            {state.currentPage < totalPages && (
                 <>
                     <button
                         className={`${styles["btn-pagination"]} ${resp["btn-pagination"]}`}
-                        onClick={() => setCurrentPage(currentPage + 1)}
+                        onClick={() => 
+                            dispatch({ type: "SET_CURRENT_PAGE", currentPage: state.currentPage + 1 })
+                        }
                     >
-                        Next Page {currentPage + 1}
+                        Next Page
                     </button>
                 </>
             )}
-            <h1 className={styles["curr-page"]}>Current Page: {currentPage}</h1>
+            <h1 className={styles["curr-page"]}>Current Page: {state.currentPage}</h1>
             <section className={`${styles["catalog"]} ${resp["catalog"]}`}>
-                {loading
+                {state.loading
                     ?
                     <Spinner />
                     :
                     <>
-                        {recipes.length > 0
+                        {state.recipes.length > 0
                             ?
                             currentItems.map(recipe => (
                                 <RecipeCatalogItem key={recipe._id} {...recipe} />
