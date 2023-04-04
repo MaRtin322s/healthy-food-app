@@ -1,29 +1,28 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useReducer } from "react";
 import { Link } from "react-router-dom";
 import { PublicContext } from "../../contexts/PublicationContext";
 import ProductItem from "./ProductItem";
 import Spinner from "../Spinner/Spinner";
 import styles from "./styles/productsCatalog.module.css";
 import resp from "./styles/responsive.module.css";
+import { initialState, reducer } from "./data/data";
 
 const ProductsCatalog = () => {
-    const [products, setProducts] = useState([]);
+    const [state, dispatch] = useReducer(reducer, initialState);
     const { getAllProducts } = useContext(PublicContext);
-    const [loading, setLoading] = useState(false);
-    const [currentPage, setCurrentPage] = useState(1);
 
-    const totalPages = Math.ceil(products.length / 12);
-    const indexOfLastItem = currentPage * 12;
+    const totalPages = Math.ceil(state.products.length / 12);
+    const indexOfLastItem = state.currentPage * 12;
     const indexOfFirstItem = indexOfLastItem - 12;
-    const currentItems = products.slice(indexOfFirstItem, indexOfLastItem);
+    const currentItems = state.products.slice(indexOfFirstItem, indexOfLastItem);
 
     useEffect(() => {
-        setLoading(true);
+        dispatch({ type: "SET_LOADING", value: true });
         setTimeout(() => {
             getAllProducts()
                 .then(result => {
-                    setLoading(false);
-                    setProducts(result.reverse());
+                    dispatch({ type: "SET_LOADING", value: false });
+                    dispatch({ type: "SET_PRODUCTS", products: result.revers() });
                 });
         }, [1500]);
     }, [getAllProducts]);
@@ -44,32 +43,36 @@ const ProductsCatalog = () => {
                     Catalog Products
                 </Link>
             </div>
-            {currentPage > 1 && (
+            {state.currentPage > 1 && (
                 <button
                     className={`${styles["btn-pagination"]} ${resp["btn-pagination"]}`}
-                    onClick={() => setCurrentPage(currentPage - 1)}
+                    onClick={() => 
+                        dispatch({ type: "SET_CURRENT_PAGE", currentPage: state.currentPage - 1 })
+                    }
                 >
                     Previous Page
                 </button>
             )}
-            {currentPage < totalPages && (
+            {state.currentPage < totalPages && (
                 <>
                     <button
                         className={`${styles["btn-pagination"]} ${resp["btn-pagination"]}`}
-                        onClick={() => setCurrentPage(currentPage + 1)}
+                        onClick={() => 
+                            dispatch({ type: "SET_CURRENT_PAGE", currentPage: state.currentPage + 1 })
+                        }
                     >
                         Next Page
                     </button>
                 </>
             )}
-            <h1 className={`${styles["curr-page"]} ${resp["curr-page"]}`}>Current Page: {currentPage}</h1>
+            <h1 className={`${styles["curr-page"]} ${resp["curr-page"]}`}>Current Page: {state.currentPage}</h1>
             <section className={`${styles["catalog"]} ${resp["catalog"]}`}>
-                {loading
+                {state.loading
                     ? <Spinner />
                     :
                     <>
                         {
-                            products.length > 0
+                            state.products.length > 0
                                 ?
                                 <>
                                     {currentItems.map(product => <ProductItem key={product._id} {...product} />)}

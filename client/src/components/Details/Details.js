@@ -1,13 +1,13 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../../contexts/UserContext";
-import Delete from "../Delete Recipes/DeleteRecipes";
-import styles from "./styles/details.module.css";
-import * as userService from "../../services/userServices";
-import * as service from "../../services/recipeService";
-import { saveAs } from "file-saver";
-import ProgressBar from "../Progress Bar/ProgressBar";
 import { PublicContext } from "../../contexts/PublicationContext";
+import * as service from "../../services/recipeService";
+import * as userService from "../../services/userServices";
+import { saveAs } from "file-saver";
+import Delete from "../Delete Recipes/DeleteRecipes";
+import ProgressBar from "../Progress Bar/ProgressBar";
+import styles from "./styles/details.module.css";
 
 const Details = () => {
     const { recipeId } = useParams();
@@ -18,7 +18,8 @@ const Details = () => {
         showDeleteProduct,
         showDelete,
         isDownloading,
-        setIsDownloading
+        setIsDownloading,
+        backHandleClick
     } = useContext(PublicContext);
     const [recipe, setRecipe] = useState({});
     const [saved, setSaved] = useState([]);
@@ -70,10 +71,6 @@ const Details = () => {
                 });
         }, 11000);
     };
-
-    const backHandleClick = () => {
-        navigate(-1);
-    }
 
     return (
         <>
