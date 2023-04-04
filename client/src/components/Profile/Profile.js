@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState, memo } from "react";
+import { useContext, useEffect, memo, useReducer } from "react";
 import { AuthContext } from "../../contexts/UserContext";
 import * as service from "../../services/userServices";
 import * as recipeService from "../../services/recipeService";
@@ -9,42 +9,28 @@ import ProductItem from "./ProductItem";
 import Delete from "./Delete";
 import { useNavigate } from "react-router-dom";
 import EditProfile from "../Edit Profile/EditProfile";
+import { initialState, reducer } from "./data/data";
 
 const Profile = memo(() => {
+    const [state, dispatch] = useReducer(reducer, initialState);
     const { user, userLogout } = useContext(AuthContext);
     const navigate = useNavigate();
-    const [data, setData] = useState({});
-    const [ownRecipes, setRecipes] = useState([]);
-    const [ownProducts, setProducts] = useState([]);
-    const [saved, setSaved] = useState([]);
-    const [showDelete, setShowDelete] = useState(false);
-    const [showEdit, setShowEdit] = useState(false);
 
     useEffect(() => {
         service.getUser(user._id)
-            .then(result => setData(result));
+            .then(result => dispatch({ type: "SET_DATA", data: result }));
         recipeService.getOwned(user._id)
-            .then(result => setRecipes(result));
+            .then(result => dispatch({ type: "SET_OWN_RECIPES", ownRecipes: result }));
         productService.getOwned(user._id)
-            .then(result => setProducts(result));
+            .then(result => dispatch({ type: "SET_OWN_PRODUCTS", ownProducts: result }));
         recipeService.getSavedRecipes(user._id)
-            .then(result => setSaved(result))
+            .then(result => dispatch({ type: "SET_SAVED", saved: result }));
     }, [user._id]);
 
-    const showDeleteModal = () => {
-        setShowDelete(true);
-    };
-
-    const closeHandler = () => {
-        setShowDelete(false);
-    }
-
-    const showEditModal = () => {
-        setShowEdit(true);
-    }
-    const closeEditModal = () => {
-        setShowEdit(false);
-    }
+    const showDeleteModal = () => dispatch({ type: "SET_SHOW_DELETE", showDelete: true });
+    const closeDeleteModal = () => dispatch({ type: "SET_SHOW_DELETE", showDelete: false });
+    const showEditModal = () => dispatch({ type: "SET_SHOW_EDIT", showEdit: true });
+    const closeEditModal = () => dispatch({ type: "SET_SHOW_EDIT", showEdit: false });
 
     const deleteHandler = (userId) => {
         service.deleteAccount(userId)
@@ -61,7 +47,7 @@ const Profile = memo(() => {
             .then(() => {
                 service.getUser(id)
                     .then((res) => {
-                        setData(res);
+                        dispatch({ type: "SET_DATA", data: res });
                     })
                 closeEditModal();
                 navigate("/profile", { replace: true })
@@ -70,19 +56,27 @@ const Profile = memo(() => {
 
     return (
         <>
-            {showDelete &&
-                <Delete userId={user._id} closeHandler={closeHandler} deleteHandler={deleteHandler} />
+            {state.showDelete &&
+                <Delete 
+                    userId={user._id} 
+                    closeDeleteModal={closeDeleteModal} 
+                    deleteHandler={deleteHandler} 
+                />
             }
 
-            {showEdit &&
-                <EditProfile closeEditModal={closeEditModal} {...data} submitHandler={submitHandler} />
+            {state.showEdit &&
+                <EditProfile 
+                    closeEditModal={closeEditModal} 
+                    {...state.data} 
+                    submitHandler={submitHandler} 
+                />
             }
             <section className={styles["profile-section"]}>
                 <h1 className={styles["profile-heading"]}>Personal Information:</h1>
                 <article className={styles["profile-info"]}>
                     <img
                         className={styles["profile-photo"]}
-                        src={data.imageUrl}
+                        src={state.data.imageUrl}
                         alt="user"
                     />
                     {/* eslint-disable-next-line */}
@@ -99,13 +93,13 @@ const Profile = memo(() => {
                         >
                             <i className="fas fa-edit"></i>
                         </button>
-                        <li>First Name: {data.firstName}</li>
-                        <li>Last Name: {data.lastName}</li>
-                        <li>Email: {data.email}</li>
+                        <li>First Name: {state.data.firstName}</li>
+                        <li>Last Name: {state.data.lastName}</li>
+                        <li>Email: {state.data.email}</li>
                         <div className={styles["actions"]}>
-                            <h1>Created Recipes: {ownRecipes.length}</h1>
-                            <h1>Created Products: {ownProducts.length}</h1>
-                            <h1>Saved Recipes: {saved.length}</h1>
+                            <h1>Created Recipes: {state.ownRecipes.length}</h1>
+                            <h1>Created Products: {state.ownProducts.length}</h1>
+                            <h1>Saved Recipes: {state.saved.length}</h1>
                         </div>
                     </ul>
                 </article>
@@ -116,9 +110,9 @@ const Profile = memo(() => {
                         <h1>Created Recipes:</h1>
                         {/* eslint-disable-next-line */}
                         <ul className={styles["user-action"]} role={"list"}>
-                            {ownRecipes.length > 0
+                            {state.ownRecipes.length > 0
                                 ?
-                                ownRecipes.map(x => <li key={x._id}><RecipeItem {...x} /></li>)
+                                state.ownRecipes.map(x => <li key={x._id}><RecipeItem {...x} /></li>)
                                 :
                                 null
                             }
@@ -128,9 +122,9 @@ const Profile = memo(() => {
                         <h1>Created products:</h1>
                         {/* eslint-disable-next-line */}
                         <ul className={styles["user-action"]} role={"list"}>
-                            {ownProducts.length > 0
+                            {state.ownProducts.length > 0
                                 ?
-                                ownProducts.map(x => <li key={x._id}><ProductItem {...x} /></li>)
+                                state.ownProducts.map(x => <li key={x._id}><ProductItem {...x} /></li>)
                                 :
                                 null
                             }
@@ -140,9 +134,9 @@ const Profile = memo(() => {
                         <h1>Saved Recipes:</h1>
                         {/* eslint-disable-next-line */}
                         <ul className={styles["user-action"]} role={"list"}>
-                            {saved.length > 0
+                            {state.saved.length > 0
                                 ?
-                                saved.map(x => <li key={x._id}><RecipeItem {...x} /></li>)
+                                state.saved.map(x => <li key={x._id}><RecipeItem {...x} /></li>)
                                 : null
                             }
                         </ul>

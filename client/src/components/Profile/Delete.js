@@ -5,12 +5,12 @@ import styles from "./styles/profile.module.css";
 const Delete = ({
     userId,
     deleteHandler,
-    closeHandler
+    closeDeleteModal
 }) => {
     const { user } = useContext(AuthContext);
     return (
         <>
-            <div className={styles["backdrop"]} onClick={() => closeHandler()}></div>
+            <div className={styles["backdrop"]} onClick={() => closeDeleteModal()}></div>
             <div id={styles["delete-modal"]} className={styles["modal-container"]}>
                 <h2>Delete account</h2>
                 <p>Are you sure you want to delete this account?</p>
@@ -23,7 +23,7 @@ const Delete = ({
 
                 <button
                     id={styles["delete-cancel"]}
-                    onClick={() => closeHandler()}
+                    onClick={() => closeDeleteModal()}
                 >
                     Cancel
                 </button>
