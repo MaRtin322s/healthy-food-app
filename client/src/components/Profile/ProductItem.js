@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styles from "./styles/profile.module.css";
 
-const ProductItem = ({ _id, imageUrl, title, type}) => {
+const ProductItem = React.memo(({ _id, imageUrl, title, type }) => {
     return (
         <article className={styles["catalog-recipe"]}>
             <img
@@ -15,6 +15,6 @@ const ProductItem = ({ _id, imageUrl, title, type}) => {
             </Link>
         </article>
     );
-}
+});
 
 export default ProductItem;

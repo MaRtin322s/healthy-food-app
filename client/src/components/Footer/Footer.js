@@ -1,8 +1,8 @@
-import React from 'react';
+import { memo } from 'react';
 import styles from "./styles/footer.module.css";
 import resp from "./styles/responsive.module.css";
 
-const Footer = React.memo(() => {
+const Footer = memo(() => {
     return (
         <footer className={`${styles["footer"]} ${resp["footer"]}`}>
             <div>

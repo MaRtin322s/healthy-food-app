@@ -1,7 +1,8 @@
+import { memo } from "react";
 import { Link } from "react-router-dom";
 import styles from "./styles/profile.module.css";
 
-const RecipeItem = ({
+const RecipeItem = memo(({
     imageUrl,
     title,
     category,
@@ -20,6 +21,6 @@ const RecipeItem = ({
             </Link>
         </article>
     );
-}
+});
 
 export default RecipeItem;

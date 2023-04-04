@@ -1,9 +1,9 @@
-import { useContext } from "react";
+import { memo, useContext } from "react";
 import { Link } from "react-router-dom";
 import styles from "./styles/productsCatalog.module.css";
 import { AuthContext } from "../../contexts/UserContext";
 
-export const ProductItem = ({
+export const ProductItem = memo(({
     title,
     imageUrl,
     type,
@@ -30,6 +30,6 @@ export const ProductItem = ({
             }
         </article>
     );
-};
+});
 
 export default ProductItem;

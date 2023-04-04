@@ -1,9 +1,9 @@
-import { useContext } from "react";
+import { memo, useContext } from "react";
 import { Link } from "react-router-dom";
 import styles from "./styles/recipesCatalog.module.css";
 import { AuthContext } from "../../contexts/UserContext";
 
-const RecipeCatalogItem = ({
+const RecipeCatalogItem = memo(({
     imageUrl,
     title,
     category,
@@ -30,6 +30,6 @@ const RecipeCatalogItem = ({
             }
         </article>
     );
-};
+});
 
 export default RecipeCatalogItem;

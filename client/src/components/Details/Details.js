@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 import { AuthContext } from "../../contexts/UserContext";
@@ -8,8 +8,9 @@ import * as userService from "../../services/userServices";
 import { saveAs } from "file-saver";
 
 import Delete from "../Delete Recipes/DeleteRecipes";
-import ProgressBar from "../Progress Bar/ProgressBar";
 import styles from "./styles/details.module.css";
+
+const ProgressBar = React.lazy(() => import("../Progress Bar/ProgressBar"));
 
 const Details = () => {
     const { recipeId } = useParams();

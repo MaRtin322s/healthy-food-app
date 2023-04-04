@@ -1,8 +1,8 @@
-import { useContext } from "react";
+import { memo, useContext } from "react";
 import { AuthContext } from "../../contexts/UserContext";
 import styles from "./styles/profile.module.css";
 
-const Delete = ({
+const Delete = memo(({
     userId,
     deleteHandler,
     closeDeleteModal
@@ -30,6 +30,6 @@ const Delete = ({
             </div>
         </>
     );
-}
+});
 
 export default Delete;
