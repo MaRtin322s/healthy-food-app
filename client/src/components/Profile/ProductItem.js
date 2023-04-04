@@ -1,7 +1,8 @@
+import { memo } from "react";
 import { Link } from "react-router-dom";
 import styles from "./styles/profile.module.css";
 
-const ProductItem = React.memo(({ _id, imageUrl, title, type }) => {
+const ProductItem = memo(({ _id, imageUrl, title, type }) => {
     return (
         <article className={styles["catalog-recipe"]}>
             <img
