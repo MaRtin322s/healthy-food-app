@@ -6,18 +6,12 @@ export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
     const [auth, setAuth] = useStorage('session', {});
+    
     const userLogin = (userData) => setAuth(userData);
     const userLogout = () => setAuth({});
 
-    const getAllRecipes = async () => {
-        const recipes = await service.getAll();
-        return recipes;
-    };
-
-    const getOneRecipe = async (recipeId) => {
-        const recipe = await service.getOne(recipeId);
-        return recipe;
-    };
+    const getAllRecipes = async () => await service.getAll();
+    const getOneRecipe = async (recipeId) => await service.getOne(recipeId);
 
     return (
         <AuthContext.Provider

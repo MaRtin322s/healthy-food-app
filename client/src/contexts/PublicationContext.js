@@ -9,27 +9,11 @@ export const PublicProvider = ({ children }) => {
     const [isDownloading, setIsDownloading] = useState(false);
     const navigate = useNavigate();
 
-    const getAllProducts = async () => {
-        const recipes = await service.getAll();
-        return recipes;
-    };
-
-    const getOneProduct = async (productId) => {
-        const recipe = await service.getOne(productId);
-        return recipe;
-    };
-
-    const showDeleteProduct = () => {
-        setShowDelete(true);
-    };
-
-    const backHandleClick = () => {
-        navigate(-1);
-    };
-
-    const closeHandler = () => {
-        setShowDelete(false);
-    };
+    const getAllProducts = async () => await service.getAll();
+    const getOneProduct = async (productId) => await service.getOne(productId);
+    const showDeleteProduct = () => setShowDelete(true);
+    const backHandleClick = () => navigate(-1);
+    const closeHandler = () => setShowDelete(false);
 
     return (
         <PublicContext.Provider
