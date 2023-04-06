@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useReducer } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 import { AuthContext } from "../../contexts/UserContext";
@@ -9,6 +9,7 @@ import { saveAs } from "file-saver";
 
 import Delete from "../Delete Recipes/DeleteRecipes";
 import styles from "./styles/details.module.css";
+import { initialState, reducer } from "./data/data";
 
 const ProgressBar = React.lazy(() => import("../Progress Bar/ProgressBar"));
 
@@ -16,12 +17,9 @@ const Details = () => {
     const { recipeId } = useParams();
     const navigate = useNavigate();
     const { user, getOneRecipe } = useContext(AuthContext);
+    const [state, dispatch] = useReducer(reducer, initialState);
+    const closeHandler = () => dispatch({ type: "DELETE", showDelete: false });
     const {
-        closeHandler,
-        showDeleteProduct,
-        showDelete,
-        isDownloading,
-        setIsDownloading,
         backHandleClick
     } = useContext(PublicContext);
     const [recipe, setRecipe] = useState({});
@@ -65,24 +63,24 @@ const Details = () => {
 
     const downloadPdf = (ev, data, token) => {
         ev.preventDefault();
-        setIsDownloading(true);
+        dispatch({ type: "DOWNLOADING", isDownloading: true });
         setTimeout(() => {
             service.download(data, token)
                 .then(blob => {
-                    setIsDownloading(false);
+                    dispatch({ type: "DOWNLOADING", isDownloading: false });
                     saveAs(blob, `${data.title}.pdf`);
                 });
         }, 11000);
     };
-
+    console.log(recipe);
     return (
         <>
-            {isDownloading
+            {state.isDownloading
                 ?
                 <ProgressBar />
                 : null
             }
-            {showDelete &&
+            {state.showDelete &&
                 <Delete
                     closeHandler={closeHandler}
                     title={recipe.title}
@@ -112,10 +110,7 @@ const Details = () => {
                             <div>
                                 <h2>Preparation:</h2>
                                 <p>
-                                    Sift the flour with the salt into a bowl and add the yeast. Make a hole in the center and pour in the water and oil.
-                                    Knead a soft pizza dough and leave it in a warm place for an hour. Knead once more and roll it into a thin crust. Transfer to a greased pan.
-                                    Cut the tomatoes and arrange them on the dough, put the mozzarella slices on them. Sprinkle with pepper and salt, basil and a little olive oil.
-                                    Bake the Margherita pizza in a 230 degree oven for 15-20 minutes.
+                                    {recipe.preparation}
                                 </p>
                             </div>
                         </section>
@@ -141,7 +136,7 @@ const Details = () => {
                                     </Link>
                                     <Link
                                         className={styles["btn-details"]}
-                                        onClick={() => showDeleteProduct()}
+                                        onClick={() => dispatch({ type: "DELETE", showDelete: true })}
                                     >
                                         <i className="fas fa-trash-alt"></i>
                                         Delete
