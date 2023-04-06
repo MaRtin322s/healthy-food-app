@@ -6,6 +6,7 @@ import * as service from "../../services/productService";
 import { initData, reducer } from "./data/data";
 
 import styles from "./styles/createProduct.module.css";
+import resp from "./styles/responsive.module.css";
 import background from "./images/backgr.jpg";
 
 const CreateProduct = () => {
@@ -30,9 +31,9 @@ const CreateProduct = () => {
 
     return (
         <>
-            <section className={styles["create-page"]}>
-                <article className={styles["info"]}>
-                    <ul className={styles["steps"]}>
+            <section className={`${styles["create-page"]} ${resp["create-page"]}`}>
+                <article className={`${styles["info"]} ${resp["info"]}`}>
+                    <ul className={`${styles["steps"]} ${resp["steps"]}`}>
                         <li>Create products information:</li>
                         <li>
                             <p>
@@ -58,15 +59,25 @@ const CreateProduct = () => {
                     </ul>
                 </article>
                 <form
-                    className={styles["create"]}
+                    className={`${styles["create"]} ${resp["create"]}`}
                     onSubmit={(ev) => submitHandler(ev, state)}
                 >
-                    <h1 className={styles["create-heading"]}>Create Products</h1>
-                    <div className="links">
-                        <Link className={styles["create-recipe"]} to="/create-recipes" replace>
+                    <h1 className={`${styles["create-heading"]} ${resp["create-heading"]}`}
+                    >
+                        Create Products
+                    </h1>
+                    <div className={`${styles["links"]} ${resp["links"]}`}>
+                        <Link className={`${styles["create-recipe"]} ${resp["create-recipe"]}`} 
+                            to="/create-recipes" 
+                            replace
+                        >
                             Create Recipe
                         </Link>
-                        <Link className={styles["create-product"]} to="/create-products" replace>
+                        <Link 
+                            className={`${styles["create-product"]} ${resp["create-product"]}`} 
+                            to="/create-products" 
+                            replace
+                        >
                             Create Product
                         </Link>
                     </div>
@@ -107,7 +118,10 @@ const CreateProduct = () => {
                         />
                     </div>
                     <label htmlFor="nutrition">Nutrition information:</label>
-                    <p className={styles["ingredients-note"]}>NOTE: Every nutrition must be on the new line!</p>
+                    <p className={`${styles["ingredients-note"]} ${resp["ingredients-note"]}`}
+                    >
+                        NOTE: Every nutrition must be on the new line!
+                    </p>
                     <div>
                         <textarea
                             cols={20}
@@ -135,13 +149,15 @@ const CreateProduct = () => {
                     </div>
                     <div>
                         <input
-                            className={styles["create-btn"]}
+                            className={`${styles["create-btn"]} ${resp["create-btn"]}`}
                             type="submit"
                             value={"Create product"}
                         />
                     </div>
                 </form>
-                <img className={styles["background-img"]} src={background} alt="background" />
+                <img className={`${styles["background-img"]} ${resp["background-img"]}`} 
+                    src={background} alt="background"
+                />
             </section>
         </>
     );

@@ -1,5 +1,7 @@
 .background-img {
-    height: 490px;
+    height: 489px;
+    position: absolute;
+    right: 0%;
 }
 
 .info li {
