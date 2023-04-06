@@ -1,5 +1,4 @@
-import { createContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { createContext } from "react";
 import * as service from "../services/productService";
 
 export const PublicContext = createContext();

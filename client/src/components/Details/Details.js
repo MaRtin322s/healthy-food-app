@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState, useReducer } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 import { AuthContext } from "../../contexts/UserContext";
-import { PublicContext } from "../../contexts/PublicationContext";
 import * as service from "../../services/recipeService";
 import * as userService from "../../services/userServices";
 import { saveAs } from "file-saver";
