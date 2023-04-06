@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:3030/users";
+const baseUrl = "https://healthy-food-api.onrender.com/users";
 
 export const registerUser = async (userData) => {
     const res = await fetch(`${baseUrl}/register`, {

@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:3030/products";
+const baseUrl = "https://healthy-food-api.onrender.com/products";
 
 export const createProduct = async (productData, token, userId) => {
     const res = await fetch(`${baseUrl}/create`, {
