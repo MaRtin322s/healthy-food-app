@@ -18,13 +18,10 @@ const Details = () => {
     const navigate = useNavigate();
     const { user, getOneRecipe } = useContext(AuthContext);
     const [state, dispatch] = useReducer(reducer, initialState);
-    const closeHandler = () => dispatch({ type: "DELETE", showDelete: false });
-    const {
-        backHandleClick
-    } = useContext(PublicContext);
     const [recipe, setRecipe] = useState({});
     const [saved, setSaved] = useState([]);
-
+    const closeHandler = () => dispatch({ type: "DELETE", showDelete: false });
+    
     useEffect(() => {
         getOneRecipe(recipeId)
             .then(result => setRecipe(result));
@@ -90,13 +87,6 @@ const Details = () => {
                 />
             }
             <div className={styles["wrap-main"]}>
-                <button
-                    className={styles["back-btn"]}
-                    onClick={(ev) => backHandleClick()}
-                >
-                    <i className="fas fa-arrow-alt-circle-left"></i>
-                    Back
-                </button>
                 <section className={styles["details"]}>
                     <img src={recipe.imageUrl} alt="pizza" />
                     <article>
