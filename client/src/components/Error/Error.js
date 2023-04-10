@@ -1,7 +1,6 @@
-import { memo } from 'react';
 import styles from "./styles/error.module.css";
 
-const Error = memo(({ message }) => {
+const Error = ({ message }) => {
     return (
         <div id={styles["notification-modal"]}>
             <div className={styles["modal-content"]}>
@@ -10,6 +9,6 @@ const Error = memo(({ message }) => {
             </div>
         </div>
     );
-});
+};
 
 export default Error;
