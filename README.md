@@ -1,6 +1,6 @@
 ## Healthy food application - NutriGit
 The application is hosted by firebase and render. You can access it on this URL: https://nutrigit-319ca.web.app
-NOTE: This app is still not responsive. For best UX, please use resl: 1536/864
+NOTE: Beacuse of the hosting platforms there is little slow motion between data loading and rendering, please be patient. This app is not responsive. For best UX, please use resl: 1536/864
 # Introduction
 The Healthy Food App is a social platform that allows users to share recipes, products and other health-related information. Our app is designed to promote healthy eating and provide users with access to a wide range of recipes and products that support a healthy lifestyle.
 
