@@ -135,7 +135,6 @@ function App() {
                                     </PrivateRoute>
                                 }
                             />
-                            <Route path="/spinner" element={<Spinner />}/>
                         </Routes>
                     </main>
                     <Footer />
