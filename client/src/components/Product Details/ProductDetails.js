@@ -44,13 +44,6 @@ const ProductDetails = () => {
                 />
             }
             <div className={styles["wrap-main"]}>
-                <button
-                    className={styles["back-btn"]}
-                    onClick={(ev) => backHandleClick()}
-                >
-                    <i className="fas fa-arrow-alt-circle-left"></i>
-                    Back
-                </button>
                 <section className={styles["details"]}>
                     <img src={product.imageUrl} alt="pizza" />
                     <article>
