@@ -26,7 +26,7 @@ const ProductsCatalog = () => {
                     dispatch({ type: "SET_LOADING", value: false });
                     dispatch({ type: "SET_PRODUCTS", products: result.reverse() });
                 });
-        }, [1500]);
+        }, [1000]);
     }, [getAllProducts]);
 
     return (

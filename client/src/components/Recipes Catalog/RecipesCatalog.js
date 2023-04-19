@@ -26,7 +26,7 @@ const RecipesCatalog = () => {
                     dispatch({ type: "SET_RECIPES", recipes: result.reverse() });
                     dispatch({ type: "SET_LOADING", value: false });
                 });
-        }, 1500);
+        }, 1000);
     }, [getAllRecipes]);
 
     return (

@@ -68,7 +68,7 @@ const Details = () => {
                 });
         }, 11000);
     };
-    console.log(recipe);
+
     return (
         <>
             {state.isDownloading

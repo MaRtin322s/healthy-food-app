@@ -13,12 +13,9 @@ const ProductDetails = () => {
     const navigate = useNavigate();
     const { productId } = useParams();
     const [product, setProduct] = useState([]);
+    const [showDelete, setShowDelete] = useState(false);
     const {
         getOneProduct,
-        closeHandler,
-        showDelete,
-        backHandleClick,
-        showDeleteProduct
     } = useContext(PublicContext);
 
     useEffect(() => {
@@ -26,6 +23,8 @@ const ProductDetails = () => {
             .then(result => setProduct(result));
     }, [getOneProduct, productId]);
 
+    const closeHandler = () => setShowDelete(false);
+    
     const deleteHandler = (ev, productId, token) => {
         ev.preventDefault();
         service.deleteProduct(productId, token)
@@ -72,7 +71,7 @@ const ProductDetails = () => {
                                     </Link>
                                     <Link
                                         className={styles["btn-details"]}
-                                        onClick={() => showDeleteProduct()}
+                                        onClick={() => setShowDelete(true)}
                                     >
                                         <i className="fas fa-trash-alt"></i>
                                         Delete

@@ -52,7 +52,7 @@ const Profile = memo(() => {
                         dispatch({ type: "SET_DATA", data: res });
                     })
                 closeEditModal();
-                navigate("/profile", { replace: true })
+                navigate("/profile", { replace: true });
             });
     };
 

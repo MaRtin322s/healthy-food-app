@@ -1,4 +1,4 @@
-import { useCallback, useContext, useReducer, useState } from "react";
+import { useContext, useReducer, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import { AuthContext } from "../../contexts/UserContext";
@@ -21,39 +21,41 @@ const Register = () => {
         rePass: false
     });
 
-    const chnageHandler = useCallback((ev) => {
+    const chnageHandler = (ev) => {
         const { name, value } = ev.target;
         dispatch({ type: 'SET_FIELD', field: name, value });
-    }, []);
+    }
 
     const submitHandler = (ev, userData) => {
         ev.preventDefault();
-        if (userData.password.length < 8
-            || !/[A-Z]/.test(userData.password)
-            || !/[0-9]/.test(userData.password)
-        ) {
-            alert("Please enter a valid password!");
-        } else {
-            if (userData.password !== userData.rePass) {
-                alert("Invalid data provided!");
+        if (!Object.values(error).some(x => x === true)) {
+            if (userData.password.length < 8
+                || !/[A-Z]/.test(userData.password)
+                || !/[0-9]/.test(userData.password)
+            ) {
+                alert("Please enter a valid password!");
             } else {
-                try {
-                    const emailRegExp = new RegExp('^([a-zA-Z0-9._%+-]+)@([a-zA-Z0-9.-]+.[a-zA-Z]{2})$');
-                    if (emailRegExp.test(userData.email)) {
-                        service.registerUser(userData)
-                            .then(result => {
-                                if (typeof result !== "string") {
-                                    userLogin(result);
-                                    navigate("/", { replace: true });
-                                } else {
-                                    throw result;
-                                };
-                            });
+                if (userData.password !== userData.rePass) {
+                    alert("Invalid data provided!");
+                } else {
+                    try {
+                        const emailRegExp = new RegExp('^([a-zA-Z0-9._%+-]+)@([a-zA-Z0-9.-]+.[a-zA-Z]{2})$');
+                        if (emailRegExp.test(userData.email)) {
+                            service.registerUser(userData)
+                                .then(result => {
+                                    if (typeof result !== "string") {
+                                        userLogin(result);
+                                        navigate("/", { replace: true });
+                                    } else {
+                                        throw result;
+                                    };
+                                });
+                        };
+                    } catch (err) {
+                        alert(err.message);
                     };
-                } catch (err) {
-                    alert(err.message);
                 };
-            };
+            }
         }
     };
 
