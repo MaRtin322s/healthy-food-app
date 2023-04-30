@@ -46,4 +46,11 @@
         margin-bottom: 50px;
         width: 300px;
     }
+
+    .no-content {
+        width: 150px;
+        font-size: 40px;
+        margin: 0px 15px 0px 35px;
+        text-align: center;
+    }
 }
