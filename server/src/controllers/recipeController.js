@@ -9,22 +9,26 @@ const PDFDocument = require('pdfkit');
 router.post('/create', async (req, res) => {
     const { title, category, imageUrl, ingredients, preparation, _ownerId } = req.body;
 
-    try {
-        if (title == "" || category == "" || imageUrl == "") {
-            throw "All fields are required!";
-        } else {
-            const publication = await recipeService.createRecipe({
-                title,
-                category,
-                imageUrl,
-                ingredients,
-                preparation,
-                _ownerId
-            });
-            res.json(publication);
+    if (req.headers['X-Authorization']) {
+        try {
+            if (title == "" || category == "" || imageUrl == "") {
+                throw "All fields are required!";
+            } else {
+                const publication = await recipeService.createRecipe({
+                    title,
+                    category,
+                    imageUrl,
+                    ingredients,
+                    preparation,
+                    _ownerId
+                });
+                res.json(publication);
+            }
+        } catch (err) {
+            res.json({ message: err });
         }
-    } catch (err) {
-        res.json({ message: err });
+    } else {
+        res.status(401).json('Unauthorized - You don\'t have permissions to do that!');
     }
 });
 
@@ -60,9 +64,13 @@ router.put('/edit/:id', async (req, res) => {
 });
 
 router.delete('/delete/:id', async (req, res) => {
-    const recipeId = req.params.id;
-    const deleted = await recipeService.deleteRecipe(recipeId);
-    res.json(deleted);
+    if (req.headers['X-Authorization']) {
+        const recipeId = req.params.id;
+        const deleted = await recipeService.deleteRecipe(recipeId);
+        res.json(deleted);
+    } else {
+        res.status(401).json('Unauthorized - You don\'t have permissions to do that!');
+    }
 });
 
 router.post('/save/:recipeId', async (req, res) => {
