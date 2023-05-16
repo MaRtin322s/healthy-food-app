@@ -97,15 +97,19 @@ router.get('/save/:userId', async (req, res) => {
 });
 
 router.post('/download', (req, res) => {
-    const data = req.body;
-    const doc = new PDFDocument();
-    const content = `${data.title}\n\nCategory: ${data.category}\n\nIngredients:\n${data.ingredients.join('\n')}\n\nPreparation:\n${data.preparation}`;
-    doc.title = 'Recipe PDF';
-    doc.text(content);
-    res.setHeader('Content-Disposition', `attachment; filename=${data.title}.pdf`);
-    res.setHeader('Content-Type', 'application/pdf');
-    doc.pipe(res);
-    doc.end();
+    if (req.headers['X-Authorization']) {
+        const data = req.body;
+        const doc = new PDFDocument();
+        const content = `${data.title}\n\nCategory: ${data.category}\n\nIngredients:\n${data.ingredients.join('\n')}\n\nPreparation:\n${data.preparation}`;
+        doc.title = 'Recipe PDF';
+        doc.text(content);
+        res.setHeader('Content-Disposition', `attachment; filename=${data.title}.pdf`);
+        res.setHeader('Content-Type', 'application/pdf');
+        doc.pipe(res);
+        doc.end();
+    } else {
+        res.status(401).json('Unauthorized - You don\'t have permissions to do that!');
+    }
 });
 
 module.exports = router;
