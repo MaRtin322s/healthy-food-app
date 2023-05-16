@@ -28,6 +28,7 @@ router.post('/register', async (req, res) => {
                 throw result;
             } else {
                 const token = await authService.generateToken({ _id: result._id });
+                res.cookie('session', token);
                 res.json({
                     _id: result._id,
                     email: result.email,
@@ -66,6 +67,7 @@ router.post('/login', async (req, res) => {
 
 router.get('/logout', (req, res) => {
     if (req.headers['x-authorization']) {
+        res.clearCookie('session');
         res.json();
     };
 });

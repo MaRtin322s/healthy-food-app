@@ -53,8 +53,7 @@ export const testForEmail = async (email, secretWord) => {
     return await res.json();
 };
 
-export const getUser = (userId) =>
-    fetch(`${baseUrl}/${userId}`).then(res => res.json());
+export const getUser = (userId) => fetch(`${baseUrl}/${userId}`).then(res => res.json());
 
 export const unsaveRecipe = async (recipeData, userId, token) => {
     const res = await fetch(`${baseUrl}/unsave/${userId}`, {
