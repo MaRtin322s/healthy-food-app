@@ -27,7 +27,7 @@ const Profile = memo(() => {
             .then(result => dispatch({ type: "SET_OWN_PRODUCTS", ownProducts: result }));
         recipeService.getSavedRecipes(user._id, user.accessToken)
             .then(result => dispatch({ type: "SET_SAVED", saved: result }));
-    }, [user._id]);
+    }, [user._id, user.accessToken]);
 
     const showDeleteModal = () => dispatch({ type: "SET_SHOW_DELETE", showDelete: true });
     const closeDeleteModal = () => dispatch({ type: "SET_SHOW_DELETE", showDelete: false });
