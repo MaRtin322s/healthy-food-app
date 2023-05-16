@@ -54,14 +54,14 @@ router.get('/author/:id', async (req, res) => {
 });
 
 router.put('/edit/:id', async (req, res) => {
-    // if (req.headers['X-Authorization']) {
-    //     const data = req.body;
-    //     const productId = req.params.id;
-    //     const editted = await productService.editProduct(productId, data);
-    //     res.json(editted);
-    // } else {
-    //     res.status(401).json('Unauthorized - You don\'t have permissions to do that!');
-    // }
+    if (req.headers['X-Authorization']) {
+        const data = req.body;
+        const productId = req.params.id;
+        const editted = await productService.editProduct(productId, data);
+        res.json(editted);
+    } else {
+        res.status(401).json('Unauthorized - You don\'t have permissions to do that!');
+    }
 });
 
 router.delete('/delete/:id', async (req, res) => {
