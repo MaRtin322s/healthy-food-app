@@ -57,10 +57,14 @@ router.get('/author/:id', async (req, res) => {
 });
 
 router.put('/edit/:id', async (req, res) => {
-    const data = req.body;
-    const recipeId = req.params.id;
-    const editted = await recipeService.editRecipe(recipeId, data);
-    res.json(editted);
+    if (req.headers['X-Authorization']) {
+        const data = req.body;
+        const recipeId = req.params.id;
+        const editted = await recipeService.editRecipe(recipeId, data);
+        res.json(editted);
+    } else {
+        res.status(401).json('Unauthorized - You don\'t have permissions to do that!');
+    }
 });
 
 router.delete('/delete/:id', async (req, res) => {
