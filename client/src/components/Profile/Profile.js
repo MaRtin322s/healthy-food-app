@@ -25,7 +25,7 @@ const Profile = memo(() => {
             .then(result => dispatch({ type: "SET_OWN_RECIPES", ownRecipes: result }));
         productService.getOwned(user._id)
             .then(result => dispatch({ type: "SET_OWN_PRODUCTS", ownProducts: result }));
-        recipeService.getSavedRecipes(user._id)
+        recipeService.getSavedRecipes(user._id, user.accessToken)
             .then(result => dispatch({ type: "SET_SAVED", saved: result }));
     }, [user._id]);
 
