@@ -70,7 +70,9 @@ router.get('/logout', (req, res) => {
     if (req.headers['x-authorization']) {
         res.clearCookie('session');
         res.json();
-    };
+    } else {
+        res.status(401).json('Unauthorized - You don\'t have permissions to do that!');
+    }
 });
 
 router.post('/email-test', async (req, res) => {
