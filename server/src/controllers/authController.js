@@ -15,13 +15,13 @@ router.post('/register', async (req, res) => {
         if (password !== rePass) {
             return res.status(400).json({ message: 'Passwords do not match' });
         } else {
-            const result = await authService.registerUser({ 
-                firstName, 
-                lastName, 
-                email, 
-                imageUrl, 
-                secretWord, 
-                password 
+            const result = await authService.registerUser({
+                firstName,
+                lastName,
+                email,
+                imageUrl,
+                secretWord,
+                password
             });
 
             if (typeof result === 'string') {
@@ -52,6 +52,7 @@ router.post('/login', async (req, res) => {
             throw user;
         } else {
             const token = await authService.generateToken({ _id: user._id });
+            res.cookie('session', token);
             res.json({
                 _id: user._id,
                 email: user.email,
@@ -75,11 +76,11 @@ router.get('/logout', (req, res) => {
 router.post('/email-test', async (req, res) => {
     const { email } = req.body;
     const user = await authService.getByEmail(email.email, email.secretWord);
-    if (!user.message) { 
+    if (!user.message) {
         res.json(user[0]);
     } else {
         res.json(user);
-        
+
     }
 });
 
@@ -99,26 +100,38 @@ router.get('/:userId', async (req, res) => {
 });
 
 router.post("/unsave/:userId", async (req, res) => {
-    let recipes = req.body;
-    recipes = recipes.map(x => {
-        return x._id;
-    });
-    const author = await authService.unsave(req.params.userId, recipes);
-    const user = await authService.getUser(author._id);
-    res.json(user.savedRecipes);
+    if (req.headers['x-authorization']) {
+        let recipes = req.body;
+        recipes = recipes.map(x => {
+            return x._id;
+        });
+        const author = await authService.unsave(req.params.userId, recipes);
+        const user = await authService.getUser(author._id);
+        res.json(user.savedRecipes);
+    } else {
+        res.status(401).json('Unauthorized - You don\'t have permissions to do that!');
+    }
 });
 
 router.delete("/delete/:userId", async (req, res) => {
-    const userId = req.params.userId;
-    const user = await authService.deleteUser(userId);
-    res.json(user);
+    if (req.headers['x-authorization']) {
+        const userId = req.params.userId;
+        const user = await authService.deleteUser(userId);
+        res.json(user);
+    } else {
+        res.status(401).json('Unauthorized - You don\'t have permissions to do that!');
+    }
 });
 
 router.patch("/update/:userId", async (req, res) => {
-    const userId = req.params.userId;
-    const newData = req.body;
-    const user = await authService.getAuthor(userId)
-    const updatedUser = await authService.updateUser(userId, Object.assign(user, newData));
-    res.json(updatedUser);
+    if (req.headers['x-authorization']) {
+        const userId = req.params.userId;
+        const newData = req.body;
+        const user = await authService.getAuthor(userId)
+        const updatedUser = await authService.updateUser(userId, Object.assign(user, newData));
+        res.json(updatedUser);
+    } else {
+        res.status(401).json('Unauthorized - You don\'t have permissions to do that!');
+    }
 });
 module.exports = router;

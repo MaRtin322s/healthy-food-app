@@ -1,4 +1,5 @@
-const baseUrl = "https://healthy-food-api.onrender.com/users";
+// const baseUrl = "https://healthy-food-api.onrender.com/users";
+const baseUrl = "http://localhost:3030/users";
 
 export const registerUser = async (userData) => {
     const res = await fetch(`${baseUrl}/register`, {
@@ -77,11 +78,12 @@ export const deleteAccount = async (userId, token) => {
     return await res.json();
 };
 
-export const updateUser = async (userId, userData) => {
+export const updateUser = async (userId, userData, token) => {
     const res = await fetch(`${baseUrl}/update/${userId}`, {
         method: "PATCH",
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'X-Authorization': token
         },
         body: JSON.stringify(userData)
     })

@@ -42,10 +42,10 @@ const Profile = memo(() => {
             });
     };
 
-    const submitHandler = (ev, data, id) => {
+    const submitHandler = (ev, data, id, token) => {
         ev.preventDefault();
 
-        service.updateUser(id, data)
+        service.updateUser(id, data, token)
             .then(() => {
                 service.getUser(id)
                     .then((res) => {
@@ -70,6 +70,7 @@ const Profile = memo(() => {
                 <EditProfile 
                     closeEditModal={closeEditModal} 
                     {...state.data} 
+                    token={user.accessToken}
                     submitHandler={submitHandler} 
                 />
             }

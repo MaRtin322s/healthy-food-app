@@ -8,6 +8,7 @@ const EditProfile = ({
     email,
     imageUrl,
     _id,
+    token,
     submitHandler
 }) => {
     const [values, setValues] = useState({
@@ -28,7 +29,7 @@ const EditProfile = ({
         <>
             <div className={styles["backdrop"]} onClick={() => closeEditModal()}></div>
             <div id={styles["delete-modal"]} className={styles["modal-container"]}>
-                <form onSubmit={(ev) => submitHandler(ev, values, _id)}>
+                <form onSubmit={(ev) => submitHandler(ev, values, _id, token)}>
                     <h2>Edit profile:</h2>
                     <label htmlFor="firstName">First Name:</label>
                     <div>
