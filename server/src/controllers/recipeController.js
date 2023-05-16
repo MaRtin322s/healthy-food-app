@@ -78,12 +78,16 @@ router.delete('/delete/:id', async (req, res) => {
 });
 
 router.post('/save/:recipeId', async (req, res) => {
-    const { userId } = req.body;
-    const recipeId = req.params.recipeId;
-    const recipe = await recipeService.getOne(recipeId);
-    await authService.saveRecipe(userId, recipe);
-    const author = await authService.getUser(userId);
-    res.json(author.savedRecipes);
+    if (req.headers['X-Authorization']) {
+        const { userId } = req.body;
+        const recipeId = req.params.recipeId;
+        const recipe = await recipeService.getOne(recipeId);
+        await authService.saveRecipe(userId, recipe);
+        const author = await authService.getUser(userId);
+        res.json(author.savedRecipes);
+    } else {
+        res.status(401).json('Unauthorized - You don\'t have permissions to do that!');
+    }
 });
 
 router.get('/save/:userId', async (req, res) => {
