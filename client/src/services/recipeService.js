@@ -50,7 +50,13 @@ export const saveRecipe = async (recipeId, userId, token) => {
     return await res.json();
 };
 
-export const getSavedRecipes = (userId) => fetch(`${baseUrl}/save/${userId}`).then(res => res.json());
+export const getSavedRecipes = (userId, token) =>
+    fetch(`${baseUrl}/save/${userId}`, {
+        method: 'GET',
+        headers: {
+            'X-Authorization': token
+        }
+    }).then(res => res.json());
 
 export const download = async (recipeData, token) => {
     const res = await fetch(`${baseUrl}/download`, {
@@ -61,5 +67,5 @@ export const download = async (recipeData, token) => {
         },
         body: JSON.stringify(recipeData)
     });
-    return await res.blob();    
+    return await res.blob();
 };
