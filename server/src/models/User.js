@@ -15,8 +15,8 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         validate: function() {
-            const regex = "^[A-Za-z0-9_\.]+@[A-Za-z]+\.[A-Za-z]{2,3}$";
-            return regex.text(this.email);
+            const regex = new RegExp("^[A-Za-z0-9_\.]+@[A-Za-z]+\.[A-Za-z]{2,3}$");
+            return regex.test(this.email);
         }
     },
     imageUrl: {
