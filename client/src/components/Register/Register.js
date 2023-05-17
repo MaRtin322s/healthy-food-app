@@ -5,6 +5,7 @@ import { AuthContext } from "../../contexts/UserContext";
 import * as validations from "../../utils/validations";
 import * as service from "../../services/userServices";
 import { initData, reducer } from "./data/data";
+import Error from "../Error/Error";
 
 import styles from "./styles/register.module.css";
 import background from "./images/backgr.jpg";
@@ -13,6 +14,7 @@ const Register = () => {
     const navigate = useNavigate();
     const { userLogin } = useContext(AuthContext);
     const [state, dispatch] = useReducer(reducer, initData);
+    const [notification, setNotification] = useState('');
     const [error, setError] = useState({
         firstName: false,
         lastName: false,
@@ -49,6 +51,9 @@ const Register = () => {
                                     } else {
                                         throw result;
                                     };
+                                })
+                                .catch(err => {
+                                    setNotification(err);
                                 });
                         };
                     } catch (err) {
@@ -58,9 +63,10 @@ const Register = () => {
             }
         }
     };
-
+    
     return (
         <>
+            {notification && <Error message={notification} />}
             <img className={styles["register-background-img"]} src={background} alt="background" />
             <section className={styles["register-page"]}>
                 <ul className={styles["info-list"]}>
