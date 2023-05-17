@@ -2,7 +2,7 @@ import { useContext, useReducer, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import { AuthContext } from "../../contexts/UserContext";
-import * as validations from "./validations/validations";
+import * as validations from "../../utils/validations";
 import * as service from "../../services/userServices";
 import { initData, reducer } from "./data/data";
 
