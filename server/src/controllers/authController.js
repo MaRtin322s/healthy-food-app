@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const authService = require('../services/authServices');
+const { check, isEmail } = require('express-validator');
 
 router.post('/register', async (req, res) => {
     const {
@@ -14,6 +15,8 @@ router.post('/register', async (req, res) => {
     try {
         if (password !== rePass) {
             return res.status(400).json({ message: 'Passwords do not match' });
+        } else if (!check(email).isEmail()) {
+            return res.status(400).json({ message: 'Email is not valid!' });
         } else {
             const result = await authService.registerUser({
                 firstName,
