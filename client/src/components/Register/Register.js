@@ -70,7 +70,7 @@ const Register = () => {
             {notification && <Error message={notification} />}
             <img className={`${styles["register-background-img"]} ${resp["backg-img"]}`} src={background} alt="background" />
             <section className={styles["register-page"]}>
-                <ul className={styles["info-list"]}>
+                <ul className={`${styles["info-list"]} ${resp["info-list"]}`}>
                     <li>Register users information</li>
                     <li>
                         <p>
