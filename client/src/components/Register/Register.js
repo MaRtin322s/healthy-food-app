@@ -1,5 +1,6 @@
 import { useContext, useReducer, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import resp from "./styles/responsive.module.css";
 
 import { AuthContext } from "../../contexts/UserContext";
 import * as validations from "../../utils/validations";
@@ -67,7 +68,7 @@ const Register = () => {
     return (
         <>
             {notification && <Error message={notification} />}
-            <img className={styles["register-background-img"]} src={background} alt="background" />
+            <img className={`${styles["register-background-img"]} ${resp["backg-img"]}`} src={background} alt="background" />
             <section className={styles["register-page"]}>
                 <ul className={styles["info-list"]}>
                     <li>Register users information</li>
@@ -104,7 +105,7 @@ const Register = () => {
                     </li>
                 </ul>
                 <form
-                    className={styles["register"]}
+                    className={`${styles["register"]} ${resp["register"]}`}
                     onSubmit={(ev) => submitHandler(ev, state)}
                 >
                     <h1 className={styles["register-heading"]}>Register new users</h1>
