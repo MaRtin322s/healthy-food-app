@@ -91,24 +91,4 @@
         font-size: 22px;
         margin-top: 15px;
     }
-
-    .user-info a {
-        color: blue;
-        text-decoration: none;
-    }
-
-    .user-info a:hover {
-        color: #f6dc14;
-        text-decoration: underline;
-    }
-
-    .user-info label,
-    input,
-    p {
-        margin-left: 15px;
-    }
-
-    .user-info p {
-        margin-bottom: 10px;
-    }
 }
