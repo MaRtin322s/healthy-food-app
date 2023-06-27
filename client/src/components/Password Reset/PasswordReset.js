@@ -1,5 +1,6 @@
 import { memo, useCallback, useReducer, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import resp from "./styles/responsive.module.css";
 
 import * as service from "../../services/userServices";
 import { initData, reducer } from "./data/data";
@@ -76,9 +77,9 @@ const PasswordReset = memo(() => {
             {showComponent.show &&
                 <Error message={showComponent.title} />
             }
-            <img className={styles["background-img"]} src={background} alt="background" />
+            <img className={`${styles["background-img"]} ${resp["background-img"]}`} src={background} alt="background" />
             <section className={styles["login-page"]}>
-                <ul className={styles["info-list"]}>
+                <ul className={`${styles["info-list"]} ${resp["info-list-resp"]}`}>
                     <li>Password Reset Information</li>
                     <li>
                         Go to the login page for the website or application where you need to reset your password.
@@ -100,7 +101,7 @@ const PasswordReset = memo(() => {
                     </li>
                 </ul>
                 <form
-                    className={styles["login"]}
+                    className={`${styles["login"]} ${resp["login-responsive"]}`}
                     onSubmit={(ev) => submitHandler(ev, state)}
                 >
                     <h1 className={styles["login-heading"]}>Reset your password</h1>
