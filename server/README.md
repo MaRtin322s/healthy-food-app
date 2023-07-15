@@ -45,7 +45,7 @@ The application uses:
 - /save/:userId - send GET request to the endpoint and it will return all saved recipes of the current user.
 
 # Products operations
-- BaseUrl: http://localhost:3030/products.
+- BaseUrl: http://localhost:3030/products
 
 - /create - send authorized POST request to the endpoint with required data. All fields must be filled with correct information. The server responds with the newly created product.
 
