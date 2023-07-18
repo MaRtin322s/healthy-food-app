@@ -18,6 +18,7 @@ const EditProfile = ({
         imageUrl: imageUrl
     });
 
+    // eslint-disable-next-line
     const [image, setImage] = useState('');
 
     const changeHandler = useCallback((ev) => {

@@ -13,6 +13,7 @@ import background from "./images/backgr.jpg";
 
 const Register = () => {
     const navigate = useNavigate();
+    // eslint-disable-next-line
     const [image, setImage] = useState('');
     const { userLogin } = useContext(AuthContext);
     const [state, dispatch] = useReducer(reducer, initData);
