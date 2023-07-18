@@ -174,20 +174,14 @@ const Register = () => {
                         <div>
                             <input
                                 className={styles["email"]}
-                                type="url"
+                                type="file"
                                 id="imageUrl"
                                 name="imageUrl"
                                 placeholder="https://..."
                                 value={state.imageUrl}
                                 required
                                 onChange={(ev) => chnageHandler(ev)}
-                                onBlur={() =>
-                                    // eslint-disable-next-line
-                                    validations.urlValidator("https://", state.imageUrl, "imageUrl", setError)}
                             />
-                            {error.imageUrl &&
-                                <p className={styles["form-error"]}>URL address should start with https://...!</p>
-                            }
                         </div>
 
                         <label htmlFor="secret">Secret Word:</label>
