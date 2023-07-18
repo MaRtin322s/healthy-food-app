@@ -30,11 +30,13 @@ const EditProfile = ({
     const changeHnadlerForFiles = (ev) => {
         const file = ev.target.files[0];
         let dataURL;
+
         if (file) {
             const reader = new FileReader();
 
             reader.onload = () => {
                 dataURL = reader.result;
+                setImage(dataURL);
                 setValues(state => ({
                     ...state,
                     imageUrl: dataURL
@@ -42,8 +44,6 @@ const EditProfile = ({
             };
             reader.readAsDataURL(file);
         }
-
-        setImage(dataURL);
     }
 
     return (
@@ -88,7 +88,7 @@ const EditProfile = ({
                             type="file"
                             id="imageUrl"
                             name="imageUrl"
-                            value={image}
+                            value={""}
                             onChange={(ev) => changeHnadlerForFiles(ev)}
                         />
                     </div>
