@@ -193,7 +193,6 @@ const Register = () => {
                                 type="file"
                                 id="imageUrl"
                                 name="imageUrl"
-                                placeholder="https://..."
                                 value={state.image}
                                 required
                                 onChange={(ev) => chnageHandlerForFiles(ev)}

@@ -18,12 +18,33 @@ const EditProfile = ({
         imageUrl: imageUrl
     });
 
+    const [image, setImage] = useState('');
+
     const changeHandler = useCallback((ev) => {
         setValues(state => ({
             ...state,
             [ev.target.name]: ev.target.value
         }));
     }, []);
+
+    const changeHnadlerForFiles = (ev) => {
+        const file = ev.target.files[0];
+        let dataURL;
+        if (file) {
+            const reader = new FileReader();
+
+            reader.onload = () => {
+                dataURL = reader.result;
+                setValues(state => ({
+                    ...state,
+                    imageUrl: dataURL
+                }));
+            };
+            reader.readAsDataURL(file);
+        }
+
+        setImage(dataURL);
+    }
 
     return (
         <>
@@ -64,11 +85,11 @@ const EditProfile = ({
                     <label htmlFor="imageUrl">ImageUrl:</label>
                     <div>
                         <input
-                            type="text"
+                            type="file"
                             id="imageUrl"
                             name="imageUrl"
-                            value={values.imageUrl}
-                            onChange={(ev) => changeHandler(ev)}
+                            value={image}
+                            onChange={(ev) => changeHnadlerForFiles(ev)}
                         />
                     </div>
                     <button
