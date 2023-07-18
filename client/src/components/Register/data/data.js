@@ -2,7 +2,7 @@ export const initData = {
     firstName: "",
     lastName: "",
     email: "",
-    imageUrl: "",
+    imageUrl: "/image/profile.jpg",
     secretWord: "",
     password: "",
     rePass: ""

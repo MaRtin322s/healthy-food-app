@@ -13,6 +13,7 @@ import background from "./images/backgr.jpg";
 
 const Register = () => {
     const navigate = useNavigate();
+    const [image, setImage] = useState('');
     const { userLogin } = useContext(AuthContext);
     const [state, dispatch] = useReducer(reducer, initData);
     const [notification, setNotification] = useState('');
@@ -27,6 +28,21 @@ const Register = () => {
     const chnageHandler = (ev) => {
         const { name, value } = ev.target;
         dispatch({ type: 'SET_FIELD', field: name, value });
+    }
+
+    const chnageHandlerForFiles = (ev) => {
+        const file = ev.target.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+
+            reader.onload = () => {
+                const dataURL = reader.result;
+                setImage(dataURL);
+                dispatch({ type: 'SET_FIELD', field: 'imageUrl', value: dataURL });
+            };
+            reader.readAsDataURL(file);
+        }
     }
 
     const submitHandler = (ev, userData) => {
@@ -64,7 +80,7 @@ const Register = () => {
             }
         }
     };
-    
+
     return (
         <>
             {notification && <Error message={notification} />}
@@ -178,9 +194,9 @@ const Register = () => {
                                 id="imageUrl"
                                 name="imageUrl"
                                 placeholder="https://..."
-                                value={state.imageUrl}
+                                value={state.image}
                                 required
-                                onChange={(ev) => chnageHandler(ev)}
+                                onChange={(ev) => chnageHandlerForFiles(ev)}
                             />
                         </div>
 
