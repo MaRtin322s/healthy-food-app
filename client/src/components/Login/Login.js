@@ -25,8 +25,8 @@ const Login = memo(() => {
         dispatch({ type: 'SET_FIELD', field: name, value });
     }, []);
 
-    const showPasswordHandler = (ev) => {
-        setShow(!show)
+    const showPasswordHandler = () => {
+        setShow(!show);
     }
 
     const submitHandler = (ev, userData) => {
@@ -121,20 +121,21 @@ const Login = memo(() => {
                         <div className={`${styles["password-container"]} ${resp["password-container"]}`}>
                             <input
                                 className={`${styles["password"]} ${resp["password"]}`}
-                                type="password"
+                                type={show ? 'text' : 'password'}
                                 id="password"
                                 name="password"
                                 placeholder="Enter password..."
                                 required
                                 value={state.password}
                                 onChange={(ev) => changeHandler(ev)}
+                                autoComplete="current-password"
                             />
-                            <input 
-                                type="checkbox" 
-                                name="show" 
+                            <input
+                                type="checkbox"
+                                name="show"
                                 id="show"
                                 checked={show}
-                                onChange={(ev) => showPasswordHandler(ev)}
+                                onChange={() => showPasswordHandler()}
                             />
                             <span>Show password</span>
                             {/* <i className={`${styles["eye-password"]} fas fa-eye`}></i> */}
