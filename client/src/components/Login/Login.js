@@ -114,6 +114,7 @@ const Login = memo(() => {
                                 required
                                 value={state.email}
                                 onChange={(ev) => changeHandler(ev)}
+                                autoComplete="email"
 
                             />
                         </div>
@@ -136,6 +137,7 @@ const Login = memo(() => {
                                 id="show"
                                 checked={show}
                                 onChange={() => showPasswordHandler()}
+                                autoComplete="show"
                             />
                             <span>Show password</span>
                             {/* <i className={`${styles["eye-password"]} fas fa-eye`}></i> */}
