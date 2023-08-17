@@ -14,6 +14,7 @@ const Login = memo(() => {
     const { userLogin } = useContext(AuthContext);
     const navigate = useNavigate();
     const [state, dispatch] = useReducer(reducer, initData);
+    const [show, setShow] = useState(false);
     const [showComponent, setShowComponent] = useState({
         title: "",
         show: false
@@ -23,6 +24,10 @@ const Login = memo(() => {
         const { name, value } = ev.target;
         dispatch({ type: 'SET_FIELD', field: name, value });
     }, []);
+
+    const showPasswordHandler = (ev) => {
+        setShow(!show)
+    }
 
     const submitHandler = (ev, userData) => {
         ev.preventDefault();
@@ -124,6 +129,15 @@ const Login = memo(() => {
                                 value={state.password}
                                 onChange={(ev) => changeHandler(ev)}
                             />
+                            <input 
+                                type="checkbox" 
+                                name="show" 
+                                id="show"
+                                checked={show}
+                                onChange={(ev) => showPasswordHandler(ev)}
+                            />
+                            <span>Show password</span>
+                            {/* <i className={`${styles["eye-password"]} fas fa-eye`}></i> */}
                         </div>
                         <p>
                             Don't have an account? <Link to="/register" replace>Sign Up</Link>

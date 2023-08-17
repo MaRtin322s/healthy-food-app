@@ -109,3 +109,9 @@
 .user-info p {
     margin-bottom: 10px;
 }
+
+.eye-password {
+    position: relative;
+    right: 7%;
+    cursor: pointer;
+}
