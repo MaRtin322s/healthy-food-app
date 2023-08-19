@@ -134,6 +134,7 @@ const Register = () => {
                         <label htmlFor="firstName">First Name:</label>
                         <div>
                             <input
+                                style={error.firstName ? { border: '2px solid red' } : {}}
                                 className={styles["email"]}
                                 type="text"
                                 id="firstName"
@@ -152,6 +153,7 @@ const Register = () => {
                         <label htmlFor="lastName">Last Name:</label>
                         <div>
                             <input
+                                style={error.lastName ? { border: '2px solid red' } : {}}
                                 className={styles["email"]}
                                 type="text"
                                 id="lastName"
@@ -170,6 +172,7 @@ const Register = () => {
                         <label htmlFor="email">Email:</label>
                         <div>
                             <input
+                                style={error.email ? { border: '2px solid red' } : {}}
                                 className={styles["email"]}
                                 type="email"
                                 id="email"
@@ -203,6 +206,7 @@ const Register = () => {
                         <label htmlFor="secret">Secret Word:</label>
                         <div>
                             <input
+
                                 className={styles["email"]}
                                 type="text"
                                 id="secret"
