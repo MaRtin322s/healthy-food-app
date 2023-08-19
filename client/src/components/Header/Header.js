@@ -1,6 +1,5 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
-
+import { NavLink } from "react-router-dom";
 import { AuthContext } from "../../contexts/UserContext";
 
 import styles from "./styles/header.module.css";
@@ -18,31 +17,84 @@ const Header = () => {
                         <img src={logo} alt="logo" />
                     </li>
                     <li className={styles["nav-item"]}>
-                        <Link to="/"><i className="fas fa-home"></i>Home</Link>
+                        <NavLink
+                            to="/"
+                            style={({ isActive }) =>
+                                isActive ? { backgroundColor: 'black', color: 'white' } : {}
+                            }
+                        >
+                            <i className="fas fa-home"></i>
+                            Home
+                        </NavLink>
                     </li>
                     <li className={styles["nav-item"]}>
-                        <Link to="/catalog-recipes">Calatog</Link>
+                        <NavLink
+                            to="/catalog-recipes"
+                            style={({ isActive }) =>
+                                isActive ? { backgroundColor: 'black', color: 'white' } : {}
+                            }
+                        >
+                            Calatog
+                        </NavLink>
                     </li>
                     {user.accessToken
                         ?
                         <>
                             <li className={styles["nav-item"]}>
-                                <Link to="/create-recipes">Create</Link>
+                                <NavLink
+                                    to="/create-recipes"
+                                    style={({ isActive }) =>
+                                        isActive ? { backgroundColor: 'black', color: 'white' } : {}
+                                    }
+                                >
+                                    Create
+                                </NavLink>
                             </li>
                             <li className={styles["nav-item"]}>
-                                <Link to="/profile"><i className="fas fa-user-circle"></i>Profile</Link>
+                                <NavLink
+                                    to="/profile"
+                                    style={({ isActive }) =>
+                                        isActive ? { backgroundColor: 'black', color: 'white' } : {}
+                                    }
+                                >
+                                    <i className="fas fa-user-circle"></i>
+                                    Profile
+                                </NavLink>
                             </li>
                             <li className={styles["nav-item"]}>
-                                <Link to="/logout"><i className="fas fa-sign-out-alt"></i>Logout</Link>
+                                <NavLink
+                                    to="/logout"
+                                    style={({ isActive }) =>
+                                        isActive ? { backgroundColor: 'black', color: 'white' } : {}
+                                    }
+                                >
+                                    <i className="fas fa-sign-out-alt"></i>
+                                    Logout
+                                </NavLink>
                             </li>
                         </>
                         :
                         <>
                             <li className={styles["nav-item"]}>
-                                <Link to="/login">Log In</Link>
+                                <NavLink
+                                    to="/login"
+                                    style={({ isActive }) =>
+                                        isActive ? { backgroundColor: 'black', color: 'white' } : {}
+                                    }
+                                >
+                                    Log In
+                                </NavLink>
                             </li>
                             <li className={styles["nav-item"]}>
-                                <Link to="/register"><i className="fas fa-user-plus"></i>Sign Up</Link>
+                                <NavLink
+                                    to="/register"
+                                    style={({ isActive }) =>
+                                        isActive ? { backgroundColor: 'black', color: 'white' } : {}
+                                    }
+                                >
+                                    <i className="fas fa-user-plus"></i>
+                                    Sign Up
+                                </NavLink>
                             </li>
                         </>
                     }
