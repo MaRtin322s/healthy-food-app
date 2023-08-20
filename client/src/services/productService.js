@@ -1,40 +1,25 @@
+import requester from "./requester";
+
 const baseUrl = "https://healthy-food-api.onrender.com/products";
 // const baseUrl = 'http://localhost:3030/products';
 
-export const createProduct = async (productData, token, userId) => {
-    const res = await fetch(`${baseUrl}/create`, {
-        method: "POST",
-        headers: {
-            'Content-Type': 'application/json',
-            'X-Authorization': token
-        },
-        body: JSON.stringify({ ...productData, _ownerId: userId })
-    });
-    return await res.json();
-};
+export const getAll = () => requester.get(`${baseUrl}/all`);
+export const getOne = (id) => requester.get(`${baseUrl}/${id}`);
+export const getOwned = (userId) => requester.get(`${baseUrl}/profile/${userId}`);
 
-export const getAll = () => fetch(`${baseUrl}/all`).then(res => res.json());
-export const getOne = (id) => fetch(`${baseUrl}/${id}`).then(res => res.json());
-export const getOwned = (userId) => fetch(`${baseUrl}/profile/${userId}`).then(res => res.json());
+export const createProduct = (productData, token, userId) => requester.post(
+    `${baseUrl}/create`,
+    { ...productData, _ownerId: userId },
+    { 'X-Authorization': token }
+);
 
-export const deleteProduct = async (id, token) => {
-    const res = await fetch(`${baseUrl}/delete/${id}`, {
-        method: "DELETE",
-        headers: {
-            'X-Authorization': token
-        }
-    });
-    return await res.json();
-};
+export const deleteProduct = (id, token) => requester.delete(
+    `${baseUrl}/delete/${id}`,
+    { 'X-Authorization': token }
+);
 
-export const editProduct = async (productData, token, id) => {
-    const res = await fetch(`${baseUrl}/edit/${id}`, {
-        method: "PUT",
-        headers: {
-            'Content-Type': 'application/json',
-            'X-Authorization': token
-        },
-        body: JSON.stringify(productData)
-    });
-    return await res.json();
-};
+export const editProduct = (productData, token, id) => requester.put(
+    `${baseUrl}/edit/${id}`,
+    { 'X-Authorization': token },
+    productData
+);

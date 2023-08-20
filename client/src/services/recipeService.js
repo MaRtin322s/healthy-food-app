@@ -4,7 +4,7 @@ const baseUrl = "https://healthy-food-api.onrender.com/recipes";
 // const baseUrl = 'http://localhost:3030/recipes';
 
 export const getAll = () => requester.get(`${baseUrl}/all`);
-export const getOne = (recipeId) => requester.get(`${baseUrl}/${recipeId}`)
+export const getOne = (recipeId) => requester.get(`${baseUrl}/${recipeId}`);
 export const getOwned = async (userId) => requester.get(`${baseUrl}/profile/${userId}`);
 
 export const createRecipe = (token, data) =>
@@ -19,24 +19,8 @@ export const getSavedRecipes = (userId, token) =>
 export const download = (recipeData, token) =>
     requester.post(`${baseUrl}/download`, recipeData, { 'X-Authorization': token });
 
-export const deleteRecipe = async (id, token) => {
-    const res = await fetch(`${baseUrl}/delete/${id}`, {
-        method: "DELETE",
-        headers: {
-            'X-Authorization': token
-        }
-    });
-    return await res.json();
-};
+export const deleteRecipe = (id, token) =>
+    requester.delete(`${baseUrl}/delete/${id}`, { 'X-Authorization': token });
 
-export const editRecipe = async (recipeData, token, id) => {
-    const res = await fetch(`${baseUrl}/edit/${id}`, {
-        method: "PUT",
-        headers: {
-            'Content-Type': 'application/json',
-            'X-Authorization': token
-        },
-        body: JSON.stringify(recipeData)
-    });
-    return await res.json();
-};
+export const editRecipe = (recipeData, token, id) =>
+    requester.put(`${baseUrl}/edit/${id}`, { 'X-Authorization': token }, recipeData);
