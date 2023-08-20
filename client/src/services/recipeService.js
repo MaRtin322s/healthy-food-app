@@ -1,31 +1,23 @@
-import { requester } from "./requester";
+import requester from "./requester";
 
 const baseUrl = "https://healthy-food-api.onrender.com/recipes";
 // const baseUrl = 'http://localhost:3030/recipes';
 
-export const createRecipe = async (token, data) => {
-    const res = await fetch(`${baseUrl}/create`, {
-        method: "POST",
-        headers: {
-            'Content-Type': 'application/json',
-            'X-Authorization': token
-        },
-        body: JSON.stringify(data)
-    });
-    return await res.json();
-};
+export const getAll = () => requester.get(`${baseUrl}/all`);
+export const getOne = (recipeId) => requester.get(`${baseUrl}/${recipeId}`)
+export const getOwned = async (userId) => requester.get(`${baseUrl}/profile/${userId}`);
 
-export const getAll = async () => 
-    await requester.get(`${baseUrl}/all`)
-        .then(res => res.json());
+export const createRecipe = (token, data) =>
+    requester.post(`${baseUrl}/create`, data, { 'X-Authorization': token });
 
-export const getOne = async (recipeId) => 
-    await requester.get(`${baseUrl}/${recipeId}`)
-        .then(res => res.json());
+export const saveRecipe = (recipeId, userId, token) =>
+    requester.post(`${baseUrl}/save/${recipeId}`, { userId }, { 'X-Authorization': token });
 
-export const getOwned = async (userId) => 
-    await requester.get(`${baseUrl}/profile/${userId}`)
-        .then(res => res.json());
+export const getSavedRecipes = (userId, token) =>
+    requester.get(`${baseUrl}/save/${userId}`, { 'X-Authorization': token })
+
+export const download = (recipeData, token) =>
+    requester.post(`${baseUrl}/download`, recipeData, { 'X-Authorization': token });
 
 export const deleteRecipe = async (id, token) => {
     const res = await fetch(`${baseUrl}/delete/${id}`, {
@@ -47,35 +39,4 @@ export const editRecipe = async (recipeData, token, id) => {
         body: JSON.stringify(recipeData)
     });
     return await res.json();
-};
-
-export const saveRecipe = async (recipeId, userId, token) => {
-    const res = await fetch(`${baseUrl}/save/${recipeId}`, {
-        method: "POST",
-        headers: {
-            'Content-Type': 'application/json',
-            'X-Authorization': token
-        },
-        body: JSON.stringify({ userId })
-    });
-    return await res.json();
-};
-
-export const getSavedRecipes = async (userId, token) =>
-    await requester.get(
-        `${baseUrl}/save/${userId}`,
-        { 'X-Authorization': token }
-    )
-        .then(res => res.json());
-
-export const download = async (recipeData, token) => {
-    const res = await fetch(`${baseUrl}/download`, {
-        method: "POST",
-        headers: {
-            'Content-Type': 'application/json',
-            'X-Authorization': token
-        },
-        body: JSON.stringify(recipeData)
-    });
-    return await res.blob();
 };

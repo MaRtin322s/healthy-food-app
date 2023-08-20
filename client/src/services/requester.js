@@ -11,7 +11,7 @@ const requester = {
             if (!res.ok) {
                 throw new Error(`Request failed with status: ${res.status}`);
             } else {
-                return res;
+                return res.json();
             }
 
         } catch (err) {
@@ -33,10 +33,15 @@ const requester = {
             if (!res.ok) {
                 throw new Error(`Request failed with status: ${res.status}`);
             } else {
-                return res.json();
+                if (res.url.includes('download')) {
+                    return res.blob();
+                } else {
+                    return res.json();
+                }
             }
 
         } catch (err) {
+            console.log(err);
             return err;
         }
     }
