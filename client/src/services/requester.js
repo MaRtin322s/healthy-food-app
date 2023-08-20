@@ -39,9 +39,7 @@ const requester = {
                     return res.json();
                 }
             }
-
         } catch (err) {
-            console.log(err);
             return err;
         }
     }

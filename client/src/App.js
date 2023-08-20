@@ -18,6 +18,7 @@ import ProductDetails from "./components/Product Details/ProductDetails";
 import PrivateRoute from "./guards/PrivateRoute";
 import RouteGuard from "./guards/RouteGuard";
 import Spinner from "./components/Spinner/Spinner";
+import ServerError from "./components/Server Error/ServerError";
 
 const Logout = React.lazy(() => import("./components/Logout/Logout"));
 const Details = React.lazy(() => import("./components/Details/Details"));
@@ -36,6 +37,7 @@ function App() {
                             <Route path="/" element={<Home />} />
                             <Route path="/catalog-recipes" element={<RecipesCatalog />} />
                             <Route path="/catalog-products" element={<ProductsCatalog />} />
+                            <Route path="/server-error" element={<ServerError />} />
                             <Route path="*" element={<NotFound />} />
 
                             <Route
