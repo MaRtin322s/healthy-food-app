@@ -84,6 +84,28 @@ const requester = {
         } catch (err) {
             return err;
         }
+    },
+
+    patch: async (url, headers = {}, data = {}) => {
+        try {
+            const res = await fetch(url, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                    ...headers
+                },
+                body: JSON.stringify(data)
+            });
+
+            if (!res.ok) {
+                throw new Error(`Request failed with status: ${res.status}`);
+            } else {
+                return res.json();
+            }
+        } catch (err) {
+            return err;
+        }
+
     }
 };
 
