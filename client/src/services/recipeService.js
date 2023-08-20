@@ -1,3 +1,5 @@
+import { requester } from "./requester";
+
 const baseUrl = "https://healthy-food-api.onrender.com/recipes";
 // const baseUrl = 'http://localhost:3030/recipes';
 
@@ -13,9 +15,17 @@ export const createRecipe = async (token, data) => {
     return await res.json();
 };
 
-export const getAll = () => fetch(`${baseUrl}/all`).then(res => res.json());
-export const getOne = (recipeId) => fetch(`${baseUrl}/${recipeId}`).then(res => res.json());
-export const getOwned = (userId) => fetch(`${baseUrl}/profile/${userId}`).then(res => res.json());
+export const getAll = async () => 
+    await requester.get(`${baseUrl}/all`)
+        .then(res => res.json());
+
+export const getOne = async (recipeId) => 
+    await requester.get(`${baseUrl}/${recipeId}`)
+        .then(res => res.json());
+
+export const getOwned = async (userId) => 
+    await requester.get(`${baseUrl}/profile/${userId}`)
+        .then(res => res.json());
 
 export const deleteRecipe = async (id, token) => {
     const res = await fetch(`${baseUrl}/delete/${id}`, {
@@ -51,13 +61,12 @@ export const saveRecipe = async (recipeId, userId, token) => {
     return await res.json();
 };
 
-export const getSavedRecipes = (userId, token) =>
-    fetch(`${baseUrl}/save/${userId}`, {
-        method: 'GET',
-        headers: {
-            'X-Authorization': token
-        }
-    }).then(res => res.json());
+export const getSavedRecipes = async (userId, token) =>
+    await requester.get(
+        `${baseUrl}/save/${userId}`,
+        { 'X-Authorization': token }
+    )
+        .then(res => res.json());
 
 export const download = async (recipeData, token) => {
     const res = await fetch(`${baseUrl}/download`, {
