@@ -37,14 +37,8 @@ export const deleteAccount = (userId, token) => requester.delete(
     { 'X-Authorization': token }
 );
 
-export const updateUser = async (userId, userData, token) => {
-    const res = await fetch(`${baseUrl}/update/${userId}`, {
-        method: "PATCH",
-        headers: {
-            'Content-Type': 'application/json',
-            'X-Authorization': token
-        },
-        body: JSON.stringify(userData)
-    })
-    return await res.json();
-};
+export const updateUser = async (userId, userData, token) => requester.patch(
+    `${baseUrl}/update/${userId}`,
+    { 'X-Authorization': token },
+    userData
+);
