@@ -1,82 +1,41 @@
+import requester from "./requester";
+
 const baseUrl = "https://healthy-food-api.onrender.com/users";
 // const baseUrl = "http://localhost:3030/users";
 
-export const registerUser = async (userData) => {
-    const res = await fetch(`${baseUrl}/register`, {
-        method: "POST",
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(userData)
-    })
-    return await res.json();
-};
+export const logoutUser = (token) => requester.get(`${baseUrl}/logout`, { "X-Authorization": token });
+export const getUser = (userId) => requester.get(`${baseUrl}/${userId}`);
 
-export const loginUser = async (userData) => {
-    const res = await fetch(`${baseUrl}/login`, {
-        method: "POST",
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(userData)
-    })
-    return await res.json();
-};
+export const registerUser = (userData) => requester.post(
+    `${baseUrl}/register`,
+    userData
+);
 
-export const logoutUser = (token) => {
-    return fetch(`${baseUrl}/logout`, {
-        method: "GET",
-        headers: {
-            "X-Authorization": token
-        }
-    });
-};
+export const loginUser = (userData) => requester.post(
+    `${baseUrl}/login`,
+    userData
+);
 
-export const resetPassword = async (passwordData) => {
-    const res = await fetch(`${baseUrl}/reset`, {
-        method: "POST",
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(passwordData)
-    })
-    return await res.json();
-};
+export const resetPassword = (passwordData) => requester.post(
+    `${baseUrl}/reset`,
+    passwordData
+);
 
-export const testForEmail = async (email, secretWord) => {
-    const res = await fetch(`${baseUrl}/email-test`, {
-        method: "POST",
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ email, secretWord })
-    })
-    return await res.json();
-};
+export const testForEmail = (email, secretWord) => requester.post(
+    `${baseUrl}/email-test`,
+    { email, secretWord }
+);
 
-export const getUser = (userId) => fetch(`${baseUrl}/${userId}`).then(res => res.json());
+export const unsaveRecipe = (recipeData, userId, token) => requester.post(
+    `${baseUrl}/unsave/${userId}`,
+    recipeData,
+    { 'X-Authorization': token }
+);
 
-export const unsaveRecipe = async (recipeData, userId, token) => {
-    const res = await fetch(`${baseUrl}/unsave/${userId}`, {
-        method: "POST",
-        headers: {
-            'Content-Type': 'application/json',
-            'X-Authorization': token
-        },
-        body: JSON.stringify(recipeData)
-    })
-    return await res.json();
-};
-
-export const deleteAccount = async (userId, token) => {
-    const res = await fetch(`${baseUrl}/delete/${userId}`, {
-        method: "DELETE",
-        headers: {
-            'X-Authorization': token
-        }
-    })
-    return await res.json();
-};
+export const deleteAccount = (userId, token) => requester.delete(
+    `${baseUrl}/delete/${userId}`,
+    { 'X-Authorization': token }
+);
 
 export const updateUser = async (userId, userData, token) => {
     const res = await fetch(`${baseUrl}/update/${userId}`, {

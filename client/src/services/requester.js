@@ -11,7 +11,9 @@ const requester = {
             if (!res.ok) {
                 throw new Error(`Request failed with status: ${res.status}`);
             } else {
-                return res.json();
+                if (!res.url.includes('/logout')) {
+                    return res.json();
+                }
             }
 
         } catch (err) {
