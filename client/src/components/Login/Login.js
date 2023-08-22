@@ -25,9 +25,7 @@ const Login = memo(() => {
         dispatch({ type: 'SET_FIELD', field: name, value });
     }, []);
 
-    const showPasswordHandler = () => {
-        setShow(!show);
-    }
+    const showPasswordHandler = () => setShow(!show);
 
     const submitHandler = (ev, userData) => {
         ev.preventDefault();

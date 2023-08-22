@@ -12,6 +12,7 @@ import EditProfile from "../Edit Profile/EditProfile";
 import { initialState, reducer } from "./data/data";
 
 import styles from "./styles/profile.module.css";
+import { showDeleteModal } from "../../utils/showModalHandlers";
 
 const Profile = memo(() => {
     const [state, dispatch] = useReducer(reducer, initialState);
@@ -29,7 +30,6 @@ const Profile = memo(() => {
             .then(result => dispatch({ type: "SET_SAVED", saved: result }));
     }, [user._id, user.accessToken]);
 
-    const showDeleteModal = () => dispatch({ type: "SET_SHOW_DELETE", showDelete: true });
     const closeDeleteModal = () => dispatch({ type: "SET_SHOW_DELETE", showDelete: false });
     const showEditModal = () => dispatch({ type: "SET_SHOW_EDIT", showEdit: true });
     const closeEditModal = () => dispatch({ type: "SET_SHOW_EDIT", showEdit: false });
@@ -86,7 +86,7 @@ const Profile = memo(() => {
                     <ul className={styles["personal-info"]} role={"list"}>
                         <button
                             className={styles["delete-account"]}
-                            onClick={() => showDeleteModal()}
+                            onClick={() => showDeleteModal(dispatch)}
                         >
                             <i className="fas fa-trash-alt"></i>
                         </button>

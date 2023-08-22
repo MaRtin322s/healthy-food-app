@@ -1,0 +1,1 @@
+export const showDeleteModal = (dispatch) => dispatch({ type: "SET_SHOW_DELETE", showDelete: true });

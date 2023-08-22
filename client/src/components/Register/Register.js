@@ -16,6 +16,7 @@ const Register = () => {
     // eslint-disable-next-line
     const [image, setImage] = useState('');
     const { userLogin } = useContext(AuthContext);
+    const emailRegExp = new RegExp('^([a-zA-Z0-9._%+-]+)@([a-zA-Z0-9.-]+.[a-zA-Z]{2})$');
     const [state, dispatch] = useReducer(reducer, initData);
     const [notification, setNotification] = useState('');
     const [error, setError] = useState({
@@ -59,7 +60,6 @@ const Register = () => {
                     alert("Invalid data provided!");
                 } else {
                     try {
-                        const emailRegExp = new RegExp('^([a-zA-Z0-9._%+-]+)@([a-zA-Z0-9.-]+.[a-zA-Z]{2})$');
                         if (emailRegExp.test(userData.email)) {
                             service.registerUser(userData)
                                 .then(result => {
