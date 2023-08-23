@@ -1,4 +1,4 @@
-import { useCallback, useContext, useReducer } from "react";
+import { useContext, useReducer } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import { AuthContext } from "../../contexts/UserContext";
@@ -7,6 +7,7 @@ import { initData, reducer } from "./data/data";
 
 import styles from "./styles/createRecipe.module.css";
 import background from "./images/backgr.jpg";
+import { changeHandler } from "../../utils/handleChangeEvent";
 
 const CreateRecipe = () => {
     const { user } = useContext(AuthContext);
@@ -14,11 +15,6 @@ const CreateRecipe = () => {
     const [state, dispatch] = useReducer(reducer, initData);
     const token = user.accessToken;
     const userId = user._id;
-
-    const changeHandler = useCallback((ev) => {
-        const { name, value } = ev.target;
-        dispatch({ type: 'SET_FIELD', field: name, value });
-    }, []);
 
     const submitHandler = (ev, data, token, userId) => {
         ev.preventDefault();
@@ -83,7 +79,7 @@ const CreateRecipe = () => {
                             name="title"
                             placeholder="Title..."
                             value={state.title}
-                            onChange={(ev) => changeHandler(ev)}
+                            onChange={(ev) => changeHandler(ev, dispatch)}
                             required
                         />
                     </div>
@@ -95,7 +91,7 @@ const CreateRecipe = () => {
                             name="category"
                             placeholder="Main dish...."
                             value={state.category}
-                            onChange={(ev) => changeHandler(ev)}
+                            onChange={(ev) => changeHandler(ev, dispatch)}
                             required
                         />
                     </div>
@@ -107,7 +103,7 @@ const CreateRecipe = () => {
                             name="imageUrl"
                             placeholder="https://..."
                             value={state.imageUrl}
-                            onChange={(ev) => changeHandler(ev)}
+                            onChange={(ev) => changeHandler(ev, dispatch)}
                             required
                         />
                     </div>
@@ -121,7 +117,7 @@ const CreateRecipe = () => {
                             name="ingredients"
                             placeholder="1/2 teaspoon salt..."
                             value={state.ingredients}
-                            onChange={(ev) => changeHandler(ev)}
+                            onChange={(ev) => changeHandler(ev, dispatch)}
                             required
                         />
                     </div>
@@ -134,7 +130,7 @@ const CreateRecipe = () => {
                             name="preparation"
                             placeholder="Cooking preparation..."
                             value={state.preparation}
-                            onChange={(ev) => changeHandler(ev)}
+                            onChange={(ev) => changeHandler(ev, dispatch)}
                             required
                         />
                     </div>

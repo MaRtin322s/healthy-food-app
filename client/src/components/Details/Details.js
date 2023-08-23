@@ -18,14 +18,14 @@ const Details = () => {
     const { user, getOneRecipe } = useContext(AuthContext);
     const [state, dispatch] = useReducer(reducer, initialState);
     const [recipe, setRecipe] = useState({});
-    const [saved, setSaved] = useState([]);
+    const [savedRecipes, setSavedRecipes] = useState([]);
     const closeHandler = () => dispatch({ type: "DELETE", showDelete: false });
     
     useEffect(() => {
         getOneRecipe(recipeId)
             .then(result => setRecipe(result));
         service.getSavedRecipes(user._id)
-            .then(result => setSaved(result.map(x => {
+            .then(result => setSavedRecipes(result.map(x => {
                 return x._id;
             })));
     }, [getOneRecipe, recipeId, user._id]);
@@ -40,7 +40,7 @@ const Details = () => {
         ev.preventDefault();
         service.saveRecipe(recipeId, userId, token)
             .then((result) => {
-                setSaved(result.map(x => {
+                setSavedRecipes(result.map(x => {
                     return x._id;
                 }));
                 navigate(`/details/recipes/${recipeId}`, { replace: true })
@@ -53,7 +53,7 @@ const Details = () => {
             .then(recipes => {
                 const save = recipes.filter(x => x._id !== recipeId);
                 userService.unsaveRecipe(save, userId, token)
-                    .then(recipes => setSaved(recipes));
+                    .then(recipes => setSavedRecipes(recipes));
             })
     };
 
@@ -103,7 +103,7 @@ const Details = () => {
                                 </p>
                             </div>
                         </section>
-                        {saved.includes(recipeId)
+                        {savedRecipes.includes(recipeId)
                             ?
                             <p>
                                 This recipe is saved to your profile.
@@ -133,7 +133,7 @@ const Details = () => {
                                 </>
                                 :
                                 <>
-                                    {!saved.includes(recipeId)
+                                    {!savedRecipes.includes(recipeId)
                                         ?
                                         <>
                                             <Link

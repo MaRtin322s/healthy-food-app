@@ -1,4 +1,4 @@
-import { useCallback, useContext, useReducer } from "react";
+import { useContext, useReducer } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import { AuthContext } from "../../contexts/UserContext";
@@ -8,16 +8,12 @@ import { initData, reducer } from "./data/data";
 import styles from "./styles/createProduct.module.css";
 import resp from "./styles/responsive.module.css";
 import background from "./images/backgr.jpg";
+import { changeHandler } from "../../utils/handleChangeEvent";
 
 const CreateProduct = () => {
     const [state, dispatch] = useReducer(reducer, initData);
     const navigate = useNavigate();
     const { user } = useContext(AuthContext);
-
-    const changeHandler = useCallback((ev) => {
-        const { name, value } = ev.target;
-        dispatch({ type: "SET_FIELD", field: name, value });
-    }, []);
 
     const submitHandler = (ev, data) => {
         ev.preventDefault();
@@ -88,7 +84,7 @@ const CreateProduct = () => {
                             id="title"
                             name="title"
                             placeholder="Title..."
-                            onChange={(ev) => changeHandler(ev)}
+                            onChange={(ev) => changeHandler(ev, dispatch)}
                             value={state.title}
                             required
                         />
@@ -100,7 +96,7 @@ const CreateProduct = () => {
                             id="type"
                             name="type"
                             placeholder="Fruits..."
-                            onChange={(ev) => changeHandler(ev)}
+                            onChange={(ev) => changeHandler(ev, dispatch)}
                             value={state.type}
                             required
                         />
@@ -112,7 +108,7 @@ const CreateProduct = () => {
                             id="imageUrl"
                             name="imageUrl"
                             placeholder="https://..."
-                            onChange={(ev) => changeHandler(ev)}
+                            onChange={(ev) => changeHandler(ev, dispatch)}
                             value={state.imageUrl}
                             required
                         />
@@ -129,7 +125,7 @@ const CreateProduct = () => {
                             id="nutrition"
                             name="nutrition"
                             placeholder="Calories: 1500"
-                            onChange={(ev) => changeHandler(ev)}
+                            onChange={(ev) => changeHandler(ev, dispatch)}
                             value={state.nutrition}
                             required
                         />
@@ -142,7 +138,7 @@ const CreateProduct = () => {
                             id="description"
                             name="description"
                             placeholder="Product description..."
-                            onChange={(ev) => changeHandler(ev)}
+                            onChange={(ev) => changeHandler(ev, dispatch)}
                             value={state.description}
                             required
                         />
