@@ -20,14 +20,18 @@ const Profile = memo(() => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        service.getUser(user._id)
-            .then(result => dispatch({ type: "SET_DATA", data: result }));
-        recipeService.getOwned(user._id)
-            .then(result => dispatch({ type: "SET_OWN_RECIPES", ownRecipes: result }));
-        productService.getOwned(user._id)
-            .then(result => dispatch({ type: "SET_OWN_PRODUCTS", ownProducts: result }));
-        recipeService.getSavedRecipes(user._id, user.accessToken)
-            .then(result => dispatch({ type: "SET_SAVED", saved: result }));
+        Promise.all([
+            service.getUser(user._id),
+            recipeService.getOwned(user._id),
+            productService.getOwned(user._id),
+            recipeService.getSavedRecipes(user._id, user.accessToken)
+        ])
+            .then(result => {
+                dispatch({ type: "SET_DATA", data: result[0] })
+                dispatch({ type: "SET_OWN_RECIPES", ownRecipes: result[1] })
+                dispatch({ type: "SET_OWN_PRODUCTS", ownProducts: result[2] })
+                dispatch({ type: "SET_SAVED", saved: result[3] })
+            });
     }, [user._id, user.accessToken]);
 
     const closeDeleteModal = () => dispatch({ type: "SET_SHOW_DELETE", showDelete: false });
@@ -59,19 +63,19 @@ const Profile = memo(() => {
     return (
         <>
             {state.showDelete &&
-                <Delete 
-                    userId={user._id} 
-                    closeDeleteModal={closeDeleteModal} 
-                    deleteHandler={deleteHandler} 
+                <Delete
+                    userId={user._id}
+                    closeDeleteModal={closeDeleteModal}
+                    deleteHandler={deleteHandler}
                 />
             }
 
             {state.showEdit &&
-                <EditProfile 
-                    closeEditModal={closeEditModal} 
-                    {...state.data} 
+                <EditProfile
+                    closeEditModal={closeEditModal}
+                    {...state.data}
                     token={user.accessToken}
-                    submitHandler={submitHandler} 
+                    submitHandler={submitHandler}
                 />
             }
             <section className={styles["profile-section"]}>
