@@ -6,7 +6,7 @@ import * as service from "../../services/recipeService";
 import * as userService from "../../services/userServices";
 import { saveAs } from "file-saver";
 
-import Delete from "../Delete Recipes/DeleteRecipes";
+import Delete from "../Delete Component/DeleteComponent";
 import styles from "./styles/details.module.css";
 import { initialState, reducer } from "./data/data";
 

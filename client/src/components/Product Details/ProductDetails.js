@@ -4,7 +4,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import * as service from "../../services/productService";
 import { AuthContext } from "../../contexts/UserContext";
 import { PublicContext } from "../../contexts/PublicationContext";
-import Delete from "../Delete Products/DeleteProducts";
+import Delete from "../Delete Component/DeleteComponent";
 
 import styles from "./styles/productDetails.module.css";
 
