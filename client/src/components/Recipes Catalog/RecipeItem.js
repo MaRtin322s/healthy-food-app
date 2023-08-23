@@ -9,7 +9,7 @@ const RecipeCatalogItem = memo(({
     category,
     _id
 }) => {
-    const { user } = useContext(AuthContext);
+    const { user } = useContext(AuthContext)
 
     return (
         <article className={styles["catalog-recipe"]}>

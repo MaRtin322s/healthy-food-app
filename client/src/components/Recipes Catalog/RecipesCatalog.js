@@ -1,5 +1,5 @@
 import { useContext, useEffect, useReducer } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 import { AuthContext } from "../../contexts/UserContext";
 import { initialState, reducer } from "./data/data";
@@ -23,9 +23,15 @@ const RecipesCatalog = () => {
         setTimeout(() => {
             getAllRecipes()
                 .then(result => {
-                    dispatch({ type: "SET_RECIPES", recipes: result.reverse() });
-                    dispatch({ type: "SET_LOADING", value: false });
-                });
+                    if (result.toString().includes('Error')) {
+                        console.log('error');
+                        return <Navigate to="/server-error" />
+                    } else {
+                        dispatch({ type: "SET_RECIPES", recipes: result.reverse() });
+                        dispatch({ type: "SET_LOADING", value: false });
+                    }
+                })
+                .catch(() => <Navigate to="/server-error" />)
         }, 1000);
     }, [getAllRecipes]);
 
@@ -42,7 +48,7 @@ const RecipesCatalog = () => {
             {state.currentPage > 1 && (
                 <button
                     className={`${styles["btn-pagination"]} ${resp["btn-pagination"]}`}
-                    onClick={() => 
+                    onClick={() =>
                         dispatch({ type: "SET_CURRENT_PAGE", currentPage: state.currentPage - 1 })
                     }
                 >
@@ -53,7 +59,7 @@ const RecipesCatalog = () => {
                 <>
                     <button
                         className={`${styles["btn-pagination"]} ${resp["btn-pagination"]}`}
-                        onClick={() => 
+                        onClick={() =>
                             dispatch({ type: "SET_CURRENT_PAGE", currentPage: state.currentPage + 1 })
                         }
                     >
@@ -68,7 +74,7 @@ const RecipesCatalog = () => {
                     <Spinner />
                     :
                     <>
-                        {state.recipes.length > 0
+                        {state?.recipes.length > 0
                             ?
                             currentItems.map(recipe => (
                                 <RecipeCatalogItem key={recipe._id} {...recipe} />
