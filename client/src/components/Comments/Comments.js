@@ -12,10 +12,10 @@ export const Comments = memo(({ recipeId }) => {
 
     useEffect(() => {
         recipeService.getAllComments(recipeId)
-            .then(result => {
-                setComments(result);
+            .then((comments) => {
+                setComments(comments);
             });
-    }, [recipeId]);
+    }, [recipeId, user._id]);
 
     const submitHandler = (ev, comment) => {
         ev.preventDefault();
@@ -24,15 +24,15 @@ export const Comments = memo(({ recipeId }) => {
             recipeService.createComment(comment, recipeId, user._id)
                 .then(() => {
                     recipeService.getAllComments(recipeId)
-                        .then(result => {
-                            setComments(result);
+                        .then((comments) => {
+                            setComments(comments);
                         });
                 });
+
+            dispatch({ type: 'CLEAR_FIELD', field: 'comment', value: '' });
         }
     }
-
-
-    console.log(comments);
+    
     return (
         <section className="comments-section">
             <form
@@ -59,18 +59,15 @@ export const Comments = memo(({ recipeId }) => {
 
             <article className="comments">
                 <h1 className="comments-article-heading">Comments</h1>
-                <div className="comment">
-                    <img src='https://scontent-fra5-2.xx.fbcdn.net/v/t1.6435-1/150229103_1361363897531379_3959542739258643856_n.jpg?stp=dst-jpg_p240x240&_nc_cat=109&ccb=1-7&_nc_sid=7206a8&_nc_ohc=32HLQG6tlToAX8NVFVA&_nc_ht=scontent-fra5-2.xx&oh=00_AfA8LXpyW7Z-dGNrv33wmBanik8oFmmNgBL3gX8WIMF0WQ&oe=650E715A' alt='profile' />
-                    <p>email: We value your feedback. Let us know your thoughts!</p>
-                </div>
-                <div className="comment">
-                    <img src='https://scontent-fra5-2.xx.fbcdn.net/v/t1.6435-1/150229103_1361363897531379_3959542739258643856_n.jpg?stp=dst-jpg_p240x240&_nc_cat=109&ccb=1-7&_nc_sid=7206a8&_nc_ohc=32HLQG6tlToAX8NVFVA&_nc_ht=scontent-fra5-2.xx&oh=00_AfA8LXpyW7Z-dGNrv33wmBanik8oFmmNgBL3gX8WIMF0WQ&oe=650E715A' alt='profile' />
-                    <p>email: We value your feedback. Let us know your thoughts!</p>
-                </div>
-                <div className="comment">
-                    <img src='https://scontent-fra5-2.xx.fbcdn.net/v/t1.6435-1/150229103_1361363897531379_3959542739258643856_n.jpg?stp=dst-jpg_p240x240&_nc_cat=109&ccb=1-7&_nc_sid=7206a8&_nc_ohc=32HLQG6tlToAX8NVFVA&_nc_ht=scontent-fra5-2.xx&oh=00_AfA8LXpyW7Z-dGNrv33wmBanik8oFmmNgBL3gX8WIMF0WQ&oe=650E715A' alt='profile' />
-                    <p>email: We value your feedback. Let us know your thoughts!</p>
-                </div>
+                {comments.length > 0 ?
+                    comments.map(x => (
+                        <div className="comment" key={x._id}>
+                            <img src={x.userId?.imageUrl} alt='profile' />
+                            <p>{x.userId?.firstName} {x.userId?.lastName}: {x.comment}</p>
+                        </div>
+                    ))
+                    : <h1 className="comments-empty-heading">No comments yet.</h1>
+                }
             </article>
         </section>
     );

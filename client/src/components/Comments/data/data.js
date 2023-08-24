@@ -9,6 +9,11 @@ export function reducer(state, action) {
             [action.field]: action.value
         }
 
+        case 'CLEAR_FIELD': return {
+            ...state,
+            [action.field]: action.value
+        }
+
         default: return state;
     }
 }
