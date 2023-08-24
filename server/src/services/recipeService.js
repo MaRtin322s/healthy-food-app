@@ -16,4 +16,4 @@ exports.createComment = async (data) => {
     return newComment;
 };
 
-exports.getAllComments = async (recipeId) => await Comment.find({ recipeId: recipeId });
+exports.getAllComments = async (recipeId) => await Comment.find({ recipeId: recipeId }).populate('userId');
