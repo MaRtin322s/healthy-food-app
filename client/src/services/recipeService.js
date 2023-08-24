@@ -27,3 +27,6 @@ export const editRecipe = (recipeData, token, id) =>
 
 export const createComment = (commentData, recipeId, userId) => 
     requester.post(`${baseUrl}/comments`, { ...commentData, recipeId, userId });
+
+export const getAllComments = (recipeId) =>
+    requester.get(`${baseUrl}/comments/${recipeId}`);

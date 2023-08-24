@@ -1,22 +1,38 @@
-import { useContext, useReducer } from 'react';
+import { memo, useContext, useEffect, useReducer, useState } from 'react';
 import './styles/comments.css';
 import { initialState, reducer } from './data/data';
 import { changeHandler } from '../../utils/handleChangeEvent';
 import * as recipeService from '../../services/recipeService';
 import { AuthContext } from '../../contexts/UserContext';
 
-export const Comments = ({ recipeId }) => {
+export const Comments = memo(({ recipeId }) => {
     const { user } = useContext(AuthContext);
+    const [comments, setComments] = useState([]);
     const [state, dispatch] = useReducer(reducer, initialState);
+
+    useEffect(() => {
+        recipeService.getAllComments(recipeId)
+            .then(result => {
+                setComments(result);
+            });
+    }, [recipeId]);
 
     const submitHandler = (ev, comment) => {
         ev.preventDefault();
 
         if (state.comment !== '') {
             recipeService.createComment(comment, recipeId, user._id)
+                .then(() => {
+                    recipeService.getAllComments(recipeId)
+                        .then(result => {
+                            setComments(result);
+                        });
+                });
         }
     }
 
+
+    console.log(comments);
     return (
         <section className="comments-section">
             <form
@@ -58,4 +74,4 @@ export const Comments = ({ recipeId }) => {
             </article>
         </section>
     );
-};
+});
