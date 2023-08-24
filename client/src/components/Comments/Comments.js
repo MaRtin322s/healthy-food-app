@@ -1,9 +1,28 @@
+import { useContext, useReducer } from 'react';
 import './styles/comments.css';
+import { initialState, reducer } from './data/data';
+import { changeHandler } from '../../utils/handleChangeEvent';
+import * as recipeService from '../../services/recipeService';
+import { AuthContext } from '../../contexts/UserContext';
 
-export const Comments = () => {
+export const Comments = ({ recipeId }) => {
+    const { user } = useContext(AuthContext);
+    const [state, dispatch] = useReducer(reducer, initialState);
+
+    const submitHandler = (ev, comment) => {
+        ev.preventDefault();
+
+        if (state.comment !== '') {
+            recipeService.createComment(comment, recipeId, user._id)
+        }
+    }
+
     return (
         <section className="comments-section">
-            <form className="add-comment">
+            <form
+                className="add-comment"
+                onSubmit={(ev) => submitHandler(ev, state)}
+            >
                 <h1>Add comment:</h1>
 
                 <div className="input-area">
@@ -14,6 +33,8 @@ export const Comments = () => {
                         id="comment"
                         name="comment"
                         placeholder="We value your feedback. Let us know your thoughts!"
+                        value={state.comment}
+                        onChange={(ev) => changeHandler(ev, dispatch)}
                     ></textarea>
                 </div>
 
