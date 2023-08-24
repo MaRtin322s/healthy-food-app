@@ -11,5 +11,9 @@ exports.getMyRecipes = async (ownerId) => await Recipe.find().where({ _ownerId: 
 exports.editRecipe = async (recipeId, data) => await Recipe.findByIdAndUpdate({ _id: recipeId }, data);
 exports.deleteRecipe = async (recipeId) => await Recipe.findByIdAndDelete({ _id: recipeId });
 
+exports.createComment = async (data) => {
+    const newComment = await Comment.create(data);
+    return newComment;
+};
 
-exports.createComment = async (data) => await Comment.create(data);
+exports.getAllComments = async (recipeId) => await Comment.find({ recipeId: recipeId });
