@@ -168,7 +168,7 @@ const Details = () => {
                         </div>
                     </article>
                 </section>
-                <Comments />
+                <Comments recipeId={recipeId}/>
             </div>
         </>
     );

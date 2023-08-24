@@ -19,6 +19,8 @@ const Profile = memo(() => {
     const { user, userLogout } = useContext(AuthContext);
     const navigate = useNavigate();
 
+    console.log(user.accessToken);
+
     useEffect(() => {
         Promise.all([
             service.getUser(user._id),
