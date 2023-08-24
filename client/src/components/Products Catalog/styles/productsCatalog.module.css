@@ -54,11 +54,6 @@
     cursor: pointer;
 }
 
-.catalog-recipe:hover .catalog-recipe-title {
-    text-decoration: underline;
-    color: orange;
-}
-
 .catalog-recipe img {
     border-bottom: 3px solid black;
     border-radius: 6px;
