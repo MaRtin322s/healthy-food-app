@@ -63,7 +63,7 @@ export const Comments = memo(({ recipeId }) => {
                     comments.map(x => (
                         <div className="comment" key={x._id}>
                             <img src={x.userId?.imageUrl} alt='profile' />
-                            <p>{x.userId?.firstName} {x.userId?.lastName}: {x.comment}</p>
+                            <p><span className="names">{x.userId?.firstName} {x.userId?.lastName}</span>: {x.comment}</p>
                         </div>
                     ))
                     : <h1 className="comments-empty-heading">No comments yet.</h1>

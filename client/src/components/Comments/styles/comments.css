@@ -69,6 +69,7 @@
 
 .comment {
     border-radius: 15px;
+    background-color: #70f1c2;
 }
 
 .comment img {
@@ -76,11 +77,16 @@
     border-radius: 100px;
 }
 
-.comment p {
+.comment p:not(:first-child) {
     vertical-align: middle;
+    font-size: 18px;
 }
 
 .comments-empty-heading {
     text-align: center;
     font-size: 25px;
+}
+
+.names {
+    font-weight: 600;
 }

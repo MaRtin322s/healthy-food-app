@@ -1,7 +1,7 @@
 import requester from "./requester";
 
-// const baseUrl = "https://healthy-food-api.onrender.com/recipes";
-const baseUrl = 'http://localhost:3030/recipes';
+const baseUrl = "https://healthy-food-api.onrender.com/recipes";
+// const baseUrl = 'http://localhost:3030/recipes';
 
 export const getAll = () => requester.get(`${baseUrl}/all`);
 export const getOne = (recipeId) => requester.get(`${baseUrl}/${recipeId}`);
