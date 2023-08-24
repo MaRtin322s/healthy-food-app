@@ -9,6 +9,7 @@ import { saveAs } from "file-saver";
 import Delete from "../Delete Component/DeleteComponent";
 import styles from "./styles/details.module.css";
 import { initialState, reducer } from "./data/data";
+import { Comments } from "../Comments/Comments";
 
 const ProgressBar = React.lazy(() => import("../Progress Bar/ProgressBar"));
 
@@ -20,7 +21,7 @@ const Details = () => {
     const [recipe, setRecipe] = useState({});
     const [savedRecipes, setSavedRecipes] = useState([]);
     const closeHandler = () => dispatch({ type: "DELETE", showDelete: false });
-    
+
     useEffect(() => {
         getOneRecipe(recipeId)
             .then(result => setRecipe(result));
@@ -167,6 +168,7 @@ const Details = () => {
                         </div>
                     </article>
                 </section>
+                <Comments />
             </div>
         </>
     );
