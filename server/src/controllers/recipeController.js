@@ -91,13 +91,9 @@ router.post('/save/:recipeId', async (req, res) => {
 });
 
 router.get('/save/:userId', async (req, res) => {
-    if (req.headers['X-Authorization']) {
-        const userId = req.params.userId;
-        const author = await authService.getUser(userId);
-        res.json(author.savedRecipes);
-    } else {
-        res.status(401).json('Unauthorized - You don\'t have permissions to do that!');
-    }
+    const userId = req.params.userId;
+    const author = await authService.getUser(userId);
+    res.json(author.savedRecipes);
 });
 
 router.post('/download', (req, res) => {
@@ -114,6 +110,11 @@ router.post('/download', (req, res) => {
     } else {
         res.status(401).json('Unauthorized - You don\'t have permissions to do that!');
     }
+});
+
+router.post('/comments', (req, res) => {
+    const { Comment, recipeId, userId } = req.body;
+    
 });
 
 module.exports = router;
