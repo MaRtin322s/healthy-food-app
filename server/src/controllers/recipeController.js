@@ -112,9 +112,15 @@ router.post('/download', (req, res) => {
     }
 });
 
-router.post('/comments', (req, res) => {
-    const { Comment, recipeId, userId } = req.body;
-    
+router.post('/comments', async (req, res) => {
+    const newComment = await recipeService.createComment(req.body);
+    res.json(newComment);
+});
+
+router.get('/comments/:recipeId', async (req, res) => {
+    const recipeId = req.params.recipeId;
+    const comments = await recipeService.getAllComments(recipeId);
+    res.json(comments);
 });
 
 module.exports = router;
