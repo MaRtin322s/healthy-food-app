@@ -19,6 +19,7 @@
     width: 700px;
     margin: 10px 4000px 10px 400px;
     background-color: #19e79c;
+    position: relative;
 }
 
 .profile-photo {
@@ -220,4 +221,16 @@
 #delete-cancel:hover {
     background-color: #555;
     color: white;
+}
+
+.edit-icon-logo {
+    position: absolute;
+    left: 86%;
+    top: 4%;
+}
+
+.delete-icon-logo {
+    position: absolute;
+    left: 92%;
+    top: 4%;
 }

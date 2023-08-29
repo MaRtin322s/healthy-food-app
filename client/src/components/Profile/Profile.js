@@ -19,8 +19,6 @@ const Profile = memo(() => {
     const { user, userLogout } = useContext(AuthContext);
     const navigate = useNavigate();
 
-    console.log(user.accessToken);
-
     useEffect(() => {
         Promise.all([
             service.getUser(user._id),
@@ -91,13 +89,13 @@ const Profile = memo(() => {
                     {/* eslint-disable-next-line */}
                     <ul className={styles["personal-info"]} role={"list"}>
                         <button
-                            className={styles["delete-account"]}
+                            className={`${styles["delete-account"]} ${styles["delete-icon-logo"]}`}
                             onClick={() => showDeleteModal(dispatch)}
                         >
                             <i className="fas fa-trash-alt"></i>
                         </button>
                         <button
-                            className={styles["edit-account"]}
+                            className={`${styles["edit-account"]} ${styles["edit-icon-logo"]}`}
                             onClick={() => showEditModal()}
                         >
                             <i className="fas fa-edit"></i>
