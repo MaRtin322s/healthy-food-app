@@ -116,7 +116,7 @@ router.get('/comments/:recipeId', async (req, res) => {
 });
 
 router.delete('/delete-comments/:userId', async (req, res) => {
-    const { userId } = req.params.userId;
+    const userId = mongoose.Types.ObjectId(req.params.userId);
     await recipeService.deleteComments(userId);
     res.json({ message: 'Comments deleted successfully!' });
 });
