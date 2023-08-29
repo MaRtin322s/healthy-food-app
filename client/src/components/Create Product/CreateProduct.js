@@ -1,4 +1,4 @@
-import { useContext, useReducer } from "react";
+import { useContext, useReducer, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import { AuthContext } from "../../contexts/UserContext";
@@ -9,24 +9,47 @@ import styles from "./styles/createProduct.module.css";
 import resp from "./styles/responsive.module.css";
 import background from "./images/backgr.jpg";
 import { changeHandler } from "../../utils/handleChangeEvent";
+import Error from '../Error/Error';
 
 const CreateProduct = () => {
     const [state, dispatch] = useReducer(reducer, initData);
     const navigate = useNavigate();
     const { user } = useContext(AuthContext);
+    const [error, setError] = useState({
+        status: 'false',
+        message: '',
+        show: false
+    });
 
     const submitHandler = (ev, data) => {
         ev.preventDefault();
         const nutrition = data.nutrition.split("\n");
 
         service.createProduct({ ...data, nutrition }, user.accessToken, user._id)
-            .then(() => {
-                navigate("/catalog-products", { replace: true });
+            .then((res) => {
+                if (res.message) {
+                    setError(() => ({
+                        status: true,
+                        message: res.message.errors.imageUrl.properties.message,
+                        show: true
+                    }));
+                } else {
+                    navigate("/catalog-products", { replace: true });
+                }
             });
+
+
+        setTimeout(() => {
+            setError(state => ({
+                ...state,
+                show: false
+            }));
+        }, 5000);
     };
 
     return (
         <>
+            {error.show && <Error message={error.message} />}
             <section className={`${styles["create-page"]} ${resp["create-page"]}`}>
                 <article className={`${styles["info"]} ${resp["info"]}`}>
                     <ul className={`${styles["steps"]} ${resp["steps"]}`}>
@@ -63,15 +86,15 @@ const CreateProduct = () => {
                         Create Products
                     </h1>
                     <div className={`${styles["links"]} ${resp["links"]}`}>
-                        <Link className={`${styles["create-recipe"]} ${resp["create-recipe"]}`} 
-                            to="/create-recipes" 
+                        <Link className={`${styles["create-recipe"]} ${resp["create-recipe"]}`}
+                            to="/create-recipes"
                             replace
                         >
                             Create Recipe
                         </Link>
-                        <Link 
-                            className={`${styles["create-product"]} ${resp["create-product"]}`} 
-                            to="/create-products" 
+                        <Link
+                            className={`${styles["create-product"]} ${resp["create-product"]}`}
+                            to="/create-products"
                             replace
                         >
                             Create Product
@@ -151,7 +174,7 @@ const CreateProduct = () => {
                         />
                     </div>
                 </form>
-                <img className={`${styles["background-img"]} ${resp["background-img"]}`} 
+                <img className={`${styles["background-img"]} ${resp["background-img"]}`}
                     src={background} alt="background"
                 />
             </section>
