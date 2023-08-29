@@ -9,7 +9,7 @@ import { initData, reducer } from "./data/data";
 import Error from "../Error/Error";
 
 import styles from "./styles/register.module.css";
-import background from "./images/backgr.jpg";
+import food from "./images/food.jpg";
 
 const Register = () => {
     const navigate = useNavigate();
@@ -85,8 +85,8 @@ const Register = () => {
     return (
         <>
             {notification && <Error message={notification} />}
-            <img className={`${styles["register-background-img"]} ${resp["backg-img"]}`} src={background} alt="background" />
             <section className={styles["register-page"]}>
+            <img className={`${styles["register-background-img"]} ${resp["backg-img"]}`} src={food} alt="background" />
                 <ul className={`${styles["info-list"]} ${resp["info-list"]}`}>
                     <li>Register users information</li>
                     <li>

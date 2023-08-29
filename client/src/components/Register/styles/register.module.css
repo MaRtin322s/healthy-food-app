@@ -1,11 +1,13 @@
 .register-page {
     display: flex;
+    width: 1519px;
+    max-width: 1519px;
 }
 
 .info-list {
-    position: absolute;
-    top: 10%;
-    z-index: -1;
+    position: relative;
+    top: 18%;
+    left: -25%;
 }
 
 .info-list li:first-child {
@@ -25,19 +27,19 @@
     width: 400px;
     margin-top: 35px;
     margin-left: 0px;
-    margin-bottom: 150px;
+    margin-bottom: 45px;
     padding: 10px 30px;
     background-color: #fced81;
-    position: absolute;
+    position: relative;
     top: 6%;
-    left: 35%;
+    left: -17%;
 }
 
 .register-background-img {
-    height: 800px;
+    height: 900px;
+    width: 400px;
     position: relative;
-    right: -495px;
-    margin-bottom: 90px;
+    right: -1119px;
 }
 
 .register-heading {
