@@ -1,10 +1,13 @@
 .login-page {
     display: flex;
+    width: 1519px;
+    max-width: 1519px;
 }
 
 .info-list {
-    position: absolute;
+    position: relative;
     top: 10%;
+    left: -39%;
     z-index: -1;
 }
 
@@ -28,15 +31,16 @@
     margin-bottom: 50px;
     padding: 10px 30px;
     background-color: #fced81;
-    position: absolute;
+    position: relative;
     top: 10%;
-    left: 35%;
+    left: -28%;
 }
 
 .background-img {
-    height: 563px;
+    height: 587px;
     position: relative;
-    right: -798px;
+    right: -920px;
+    width: 599px;
 }
 
 .login-heading {
