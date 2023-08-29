@@ -31,3 +31,6 @@ export const createComment = (commentData, recipeId, userId) =>
 
 export const getAllComments = (recipeId) =>
     requester.get(`${baseUrl}/comments/${recipeId}`);
+
+export const deleteComment = (userId) =>
+    requester.delete(`${baseUrl}/delete-comments/${userId}`);

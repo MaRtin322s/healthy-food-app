@@ -39,7 +39,10 @@ const Profile = memo(() => {
     const closeEditModal = () => dispatch({ type: "SET_SHOW_EDIT", showEdit: false });
 
     const deleteHandler = (userId) => {
-        service.deleteAccount(userId)
+        Promise.all([
+            service.deleteAccount(userId),
+            recipeService.deleteComment(userId)
+        ])
             .then(() => {
                 userLogout();
                 navigate("/", { replace: true });
