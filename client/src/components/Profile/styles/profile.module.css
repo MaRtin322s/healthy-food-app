@@ -9,6 +9,8 @@
 .profile-section {
     background-color: #d3fcfa;
     padding-bottom: 30px;
+    width: 1519px;
+    max-width: 1519px;
 }
 
 .profile-info {
