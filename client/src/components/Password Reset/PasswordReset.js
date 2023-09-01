@@ -77,8 +77,8 @@ const PasswordReset = memo(() => {
             {showComponent.show &&
                 <Error message={showComponent.title} />
             }
-            <img className={`${styles["background-img"]} ${resp["background-img"]}`} src={background} alt="background" />
             <section className={styles["login-page"]}>
+            <img className={`${styles["background-img"]} ${resp["background-img"]}`} src={background} alt="background" />
                 <ul className={`${styles["info-list"]} ${resp["info-list-resp"]}`}>
                     <li>Password Reset Information</li>
                     <li>
