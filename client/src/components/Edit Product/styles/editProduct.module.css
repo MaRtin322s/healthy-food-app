@@ -13,6 +13,9 @@
 
 .create-page {
     display: flex;
+    width: 1519px;
+    max-width: 1519px;
+    background-color: #d5edff;
 }
 
 .create {

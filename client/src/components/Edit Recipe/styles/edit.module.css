@@ -18,6 +18,8 @@
 
 .create-page {
     display: flex;
+    width: 1519px;
+    max-width: 1519px;
 }
 
 .create {

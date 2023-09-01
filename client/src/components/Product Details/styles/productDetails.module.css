@@ -3,6 +3,8 @@
 .wrap-main {
     background-color: #a5d8ff;
     padding: 50px;
+    width: 1519px;
+    max-width: 1519px;
 }
 
 .details {
