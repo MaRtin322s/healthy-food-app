@@ -1,8 +1,15 @@
+.not-found-page {
+    width: 1519px;
+    max-width: 1519px;
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 140px;
+}
+
 .background-img {
-    position: absolute;
+    position: relative;
     right: 0px;
-    height: 514px;
-    top: 64px;
+    height: 519px;
 }
 
 .error-img {
@@ -21,6 +28,7 @@
 
 .error-heading {
     margin-left: 235px;
+    text-align: center;
 }
 
 .error-link {
