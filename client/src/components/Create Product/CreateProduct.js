@@ -7,7 +7,7 @@ import { initData, reducer } from "./data/data";
 
 import styles from "./styles/createProduct.module.css";
 import resp from "./styles/responsive.module.css";
-import background from "./images/backgr.jpg";
+import aside from "./images/aside.png";
 import { changeHandler } from "../../utils/handleChangeEvent";
 import Error from '../Error/Error';
 
@@ -175,7 +175,7 @@ const CreateProduct = () => {
                     </div>
                 </form>
                 <img className={`${styles["background-img"]} ${resp["background-img"]}`}
-                    src={background} alt="background"
+                    src={aside} alt="background"
                 />
             </section>
         </>

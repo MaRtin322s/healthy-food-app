@@ -1,7 +1,9 @@
 .background-img {
     height: 489px;
-    position: absolute;
-    right: 0%;
+    position: relative;
+    right: -242px;
+    height: 845px;
+    width: 385px;
 }
 
 .info li {
@@ -19,6 +21,8 @@
 
 .create-page {
     display: flex;
+    width: 1519px;
+    max-width: 1519px;
 }
 
 .create {
