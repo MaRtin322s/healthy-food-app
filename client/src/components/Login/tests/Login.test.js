@@ -32,4 +32,10 @@ describe("Home component functionality tests", () => {
         const heading = screen.getByText(/Login Information/i);
         expect(heading).toBeInTheDocument();
     });
+    test('Clicking the link navigates to a new page and changes the URL', () => {
+        renderLoginComponent();
+        const linkElement = screen.getByText('Click here');
+        fireEvent.click(linkElement);
+        expect(window.location.pathname).toBe('/password-reset');
+    });
 });
