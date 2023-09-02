@@ -27,4 +27,9 @@ describe("Home component functionality tests", () => {
         const heading = screen.getByText(/Login for users/i);
         expect(heading).toBeInTheDocument();
     });
+    test("Renders the login page main title", () => {
+        renderLoginComponent();
+        const heading = screen.getByText(/Login Information/i);
+        expect(heading).toBeInTheDocument();
+    });
 });
