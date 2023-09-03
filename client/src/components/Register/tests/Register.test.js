@@ -34,4 +34,10 @@ describe('Register component tests', () => {
         const heading = screen.getByText('Register users information');
         expect(heading).toBeInTheDocument();
     });
+    test('Clicking link \'Log In\' navigates to the login page', () => {
+        renderRegisterComponent();
+        const linkElement = screen.getByText('Log in');
+        fireEvent.click(linkElement);
+        expect(window.location.pathname).toBe('/login');
+    });
 });
