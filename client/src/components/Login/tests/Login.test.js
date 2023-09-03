@@ -23,7 +23,7 @@ const renderLoginComponent = () => {
     );
 };
 
-describe("Home component functionality tests", () => {
+describe("Login component functionality tests", () => {
     test("Renders the login page main title", () => {
         renderLoginComponent();
         const heading = screen.getByText(/Login for users/i);
