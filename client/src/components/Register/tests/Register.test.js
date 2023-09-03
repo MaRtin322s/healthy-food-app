@@ -29,4 +29,9 @@ describe('Register component tests', () => {
         const heading = screen.getByText('Register new users');
         expect(heading).toBeInTheDocument();
     });
+    test('Render register information', () => {
+        renderRegisterComponent();
+        const heading = screen.getByText('Register users information');
+        expect(heading).toBeInTheDocument();
+    });
 });
