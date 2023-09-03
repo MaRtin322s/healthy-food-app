@@ -31,9 +31,21 @@ describe('Comments Component tests', () => {
         const heading = screen.getByText('Add comment:');
         expect(heading).toBeInTheDocument();
     });
-    test('Render comments form', () => {
+    test('Render all comments', () => {
         renderCommentsComponent();
         const heading = screen.getByText('Comments');
         expect(heading).toBeInTheDocument();
+    });
+    test('Login form submits with input values', () => {
+        renderCommentsComponent();
+
+        const userInput = screen.getByPlaceholderText('We value your feedback. Let us know your thoughts!');
+        const submitButton = screen.getByText('POST');
+
+        fireEvent.change(userInput, { target: { value: 'testuserinput' } });
+        fireEvent.click(submitButton);
+        mockContext.mockCreateComment('testuserinput');
+
+        expect(mockContext.mockCreateComment).toHaveBeenCalledWith('testuserinput');
     });
 });
