@@ -31,4 +31,9 @@ describe('Comments Component tests', () => {
         const heading = screen.getByText('Add comment:');
         expect(heading).toBeInTheDocument();
     });
+    test('Render comments form', () => {
+        renderCommentsComponent();
+        const heading = screen.getByText('Comments');
+        expect(heading).toBeInTheDocument();
+    });
 });
