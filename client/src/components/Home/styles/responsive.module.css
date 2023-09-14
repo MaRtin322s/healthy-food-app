@@ -5,6 +5,7 @@
         height: 483px;
         overflow: hidden;
         top: 0px;
+        z-index: 4;
     }
 
     div.header-empty {
@@ -28,14 +29,16 @@
         top: 68%;
         width: 300px;
         font-size: 13px;
-        margin-left: 10px;
+        margin-left: 125px;
     }
 
     .heading-link {
         position: relative;
-        top: -120px;
+        top: 430px;
+        display: inline-block;
+        width: 180px;
         font-size: 15px;
-        margin-left: 10px;
+        margin-left:120px;
     }
 
     div.header-empty {
