@@ -8,7 +8,7 @@ const Footer = memo(() => {
             <div>
                 <h1 className={styles["footer_heading"]}>NutriGit</h1>
                 <p>All rights reserved &copy; by Martin Sofroniev</p>
-                <p>Latest version: v2.02 - (Last updates: 01/09/2023)</p>
+                <p>Latest version: v2.03 - (Last updates: 23/10/2023)</p>
             </div>
             {/* eslint-disable-next-line */}
             <ul role={"list"}>
