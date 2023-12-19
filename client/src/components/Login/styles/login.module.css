@@ -1,7 +1,8 @@
 .login-page {
     display: flex;
-    width: 1519px;
-    max-width: 1519px;
+    gap: 180%;
+    width: 100%;
+    max-width: 100px;
 }
 
 .info-list {
@@ -37,9 +38,9 @@
 }
 
 .background-img {
-    height: 587px;
-    position: relative;
-    right: -920px;
+    height: 36rem;
+    position: absolute;
+    right: 0px;
     width: 599px;
 }
 

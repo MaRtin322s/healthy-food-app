@@ -5,6 +5,7 @@
     color: white;
     background-color: rgb(37, 37, 37);
     gap: 40px;
+    width: 100%;
 }
 
 footer div p {

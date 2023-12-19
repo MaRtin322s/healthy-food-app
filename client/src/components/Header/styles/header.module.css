@@ -3,6 +3,10 @@
     width: 98.9vw;
 }
 
+.navigation nav {
+    max-width: 100%;
+}
+
 ul.nav-bar {
     display: flex;
     gap: 30px;
