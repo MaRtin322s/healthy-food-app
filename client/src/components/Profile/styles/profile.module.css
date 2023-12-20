@@ -4,10 +4,11 @@
     padding: 10px 30px;
     border-bottom: 3px solid black;
     background-color: #7dd0f0;
+    width: 99rem;
 }
 
 .profile-section {
-    background-color: #d3fcfa;
+    background-color: #e1fdfb;
     padding-bottom: 30px;
     width: 1519px;
     max-width: 1519px;

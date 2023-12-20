@@ -108,7 +108,7 @@
 }
 
 .user-info label, input, p {
-    margin-left: 15px;
+    margin: 0px 15px 0px 15px;
 }
 
 .user-info p {
