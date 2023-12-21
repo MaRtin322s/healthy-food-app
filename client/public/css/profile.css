@@ -271,24 +271,24 @@
 }
 
 .btn-follow {
-    border: 1px solid #007bff;
-    color: #007bff;
+    border: 1px solid #19e79c;
+    color: #19e79c;
 }
 
 .btn-follow:hover {
-    background-color: #007bff;
+    background-color: #19e79c;
     color: #fff;
 }
 
 .btn-start-chat {
-    background-color: #007bff;
+    background-color: #19e79c;
     color: #fff;
 }
 
 .btn-start-chat:hover {
     background-color: #fff;
-    color: #007bff;
-    border-color: #007bff;
+    color: #19e79c;
+    border-color: #19e79c;
 }
 
 .profile-links {
@@ -301,7 +301,7 @@
 }
 
 .profile-links .profile-active {
-    background-color: #007bff;
+    background-color: #19e79c;
 }
 
 .profile-links .profile-active a {
