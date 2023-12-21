@@ -107,9 +107,9 @@ const Profile = memo(() => {
                         <li>Last Name: {state.data.lastName}</li>
                         <li>Email: {state.data.email}</li>
                         <div className={styles["actions"]}>
-                            <h1>Created Recipes: {state.ownRecipes.length}</h1>
-                            <h1>Created Products: {state.ownProducts.length}</h1>
-                            <h1>Saved Recipes: {state.saved.length}</h1>
+                            <p>Created Recipes: {state.ownRecipes.length}</p>
+                            <p>Created Products: {state.ownProducts.length}</p>
+                            <p>Saved Recipes: {state.saved.length}</p>
                         </div>
                     </ul>
                 </article>
