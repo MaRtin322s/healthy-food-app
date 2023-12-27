@@ -1,13 +1,16 @@
 import { useContext, useEffect, useReducer } from 'react';
+import { navigate, useNavigate } from 'react-router-dom';
 import styles from './styles/updatedProfile.module.css';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/UserContext';
 import * as service from "../../services/userServices";
 import { initialState, reducer } from './data/data';
+import EditProfile from "../Edit Profile/EditProfile";
 
 /* eslint-disable jsx-a11y/anchor-has-content */
 function UpdatedProfile() {
     const { user } = useContext(AuthContext);
+    const navigate = useNavigate();
     const [state, dispatch] = useReducer(reducer, initialState);
 
     useEffect(() => {
@@ -19,9 +22,34 @@ function UpdatedProfile() {
             })
     }, [user._id, user.accessToken]);
 
+    const showEditModal = () => dispatch({ type: "SET_SHOW_EDIT", showEdit: true });
+    const closeEditModal = () => dispatch({ type: "SET_SHOW_EDIT", showEdit: false });
+
+    const submitHandler = (ev, data, id, token) => {
+        ev.preventDefault();
+
+        service.updateUser(id, data, token)
+            .then(() => {
+                service.getUser(id)
+                    .then((res) => {
+                        dispatch({ type: "SET_DATA", data: res });
+                    })
+                closeEditModal();
+                navigate("/profile", { replace: true });
+            });
+    };
+
     return (
         <>
             <div className="container-fluid newsfeed d-flex" id="wrapper">
+                {state.showEdit &&
+                    <EditProfile
+                        closeEditModal={closeEditModal}
+                        {...state.data}
+                        token={user.accessToken}
+                        submitHandler={submitHandler}
+                    />
+                }
                 <div className="row newsfeed-size">
                     <div className="col-md-12 p-0">
                         <div className="row profile-right-side-content">
@@ -52,7 +80,7 @@ function UpdatedProfile() {
                                                 </div>
                                                 <p className="profile-fullname mt-3">{`${state.data.firstName} ${state.data.lastName}`}</p>
                                                 <p className="profile-username mb-3 text-muted">
-                                                   {state.data.email}
+                                                    {state.data.email}
                                                 </p>
                                             </div>
                                             <div className="intro mt-5 mv-hidden">
@@ -63,12 +91,12 @@ function UpdatedProfile() {
                                                     </p>
                                                 </div>
                                                 <div className="intro-item d-flex justify-content-between align-items-center">
-                                                    <Link
-                                                        to="/"
+                                                    <button
+                                                        onClick={() => showEditModal()}
                                                         className="btn btn-quick-link join-group-btn border w-100"
                                                     >
                                                         Edit Details
-                                                    </Link>
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
