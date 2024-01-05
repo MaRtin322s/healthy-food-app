@@ -86,41 +86,6 @@ const Register = () => {
         <>
             {notification && <Error message={notification} />}
             <section className={styles["register-page"]}>
-            <img className={`${styles["register-background-img"]} ${resp["backg-img"]}`} src={food} alt="background" />
-                <ul className={`${styles["info-list"]} ${resp["info-list"]}`}>
-                    <li>Register users information</li>
-                    <li>
-                        <p>
-                            Fill in the registration form with your personal details,
-                            such as your name, email address, and a chosen password.
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            Verify your email address, if required. Some websites/apps will send you a
-                            verification email to confirm your registration. Click on the link provided in
-                            the email to verify your email address.
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            Click on the "Submit" or "Register" button to complete the registration process.
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            Start using the website/app! Once you have completed the registration process,
-                            you should be able to log in and start using the features of the website/app.
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            The secret word is used for backup symbol of the account.
-                            In case of forgotten password or stolen account, it can be used to change your
-                            user data.
-                        </p>
-                    </li>
-                </ul>
                 <form
                     className={`${styles["register"]} ${resp["register"]}`}
                     onSubmit={(ev) => submitHandler(ev, state)}
