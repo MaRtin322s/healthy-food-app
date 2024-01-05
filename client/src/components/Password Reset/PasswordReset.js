@@ -78,28 +78,6 @@ const PasswordReset = memo(() => {
                 <Error message={showComponent.title} />
             }
             <section className={styles["login-page"]}>
-            <img className={`${styles["background-img"]} ${resp["background-img"]}`} src={background} alt="background" />
-                <ul className={`${styles["info-list"]} ${resp["info-list-resp"]}`}>
-                    <li>Password Reset Information</li>
-                    <li>
-                        Go to the login page for the website or application where you need to reset your password.
-                    </li>
-                    <li>
-                        Click on the "Forgot Password" or "Reset Password" link.
-                    </li>
-                    <li>
-                        Follow the instructions to reset your password.
-                        This may involve entering a new password or verification code,
-                        or answering security questions.
-                    </li>
-                    <li>
-                        Choose a new password that is strong and unique,
-                        and ensure that you remember it or store it in a secure location.
-                    </li>
-                    <li>
-                        Log in with your new password and verify that you can access your account.
-                    </li>
-                </ul>
                 <form
                     className={`${styles["login"]} ${resp["login-responsive"]}`}
                     onSubmit={(ev) => submitHandler(ev, state)}
