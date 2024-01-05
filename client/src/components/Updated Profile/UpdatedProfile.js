@@ -5,6 +5,7 @@ import * as userService from "../../services/userServices";
 import * as recipesService from '../../services/recipeService';
 import * as productsService from '../../services/productService';
 import { initialState, reducer } from './data/data';
+import RecipeItem from '../Profile/RecipeItem';
 
 /* eslint-disable jsx-a11y/anchor-has-content */
 function UpdatedProfile() {
@@ -100,35 +101,15 @@ function UpdatedProfile() {
                                                             <a href="friends.html">Saved Recipes</a>
                                                         </li>
                                                     </ul>
-                                                    <div className="post border-bottom p-3 bg-white w-shadow">
-                                                        <div className="media text-muted pt-3">
-                                                            <img
-                                                                src="/images/users/user-4.jpg"
-                                                                alt="Online user"
-                                                                className="mr-3 post-user-image"
-                                                            />
-                                                            <div className="media-body pb-3 mb-0 small lh-125">
-                                                                <div className="d-flex justify-content-between align-items-center w-100">
-                                                                    <span className="post-type text-muted">
-                                                                        <a
-                                                                            href="/"
-                                                                            className="text-gray-dark post-user-name mr-2"
-                                                                        >
-                                                                            Arthur Minasyan
-                                                                        </a>{" "}
-                                                                        updated his cover photo.
-                                                                    </span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div className="d-block mt-3">
-                                                            <img
-                                                                src="/images/users/post/post-1.jpg"
-                                                                className="w-100 mb-3"
-                                                                alt="post"
-                                                            />
-                                                        </div>
-                                                    </div>
+                                                    {/* eslint-disable-next-line */}
+                                                    <ul className={styles["user-action"]} role={"list"}>
+                                                        {state.ownRecipes.length > 0
+                                                            ?
+                                                            state.ownRecipes.map(x => <li key={x._id}><RecipeItem {...x} /></li>)
+                                                            :
+                                                            null
+                                                        }
+                                                    </ul>
                                                 </div>
                                             </div>
                                         </div>
