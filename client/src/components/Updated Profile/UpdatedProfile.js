@@ -6,24 +6,25 @@ import * as recipesService from '../../services/recipeService';
 import * as productsService from '../../services/productService';
 import { initialState, reducer } from './data/data';
 import RecipeItem from '../Profile/RecipeItem';
+import ProductItem from '../Profile/ProductItem';
 
 /* eslint-disable jsx-a11y/anchor-has-content */
 function UpdatedProfile() {
     const { user } = useContext(AuthContext);
     const [state, dispatch] = useReducer(reducer, initialState);
 
-    console.log(state.ownRecipes);
-
     useEffect(() => {
         Promise.all([
             userService.getUser(user._id),
             recipesService.getOwned(user._id),
-            productsService.getOwned(user._id)
+            productsService.getOwned(user._id),
+            recipesService.getSavedRecipes(user._id, user.accessToken)
         ])
             .then(result => {
                 dispatch({ type: "SET_DATA", data: result[0] });
                 dispatch({ type: "SET_OWN_RECIPES", ownRecipes: result[1] });
                 dispatch({ type: "SET_OWN_PRODUCTS", ownProducts: result[2] });
+                dispatch({ type: "SET_SAVED", saved: result[3] });
             })
     }, [user._id, user.accessToken]);
 
@@ -69,10 +70,10 @@ function UpdatedProfile() {
                                                         Created Recipes: {state.ownRecipes.length}
                                                     </p>
                                                     <p className="intro-title text-muted">
-                                                        Saved Recipes: {state.ownRecipes.length}
+                                                        Created Products: {state.ownProducts.length}
                                                     </p>
                                                     <p className="intro-title text-muted">
-                                                        Created Products: {state.ownProducts.length}
+                                                        Saved Recipes: {state.saved.length}
                                                     </p>
                                                 </div>
                                                 <div className="intro-item d-flex justify-content-between align-items-center">
@@ -92,24 +93,48 @@ function UpdatedProfile() {
                                                 <div className="col-md-9 profile-center">
                                                     <ul className="list-inline profile-links d-flex justify-content-between w-shadow rounded">
                                                         <li className="list-inline-item profile-active">
-                                                            <a href="/">Created Recipes</a>
+                                                            <h3>Created Recipes</h3>
+                                                            {/* eslint-disable-next-line */}
+                                                            <ul className={styles["user-action"]} role={"list"}>
+                                                                {state.ownRecipes.length > 0
+                                                                    ?
+                                                                    state.ownRecipes.map(x => <li key={x._id}><RecipeItem {...x} /></li>)
+                                                                    :
+                                                                    null
+                                                                }
+                                                            </ul>
                                                         </li>
                                                         <li className="list-inline-item">
-                                                            <a href="/">Created Products</a>
+                                                            <h3>Created Products</h3>
+                                                            {/* eslint-disable-next-line */}
+                                                            <ul className={styles["user-action"]} role={"list"}>
+                                                                {state.ownProducts.length > 0
+                                                                    ?
+                                                                    state.ownProducts.map(x => <li key={x._id}><ProductItem {...x} /></li>)
+                                                                    :
+                                                                    null
+                                                                }
+                                                            </ul>
                                                         </li>
-                                                        <li className="list-inline-item">
-                                                            <a href="friends.html">Saved Recipes</a>
+                                                        <li className="list-inline-item profile-active">
+                                                            <h3>Saved Recipes</h3>
+                                                            {/* eslint-disable-next-line */}
+                                                            <ul className={`${styles["saved-recipes"]}`} role={"list"}>
+                                                                {state.saved.length > 0
+                                                                    ?
+                                                                    state.saved.map(x => <li key={x._id}><RecipeItem {...x} /></li>)
+                                                                    : null
+                                                                }
+                                                            </ul>
                                                         </li>
                                                     </ul>
-                                                    {/* eslint-disable-next-line */}
-                                                    <ul className={styles["user-action"]} role={"list"}>
-                                                        {state.ownRecipes.length > 0
-                                                            ?
-                                                            state.ownRecipes.map(x => <li key={x._id}><RecipeItem {...x} /></li>)
-                                                            :
-                                                            null
-                                                        }
-                                                    </ul>
+                                                    <div className="d-block mt-3">
+                                                        <img
+                                                            src="/images/users/post/post-1.jpg"
+                                                            className="w-100 mb-3"
+                                                            alt="post"
+                                                        />
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
