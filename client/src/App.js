@@ -8,10 +8,10 @@ import CreateRecipe from "./components/Create Recipe/CreateRecipe";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import Home from "./components/Home/Home";
+import Profile from './components/Profile/Profile';
 import Login from "./components/Login/Login";
 import NotFound from "./components/Not Found Page/NotFound";
 import ProductsCatalog from "./components/Products Catalog/ProductsCatalog";
-import Profile from "./components/Profile/Profile";
 import RecipesCatalog from "./components/Recipes Catalog/RecipesCatalog";
 import Register from "./components/Register/Register";
 import ProductDetails from "./components/Product Details/ProductDetails";
@@ -40,7 +40,7 @@ function App() {
                             <Route path="/catalog-products" element={<ProductsCatalog />} />
                             <Route path="/server-error" element={<ServerError />} />
                             <Route path="*" element={<NotFound />} />
-                            <Route path="/updated-profile" element={<UpdatedProfile />} />
+                            <Route path="/updated-profile" element={<Profile />} />
 
                             <Route
                                 path="/login"
@@ -79,7 +79,7 @@ function App() {
                                 path="/profile"
                                 element={
                                     <PrivateRoute>
-                                        <Profile />
+                                        <UpdatedProfile />
                                     </PrivateRoute>
                                 }
                             />
