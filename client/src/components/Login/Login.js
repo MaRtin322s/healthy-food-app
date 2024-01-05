@@ -8,7 +8,6 @@ import { initData, reducer } from "./data/data";
 import Error from "../Error/Error";
 import styles from "./styles/login.module.css";
 import resp from "./styles/responsive.module.css";
-import background from "./images/backgr.jpg";
 
 const Login = memo(() => {
     const { userLogin } = useContext(AuthContext);
@@ -63,34 +62,6 @@ const Login = memo(() => {
                 <Error message={showComponent.title} />
             }
             <section className={`${styles["login-page"]} ${resp["login-page"]}`}>
-            <img className={`${styles["background-img"]} ${resp["background-img"]}`} src={background} alt="background" />
-                <ul className={`${styles["info-list"]} ${resp["info-list"]}`}>
-                    <li>Login Information</li>
-                    <li>
-                        <p>
-                            Enter your email and password in the appropriate fields on the login page.
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            If you've forgotten your password, click the "Forgot password" link and
-                            follow the instructions to reset your password.
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            If you're having trouble logging in, double-check that you're entering the
-                            correct email or username and password combination. Remember that
-                            passwords are case-sensitive.
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            Do not share your login credentials with anyone. Keep your password secure
-                            and change it regularly to help protect your account.
-                        </p>
-                    </li>
-                </ul>
                 <form
                     className={`${styles["login"]} ${resp["login"]}`}
                     onSubmit={(ev) => submitHandler(ev, state)}
