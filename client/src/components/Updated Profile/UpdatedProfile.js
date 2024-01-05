@@ -91,26 +91,13 @@ function UpdatedProfile() {
                                                 <div className="col-md-9 profile-center">
                                                     <ul className="list-inline profile-links d-flex justify-content-between w-shadow rounded">
                                                         <li className="list-inline-item profile-active">
-                                                            <a href="/">Timeline</a>
+                                                            <a href="/">Created Recipes</a>
                                                         </li>
                                                         <li className="list-inline-item">
-                                                            <a href="/">About</a>
+                                                            <a href="/">Created Products</a>
                                                         </li>
                                                         <li className="list-inline-item">
-                                                            <a href="friends.html">Friends</a>
-                                                        </li>
-                                                        <li className="list-inline-item">
-                                                            <a href="/">Photos</a>
-                                                        </li>
-                                                        <li className="list-inline-item dropdown">
-                                                            <a
-                                                                href="/"
-                                                                data-toggle="dropdown"
-                                                                aria-haspopup="true"
-                                                                aria-expanded="false"
-                                                            >
-                                                                <i className="bx bx-dots-vertical-rounded" />
-                                                            </a>
+                                                            <a href="friends.html">Saved Recipes</a>
                                                         </li>
                                                     </ul>
                                                     <div className="post border-bottom p-3 bg-white w-shadow">
