@@ -1,55 +1,34 @@
 import { useContext, useEffect, useReducer } from 'react';
-import { navigate, useNavigate } from 'react-router-dom';
 import styles from './styles/updatedProfile.module.css';
-import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/UserContext';
-import * as service from "../../services/userServices";
+import * as userService from "../../services/userServices";
+import * as recipesService from '../../services/recipeService';
+import * as productsService from '../../services/productService';
 import { initialState, reducer } from './data/data';
-import EditProfile from "../Edit Profile/EditProfile";
 
 /* eslint-disable jsx-a11y/anchor-has-content */
 function UpdatedProfile() {
     const { user } = useContext(AuthContext);
-    const navigate = useNavigate();
     const [state, dispatch] = useReducer(reducer, initialState);
+
+    console.log(state.ownRecipes);
 
     useEffect(() => {
         Promise.all([
-            service.getUser(user._id)
+            userService.getUser(user._id),
+            recipesService.getOwned(user._id),
+            productsService.getOwned(user._id)
         ])
             .then(result => {
                 dispatch({ type: "SET_DATA", data: result[0] });
+                dispatch({ type: "SET_OWN_RECIPES", ownRecipes: result[1] });
+                dispatch({ type: "SET_OWN_PRODUCTS", ownProducts: result[2] });
             })
     }, [user._id, user.accessToken]);
-
-    const showEditModal = () => dispatch({ type: "SET_SHOW_EDIT", showEdit: true });
-    const closeEditModal = () => dispatch({ type: "SET_SHOW_EDIT", showEdit: false });
-
-    const submitHandler = (ev, data, id, token) => {
-        ev.preventDefault();
-
-        service.updateUser(id, data, token)
-            .then(() => {
-                service.getUser(id)
-                    .then((res) => {
-                        dispatch({ type: "SET_DATA", data: res });
-                    })
-                closeEditModal();
-                navigate("/profile", { replace: true });
-            });
-    };
 
     return (
         <>
             <div className="container-fluid newsfeed d-flex" id="wrapper">
-                {state.showEdit &&
-                    <EditProfile
-                        closeEditModal={closeEditModal}
-                        {...state.data}
-                        token={user.accessToken}
-                        submitHandler={submitHandler}
-                    />
-                }
                 <div className="row newsfeed-size">
                     <div className="col-md-12 p-0">
                         <div className="row profile-right-side-content">
@@ -86,13 +65,17 @@ function UpdatedProfile() {
                                             <div className="intro mt-5 mv-hidden">
                                                 <div className="intro-item d-flex justify-content-between align-items-center">
                                                     <p className="intro-title text-muted">
-                                                        <i className="bx bx-briefcase text-primary" />
-                                                        Web Developer at <a href="/">Company Name</a>
+                                                        Created Recipes: {state.ownRecipes.length}
+                                                    </p>
+                                                    <p className="intro-title text-muted">
+                                                        Saved Recipes: {state.ownRecipes.length}
+                                                    </p>
+                                                    <p className="intro-title text-muted">
+                                                        Created Products: {state.ownProducts.length}
                                                     </p>
                                                 </div>
                                                 <div className="intro-item d-flex justify-content-between align-items-center">
                                                     <button
-                                                        onClick={() => showEditModal()}
                                                         className="btn btn-quick-link join-group-btn border w-100"
                                                     >
                                                         Edit Details

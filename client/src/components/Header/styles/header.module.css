@@ -11,7 +11,7 @@ ul.nav-bar {
     display: flex;
     gap: 30px;
     align-items: center;
-    font-size: 23px;
+    font-size: 20px;
     padding: 10px 10px;
     background-color: #19e79c;
     border-bottom: 4px solid black;
