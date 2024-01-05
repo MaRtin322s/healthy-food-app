@@ -10,3 +10,7 @@
 .saved-recipes {
     background-color: #19e79c;
 }
+
+#wrapper {
+    width: 150%;
+}

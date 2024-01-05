@@ -294,6 +294,7 @@
 .profile-links .list-inline-item {
     padding: 0.5rem 1rem;
     margin: 0;
+    border: 2px solid black;
 }
 
 .profile-links .profile-active {
@@ -306,7 +307,7 @@
 
 .profile-links .list-inline-item a {
     font-size: 0.9rem;
-    color: #6c757d;
+    /* color: #6c757d; */
     width: 100%;
 }
 

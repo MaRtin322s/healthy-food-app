@@ -86,12 +86,12 @@ function UpdatedProfile() {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="col-md-9 p-0">
+                                    <div className="col-md-9 p-0" id={`${styles["wrapper"]}`}>
                                         <div className="profile-info-right">
                                             {/* Posts section */}
                                             <div className="row">
                                                 <div className="col-md-9 profile-center">
-                                                    <ul className="list-inline profile-links d-flex justify-content-between w-shadow rounded">
+                                                    <ul className={`${"list-inline profile-links d-flex justify-content-between w-shadow rounded"} ${"#wrapper div.col-md-9.p-0 ul"}`}>
                                                         <li className="list-inline-item profile-active">
                                                             <h3>Created Recipes</h3>
                                                             {/* eslint-disable-next-line */}
@@ -128,13 +128,6 @@ function UpdatedProfile() {
                                                             </ul>
                                                         </li>
                                                     </ul>
-                                                    <div className="d-block mt-3">
-                                                        <img
-                                                            src="/images/users/post/post-1.jpg"
-                                                            className="w-100 mb-3"
-                                                            alt="post"
-                                                        />
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
