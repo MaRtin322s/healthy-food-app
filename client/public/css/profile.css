@@ -302,7 +302,11 @@
 }
 
 .profile-links .profile-active a {
-    color: #fff !important;
+    color: white;
+}
+
+.profile-links .profile-active a:hover {
+    color: black;
 }
 
 .profile-links .list-inline-item a {
