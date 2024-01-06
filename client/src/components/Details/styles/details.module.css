@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Foundation:wght@600&display=swap');
 
 .wrap-main {
-    background-color: rgb(108, 204, 244);
     padding: 50px;
     width: 1519px;
     max-width: 1519px;
@@ -15,7 +14,7 @@
     gap: 40px;
     margin: 70px auto;
     padding-left: 25px;
-    background-color: #fced81;
+    background-color: #afffe2;
     border-radius: 20px;
     margin-bottom: 20px;
 }
