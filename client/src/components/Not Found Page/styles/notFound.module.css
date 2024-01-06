@@ -1,9 +1,8 @@
 .not-found-page {
     width: 1519px;
     max-width: 1519px;
-    display: flex;
+    /* display: flex; */
     flex-direction: row-reverse;
-    gap: 140px;
 }
 
 .background-img {
@@ -16,23 +15,23 @@
     width: 250px;
     height: 250px;
     margin-top: 30px;
-    margin-left: 315px;
+    margin-left: 45%;
 }
 
 .error-info {
     width: 400px;
     text-align: center;
-    margin-left: 230px;
+    margin-left: 40%;
     margin-bottom: 25px;
 }
 
 .error-heading {
-    margin-left: 235px;
+    margin-left: 6%;
     text-align: center;
 }
 
 .error-link {
-    margin-left: 330px;
+    margin-left: 47%;
     text-decoration: none;
     border: 2px solid black;
     padding: 10px 20px;

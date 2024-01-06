@@ -1,11 +1,11 @@
 .modal-container {
     width: 400px;
-    height: 300px;
+    height: 200px;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #19e79c;
+    background-color: #82ffd1;
     border: 2px solid black;
     padding: 20px;
     border-radius: 10px;

@@ -8,7 +8,6 @@ import background from "./images/backgr.jpg";
 const NotFound = memo(() => {
     return (
         <section className={styles["not-found-page"]}>
-            <img className={styles["background-img"]} src={background} alt="backg" />
             <div>
                 <img className={styles["error-img"]} src={oops} alt="oops" />
                 <h1 className={styles["error-heading"]}>404 - PAGE NOT FOUND</h1>
