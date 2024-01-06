@@ -31,33 +31,6 @@ const CreateRecipe = () => {
     return (
         <>
             <section className={styles["create-page"]}>
-                <article className={styles["info"]}>
-                    <ul className={styles["steps"]}>
-                        <li>Create recipe information:</li>
-                        <li>
-                            <p>
-                                The title specifies the name of the recipe.
-                            </p>
-                        </li>
-                        <li>
-                            <p>
-                                Ingredients list: A list of all the ingredients required for the recipe.
-                                NOTE: Every ingredient must be on the new line!
-                            </p>
-                        </li>
-                        <li>
-                            <p>
-                                Preparation: Step-by-step instructions on how to prepare the recipe.
-                            </p>
-                        </li>
-                        <li>
-                            <p>
-                                Category - specifies the type of the recipe - Appetizers, Soups and
-                                stews, Salads, Main dishes, Side dishes, Desserts, Beverages and ect.
-                            </p>
-                        </li>
-                    </ul>
-                </article>
                 <form
                     className={styles["create"]}
                     onSubmit={(ev) => submitHandler(ev, state, token, userId)}
@@ -142,7 +115,6 @@ const CreateRecipe = () => {
                         />
                     </div>
                 </form>
-                <img className={styles["background-img"]} src={background} alt="background" />
             </section>
         </>
     );
