@@ -44,27 +44,11 @@ const EditProduct = () => {
     return (
         <>
             <section className={styles["create-page"]}>
-                <article className={styles["info"]}>
-                    <ul className={styles["steps"]}>
-                        <li>Create products information:</li>
-                        <li>The title specifies the name of the product.</li>
-                        <li>
-                            Nutrition information list: A list of all the information of the products like calories, fat and ect.
-                            NOTE: Every nutrition must be on the new line!
-                        </li>
-                        <li>
-                            Description: Products description.
-                        </li>
-                        <li>
-                            Type - specifies the type of the product - Vegetable, fruits and ect.
-                        </li>
-                    </ul>
-                </article>
                 <form
                     className={styles["create"]}
                     onSubmit={(ev) => submitHandler(ev, product, user.accessToken, productId)}
                 >
-                    <h1 className={styles["create-heading"]}>Edit Products</h1>
+                    <h1 className={styles["create-heading"]}>Edit Product: {product.title}</h1>
                     <label htmlFor="title">Title:</label>
                     <div>
                         <input
