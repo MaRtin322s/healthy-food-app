@@ -144,15 +144,17 @@
     border: 4px solid black;
     padding-bottom: 20px;
     border-radius: 6px;
-    background-color: #19e79c;
+    background-color: #94fed7;
+    width: 300px;
+    height: 400px;
 }
 
 .recipe-title {
     margin-left: 10px;
+    height: 70px;
 }
 
 .last-recipes-btn {
-    margin-bottom: 10px;
     margin-left: 10px;
     text-decoration: none;
     border: 2px solid black;

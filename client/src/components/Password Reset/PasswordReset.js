@@ -7,7 +7,6 @@ import { initData, reducer } from "./data/data";
 import Error from "../Error/Error";
 
 import styles from "./styles/password.module.css";
-import background from "./images/backgr.jpg";
 
 const PasswordReset = memo(() => {
     const [state, dispatch] = useReducer(reducer, initData);
