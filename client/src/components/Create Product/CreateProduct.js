@@ -51,53 +51,27 @@ const CreateProduct = () => {
         <>
             {error.show && <Error message={error.message} />}
             <section className={`${styles["create-page"]} ${resp["create-page"]}`}>
-                <article className={`${styles["info"]} ${resp["info"]}`}>
-                    <ul className={`${styles["steps"]} ${resp["steps"]}`}>
-                        <li>Create products information:</li>
-                        <li>
-                            <p>
-                                The title specifies the name of the product.
-                            </p>
-                        </li>
-                        <li>
-                            <p>
-                                Nutrition information list: A list of all the information of the products like calories, fat and ect.
-                                NOTE: Every nutrition must be on the new line!
-                            </p>
-                        </li>
-                        <li>
-                            <p>
-                                Description: Products description.
-                            </p>
-                        </li>
-                        <li>
-                            <p>
-                                Type - specifies the type of the product - Vegetable, fruits and ect.
-                            </p>
-                        </li>
-                    </ul>
-                </article>
                 <form
                     className={`${styles["create"]} ${resp["create"]}`}
                     onSubmit={(ev) => submitHandler(ev, state)}
                 >
                     <h1 className={`${styles["create-heading"]} ${resp["create-heading"]}`}
                     >
-                        Create Products
+                        Share Products
                     </h1>
                     <div className={`${styles["links"]} ${resp["links"]}`}>
                         <Link className={`${styles["create-recipe"]} ${resp["create-recipe"]}`}
                             to="/create-recipes"
                             replace
                         >
-                            Create Recipe
+                            Share Recipe
                         </Link>
                         <Link
                             className={`${styles["create-product"]} ${resp["create-product"]}`}
                             to="/create-products"
                             replace
                         >
-                            Create Product
+                            Share Product
                         </Link>
                     </div>
                     <label htmlFor="title">Title:</label>
@@ -174,9 +148,6 @@ const CreateProduct = () => {
                         />
                     </div>
                 </form>
-                <img className={`${styles["background-img"]} ${resp["background-img"]}`}
-                    src={aside} alt="background"
-                />
             </section>
         </>
     );

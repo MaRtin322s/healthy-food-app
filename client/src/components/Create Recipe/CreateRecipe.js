@@ -35,13 +35,13 @@ const CreateRecipe = () => {
                     className={styles["create"]}
                     onSubmit={(ev) => submitHandler(ev, state, token, userId)}
                 >
-                    <h1 className={styles["create-heading"]}>Create Recipes</h1>
+                    <h1 className={styles["create-heading"]}>Share Recipes</h1>
                     <div className="links">
                         <Link className={styles["create-recipe"]} to="/create-recipes" replace>
-                            Create Recipe
+                            Share Recipe
                         </Link>
                         <Link className={styles["create-product"]} to="/create-products" replace>
-                            Create Product
+                            Share Product
                         </Link>
                     </div>
                     <label htmlFor="title">Title:</label>
