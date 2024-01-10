@@ -1,28 +1,11 @@
 @media all and (min-width: 300px) and (max-width: 600px) {
-    .register-page {
+    section.register-page {
         display: flex;
-        width: 500px;
-        max-width: 1519px;
+        width: 100vw;
+        max-width: 500px;
     }
 
-    .info-list {
-        position: relative;
-        top: 18%;
-        left: -25%;
-    }
-
-    .info-list li:first-child {
-        list-style-type: none;
-        font-size: 25px;
-        font-weight: 600;
-    }
-
-    .info-list li {
-        width: 360px;
-        margin-bottom: 15px;
-    }
-
-    .register {
+    form.register {
         border: 2px solid black;
         border-radius: 10px;
         width: 400px;
@@ -32,7 +15,7 @@
         padding: 10px 30px;
         position: relative;
         top: 6%;
-        left: 13%;
+        left: 16%;
         box-shadow: 5px 5px 5px gray;
     }
 
