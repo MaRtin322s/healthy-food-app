@@ -6,14 +6,14 @@
         overflow: hidden;
         top: 0px;
         z-index: 4;
-        display: none;
+        display: hidden;
     }
 
     .home-section {
         display: flex;
         flex-direction: row-reverse;
         gap: 320px;
-        height: 0px;
+        height: 70%;
     }
     
 
@@ -23,37 +23,33 @@
         display: none;
     }
 
-    .heading-info {
-        height: 600px;
-    }
-
     .heading {
         width: 630px;
         font-size: 30px;
         color: #454545;
         font-weight: 600;
-        margin-top: -85%;
+        margin-top: 10%;
         position: absolute;
         width: 305px;
-        margin-left: -25%;
+        margin-left: 15%;
     }
 
     .heading-para {
         position: absolute;
-        top: 58%;
+        top: 60%;
         width: 300px;
         font-size: 13px;
-        margin-left: -20%;
+        margin-left: 15%;
     }
 
     .heading-link {
         position: relative;
-        top: -10%;
+        top: 63%;
         display: inline-block;
         width: 180px;
-        left: -70%;
+        left: -80%;
         font-size: 15px;
-        margin-left: 120px;
+        margin-left: 110%;
     }
 
     div.header-empty {
@@ -70,32 +66,34 @@
         display: flex;
         flex-direction: column;
         border-top: 2px solid black;
+        width: 500px;
     }
 
     .salmon-fish {
-        margin-left: 50px;
+        margin-left: 22%;
         width: 300px;
         height: 300px;
     }
 
     .about-heading {
         font-size: 25px;
-        margin-left: 10px;
+        margin-left: 12%;
     }
 
     .food-heading {
         font-size: 35px;
         width: 400px;
-        margin-left: 10px;
+        margin-left: 12%;
     }
 
     .food-information {
         width: 370px;
         font-size: 16px;
+        margin-left: 12%;
     }
 
     .about-link {
-        margin-left: 10px;
+        margin-left: 12%;
     }
 
     .last-recipes {
