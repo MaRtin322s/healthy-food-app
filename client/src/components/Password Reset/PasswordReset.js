@@ -76,7 +76,7 @@ const PasswordReset = memo(() => {
             {showComponent.show &&
                 <Error message={showComponent.title} />
             }
-            <section className={styles["login-page"]}>
+            <section className={`${styles["login-page"]} ${resp["login-page"]}`}>
                 <form
                     className={`${styles["login"]} ${resp["login-responsive"]}`}
                     onSubmit={(ev) => submitHandler(ev, state)}
