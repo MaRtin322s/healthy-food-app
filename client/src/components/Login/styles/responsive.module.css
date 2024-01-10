@@ -35,9 +35,9 @@
         margin-bottom: 50px;
         padding: 10px 30px;
         background-color: #fced81;
-        position: absolute;
+        position: relative;
         top: 92%;
-        left: 1.5%;
+        left: 65%;
     }
 
     .background-img {
