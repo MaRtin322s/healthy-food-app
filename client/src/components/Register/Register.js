@@ -84,7 +84,7 @@ const Register = () => {
     return (
         <>
             {notification && <Error message={notification} />}
-            <section className={styles["register-page"]}>
+            <section className={`${styles["register-page"]} ${resp["register-page"]}`}>
                 <form
                     className={`${styles["register"]} ${resp["register"]}`}
                     onSubmit={(ev) => submitHandler(ev, state)}

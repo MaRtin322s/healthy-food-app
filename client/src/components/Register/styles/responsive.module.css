@@ -1,12 +1,14 @@
-@media screen and (max-width: 600px) {
+@media all and (min-width: 300px) and (max-width: 600px) {
     .register-page {
         display: flex;
+        width: 500px;
+        max-width: 1519px;
     }
 
     .info-list {
-        position: absolute;
-        top: 40%;
-        z-index: -1;
+        position: relative;
+        top: 18%;
+        left: -25%;
     }
 
     .info-list li:first-child {
@@ -24,21 +26,30 @@
         border: 2px solid black;
         border-radius: 10px;
         width: 400px;
-        margin-top: 150%;
-        margin-left: 5px;
-        /* margin-bottom: 150px; */
-        position: static;
+        margin-top: 35px;
+        margin-left: 0px;
+        margin-bottom: 45px;
         padding: 10px 30px;
-        background-color: #fced81;
+        position: relative;
+        top: 6%;
+        left: 13%;
+        box-shadow: 5px 5px 5px gray;
     }
 
-    .backg-img {
-        display: none;
+    .register-background-img {
+        height: 900px;
+        width: 400px;
+        position: relative;
+        right: -1119px;
     }
 
     .register-heading {
         text-align: center;
         font-size: 25px;
+        background-color: #19e79c;
+        padding: 15px 15px;
+        border-radius: 10px;
+        border: 1px solid black;
     }
 
     .register-info {
@@ -61,7 +72,7 @@
 
     .btn-register {
         padding: 5px 15px;
-        background-color: #f6dc14;
+        background-color: #19e79c;
         cursor: pointer;
         font-weight: 600;
         border-radius: 4px;
@@ -95,7 +106,7 @@
     }
 
     .user-info a:hover {
-        color: #f6dc14;
+        color: #19e79c;
         text-decoration: underline;
     }
 
