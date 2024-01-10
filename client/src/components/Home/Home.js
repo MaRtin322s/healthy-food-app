@@ -16,13 +16,13 @@ const Home = () => {
     useEffect(() => {
         getAllRecipes()
             .then(result => {
-                setLastThree(result.slice(-3).reverse());
+                setLastThree(result?.slice(-3).reverse());
             });
     }, [getAllRecipes]);
 
     return (
         <>
-            <div className={`${styles["home-section"]}`}>
+            <div className={`${styles["home-section"]} ${resp["home-section"]}`}>
                 <img className={`${styles["background-img"]} ${resp["background-img"]}`} src={background} alt="background" />
                 <article className={`${styles["heading-info"]} ${resp["heading-info"]}`}>
                     <h1 className={`${styles["heading"]} ${resp["heading"]}`}>NutriGit: Wholesome &amp; Tasty Meals for Your Body and Soul</h1>
@@ -78,7 +78,7 @@ const Home = () => {
                         ?
                         lastThree.map(x => <RecipeItem key={x._id} {...x} />)
                         :
-                        <h1>There are no recipes created yet.</h1>
+                        <h1 className={`${resp["no-recipes"]}`}>There are no recipes created yet.</h1>
                 }
             </section>
         </>

@@ -1,4 +1,4 @@
-@media all and (max-width: 480px) and (min-width:300px) {
+@media all and (max-width: 500px) and (min-width:300px) {
     .background-img {
         position: relative;
         right: 0px;
@@ -6,11 +6,25 @@
         overflow: hidden;
         top: 0px;
         z-index: 4;
+        display: none;
     }
+
+    .home-section {
+        display: flex;
+        flex-direction: row-reverse;
+        gap: 320px;
+        height: 0px;
+    }
+    
 
     div.header-empty {
         margin-top: 120px;
         border-bottom: 4px solid black;
+        display: none;
+    }
+
+    .heading-info {
+        height: 600px;
     }
 
     .heading {
@@ -18,27 +32,28 @@
         font-size: 30px;
         color: #454545;
         font-weight: 600;
-        margin-top: -470px;
+        margin-top: -85%;
         position: absolute;
         width: 305px;
-        margin-left: 10px;
+        margin-left: -25%;
     }
 
     .heading-para {
         position: absolute;
-        top: 68%;
+        top: 58%;
         width: 300px;
         font-size: 13px;
-        margin-left: 125px;
+        margin-left: -20%;
     }
 
     .heading-link {
         position: relative;
-        top: 430px;
+        top: -10%;
         display: inline-block;
         width: 180px;
+        left: -70%;
         font-size: 15px;
-        margin-left:120px;
+        margin-left: 120px;
     }
 
     div.header-empty {
@@ -46,7 +61,7 @@
     }
 
     .info {
-        display: flex;
+        display: none;
         flex-direction: column;
         gap: 10px;
     }
@@ -54,6 +69,7 @@
     .about-food {
         display: flex;
         flex-direction: column;
+        border-top: 2px solid black;
     }
 
     .salmon-fish {
@@ -85,5 +101,9 @@
     .last-recipes {
         display: flex;
         flex-direction: column;
+    }
+
+    .no-recipes {
+        text-align: center;
     }
 }
