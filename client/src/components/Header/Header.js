@@ -34,6 +34,7 @@ const Header = () => {
                                 isActive ? { backgroundColor: 'black', color: 'white' } : {}
                             }
                         >
+                            <i className="fas fa-calendar-check"></i>
                             Calatog
                         </NavLink>
                     </li>
@@ -47,7 +48,8 @@ const Header = () => {
                                         isActive ? { backgroundColor: 'black', color: 'white' } : {}
                                     }
                                 >
-                                    Create
+                                    <i className="fas fa-share"></i>
+                                    Share
                                 </NavLink>
                             </li>
                             <li className={styles["nav-item"]}>
@@ -82,6 +84,7 @@ const Header = () => {
                                         isActive ? { backgroundColor: 'black', color: 'white' } : {}
                                     }
                                 >
+                                    <i className="fas fa-sign-in-alt"></i>
                                     Log In
                                 </NavLink>
                             </li>

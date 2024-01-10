@@ -9,7 +9,6 @@ import { initData, reducer } from "./data/data";
 import Error from "../Error/Error";
 
 import styles from "./styles/register.module.css";
-import food from "./images/food.jpg";
 
 const Register = () => {
     const navigate = useNavigate();
@@ -168,7 +167,7 @@ const Register = () => {
                             />
                         </div>
 
-                        <label htmlFor="secret">Secret Word:</label>
+                        <label htmlFor="secret">Account Backup Word:</label>
                         <div>
                             <input
 

@@ -11,7 +11,7 @@ import background from "./images/backgr.jpg";
 
 const Home = () => {
     const [lastThree, setLastThree] = useState([]);
-    const { user, getAllRecipes } = useContext(AuthContext);
+    const { getAllRecipes } = useContext(AuthContext);
 
     useEffect(() => {
         getAllRecipes()
@@ -71,18 +71,14 @@ const Home = () => {
                     </Link>
                 </article>
             </section>
-            <h2 className={styles["last-recipes-heading"]}>Last 3 recipes created...</h2>
+            <h2 className={styles["last-recipes-heading"]}>The last 3 added recipes...</h2>
             <section className={`${styles["last-recipes"]} ${resp["last-recipes"]}`}>
-                {user.accessToken
-                    ?
+                {
                     lastThree.length > 0
                         ?
                         lastThree.map(x => <RecipeItem key={x._id} {...x} />)
                         :
                         <h1>There are no recipes created yet.</h1>
-
-                    :
-                    <h1>You are not logged in!</h1>
                 }
             </section>
         </>

@@ -100,7 +100,7 @@ function UpdatedProfile() {
                                                                     ?
                                                                     state.ownRecipes.map(x => <li key={x._id}><RecipeItem {...x} /></li>)
                                                                     :
-                                                                    null
+                                                                    <p>There are no created recipes!</p>
                                                                 }
                                                             </ul>
                                                         </li>
@@ -112,7 +112,7 @@ function UpdatedProfile() {
                                                                     ?
                                                                     state.ownProducts.map(x => <li key={x._id}><ProductItem {...x} /></li>)
                                                                     :
-                                                                    null
+                                                                    <p>There are no created products!</p>
                                                                 }
                                                             </ul>
                                                         </li>
@@ -123,7 +123,7 @@ function UpdatedProfile() {
                                                                 {state.saved.length > 0
                                                                     ?
                                                                     state.saved.map(x => <li key={x._id}><RecipeItem {...x} /></li>)
-                                                                    : null
+                                                                    : <p>There are no saved recipes!</p>
                                                                 }
                                                             </ul>
                                                         </li>
