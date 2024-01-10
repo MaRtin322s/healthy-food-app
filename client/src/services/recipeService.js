@@ -1,8 +1,7 @@
 import requester from "./requester";
 
-// process.env.NODE_ENV === 'development' ?
-//     'http://localhost:3030/recipes' :
-const baseUrl = 
+const baseUrl = process.env.NODE_ENV === 'development' ?
+    'http://localhost:3030/recipes' :
     "https://healthy-food-api.onrender.com/recipes";
 
 export const getAll = () => requester.get(`${baseUrl}/all`);
