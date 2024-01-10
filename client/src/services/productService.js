@@ -1,7 +1,8 @@
 import requester from "./requester";
 
-const baseUrl = process.env.NODE_ENV === 'development' ?
-    'http://localhost:3030/products' :
+// process.env.NODE_ENV === 'development' ?
+//     'http://localhost:3030/products' :
+const baseUrl = 
     "https://healthy-food-api.onrender.com/products";
 
 
