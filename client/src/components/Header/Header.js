@@ -9,7 +9,7 @@ import logo from "./images/logo.png";
 const Header = () => {
     const { user } = useContext(AuthContext);
     return (
-        <header className={styles["navigation"]}>
+        <header className={`${styles["navigation"]} ${resp["navigation"]}`}>
             <nav>
                 {/* eslint-disable-next-line */}
                 <ul className={`${styles["nav-bar"]} ${resp["nav-bar"]}`} role={"list"}>

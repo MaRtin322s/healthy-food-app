@@ -1,14 +1,16 @@
 @media all and (max-width: 500px) {
-    /* header {
-        margin-bottom: 90%;
-    } */
+    .navigation {
+        width: 120vw;
+    }
     
-    .nav-bar {
+    ul.nav-bar {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         border: none;
+        padding-left: 40px;
+        border-bottom: 2px solid black;
     }
 
     ul.nav-bar li:not(:first-child) {
