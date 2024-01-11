@@ -29,7 +29,7 @@
         font-size: 30px;
         color: #454545;
         font-weight: 600;
-        margin-top: 10%;
+        margin-top: 15%;
         position: absolute;
         width: 305px;
         margin-left: 15%;
@@ -37,7 +37,7 @@
 
     .heading-para {
         position: absolute;
-        top: 60%;
+        top: 70%;
         width: 300px;
         font-size: 13px;
         margin-left: 15%;
@@ -45,7 +45,7 @@
 
     .heading-link {
         position: relative;
-        top: 63%;
+        top: 80%;
         display: inline-block;
         width: 180px;
         left: -80%;

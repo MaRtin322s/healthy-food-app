@@ -1,12 +1,12 @@
 import { useContext, useReducer } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import resp from './styles/responsive.module.css';
 
 import { AuthContext } from "../../contexts/UserContext";
 import * as service from "../../services/recipeService";
 import { initData, reducer } from "./data/data";
 
 import styles from "./styles/createRecipe.module.css";
-import background from "./images/backgr.jpg";
 import { changeHandler } from "../../utils/handleChangeEvent";
 
 const CreateRecipe = () => {
@@ -30,9 +30,9 @@ const CreateRecipe = () => {
 
     return (
         <>
-            <section className={styles["create-page"]}>
+            <section className={`${styles["create-page"]} ${resp["create-page"]}`}>
                 <form
-                    className={styles["create"]}
+                    className={`${styles["create"]} ${resp["create"]}`}
                     onSubmit={(ev) => submitHandler(ev, state, token, userId)}
                 >
                     <h1 className={styles["create-heading"]}>Share Recipes</h1>
