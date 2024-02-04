@@ -87,7 +87,7 @@ const Details = () => {
                     _id={recipeId}
                 />
             }
-            <div className={`${styles["wrap-main"]} ${styles["wrap-main"]}`}>
+            <div className={`${styles["wrap-main"]} ${resp["wrap-main"]}`}>
                 <section className={`${styles["details"]} ${resp["details"]}`}>
                     <img src={recipe.imageUrl} alt="pizza" />
                     <article>

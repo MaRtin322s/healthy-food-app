@@ -1,4 +1,5 @@
 import { memo, useContext, useEffect, useReducer, useState } from 'react';
+import './styles/responsive.css';
 import './styles/comments.css';
 import { initialState, reducer } from './data/data';
 import { changeHandler } from '../../utils/handleChangeEvent';
@@ -34,17 +35,17 @@ export const Comments = memo(({ recipeId }) => {
     }
     
     return (
-        <section className="comments-section">
+        <section className="comments-section resp-comments-section">
             <form
-                className="add-comment"
+                className="resp-add-comment"
                 onSubmit={(ev) => submitHandler(ev, state)}
             >
                 <h1>Add comment:</h1>
 
-                <div className="input-area">
+                <div className="resp-input-area">
                     <textarea
                         color={50}
-                        className="textarea-comment"
+                        className="resp-textarea-comment"
                         type="text"
                         id="comment"
                         name="comment"
@@ -57,16 +58,16 @@ export const Comments = memo(({ recipeId }) => {
                 <button>POST</button>
             </form>
 
-            <article className="comments">
-                <h1 className="comments-article-heading">Comments</h1>
+            <article className="resp-comments">
+                <h1 className="resp-comments-article-heading">Comments</h1>
                 {comments.length > 0 ?
                     comments.map(x => (
-                        <div className="comment" key={x._id}>
+                        <div className="resp-comment" key={x._id}>
                             <img src={x.userId?.imageUrl} alt='profile' />
-                            <p><span className="names">{x.userId?.firstName} {x.userId?.lastName}</span>: {x.comment}</p>
+                            <p><span className="resp-names">{x.userId?.firstName} {x.userId?.lastName}</span>: {x.comment}</p>
                         </div>
                     ))
-                    : <h1 className="comments-empty-heading">No comments yet.</h1>
+                    : <h1 className="resp-comments-empty-heading">No comments yet.</h1>
                 }
             </article>
         </section>
