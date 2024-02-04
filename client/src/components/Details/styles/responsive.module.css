@@ -2,15 +2,16 @@
 
 .wrap-main {
     padding: 50px;
+    width: 1519px;
     max-width: 1519px;
 }
 
 .details {
     display: flex;
+    flex-direction: column;
     border: 4px solid black;
-    width: 1400px;
-    padding: 20px 50px;
-    gap: 40px;
+    width: 400px;
+    gap: 30px;
     margin: 70px auto;
     padding: 25px;
     padding-bottom: 40px;
@@ -22,7 +23,7 @@
 .details img {
     width: 300px;
     height: 300px;
-    margin: 70px;
+    margin: auto;
     border: 2px solid black;
 
 }
@@ -35,8 +36,9 @@
     text-align: center;
 }
 
-.recipe-data {
+section.recipe-data {
     display: flex;
+    flex-direction: column;
     gap: 70px;
     margin-top: 35px;
 }

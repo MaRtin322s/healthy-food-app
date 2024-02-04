@@ -8,6 +8,7 @@ import { saveAs } from "file-saver";
 
 import Delete from "../Delete Component/DeleteComponent";
 import styles from "./styles/details.module.css";
+import resp from './styles/responsive.module.css';
 import { initialState, reducer } from "./data/data";
 import { Comments } from "../Comments/Comments";
 
@@ -86,12 +87,12 @@ const Details = () => {
                     _id={recipeId}
                 />
             }
-            <div className={styles["wrap-main"]}>
-                <section className={styles["details"]}>
+            <div className={`${styles["wrap-main"]} ${styles["wrap-main"]}`}>
+                <section className={`${styles["details"]} ${resp["details"]}`}>
                     <img src={recipe.imageUrl} alt="pizza" />
                     <article>
                         <h1 className={styles["details-heading"]}>{recipe.title}</h1>
-                        <section className={styles["recipe-data"]}>
+                        <section className={`${styles["recipe-data"]} ${resp["recipe-data"]}`}>
                             {/* eslint-disable-next-line */}
                             <ul className={styles["ingredients"]} role={"list"}>
                                 <li className={styles["first-item"]}>Ingredients: </li>
