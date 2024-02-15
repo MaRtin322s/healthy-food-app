@@ -42,7 +42,6 @@ function App() {
                             <Route path="/server-error" element={<ServerError />} />
                             <Route path="*" element={<NotFound />} />
                             <Route path="/updated-profile" element={<Profile />} />
-                            <Route path="bmi-calculator" element={<BMICalculator />} />
 
                             <Route
                                 path="/login"
@@ -138,6 +137,15 @@ function App() {
                                         <Suspense fallback={<Spinner />}>
                                             <EditProduct />
                                         </Suspense>
+                                    </PrivateRoute>
+                                }
+                            />
+
+                            <Route
+                                path="bmi-calculator"
+                                element={
+                                    <PrivateRoute>
+                                        <BMICalculator />
                                     </PrivateRoute>
                                 }
                             />
