@@ -1,28 +1,54 @@
 import styles from './styles/bmi.module.css';
+import { useState } from 'react';
 
 export const BMICalculator = () => {
+    const [data, setData] = useState({
+        age: '',
+        radio: '',
+        height: '',
+        weight: ''
+    });
+
+    const changeHandler = (ev) => {
+        console.log(ev);
+        setData(oldState => ({
+            ...oldState,
+            [ev.target.name]: ev.target.value
+        }))
+    };
+
+    const submitHandler = (ev, input) => {
+        ev.preventDefault();
+
+        console.log(input);
+    };
+
+
     return (
         <section className={`${styles['bmi-section']}`}>
             <h3 className={`${styles['bmi']}`}>
                 <b>B</b>ody <b>M</b>ass <b>I</b>ndex Calculator
             </h3>
-            <form className={`${styles['bmi-form']}`} id="form">
+            <form className={`${styles['bmi-form']}`} id="form" onSubmit={(ev) => submitHandler(ev, data)}>
                 <div className={`${styles['row-one']}`}>
                     <input
                         type="text"
                         className={`${styles['text-input']}`}
+                        name="age"
                         id="age"
                         autoComplete="off"
-                        required=""
+                        required={true}
+                        value={data.age}
+                        onChange={(e) => changeHandler(e)}
                     />
                     <p className={`${styles['text']}`}>Age</p>
                     <label className={`${styles['container']}`}>
-                        <input type="radio" name="radio" id="f" />
+                        <input type="radio" name="radio" id="f" value="f" onChange={(e) => changeHandler(e)} />
                         <p className={`${styles['text']}`}>Female</p>
                         <span className={`${styles['checkmark']}`} />
                     </label>
                     <label className={`${styles['container']}`}>
-                        <input type="radio" name="radio" id="m" />
+                        <input type="radio" name="radio" id="m" value="m" onChange={(e) => changeHandler(e)} />
                         <p className={`${styles['text']}`}>Male</p>
                         <span className={`${styles['checkmark']}`} />
                     </label>
@@ -32,20 +58,29 @@ export const BMICalculator = () => {
                         type="text"
                         className={`${styles['text-input']}`}
                         id="height"
+                        name='height'
                         autoComplete="off"
                         required=""
+                        value={data.height}
+                        onChange={(e) => changeHandler(e)}
                     />
                     <p className={`${styles['text']}`}>Height (cm)</p>
                     <input
                         type="text"
                         className={`${styles['text-input']}`}
                         id="weight"
+                        name='weight'
                         autoComplete="off"
                         required=""
+                        value={data.weight}
+                        onChange={(e) => changeHandler(e)}
                     />
                     <p className={`${styles['text']}`}>Weight (kg)</p>
                 </div>
-                <button className={`${styles['submit']}`} type="button" id="submit">
+                <button 
+                    className={`${styles['submit']}`} 
+                    id="submit"
+                >
                     Submit
                 </button>
             </form>
