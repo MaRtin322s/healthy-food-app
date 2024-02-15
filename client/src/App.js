@@ -20,6 +20,7 @@ import RouteGuard from "./guards/RouteGuard";
 import Spinner from "./components/Spinner/Spinner";
 import ServerError from "./components/Server Error/ServerError";
 import UpdatedProfile from "./components/Updated Profile/UpdatedProfile";
+import { BMICalculator } from "./components/BMI Calculator/BMICalculator";
 
 const Logout = React.lazy(() => import("./components/Logout/Logout"));
 const Details = React.lazy(() => import("./components/Details/Details"));
@@ -41,6 +42,7 @@ function App() {
                             <Route path="/server-error" element={<ServerError />} />
                             <Route path="*" element={<NotFound />} />
                             <Route path="/updated-profile" element={<Profile />} />
+                            <Route path="bmi-calculator" element={<BMICalculator />} />
 
                             <Route
                                 path="/login"
