@@ -22,13 +22,33 @@ export const BMICalculator = () => {
         if (Object.values(input).some(x => x === '')) {
             alert('All fields are required!');
         } else {
-            let age = Number(input.age);
-            let gender = input.radio;
             let weight = Number(input.weight);
             let height = Number(input.height);
+            let result = '';
+
+            let bmi = weight / ((height / 100) ** 2);
+
+            if (bmi < 18.5) {
+                result = 'Underweight';
+            } else if (18.5 <= bmi && bmi <= 24.9) {
+                result = 'Healthy';
+            } else if (25 <= bmi && bmi <= 29.9) {
+                result = 'Overweight';
+            } else if (30 <= bmi && bmi <= 34.9) {
+                result = 'Obese';
+            } else if (35 <= bmi) {
+                result = 'Extremely obese';
+            }
+            
+            setData(oldState => ({
+                ...oldState,
+                result,
+                bmi: bmi.toFixed(2)
+            }));
         }
     };
 
+    console.log(data);
 
     return (
         <section className={`${styles['bmi-section']}`}>
@@ -90,6 +110,9 @@ export const BMICalculator = () => {
                     Submit
                 </button>
             </form>
+
+            <h1>Result: {data.result ? data.result : 'TBD'}</h1>
+            <h2>Index: {data.bmi ? data.bmi : 'TBD'}</h2>
         </section>
     );
 };
