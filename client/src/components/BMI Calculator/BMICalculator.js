@@ -2,7 +2,7 @@ import styles from './styles/bmi.module.css';
 
 export const BMICalculator = () => {
     return (
-        <>
+        <section className={`${styles['bmi-section']}`}>
             <h3 className={`${styles['bmi']}`}>
                 <b>B</b>ody <b>M</b>ass <b>I</b>ndex Calculator
             </h3>
@@ -49,6 +49,6 @@ export const BMICalculator = () => {
                     Submit
                 </button>
             </form>
-        </>
+        </section>
     );
 };
