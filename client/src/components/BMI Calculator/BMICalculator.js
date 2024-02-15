@@ -19,7 +19,14 @@ export const BMICalculator = () => {
     const submitHandler = (ev, input) => {
         ev.preventDefault();
 
-        console.log(input);
+        if (Object.values(input).some(x => x === '')) {
+            alert('All fields are required!');
+        } else {
+            let age = Number(input.age);
+            let gender = input.radio;
+            let weight = Number(input.weight);
+            let height = Number(input.height);
+        }
     };
 
 
@@ -76,8 +83,8 @@ export const BMICalculator = () => {
                     />
                     <p className={`${styles['text']}`}>Weight (kg)</p>
                 </div>
-                <button 
-                    className={`${styles['submit']}`} 
+                <button
+                    className={`${styles['submit']}`}
                     id="submit"
                 >
                     Submit
