@@ -45,7 +45,7 @@ export const BMICalculator = () => {
                     />
                     <p className={`${styles['text']}`}>Weight (kg)</p>
                 </div>
-                <button type="button" id="submit">
+                <button className={`${styles['submit']}`} type="button" id="submit">
                     Submit
                 </button>
             </form>
