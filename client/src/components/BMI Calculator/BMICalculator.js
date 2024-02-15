@@ -10,7 +10,6 @@ export const BMICalculator = () => {
     });
 
     const changeHandler = (ev) => {
-        console.log(ev);
         setData(oldState => ({
             ...oldState,
             [ev.target.name]: ev.target.value

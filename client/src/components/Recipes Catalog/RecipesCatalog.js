@@ -24,7 +24,6 @@ const RecipesCatalog = () => {
             getAllRecipes()
                 .then(result => {
                     if (result.toString().includes('Error')) {
-                        console.log('error');
                         return <Navigate to="/server-error" />
                     } else {
                         dispatch({ type: "SET_RECIPES", recipes: result.reverse() });

@@ -1,5 +1,5 @@
 import requester from "./requester";
-console.log(process.env.NODE_ENV);
+
 const baseUrl = process.env.NODE_ENV === 'development' ?
     'http://localhost:3030/users' :
     'https://healthy-food-api.onrender.com/users';

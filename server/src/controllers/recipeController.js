@@ -8,7 +8,6 @@ const PDFDocument = require('pdfkit');
 
 router.post('/create', async (req, res) => {
     const { title, category, imageUrl, ingredients, preparation, _ownerId } = req.body;
-    console.log(req.headers);
     if (req.headers['x-authorization']) {
         try {
             if (title == "" || category == "" || imageUrl == "") {
