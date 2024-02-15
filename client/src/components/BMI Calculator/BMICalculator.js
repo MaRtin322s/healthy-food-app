@@ -111,8 +111,8 @@ export const BMICalculator = () => {
                 </button>
             </form>
 
-            <h1>Result: {data.result ? data.result : 'TBD'}</h1>
-            <h2>Index: {data.bmi ? data.bmi : 'TBD'}</h2>
+            <h1 className={`${styles['bmi']}`}>Result: {data.result ? data.result : 'TBD'}</h1>
+            <h2 className={`${styles['bmi']}`}>Index: {data.bmi ? data.bmi : 'TBD'}</h2>
         </section>
     );
 };

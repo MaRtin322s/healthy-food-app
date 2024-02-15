@@ -65,6 +65,17 @@ const Header = () => {
                             </li>
                             <li className={styles["nav-item"]}>
                                 <NavLink
+                                    to="/bmi-calculator"
+                                    style={({ isActive }) =>
+                                        isActive ? { backgroundColor: 'black', color: 'white' } : {}
+                                    }
+                                >
+                                    <i className="fas fa-calculator"></i>
+                                    BMI Calculator
+                                </NavLink>
+                            </li>
+                            <li className={styles["nav-item"]}>
+                                <NavLink
                                     to="/logout"
                                     style={({ isActive }) =>
                                         isActive ? { backgroundColor: 'black', color: 'white' } : {}
