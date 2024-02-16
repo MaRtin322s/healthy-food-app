@@ -16,7 +16,12 @@ const Home = () => {
     useEffect(() => {
         getAllRecipes()
             .then(result => {
-                setLastThree(result?.slice(-3).reverse());
+                console.log(result);
+                if (result !== 'Failed to fetch') {
+                    setLastThree(result?.slice(-3)?.reverse());
+                } else {
+                    setLastThree([]);
+                }
             });
     }, [getAllRecipes]);
 
@@ -74,9 +79,9 @@ const Home = () => {
             <h2 className={styles["last-recipes-heading"]}>The last 3 added recipes...</h2>
             <section className={`${styles["last-recipes"]} ${resp["last-recipes"]}`}>
                 {
-                    lastThree.length > 0
+                    lastThree?.length > 0
                         ?
-                        lastThree.map(x => <RecipeItem key={x._id} {...x} />)
+                        lastThree?.map(x => <RecipeItem key={x._id} {...x} />)
                         :
                         <h1 className={`${resp["no-recipes"]}`}>There are no recipes created yet.</h1>
                 }

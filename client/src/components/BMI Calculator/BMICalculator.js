@@ -19,36 +19,30 @@ export const BMICalculator = () => {
     const submitHandler = (ev, input) => {
         ev.preventDefault();
 
-        if (Object.values(input).some(x => x === '')) {
-            alert('All fields are required!');
-        } else {
-            let weight = Number(input.weight);
-            let height = Number(input.height);
-            let result = '';
+        let weight = Number(input.weight);
+        let height = Number(input.height);
+        let result = '';
 
-            let bmi = weight / ((height / 100) ** 2);
+        let bmi = weight / ((height / 100) ** 2);
 
-            if (bmi < 18.5) {
-                result = 'Underweight';
-            } else if (18.5 <= bmi && bmi <= 24.9) {
-                result = 'Healthy';
-            } else if (25 <= bmi && bmi <= 29.9) {
-                result = 'Overweight';
-            } else if (30 <= bmi && bmi <= 34.9) {
-                result = 'Obese';
-            } else if (35 <= bmi) {
-                result = 'Extremely obese';
-            }
-            
-            setData(oldState => ({
-                ...oldState,
-                result,
-                bmi: bmi.toFixed(2)
-            }));
+        if (bmi < 18.5) {
+            result = 'Underweight';
+        } else if (18.5 <= bmi && bmi <= 24.9) {
+            result = 'Healthy';
+        } else if (25 <= bmi && bmi <= 29.9) {
+            result = 'Overweight';
+        } else if (30 <= bmi && bmi <= 34.9) {
+            result = 'Obese';
+        } else if (35 <= bmi) {
+            result = 'Extremely obese';
         }
-    };
 
-    console.log(data);
+        setData(oldState => ({
+            ...oldState,
+            result: result,
+            bmi: bmi.toFixed(2)
+        }));
+    };
 
     return (
         <section className={`${styles['bmi-section']}`}>
