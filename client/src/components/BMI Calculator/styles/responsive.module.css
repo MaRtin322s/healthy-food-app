@@ -1,0 +1,14 @@
+@media all and (max-width: 500px) and (min-width:300px) {
+    .bmi-form-resp {
+        .bmi-form {
+            background-color: #fff;
+            height: 240px;
+            width: 450px;
+            border-radius: 20px;
+            margin: 20px auto 20px 50%;
+            display: block;
+            border: solid 1px #289df6;
+            box-shadow: 0 0 40px 0 #ddd;
+        }
+    }
+}

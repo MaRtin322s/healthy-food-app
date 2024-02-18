@@ -1,4 +1,5 @@
 import styles from './styles/bmi.module.css';
+import resp from './styles/responsive.module.css';
 import { useState } from 'react';
 
 export const BMICalculator = () => {
@@ -49,7 +50,7 @@ export const BMICalculator = () => {
             <h3 className={`${styles['bmi']}`}>
                 <b>B</b>ody <b>M</b>ass <b>I</b>ndex Calculator
             </h3>
-            <form className={`${styles['bmi-form']}`} id="form" onSubmit={(ev) => submitHandler(ev, data)}>
+            <form className={`${styles['bmi-form']} ${resp['bmi-form-resp']}`} id="form" onSubmit={(ev) => submitHandler(ev, data)}>
                 <div className={`${styles['row-one']}`}>
                     <input
                         type="text"

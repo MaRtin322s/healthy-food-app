@@ -1,7 +1,8 @@
 import requester from "./requester";
 
-const baseUrl = process.env.NODE_ENV === 'development' ?
-    'http://localhost:3030/users' :
+// process.env.NODE_ENV === 'development' ?
+//     'http://localhost:3030/users' :
+const baseUrl = 
     'https://healthy-food-api.onrender.com/users';
 
 export const logoutUser = (token) => requester.get(`${baseUrl}/logout`, { "X-Authorization": token });
