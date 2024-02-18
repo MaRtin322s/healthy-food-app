@@ -154,7 +154,7 @@ const Register = () => {
                             }
                         </div>
 
-                        <label htmlFor="imageUrl">Image URL:</label>
+                        <label htmlFor="imageUrl">Image:</label>
                         <div>
                             <input
                                 className={styles["email"]}
