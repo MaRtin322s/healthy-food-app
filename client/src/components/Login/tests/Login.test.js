@@ -24,12 +24,12 @@ const renderLoginComponent = () => {
 };
 
 describe("Login component functionality tests", () => {
-    test("Renders the login page main title", () => {
+    test("Render login page", () => {
         renderLoginComponent();
         const heading = screen.getByText(/Login for users/i);
         expect(heading).toBeInTheDocument();
     });
-    test("Renders the login form title", () => {
+    test("Renders login form", () => {
         renderLoginComponent();
         const heading = screen.getByText(/User Information/i);
         expect(heading).toBeInTheDocument();
