@@ -26,4 +26,10 @@ describe("Not Found page component functionality tests", () => {
         const heading = screen.getByText(/404 - PAGE NOT FOUND/i);
         expect(heading).toBeInTheDocument();
     });
+
+    test("Renders go to home page link", () => {
+        renderNotFoundComponent();
+        const heading = screen.getByText(/GO TO HOMEPAGE/i);
+        expect(heading).toBeInTheDocument();
+    });
 });
