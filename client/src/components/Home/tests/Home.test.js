@@ -40,6 +40,12 @@ describe("Home page component functionality tests", () => {
         expect(image).toBeInTheDocument();
     });
 
+    test("Renders the importance food link", () => {
+        renderHomeComponent();
+        const button = screen.getByText('Learn more');
+        expect(button).toBeInTheDocument();
+    });
+
     test("Renders the fruit image correctly", () => {
         renderHomeComponent();
         const image = screen.getByAltText('background');
