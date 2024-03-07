@@ -6,7 +6,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 const mockContext = {
     userLogin: () => null,
-    mockLogin: jest.fn()
+    mockRegister: jest.fn()
 };
 
 const renderRegisterComponent = () => {
@@ -29,7 +29,7 @@ describe('Register component tests', () => {
         const heading = screen.getByText('Register new users');
         expect(heading).toBeInTheDocument();
     });
-    test('Render register information', () => {
+    test('Render register form', () => {
         renderRegisterComponent();
         const heading = screen.getByText('User Information');
         expect(heading).toBeInTheDocument();
@@ -39,5 +39,30 @@ describe('Register component tests', () => {
         const linkElement = screen.getByText('Log in');
         fireEvent.click(linkElement);
         expect(window.location.pathname).toBe('/login');
+    });
+
+    test('Register form submit with input values', () => {
+        renderRegisterComponent();
+
+        const firstNameInput = screen.getByPlaceholderText('Enter your first name...');
+        const lastNameInput = screen.getByPlaceholderText('Enter your last name...');
+        const emailInput = screen.getByPlaceholderText('Enter your email...');
+        const imageInput = screen.getByLabelText('Image:');
+        const backupWordInput = screen.getByPlaceholderText('Secret word...');
+        const passwordInput = screen.getByPlaceholderText('Enter password...');
+        const confirmPasswordInput = screen.getByPlaceholderText('Confirm your password...');
+
+        fireEvent.change(firstNameInput, { target: { value: 'testfirstname' } });
+        fireEvent.change(lastNameInput, { target: { value: 'testlastname' } });
+        fireEvent.change(emailInput, { target: { value: 'testuser@mail.bg' } });
+        fireEvent.change(imageInput, { target: { value: '' } });
+        fireEvent.change(backupWordInput, { target: { value: 'testword' } });
+        fireEvent.change(passwordInput, { target: { value: 'testpassword' } });
+        fireEvent.change(confirmPasswordInput, { target: { value: 'testpassword' } });
+
+        const submitButton = screen.getByText('Register');
+        fireEvent.click(submitButton);
+        mockContext.mockRegister('testfirstname', 'testlastname', 'testuser@mail.bg', '', 'testword', 'testpassword', 'testpassword');
+        expect(mockContext.mockRegister).toHaveBeenCalledWith('testfirstname', 'testlastname', 'testuser@mail.bg', '', 'testword', 'testpassword', 'testpassword');
     });
 });
