@@ -65,4 +65,29 @@ describe('Register component tests', () => {
         mockContext.mockRegister('testfirstname', 'testlastname', 'testuser@mail.bg', '', 'testword', 'testpassword', 'testpassword');
         expect(mockContext.mockRegister).toHaveBeenCalledWith('testfirstname', 'testlastname', 'testuser@mail.bg', '', 'testword', 'testpassword', 'testpassword');
     });
+
+    test('Register form submit with empty input values', () => {
+        renderRegisterComponent();
+
+        const firstNameInput = screen.getByPlaceholderText('Enter your first name...');
+        const lastNameInput = screen.getByPlaceholderText('Enter your last name...');
+        const emailInput = screen.getByPlaceholderText('Enter your email...');
+        const imageInput = screen.getByLabelText('Image:');
+        const backupWordInput = screen.getByPlaceholderText('Secret word...');
+        const passwordInput = screen.getByPlaceholderText('Enter password...');
+        const confirmPasswordInput = screen.getByPlaceholderText('Confirm your password...');
+
+        fireEvent.change(firstNameInput, { target: { value: '' } });
+        fireEvent.change(lastNameInput, { target: { value: '' } });
+        fireEvent.change(emailInput, { target: { value: '' } });
+        fireEvent.change(imageInput, { target: { value: '' } });
+        fireEvent.change(backupWordInput, { target: { value: '' } });
+        fireEvent.change(passwordInput, { target: { value: '' } });
+        fireEvent.change(confirmPasswordInput, { target: { value: '' } });
+
+        const submitButton = screen.getByText('Register');
+        fireEvent.click(submitButton);
+
+        expect(mockContext.mockRegister).not.toHaveBeenCalledWith();
+    });
 });
