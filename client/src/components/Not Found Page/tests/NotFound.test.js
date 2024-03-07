@@ -19,3 +19,11 @@ const renderNotFoundComponent = () => {
         }
     );
 };
+
+describe("Not Found page component functionality tests", () => {
+    test("Renders not found page", () => {
+        renderNotFoundComponent();
+        const heading = screen.getByText(/404 - PAGE NOT FOUND/i);
+        expect(heading).toBeInTheDocument();
+    });
+});
