@@ -27,8 +27,8 @@ const renderHomeComponent = () => {
     );
 };
 
-describe("Home component functionality tests", () => {
-    test("Renders the application main title", () => {
+describe("Home page component functionality tests", () => {
+    test("Renders the home page main title", () => {
         renderHomeComponent();
         const heading = screen.getByText(/NutriGit/i);
         expect(heading).toBeInTheDocument();
