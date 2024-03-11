@@ -29,13 +29,20 @@ describe("Not Found page component functionality tests", () => {
 
     test("Render go to home page link", () => {
         renderNotFoundComponent();
-        const heading = screen.getByText(/GO TO HOMEPAGE/i);
-        expect(heading).toBeInTheDocument();
+        const button = screen.getByText(/GO TO HOMEPAGE/i);
+        expect(button).toBeInTheDocument();
     });
 
     test("Render sad emoji", () => {
         renderNotFoundComponent();
         const image = screen.getByAltText(/oops/i);
         expect(image).toBeInTheDocument()
+    });
+
+    test("Render go to home page after button click", () => {
+        renderNotFoundComponent();
+        const link = screen.getByText(/GO TO HOMEPAGE/i);
+        fireEvent.click(link);
+        expect(location.pathname).toBe('/');
     });
 });
