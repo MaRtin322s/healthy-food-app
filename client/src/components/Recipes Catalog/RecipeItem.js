@@ -7,14 +7,15 @@ const RecipeCatalogItem = memo(({
     imageUrl,
     title,
     category,
-    _id
+    _id,
+    image
 }) => {
     const { user } = useContext(AuthContext)
 
     return (
         <article className={styles["catalog-recipe"]}>
             <img
-                src={imageUrl}
+                src={imageUrl || image}
                 alt={title}
             />
             <h3 className={styles["catalog-recipe-title"]}>{title}</h3>

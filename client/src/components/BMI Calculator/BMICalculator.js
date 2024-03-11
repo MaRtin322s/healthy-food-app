@@ -2,6 +2,7 @@ import styles from './styles/bmi.module.css';
 import resp from './styles/responsive.module.css';
 import { useState } from 'react';
 import * as nutritionServices from '../../services/nutritionService';
+import { DailyMealElement } from './DailyMealElement';
 
 export const BMICalculator = () => {
     const [data, setData] = useState({
@@ -10,6 +11,12 @@ export const BMICalculator = () => {
         height: '',
         weight: ''
     });
+
+    let days = {
+        0: 'Brekfast',
+        1: 'Lunch',
+        2: 'Dinner',
+    };
 
     const [recipes, setRecipes] = useState([]);
 
@@ -34,18 +41,16 @@ export const BMICalculator = () => {
         }
 
         nutritionServices.getNutritions(bmi.toString())
-            .then(recipesResult => setRecipes(recipesResult));
+            .then(mealPlan => setRecipes(Object.entries(Object.values(mealPlan)[0])));
 
         setData(oldState => ({
             ...oldState,
             bmi: bmi.toFixed(2)
         }));
-        
     };
-    console.log(recipes);
     
     return (
-        <>
+        <div className={styles['recipes-section']}>
             <section className={`${styles['bmi-section']}`}>
                 <h3 className={`${styles['bmi']}`}>
                     <b>B</b>asal <b>M</b>etabolic <b>R</b>ate
@@ -108,9 +113,16 @@ export const BMICalculator = () => {
 
                 <h1 className={`${styles['bmi']}`}>Required daily calories: {data.bmi ? data.bmi : 'TBD'} kcal</h1>
             </section>
-            <section>
-
+            <section className={styles['result-recipes']}>
+                <h1 className={`${styles['bmi-sec']}`}>Recommended daily meal plan:</h1>
+                {
+                    recipes[1] ? 
+                    (
+                        recipes[1][1]?.meals?.map((x, i) => <DailyMealElement key={x.id} {...x} day={days[i]} />)
+                    )
+                    : null
+                }
             </section>
-        </>
+        </div>
     );
 };
