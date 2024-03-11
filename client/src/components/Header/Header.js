@@ -71,7 +71,7 @@ const Header = () => {
                                     }
                                 >
                                     <i className="fas fa-calculator"></i>
-                                    BMI Calculator
+                                    BMR Calculator
                                 </NavLink>
                             </li>
                             <li className={styles["nav-item"]}>

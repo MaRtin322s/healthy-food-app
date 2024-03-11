@@ -23,24 +23,16 @@ export const BMICalculator = () => {
         let weight = Number(input.weight);
         let height = Number(input.height);
         let result = '';
+        let bmi = 0;
 
-        let bmi = weight / ((height / 100) ** 2);
-
-        if (bmi < 18.5) {
-            result = 'Underweight';
-        } else if (18.5 <= bmi && bmi <= 24.9) {
-            result = 'Healthy';
-        } else if (25 <= bmi && bmi <= 29.9) {
-            result = 'Overweight';
-        } else if (30 <= bmi && bmi <= 34.9) {
-            result = 'Obese';
-        } else if (35 <= bmi) {
-            result = 'Extremely obese';
+        if (input.radio === 'm') {
+            bmi = 66.47 + (13.75 * weight) + (5.003 * (height / 100)) - (6.755 * Number(input.age));
+        } else {
+            bmi = 655.1 + (9.563 * weight) + (1.850 * (height / 100)) - (4.676 * Number(input.age));
         }
 
         setData(oldState => ({
             ...oldState,
-            result: result,
             bmi: bmi.toFixed(2)
         }));
     };
@@ -49,7 +41,7 @@ export const BMICalculator = () => {
         <>
             <section className={`${styles['bmi-section']}`}>
                 <h3 className={`${styles['bmi']}`}>
-                    <b>B</b>ody <b>M</b>ass <b>I</b>ndex Calculator
+                    <b>B</b>asal <b>M</b>etabolic <b>R</b>ate
                 </h3>
                 <form className={`${styles['bmi-form']} ${resp['bmi-form-resp']}`} id="form" onSubmit={(ev) => submitHandler(ev, data)}>
                     <div className={`${styles['row-one']}`}>
@@ -107,9 +99,11 @@ export const BMICalculator = () => {
                     </button>
                 </form>
 
-                <h1 className={`${styles['bmi']}`}>Result: {data.result ? data.result : 'TBD'}</h1>
-                <h2 className={`${styles['bmi']}`}>Index: {data.bmi ? data.bmi : 'TBD'}</h2>
+                <h1 className={`${styles['bmi']}`}>Required daily calories: {data.bmi ? data.bmi : 'TBD'} kcal</h1>
             </section>
+            <scrtion>
+                
+            </scrtion>
         </>
     );
 };
