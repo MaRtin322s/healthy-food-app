@@ -1,6 +1,14 @@
 .recipes-section {
     display: flex;
-    gap: 200px;
+    gap: 150px;
+}
+
+.daily {
+    display: flex;
+    gap: 15px;
+    border: 2px solid black;
+    padding: 10px 30px 40px 30px;
+    background-color: #ddf5fe;
 }
 
 .daily-meal {
@@ -135,6 +143,19 @@ h1.bmi {
     margin-left: 30%;
 }
 
+h5.bmi {
+    font-size: 30px;
+    font-weight: 300;
+    text-align: center;
+    color: #289df6;
+    padding-top: 15px;
+    display: block;
+}
+
+.details-link {
+    color: black;
+}
+
 h2.bmi {
     font-size: 22px;
     font-weight: 300;
@@ -191,5 +212,5 @@ h3 b {
 
 h1.bmi-sec {
     text-align: center;
-    margin: 10px;
+    margin: 30px;
 }

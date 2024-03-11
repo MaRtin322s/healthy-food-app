@@ -48,7 +48,7 @@ export const BMICalculator = () => {
             bmi: bmi.toFixed(2)
         }));
     };
-    
+
     return (
         <div className={styles['recipes-section']}>
             <section className={`${styles['bmi-section']}`}>
@@ -115,13 +115,15 @@ export const BMICalculator = () => {
             </section>
             <section className={styles['result-recipes']}>
                 <h1 className={`${styles['bmi-sec']}`}>Recommended daily meal plan:</h1>
-                {
-                    recipes[1] ? 
-                    (
-                        recipes[1][1]?.meals?.map((x, i) => <DailyMealElement key={x.id} {...x} day={days[i]} />)
-                    )
-                    : null
-                }
+                <div className={styles['daily']}>
+                    {
+                        recipes[1] ?
+                            (
+                                recipes[1][1]?.meals?.map((x, i) => <DailyMealElement key={x.id} {...x} day={days[i]} />)
+                            )
+                            : <h3>Enter your credentials to recieve personal plan</h3>
+                    }
+                </div>
             </section>
         </div>
     );
