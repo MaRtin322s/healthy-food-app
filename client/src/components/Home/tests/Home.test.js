@@ -79,6 +79,6 @@ describe("Home page component functionality tests", () => {
         renderHomeComponent();
         const link = screen.getByText('Recipes Catalog');
         fireEvent.click(link);
-        expect(window.location.pathname).toBe("/catalog-recipes");
+        expect(location.pathname).toBe("/catalog-recipes");
     });
 });
