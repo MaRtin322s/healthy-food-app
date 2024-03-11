@@ -74,7 +74,7 @@ export const BMICalculator = () => {
                             <span className={`${styles['checkmark']}`} />
                         </label>
                         <label className={`${styles['container']}`}>
-                            <input type="radio" name="radio" id="m" value="m" onChange={(e) => changeHandler(e)} />
+                            <input type="radio" required={true} name="radio" id="m" value="m" onChange={(e) => changeHandler(e)} />
                             <p className={`${styles['text']}`}>Male</p>
                             <span className={`${styles['checkmark']}`} />
                         </label>
@@ -86,7 +86,7 @@ export const BMICalculator = () => {
                             id="height"
                             name='height'
                             autoComplete="off"
-                            required=""
+                            required={true}
                             value={data.height}
                             onChange={(e) => changeHandler(e)}
                         />
@@ -97,7 +97,7 @@ export const BMICalculator = () => {
                             id="weight"
                             name='weight'
                             autoComplete="off"
-                            required=""
+                            required={true}
                             value={data.weight}
                             onChange={(e) => changeHandler(e)}
                         />
