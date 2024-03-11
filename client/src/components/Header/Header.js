@@ -71,7 +71,7 @@ const Header = () => {
                                     }
                                 >
                                     <i className="fas fa-calculator"></i>
-                                    BMR Calculator
+                                    Daily Plan Generator
                                 </NavLink>
                             </li>
                             <li className={styles["nav-item"]}>
