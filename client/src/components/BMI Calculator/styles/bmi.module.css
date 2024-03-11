@@ -1,5 +1,5 @@
 .bmi-section {
-    margin: 5.6% 0%;
+    margin: 5.3% 0%;
 }
 
 .bmi-form {
@@ -7,7 +7,7 @@
     height: 240px;
     width: 450px;
     border-radius: 20px;
-    margin: 20px auto 20px auto;
+    margin: 20px auto 20px 12%;
     display: block;
     border: solid 1px #289df6;
 
@@ -116,18 +116,21 @@ h1.bmi {
     color: #289df6;
     padding-top: 15px;
     display: block;
+    margin-left: -45%;
 }
 
 h2.bmi {
     font-size: 22px;
     font-weight: 300;
     text-align: center;
+    margin-left: -45%;
 }
 
 h3.bmi {
     font-size: 24px;
     font-weight: 300;
     text-align: center;
+    margin-left: -45%;
 }
 
 h3 b {
