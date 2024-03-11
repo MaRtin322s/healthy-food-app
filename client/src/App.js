@@ -142,7 +142,7 @@ function App() {
                             />
 
                             <Route
-                                path="bmi-calculator"
+                                path="daily-plan-generator"
                                 element={
                                     <PrivateRoute>
                                         <BMICalculator />

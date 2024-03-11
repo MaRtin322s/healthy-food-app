@@ -76,13 +76,6 @@ function UpdatedProfile() {
                                                         Saved Recipes: {state.saved.length}
                                                     </p>
                                                 </div>
-                                                <div className="intro-item d-flex justify-content-between align-items-center">
-                                                    <button
-                                                        className="btn btn-quick-link join-group-btn border w-100"
-                                                    >
-                                                        Edit Details
-                                                    </button>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>

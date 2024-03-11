@@ -65,7 +65,7 @@ const Header = () => {
                             </li>
                             <li className={styles["nav-item"]}>
                                 <NavLink
-                                    to="/bmi-calculator"
+                                    to="/daily-plan-generator"
                                     style={({ isActive }) =>
                                         isActive ? { backgroundColor: 'black', color: 'white' } : {}
                                     }
