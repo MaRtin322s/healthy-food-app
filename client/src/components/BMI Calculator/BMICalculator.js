@@ -111,7 +111,7 @@ export const BMICalculator = () => {
                     </button>
                 </form>
 
-                <h1 className={`${styles['bmi']}`}>Required daily calories: {data.bmi ? data.bmi : 'TBD'} kcal</h1>
+                <h1 className={`${styles['bmi']}`}>Recommended daily calories: {data.bmi ? data.bmi : 'TBD'} kcal</h1>
             </section>
             <section className={styles['result-recipes']}>
                 <h1 className={`${styles['bmi-sec']}`}>Recommended daily meal plan:</h1>
