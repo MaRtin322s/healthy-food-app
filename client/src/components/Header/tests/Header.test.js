@@ -35,4 +35,11 @@ describe("Home page component functionality tests", () => {
         const link = screen.getByText(/Log In/i);
         expect(link).toBeInTheDocument();
     });
+
+    test("Navigate to login page", () => {
+        renderHeaderComponent();
+        const link = screen.getByText(/Log In/i);
+        fireEvent.click(link);
+        expect(location.pathname).toBe('/login');
+    });
 });
