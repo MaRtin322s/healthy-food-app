@@ -21,15 +21,21 @@ const renderNotFoundComponent = () => {
 };
 
 describe("Not Found page component functionality tests", () => {
-    test("Renders not found page", () => {
+    test("Render not found page", () => {
         renderNotFoundComponent();
         const heading = screen.getByText(/404 - PAGE NOT FOUND/i);
         expect(heading).toBeInTheDocument();
     });
 
-    test("Renders go to home page link", () => {
+    test("Render go to home page link", () => {
         renderNotFoundComponent();
         const heading = screen.getByText(/GO TO HOMEPAGE/i);
         expect(heading).toBeInTheDocument();
+    });
+
+    test("Render sad emoji", () => {
+        renderNotFoundComponent();
+        const image = screen.getByAltText(/oops/i);
+        expect(image).toBeInTheDocument()
     });
 });
