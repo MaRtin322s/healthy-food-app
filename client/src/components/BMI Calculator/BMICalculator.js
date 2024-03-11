@@ -13,7 +13,7 @@ export const BMICalculator = () => {
     });
 
     let days = {
-        0: 'Brekfast',
+        0: 'Breakfast',
         1: 'Lunch',
         2: 'Dinner',
     };
@@ -107,7 +107,7 @@ export const BMICalculator = () => {
                         className={`${styles['submit']}`}
                         id="submit"
                     >
-                        Submit
+                        {recipes.length > 0 ? 'Generate new' : 'Generate Plan'}
                     </button>
                 </form>
 
