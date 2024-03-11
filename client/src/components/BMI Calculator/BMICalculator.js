@@ -1,6 +1,7 @@
 import styles from './styles/bmi.module.css';
 import resp from './styles/responsive.module.css';
 import { useState } from 'react';
+import * as nutritionServices from '../../services/nutritionService';
 
 export const BMICalculator = () => {
     const [data, setData] = useState({
@@ -9,6 +10,8 @@ export const BMICalculator = () => {
         height: '',
         weight: ''
     });
+
+    const [recipes, setRecipes] = useState([]);
 
     const changeHandler = (ev) => {
         setData(oldState => ({
@@ -22,7 +25,6 @@ export const BMICalculator = () => {
 
         let weight = Number(input.weight);
         let height = Number(input.height);
-        let result = '';
         let bmi = 0;
 
         if (input.radio === 'm') {
@@ -31,12 +33,17 @@ export const BMICalculator = () => {
             bmi = 655.1 + (9.563 * weight) + (1.850 * (height / 100)) - (4.676 * Number(input.age));
         }
 
+        nutritionServices.getNutritions(bmi.toString())
+            .then(recipesResult => setRecipes(recipesResult));
+
         setData(oldState => ({
             ...oldState,
             bmi: bmi.toFixed(2)
         }));
+        
     };
-
+    console.log(recipes);
+    
     return (
         <>
             <section className={`${styles['bmi-section']}`}>
@@ -101,9 +108,9 @@ export const BMICalculator = () => {
 
                 <h1 className={`${styles['bmi']}`}>Required daily calories: {data.bmi ? data.bmi : 'TBD'} kcal</h1>
             </section>
-            <scrtion>
-                
-            </scrtion>
+            <section>
+
+            </section>
         </>
     );
 };
