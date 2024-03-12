@@ -16,7 +16,6 @@ const Home = () => {
     useEffect(() => {
         getAllRecipes()
             .then(result => {
-                console.log(result);
                 if (result !== 'Failed to fetch') {
                     setLastThree(result?.slice(-3)?.reverse());
                 } else {

@@ -114,14 +114,14 @@ export const BMICalculator = () => {
                 <h1 className={`${styles['bmi']}`}>Recommended daily calories: {data.bmi ? data.bmi : 'TBD'} kcal</h1>
             </section>
             <section className={styles['result-recipes']}>
-                <h1 className={`${styles['bmi-sec']}`}>Recommended daily meal plan:</h1>
+                <h1 className={`${styles['bmi-sec']}`}>Daily meal plan:</h1>
                 <div className={styles['daily']}>
                     {
                         recipes[1] ?
                             (
                                 recipes[1][1]?.meals?.map((x, i) => <DailyMealElement key={x.id} {...x} day={days[i]} />)
                             )
-                            : <h3>Enter your credentials to recieve personal plan</h3>
+                            : <h3>Submit your credentials to access the plan</h3>
                     }
                 </div>
             </section>
