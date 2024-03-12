@@ -35,9 +35,9 @@ export const BMICalculator = () => {
         let bmi = 0;
 
         if (input.radio === 'm') {
-            bmi = 66.47 + (13.75 * weight) + (5.003 * (height / 100)) - (6.755 * Number(input.age));
+            bmi = (10 * weight) + (6.25 * height) - (5 * input.age) + 5;
         } else {
-            bmi = 655.1 + (9.563 * weight) + (1.850 * (height / 100)) - (4.676 * Number(input.age));
+            bmi = (10 * weight) + (6.25 * height) - (5 * input.age) - 161;
         }
 
         nutritionServices.getNutritions(bmi.toString())
