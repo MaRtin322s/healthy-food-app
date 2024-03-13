@@ -53,4 +53,10 @@ describe("Home page component functionality tests", () => {
         const link = screen.getByText(/Contacts/i);
         expect(link).toBeInTheDocument();
     });
+
+    test("Render social media section component", () => {
+        renderFooterComponent();
+        const section = screen.getByText(/Follow us on/i);
+        expect(section).toBeInTheDocument();
+    });
 });
