@@ -30,31 +30,31 @@ describe("Home page component functionality tests", () => {
         expect(heading).toBeInTheDocument();
     });
 
-    test("Render about link component", () => {
+    test("Render about link", () => {
         renderFooterComponent();
         const link = screen.getByText(/About us/i);
         expect(link).toBeInTheDocument();
     });
 
-    test("Render faq link component", () => {
+    test("Render faq link", () => {
         renderFooterComponent();
         const link = screen.getByText(/FAQ/i);
         expect(link).toBeInTheDocument();
     });
 
-    test("Render tac link component", () => {
+    test("Render tac link", () => {
         renderFooterComponent();
         const link = screen.getByText(/Terms and Conditions/i);
         expect(link).toBeInTheDocument();
     });
 
-    test("Render contacts link component", () => {
+    test("Render contacts link", () => {
         renderFooterComponent();
         const link = screen.getByText(/Contacts/i);
         expect(link).toBeInTheDocument();
     });
 
-    test("Render social media section component", () => {
+    test("Render social media section", () => {
         renderFooterComponent();
         const section = screen.getByText(/Follow us on/i);
         expect(section).toBeInTheDocument();
