@@ -59,4 +59,10 @@ describe("Home page component functionality tests", () => {
         const section = screen.getByText(/Follow us on/i);
         expect(section).toBeInTheDocument();
     });
+
+    test("Render application owner name", () => {
+        renderFooterComponent();
+        const name = screen.getByText(/Martin Sofroniev/i);
+        expect(name).toBeInTheDocument();
+    });
 });
