@@ -41,4 +41,10 @@ describe("Home page component functionality tests", () => {
         const link = screen.getByText(/FAQ/i);
         expect(link).toBeInTheDocument();
     });
+
+    test("Render tac link component", () => {
+        renderFooterComponent();
+        const link = screen.getByText(/Terms and Conditions/i);
+        expect(link).toBeInTheDocument();
+    });
 });
