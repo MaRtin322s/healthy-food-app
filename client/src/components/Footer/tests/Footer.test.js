@@ -35,4 +35,10 @@ describe("Home page component functionality tests", () => {
         const link = screen.getByText(/About us/i);
         expect(link).toBeInTheDocument();
     });
+
+    test("Render faq link component", () => {
+        renderFooterComponent();
+        const link = screen.getByText(/FAQ/i);
+        expect(link).toBeInTheDocument();
+    });
 });
