@@ -29,4 +29,10 @@ describe("Home page component functionality tests", () => {
         const heading = screen.getByText(/NutriGit/i);
         expect(heading).toBeInTheDocument();
     });
+
+    test("Render about link component", () => {
+        renderFooterComponent();
+        const link = screen.getByText(/About us/i);
+        expect(link).toBeInTheDocument();
+    });
 });
