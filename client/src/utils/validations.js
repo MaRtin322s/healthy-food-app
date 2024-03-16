@@ -21,15 +21,8 @@ export const urlValidator = (startValue, text, type, setter) => {
 };
 
 export const passwordsMatch = (passwordOne, passwordTwo, type, setter) => {
-    if (passwordOne !== passwordTwo && passwordTwo !== "") {
-        setter(state => ({
-            ...state,
-            [type]: true
-        }));
-    } else {
-        setter(state => ({
-            ...state,
-            [type]: false
-        }));
-    }
+    setter(state => ({
+        ...state,
+        [type]: passwordOne !== passwordTwo && passwordTwo !== ""
+    }));
 };
