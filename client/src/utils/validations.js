@@ -7,17 +7,10 @@ export const minLength = (length, text, type, setter) => {
 
 export const regexValidator = (regex, text, type, setter) => {
     const regexStr = new RegExp(regex, 'g');
-    if (!regexStr.test(text) && text !== "") {
-        setter(state => ({
-            ...state,
-            [type]: true
-        }));
-    } else {
-        setter(state => ({
-            ...state,
-            [type]: false
-        }));
-    }
+    setter(state => ({
+        ...state,
+        [type]: !regexStr.test(text) && text !== ""
+    }));
 };
 
 export const urlValidator = (startValue, text, type, setter) => {
