@@ -68,7 +68,7 @@ describe("Home page component functionality tests", () => {
 
     test("Render application version", () => {
         renderFooterComponent();
-        const version = screen.getByText(/v2.03/i);
+        const version = screen.getByText(/Latest version: v2.03/i);
         expect(version).toBeInTheDocument();
     });
 });
