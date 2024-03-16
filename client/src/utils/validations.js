@@ -14,17 +14,10 @@ export const regexValidator = (regex, text, type, setter) => {
 };
 
 export const urlValidator = (startValue, text, type, setter) => {
-    if (!text.startsWith(startValue) && text !== "") {
-        setter(state => ({
-            ...state,
-            [type]: true
-        }));
-    } else {
-        setter(state => ({
-            ...state,
-            [type]: false
-        }));
-    }
+    setter(state => ({
+        ...state,
+        [type]: !text.startsWith(startValue) && text !== ""
+    }));
 };
 
 export const passwordsMatch = (passwordOne, passwordTwo, type, setter) => {
