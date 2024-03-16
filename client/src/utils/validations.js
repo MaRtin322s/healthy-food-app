@@ -1,15 +1,8 @@
 export const minLength = (length, text, type, setter) => {
-    if (text.length < length && text !== "") {
-        setter(state => ({
-            ...state,
-            [type]: true
-        }));
-    } else {
-        setter(state => ({
-            ...state,
-            [type]: false
-        }));
-    }
+    setter(state => ({
+        ...state,
+        [type]: text.length < length && text !== ""
+    }))
 };
 
 export const regexValidator = (regex, text, type, setter) => {
