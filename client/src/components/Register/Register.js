@@ -43,7 +43,7 @@ const Register = () => {
                 alert("Please enter a valid password!");
             } else {
                 if (userData.password !== userData.rePass) {
-                    alert("Invalid data provided!");
+                    window.alert("Invalid data provided!");
                 } else {
                     userData.imageUrl = imageUrl;
                     try {
