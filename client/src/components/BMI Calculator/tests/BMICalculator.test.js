@@ -39,4 +39,12 @@ describe("BMI Calculator page component functionality tests", () => {
             expect(heading).toBeInTheDocument();
         });
     });
+
+    act(() => {
+        test("Render daily meal heading", () => {
+            renderBMICalculatorComponent();
+            const heading = screen.getByText(/Daily meal plan:/i);
+            expect(heading).toBeInTheDocument();
+        });
+    });
 });
