@@ -71,4 +71,27 @@ describe("BMI Calculator page component functionality tests", () => {
             expect(mockContext.mockCalculate).not.toHaveBeenCalledWith();
         });
     });
+
+    act(() => {
+        test('Calculator form submit with filled input values', () => {
+            renderBMICalculatorComponent();
+
+            const ageInput = screen.getByText('Age');
+            const maleGenderInput = screen.getByText('Male');
+            const femaleGenderInput = screen.getByText('Female');
+            const heightInput = screen.getByText('Height (cm)');
+            const weightInput = screen.getByText('Weight (kg)');
+
+            ageInput.value = '22';
+            maleGenderInput.value = 'm';
+            femaleGenderInput.value = '';
+            heightInput.value = '185';
+            weightInput.value = '65';
+
+            const submitButton = screen.getByText('Generate Plan');
+            fireEvent.click(submitButton);
+            mockContext.mockCalculate('22', 'm', '185', '65');
+            expect(mockContext.mockCalculate).toHaveBeenCalledWith('22', 'm', '185', '65');
+        });
+    });
 });
