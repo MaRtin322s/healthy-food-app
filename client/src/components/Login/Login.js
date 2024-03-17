@@ -30,7 +30,7 @@ const Login = memo(() => {
         ev.preventDefault();
 
         if (userData.email === "" || userData.password === "") {
-            alert("All fields are required!");
+            window.alert("All fields are required!");
         } else {
             service.loginUser(userData)
                 .then(result => {

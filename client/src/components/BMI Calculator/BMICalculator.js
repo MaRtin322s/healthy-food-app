@@ -51,6 +51,7 @@ export const BMICalculator = () => {
                 </h3>
                 <form className={`${styles['bmi-form']} ${resp['bmi-form-resp']}`} id="form" onSubmit={(ev) => submitHandler(ev, data)}>
                     <div className={`${styles['row-one']}`}>
+                        <p className={`${styles['text']}`}>Age</p>
                         <input
                             type="text"
                             className={`${styles['text-input']}`}
@@ -61,7 +62,6 @@ export const BMICalculator = () => {
                             value={data.age}
                             onChange={(e) => changeHandler(e)}
                         />
-                        <p className={`${styles['text']}`}>Age</p>
                         <label className={`${styles['container']}`}>
                             <input type="radio" name="radio" id="f" value="f" onChange={(e) => changeHandler(e)} />
                             <p className={`${styles['text']}`}>Female</p>

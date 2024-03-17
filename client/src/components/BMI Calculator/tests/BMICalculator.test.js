@@ -5,10 +5,12 @@ import { AuthContext } from '../../../contexts/UserContext';
 import { BrowserRouter } from 'react-router-dom';
 import { act } from 'react-dom/test-utils';
 
-const renderBMICalculatorComponent = () => {
-    const mockContext = {
-        user: JSON.parse(localStorage.getItem('session'))
-    };
+const mockContext = {
+    user: JSON.parse(localStorage.getItem('session')),
+    mockCalculate: jest.fn()
+};
+
+const renderBMICalculatorComponent = (mockContext) => {
     render(
         <BrowserRouter>
             <BMICalculator />
@@ -45,6 +47,28 @@ describe("BMI Calculator page component functionality tests", () => {
             renderBMICalculatorComponent();
             const heading = screen.getByText(/Daily meal plan:/i);
             expect(heading).toBeInTheDocument();
+        });
+    });
+
+    act(() => {
+        test('Calculator form submit with empty input values', () => {
+            renderBMICalculatorComponent();
+
+            const ageInput = screen.getByText('Age');
+            const maleGenderInput = screen.getByText('Male');
+            const femaleGenderInput = screen.getByText('Female');
+            const heightInput = screen.getByText('Height (cm)');
+            const weightInput = screen.getByText('Weight (kg)');
+
+            ageInput.value = '';
+            maleGenderInput.value = '';
+            femaleGenderInput.value = '';
+            heightInput.value = '';
+            weightInput.value = '';
+
+            const submitButton = screen.getByText('Generate Plan');
+            fireEvent.click(submitButton);
+            expect(mockContext.mockCalculate).not.toHaveBeenCalledWith();
         });
     });
 });

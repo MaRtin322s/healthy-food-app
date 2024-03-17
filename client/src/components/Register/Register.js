@@ -40,7 +40,7 @@ const Register = () => {
                 || !/[A-Z]/.test(userData.password)
                 || !/[0-9]/.test(userData.password)
             ) {
-                alert("Please enter a valid password!");
+                window.alert("Please enter a valid password!");
             } else {
                 if (userData.password !== userData.rePass) {
                     window.alert("Invalid data provided!");
@@ -62,7 +62,7 @@ const Register = () => {
                                 });
                         };
                     } catch (err) {
-                        alert(err.message);
+                        window.alert(err.message);
                     };
                 };
             }
