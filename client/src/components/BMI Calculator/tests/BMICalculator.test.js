@@ -30,5 +30,13 @@ describe("BMI Calculator page component functionality tests", () => {
             const heading = screen.getByText(/Generate Plan/i);
             expect(heading).toBeInTheDocument();
         });
-    })
+    });
+
+    act(() => {
+        test("Render calories result paragraph", () => {
+            renderBMICalculatorComponent();
+            const heading = screen.getByText(/Recommended daily calories:/i);
+            expect(heading).toBeInTheDocument();
+        });
+    });
 });
