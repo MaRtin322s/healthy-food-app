@@ -3,6 +3,7 @@ import '@testing-library/jest-dom';
 import Footer from '../Footer';
 import { AuthContext } from '../../../contexts/UserContext';
 import { BrowserRouter } from 'react-router-dom';
+import { act } from 'react-dom/test-utils';
 
 const renderFooterComponent = () => {
     const mockContext = {
@@ -24,16 +25,20 @@ const renderFooterComponent = () => {
 };
 
 describe("Home page component functionality tests", () => {
-    test("Render footer component", () => {
-        renderFooterComponent();
-        const heading = screen.getByText(/NutriGit/i);
-        expect(heading).toBeInTheDocument();
+    act(() => {
+        test("Render footer component", () => {
+            renderFooterComponent();
+            const heading = screen.getByText(/NutriGit/i);
+            expect(heading).toBeInTheDocument();
+        });
     });
 
-    test("Render about link", () => {
-        renderFooterComponent();
-        const link = screen.getByText(/About us/i);
-        expect(link).toBeInTheDocument();
+    act(() => {
+        test("Render about link", () => {
+            renderFooterComponent();
+            const link = screen.getByText(/About us/i);
+            expect(link).toBeInTheDocument();
+        });
     });
 
     test("Render faq link", () => {
