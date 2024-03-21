@@ -43,14 +43,6 @@ const Home = () => {
                 </article>
             </div>
             <section className={`${styles["info"]} ${resp["info"]}`}>
-                {/* <article className={styles["address"]}>
-                    <i className="fas fa-map-marker-alt" />
-                    <p>Sofia, bul. Hristo Botev 72 Str.</p>
-                </article>
-                <article className={styles["phone"]}>
-                    <i className="fas fa-phone-alt" />
-                    <p>+38 (063)833 24 15</p>
-                </article> */}
             </section>
             <section className={`${styles["about-food"]} ${resp["about-food"]}`}>
                 <img className={`${styles["salmon-fish"]} ${resp["salmon-fish"]}`} src={salmon} alt="salmon" />
@@ -68,7 +60,7 @@ const Home = () => {
                     </p>
                     <Link
                         className={`${styles["about-link"]} ${resp["about-link"]}`}
-                        to="https://www.narayanahealth.org/blog/importance-of-balanced-diet-for-a-healthy-lifestyle/"
+                        to="https://www.relainstitute.com/blog/balanced-diet-importance-of-a-balanced-diet/"
                         target="_blank"
                     >
                         Learn more
