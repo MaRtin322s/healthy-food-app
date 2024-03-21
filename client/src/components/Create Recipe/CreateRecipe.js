@@ -30,7 +30,7 @@ const CreateRecipe = () => {
 
     return (
         <>
-            <section className={`${styles["create-page"]} ${resp["create-page"]}`}>
+            <section className={`${styles["create-page"]} ${resp["create-page-resp"]}`}>
                 <form
                     className={`${styles["create"]} ${resp["create"]}`}
                     onSubmit={(ev) => submitHandler(ev, state, token, userId)}
