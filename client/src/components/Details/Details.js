@@ -88,7 +88,7 @@ const Details = () => {
                 />
             }
             <div className={`${styles["wrap-main"]} ${resp["wrap-main"]}`}>
-                <section className={`${styles["details"]} ${resp["details"]}`}>
+                <section className={`${styles["details"]} ${resp["details-responsive"]}`}>
                     <img src={recipe.imageUrl} alt="pizza" />
                     <article>
                         <h1 className={styles["details-heading"]}>{recipe.title}</h1>

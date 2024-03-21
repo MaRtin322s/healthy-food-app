@@ -35,7 +35,7 @@ export const Comments = memo(({ recipeId }) => {
     }
     
     return (
-        <section className="comments-section resp-comments-section">
+        <section className="comments-section">
             <form
                 className="resp-add-comment"
                 onSubmit={(ev) => submitHandler(ev, state)}
