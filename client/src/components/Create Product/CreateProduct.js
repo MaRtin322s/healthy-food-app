@@ -1,15 +1,12 @@
 import { useContext, useReducer, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
 import { AuthContext } from "../../contexts/UserContext";
 import * as service from "../../services/productService";
 import { initData, reducer } from "./data/data";
-
-import styles from "./styles/createProduct.module.css";
-import resp from "./styles/responsive.module.css";
-import aside from "./images/aside.png";
 import { changeHandler } from "../../utils/handleChangeEvent";
 import Error from '../Error/Error';
+import styles from "./styles/createProduct.module.css";
+import resp from "./styles/responsive.module.css";
 
 const CreateProduct = () => {
     const [state, dispatch] = useReducer(reducer, initData);

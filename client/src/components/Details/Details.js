@@ -1,16 +1,14 @@
 import React, { useContext, useEffect, useState, useReducer } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-
 import { AuthContext } from "../../contexts/UserContext";
 import * as service from "../../services/recipeService";
 import * as userService from "../../services/userServices";
 import { saveAs } from "file-saver";
-
+import { Comments } from "../Comments/Comments";
 import Delete from "../Delete Component/DeleteComponent";
+import { initialState, reducer } from "./data/data";
 import styles from "./styles/details.module.css";
 import resp from './styles/responsive.module.css';
-import { initialState, reducer } from "./data/data";
-import { Comments } from "../Comments/Comments";
 
 const ProgressBar = React.lazy(() => import("../Progress Bar/ProgressBar"));
 
@@ -21,6 +19,7 @@ const Details = () => {
     const [state, dispatch] = useReducer(reducer, initialState);
     const [recipe, setRecipe] = useState({});
     const [savedRecipes, setSavedRecipes] = useState([]);
+    
     const closeHandler = () => dispatch({ type: "DELETE", showDelete: false });
 
     useEffect(() => {

@@ -1,8 +1,8 @@
-import styles from './styles/bmi.module.css';
-import resp from './styles/responsive.module.css';
 import { useState } from 'react';
 import * as nutritionServices from '../../services/nutritionService';
 import { DailyMealElement } from './DailyMealElement';
+import styles from './styles/bmi.module.css';
+import resp from './styles/responsive.module.css';
 
 export const BMICalculator = () => {
     const [data, setData] = useState({
@@ -11,12 +11,6 @@ export const BMICalculator = () => {
         height: '',
         weight: ''
     });
-
-    let days = {
-        0: 'Breakfast',
-        1: 'Lunch',
-        2: 'Dinner',
-    };
 
     const [recipes, setRecipes] = useState([]);
 
@@ -119,7 +113,7 @@ export const BMICalculator = () => {
                     {
                         recipes[1] ?
                             (
-                                recipes[1][1]?.meals?.map((x, i) => <DailyMealElement key={x.id} {...x} day={days[i]} />)
+                                recipes[1][1]?.meals?.map((x, i) => <DailyMealElement key={x.id} {...x} />)
                             )
                             : <h3>Submit your credentials to access the plan</h3>
                     }
