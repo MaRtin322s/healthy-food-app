@@ -9,11 +9,12 @@ import { initData, reducer } from "./data/data";
 import Error from "../Error/Error";
 
 import styles from "./styles/register.module.css";
+import useFileReader from "../../hooks/useFileReader";
 
 const Register = () => {
     const navigate = useNavigate();
     // eslint-disable-next-line
-    const [image, setImage] = useState('');
+    const [image, setImage] = useFileReader();
     const { userLogin } = useContext(AuthContext);
     const emailRegExp = new RegExp('^([a-zA-Z0-9._%+-]+)@([a-zA-Z0-9.-]+.[a-zA-Z]{2})$');
     const [state, dispatch] = useReducer(reducer, initData);
@@ -31,22 +32,7 @@ const Register = () => {
         dispatch({ type: 'SET_FIELD', field: name, value });
     }
 
-    const chnageHandlerForFiles = (ev) => {
-        const file = ev.target.files[0];
-
-        if (file) {
-            const reader = new FileReader();
-
-            reader.onload = () => {
-                const dataURL = reader.result;
-                setImage(dataURL);
-                dispatch({ type: 'SET_FIELD', field: 'imageUrl', value: dataURL });
-            };
-            reader.readAsDataURL(file);
-        }
-    }
-
-    const submitHandler = (ev, userData) => {
+    const submitHandler = (ev, userData, imageUrl) => {
         ev.preventDefault();
         if (!Object.values(error).some(x => x === true)) {
             if (userData.password.length < 8
@@ -58,6 +44,7 @@ const Register = () => {
                 if (userData.password !== userData.rePass) {
                     alert("Invalid data provided!");
                 } else {
+                    userData.imageUrl = imageUrl;
                     try {
                         if (emailRegExp.test(userData.email)) {
                             service.registerUser(userData)
@@ -87,7 +74,7 @@ const Register = () => {
             <section className={`${styles["register-page"]} ${resp["register-page"]}`}>
                 <form
                     className={`${styles["register"]} ${resp["register"]}`}
-                    onSubmit={(ev) => submitHandler(ev, state)}
+                    onSubmit={(ev) => submitHandler(ev, state, image)}
                 >
                     <h1 className={styles["register-heading"]}>Register new users</h1>
                     <p className={styles["register-info"]}>
@@ -145,9 +132,6 @@ const Register = () => {
                                 value={state.email}
                                 required
                                 onChange={(ev) => chnageHandler(ev)}
-                                onBlur={() =>
-                                    // eslint-disable-next-line
-                                    validations.regexValidator("^[A-Za-z0-9_\.]+@[A-Za-z]+\.[A-Za-z]{2,3}$", state.email, "email", setError)}
                             />
                             {error.email &&
                                 <p className={styles["form-error"]}>Email is not valid!</p>
@@ -163,7 +147,7 @@ const Register = () => {
                                 name="imageUrl"
                                 value={state.image}
                                 required
-                                onChange={(ev) => chnageHandlerForFiles(ev)}
+                                onChange={(ev) => setImage(ev)}
                             />
                         </div>
 

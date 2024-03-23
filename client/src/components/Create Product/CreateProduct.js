@@ -141,7 +141,7 @@ const CreateProduct = () => {
                         <input
                             className={`${styles["create-btn"]} ${resp["create-btn"]}`}
                             type="submit"
-                            value={"Create product"}
+                            value={"Share product"}
                         />
                     </div>
                 </form>

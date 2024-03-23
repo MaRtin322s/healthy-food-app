@@ -66,10 +66,10 @@ const CreateRecipe = () => {
                             required
                         />
                     </div>
-                    <label htmlFor="imageUrl">Image Url:</label>
+                    <label htmlFor="imageUrl">Image:</label>
                     <div>
                         <input
-                            type="text"
+                            type="file"
                             id="imageUrl"
                             name="imageUrl"
                             placeholder="https://..."
@@ -109,7 +109,7 @@ const CreateRecipe = () => {
                         <input
                             className={styles["create-btn"]}
                             type="submit"
-                            value={"Create recipe"}
+                            value={"Share recipe"}
                         />
                     </div>
                 </form>

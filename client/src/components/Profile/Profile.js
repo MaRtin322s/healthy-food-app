@@ -91,18 +91,6 @@ const Profile = memo(() => {
                     />
                     {/* eslint-disable-next-line */}
                     <ul className={styles["personal-info"]} role={"list"}>
-                        <button
-                            className={`${styles["delete-account"]} ${styles["delete-icon-logo"]}`}
-                            onClick={() => showDeleteModal(dispatch)}
-                        >
-                            <i className="fas fa-trash-alt"></i>
-                        </button>
-                        <button
-                            className={`${styles["edit-account"]} ${styles["edit-icon-logo"]}`}
-                            onClick={() => showEditModal()}
-                        >
-                            <i className="fas fa-edit"></i>
-                        </button>
                         <li>First Name: {state.data.firstName}</li>
                         <li>Last Name: {state.data.lastName}</li>
                         <li>Email: {state.data.email}</li>
