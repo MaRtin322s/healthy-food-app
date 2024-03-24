@@ -1,4 +1,4 @@
-import { useContext, useEffect, useReducer } from 'react';
+import { useContext, useEffect, useReducer, useState } from 'react';
 import styles from './styles/updatedProfile.module.css';
 import { AuthContext } from '../../contexts/UserContext';
 import * as userService from "../../services/userServices";
@@ -7,11 +7,16 @@ import * as productsService from '../../services/productService';
 import { initialState, reducer } from './data/data';
 import RecipeItem from '../Profile/RecipeItem';
 import ProductItem from '../Profile/ProductItem';
+import Delete from '../Profile/Delete';
 
 /* eslint-disable jsx-a11y/anchor-has-content */
 function UpdatedProfile() {
     const { user } = useContext(AuthContext);
     const [state, dispatch] = useReducer(reducer, initialState);
+    const [openDialog, setOpenDialog] = useState({
+        edit: false,
+        delete: false
+    });
 
     useEffect(() => {
         Promise.all([
@@ -28,8 +33,27 @@ function UpdatedProfile() {
             })
     }, [user._id, user.accessToken]);
 
+    const closeDeleteModal = () => {
+        setOpenDialog(state => ({
+            ...state,
+            delete: !state.delete
+        }))
+    };
+
+    const deleteHandler = (userId, token) => {
+        
+    };
+
     return (
         <>
+            {
+                openDialog.delete &&
+                <Delete
+                    userId={user._id}
+                    deleteHandler={deleteHandler}
+                    closeDeleteModal={closeDeleteModal}
+                />
+            }
             <div className="container-fluid newsfeed d-flex" id="wrapper">
                 <div className="row newsfeed-size">
                     <div className="col-md-12 p-0">
@@ -48,16 +72,6 @@ function UpdatedProfile() {
                                                         alt="Avatar"
                                                         className="avatar img-circle"
                                                     />
-                                                    <div className="profile-img-caption">
-                                                        <label htmlFor="updateProfilePic" className="upload">
-                                                            <i className="bx bxs-camera" /> Update
-                                                            <input
-                                                                type="file"
-                                                                id="updateProfilePicInput"
-                                                                className="text-center upload"
-                                                            />
-                                                        </label>
-                                                    </div>
                                                 </div>
                                                 <p className="profile-fullname mt-3">{`${state.data.firstName} ${state.data.lastName}`}</p>
                                                 <p className="profile-username mb-3 text-muted">
@@ -75,6 +89,29 @@ function UpdatedProfile() {
                                                     <p className="intro-title text-muted">
                                                         Saved Recipes: {state.saved.length}
                                                     </p>
+                                                </div>
+                                                <div>
+                                                    <button
+                                                        className={styles['btn-edit']}
+                                                        onClick={() => setOpenDialog(state => ({
+                                                            ...state,
+                                                            edit: !state.edit,
+                                                            delete: !state.delete
+                                                        }))}
+                                                    >
+                                                        Edit Profile
+                                                    </button>
+
+                                                    <button
+                                                        className={styles['btn-delete']}
+                                                        onClick={() => setOpenDialog(state => ({
+                                                            ...state,
+                                                            edit: !state.edit,
+                                                            delete: !state.delete
+                                                        }))}
+                                                    >
+                                                        Delete Profile
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>

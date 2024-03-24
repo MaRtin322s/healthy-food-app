@@ -1,4 +1,4 @@
-import { useContext, useEffect, memo, useReducer } from "react";
+import { useContext, useEffect, useReducer } from "react";
 import { AuthContext } from "../../contexts/UserContext";
 import * as service from "../../services/userServices";
 import * as recipeService from "../../services/recipeService";
@@ -6,10 +6,9 @@ import * as productService from "../../services/productService";
 import RecipeItem from "./RecipeItem";
 import ProductItem from "./ProductItem";
 import { initialState, reducer } from "./data/data";
-
 import styles from "./styles/profile.module.css";
 
-const Profile = memo(() => {
+const Profile = () => {
     const [state, dispatch] = useReducer(reducer, initialState);
     const { user } = useContext(AuthContext);
 
@@ -43,11 +42,15 @@ const Profile = memo(() => {
                         <li>First Name: {state.data.firstName}</li>
                         <li>Last Name: {state.data.lastName}</li>
                         <li>Email: {state.data.email}</li>
-                        <div className={styles["actions"]}>
-                            <p>Created Recipes: {state.ownRecipes.length}</p>
-                            <p>Created Products: {state.ownProducts.length}</p>
-                            <p>Saved Recipes: {state.saved.length}</p>
-                        </div>
+                        <li>
+                        </li>
+                        <li>
+                            <div className={styles["actions"]}>
+                                <p>Created Recipes: {state.ownRecipes.length}</p>
+                                <p>Created Products: {state.ownProducts.length}</p>
+                                <p>Saved Recipes: {state.saved.length}</p>
+                            </div>
+                        </li>
                     </ul>
                 </article>
                 <div className={styles["empty"]}></div>
@@ -92,6 +95,6 @@ const Profile = memo(() => {
             </section>
         </>
     );
-});
+};
 
 export default Profile;

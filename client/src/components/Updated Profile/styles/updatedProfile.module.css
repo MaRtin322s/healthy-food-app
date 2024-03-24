@@ -5,3 +5,36 @@
 #wrapper {
     width: 150%;
 }
+
+i.fas.fa-cog {
+    width: 50px;
+}
+
+.btn-edit {
+    margin-right: 10px;
+    padding: 5px 15px;
+    border-radius: 15%;
+    background-color: rgb(195, 193, 193);
+    color: black;
+    font-weight: 700;
+}
+
+.btn-delete {
+    padding: 5px 15px;
+    border-radius: 15%;
+    background-color: rgb(195, 193, 193);
+    color: black;
+    font-weight: 700;
+}
+
+.btn-edit:hover {
+    background-color: black;
+    color: white;
+    transition: background-color 0.5s ease;
+}
+
+.btn-delete:hover {
+    background-color: black;
+    color: white;
+    transition: background-color 0.5s ease;
+}
