@@ -58,14 +58,9 @@
     vertical-align: text-bottom;
 }
 
-.btn-update-cover:hover {
-    color: #fff;
-    top: -52px;
-}
-
 .profile-info-left .profile-img img.avatar {
-    width: 250px;
-    border-radius: 100%;
+    width: 190px;
+    border-radius: 150%;
     border: 2px solid #fff;
 }
 
@@ -73,7 +68,7 @@
     position: relative;
     overflow: hidden;
     width: 190px;
-    border-radius: 100%;
+    border-radius: 150%;
     margin: 0 auto;
 }
 
@@ -95,11 +90,11 @@
 } */
 
 .profile-info-left .profile-img:hover .profile-img-overlay {
-    opacity: 1;
+    opacity: 0;
 }
 
 .profile-info-left .profile-img:hover .profile-img-caption {
-    opacity: 1;
+    opacity: 0;
 }
 
 .profile-img-caption {

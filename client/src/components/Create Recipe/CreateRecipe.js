@@ -1,4 +1,4 @@
-import { useContext, useReducer } from "react";
+import { useContext, useEffect, useReducer } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import resp from './styles/responsive.module.css';
 import { AuthContext } from "../../contexts/UserContext";
@@ -6,17 +6,24 @@ import * as service from "../../services/recipeService";
 import { initData, reducer } from "./data/data";
 import { changeHandler } from "../../utils/handleChangeEvent";
 import styles from "./styles/createRecipe.module.css";
+import useFileReader from "../../hooks/useFileReader";
 
 const CreateRecipe = () => {
     const { user } = useContext(AuthContext);
+    const [dataUrl, setUrl] = useFileReader();
     const navigate = useNavigate();
     const [state, dispatch] = useReducer(reducer, initData);
     const token = user.accessToken;
     const userId = user._id;
 
+    useEffect(() => {
+        dispatch({ type: 'SET_FIELD', field: 'imageUrl', value: dataUrl.dataURL });
+        console.log('executed');
+    }, [dataUrl.dataURL]);
+
     const submitHandler = (ev, data, token, userId) => {
         ev.preventDefault();
-
+    
         const ingredients = state.ingredients.split("\n");
         if (Object.values(data).some(x => x === "")) {
             alert("All fields are required!");
@@ -71,10 +78,9 @@ const CreateRecipe = () => {
                         <input
                             type="file"
                             id="imageUrl"
-                            name="imageUrl"
+                            name={dataUrl.fileName}
                             placeholder="https://..."
-                            value={state.imageUrl}
-                            onChange={(ev) => changeHandler(ev, dispatch)}
+                            onChange={(ev) => setUrl(ev, dispatch)}
                             required
                         />
                     </div>

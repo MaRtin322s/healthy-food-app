@@ -1,17 +1,18 @@
 import { useState } from "react";
 
 const useFileReader = () => {
-    const [dataUrl, setDataUrl] = useState('');
+    const [dataUrl, setDataUrl] = useState({ dataUrl: '', fileName: '' });
 
-    function setUrl(ev) {
+    function setUrl(ev, dispatch) {
         const file = ev.target.files[0];
+        console.log(file);
 
         if (file) {
             const reader = new FileReader();
 
             reader.onload = () => {
                 const dataURL = reader.result;
-                setDataUrl(dataURL);
+                setDataUrl({ dataURL, fileName: file.name });
             };
             reader.readAsDataURL(file);
         }

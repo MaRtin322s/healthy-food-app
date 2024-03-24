@@ -1,23 +1,17 @@
 import { useContext, useEffect, memo, useReducer } from "react";
-import { useNavigate } from "react-router-dom";
-
 import { AuthContext } from "../../contexts/UserContext";
 import * as service from "../../services/userServices";
 import * as recipeService from "../../services/recipeService";
 import * as productService from "../../services/productService";
 import RecipeItem from "./RecipeItem";
 import ProductItem from "./ProductItem";
-import Delete from "./Delete";
-import EditProfile from "../Edit Profile/EditProfile";
 import { initialState, reducer } from "./data/data";
 
 import styles from "./styles/profile.module.css";
-import { showDeleteModal } from "../../utils/showModalHandlers";
 
 const Profile = memo(() => {
     const [state, dispatch] = useReducer(reducer, initialState);
-    const { user, userLogout } = useContext(AuthContext);
-    const navigate = useNavigate();
+    const { user } = useContext(AuthContext);
 
     useEffect(() => {
         Promise.all([
@@ -34,53 +28,8 @@ const Profile = memo(() => {
             });
     }, [user._id, user.accessToken]);
 
-    const closeDeleteModal = () => dispatch({ type: "SET_SHOW_DELETE", showDelete: false });
-    const showEditModal = () => dispatch({ type: "SET_SHOW_EDIT", showEdit: true });
-    const closeEditModal = () => dispatch({ type: "SET_SHOW_EDIT", showEdit: false });
-
-    const deleteHandler = (userId) => {
-        Promise.all([
-            service.deleteAccount(userId),
-            recipeService.deleteComment(userId)
-        ])
-            .then(() => {
-                userLogout();
-                navigate("/", { replace: true });
-            });
-    };
-
-    const submitHandler = (ev, data, id, token) => {
-        ev.preventDefault();
-
-        service.updateUser(id, data, token)
-            .then(() => {
-                service.getUser(id)
-                    .then((res) => {
-                        dispatch({ type: "SET_DATA", data: res });
-                    })
-                closeEditModal();
-                navigate("/profile", { replace: true });
-            });
-    };
-
     return (
         <>
-            {state.showDelete &&
-                <Delete
-                    userId={user._id}
-                    closeDeleteModal={closeDeleteModal}
-                    deleteHandler={deleteHandler}
-                />
-            }
-
-            {state.showEdit &&
-                <EditProfile
-                    closeEditModal={closeEditModal}
-                    {...state.data}
-                    token={user.accessToken}
-                    submitHandler={submitHandler}
-                />
-            }
             <section className={styles["profile-section"]}>
                 <h1 className={styles["profile-heading"]}>Personal Information:</h1>
                 <article className={styles["profile-info"]}>
