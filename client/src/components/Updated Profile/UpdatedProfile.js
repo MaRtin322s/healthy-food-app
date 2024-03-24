@@ -8,10 +8,12 @@ import { initialState, reducer } from './data/data';
 import RecipeItem from '../Profile/RecipeItem';
 import ProductItem from '../Profile/ProductItem';
 import Delete from '../Profile/Delete';
+import { useDeleteHandler } from '../../hooks/useDeleteHandler';
 
 /* eslint-disable jsx-a11y/anchor-has-content */
 function UpdatedProfile() {
     const { user } = useContext(AuthContext);
+    const deleteHandler = useDeleteHandler();
     const [state, dispatch] = useReducer(reducer, initialState);
     const [openDialog, setOpenDialog] = useState({
         edit: false,
@@ -40,9 +42,7 @@ function UpdatedProfile() {
         }))
     };
 
-    const deleteHandler = (userId, token) => {
-        
-    };
+    
 
     return (
         <>

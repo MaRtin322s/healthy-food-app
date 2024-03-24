@@ -34,6 +34,7 @@ const Register = () => {
 
     const submitHandler = (ev, userData, imageUrl) => {
         ev.preventDefault();
+
         if (!Object.values(error).some(x => x === true)) {
             if (userData.password.length < 8
                 || !/[A-Z]/.test(userData.password)
@@ -74,7 +75,7 @@ const Register = () => {
             <section className={`${styles["register-page"]} ${resp["register-page"]}`}>
                 <form
                     className={`${styles["register"]} ${resp["register"]}`}
-                    onSubmit={(ev) => submitHandler(ev, state, image)}
+                    onSubmit={(ev) => submitHandler(ev, state, image.dataURL)}
                 >
                     <h1 className={styles["register-heading"]}>Register new users</h1>
                     <p className={styles["register-info"]}>

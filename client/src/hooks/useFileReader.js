@@ -3,9 +3,8 @@ import { useState } from "react";
 const useFileReader = () => {
     const [dataUrl, setDataUrl] = useState({ dataUrl: '', fileName: '' });
 
-    function setUrl(ev, dispatch) {
+    function setUrl(ev) {
         const file = ev.target.files[0];
-        console.log(file);
 
         if (file) {
             const reader = new FileReader();
