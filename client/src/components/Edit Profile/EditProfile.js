@@ -1,5 +1,6 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import styles from "./styles/editProfile.module.css";
+import useFileReader from "../../hooks/useFileReader";
 
 const EditProfile = ({
     closeEditModal,
@@ -11,6 +12,7 @@ const EditProfile = ({
     token,
     submitHandler
 }) => {
+
     const [values, setValues] = useState({
         firstName: firstName,
         lastName: lastName,
@@ -18,8 +20,16 @@ const EditProfile = ({
         imageUrl: imageUrl
     });
 
-    // eslint-disable-next-line
-    const [image, setImage] = useState('');
+    const [dataUrl, setUrl] = useFileReader();
+
+    useEffect(() => {
+        if (dataUrl.dataURL) {
+            setValues(state => ({
+                ...state,
+                imageUrl: dataUrl.dataURL
+            }))
+        }
+    }, [dataUrl]);
 
     const changeHandler = useCallback((ev) => {
         setValues(state => ({
@@ -27,25 +37,6 @@ const EditProfile = ({
             [ev.target.name]: ev.target.value
         }));
     }, []);
-
-    const changeHnadlerForFiles = (ev) => {
-        const file = ev.target.files[0];
-        let dataURL;
-
-        if (file) {
-            const reader = new FileReader();
-
-            reader.onload = () => {
-                dataURL = reader.result;
-                setImage(dataURL);
-                setValues(state => ({
-                    ...state,
-                    imageUrl: dataURL
-                }));
-            };
-            reader.readAsDataURL(file);
-        }
-    }
 
     return (
         <>
@@ -83,14 +74,18 @@ const EditProfile = ({
                             onChange={(ev) => changeHandler(ev)}
                         />
                     </div>
-                    <label htmlFor="imageUrl">ImageUrl:</label>
+                    <label htmlFor="imageUrl">{dataUrl.dataURL ? 'New:' : 'Old:'} {values.imageUrl.length >= 35
+                        ?
+                        `${values.imageUrl.substr(0, 35)}...`
+                        : values.imageUrl
+                    }
+                    </label>
                     <div>
                         <input
                             type="file"
                             id="imageUrl"
-                            name="imageUrl"
-                            value={""}
-                            onChange={(ev) => changeHnadlerForFiles(ev)}
+                            name={values.imageUrl}
+                            onChange={(ev) => setUrl(ev)}
                         />
                     </div>
                     <button

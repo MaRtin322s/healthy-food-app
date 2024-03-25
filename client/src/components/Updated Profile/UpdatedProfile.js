@@ -9,6 +9,7 @@ import RecipeItem from '../Profile/RecipeItem';
 import ProductItem from '../Profile/ProductItem';
 import Delete from '../Profile/Delete';
 import { useDeleteHandler } from '../../hooks/useDeleteHandler';
+import EditProfile from '../Edit Profile/EditProfile';
 
 /* eslint-disable jsx-a11y/anchor-has-content */
 function UpdatedProfile() {
@@ -33,7 +34,7 @@ function UpdatedProfile() {
                 dispatch({ type: "SET_OWN_PRODUCTS", ownProducts: result[2] });
                 dispatch({ type: "SET_SAVED", saved: result[3] });
             })
-    }, [user._id, user.accessToken]);
+    }, [user._id, user.accessToken, state]);
 
     const closeDeleteModal = () => {
         setOpenDialog(state => ({
@@ -42,7 +43,26 @@ function UpdatedProfile() {
         }))
     };
 
-    
+    const closeEditModal = () => {
+        setOpenDialog(state => ({
+            ...state,
+            edit: !state.edit
+        }));
+    };
+
+    const submitHandler = (ev, userNewData, userId, token) => {
+        ev.preventDefault();
+
+        userService.updateUser(userId, userNewData, token)
+            .then((updatedUser) => {
+                dispatch({ type: "SET_DATA", data: updatedUser });
+            });
+
+            setOpenDialog(state => ({
+                ...state,
+                edit: !state.edit
+            }));
+    }
 
     return (
         <>
@@ -52,6 +72,14 @@ function UpdatedProfile() {
                     userId={user._id}
                     deleteHandler={deleteHandler}
                     closeDeleteModal={closeDeleteModal}
+                />
+            }
+            {
+                openDialog.edit &&
+                <EditProfile 
+                    closeEditModal={closeEditModal}
+                    {...state.data}
+                    submitHandler={submitHandler}
                 />
             }
             <div className="container-fluid newsfeed d-flex" id="wrapper">
@@ -95,8 +123,7 @@ function UpdatedProfile() {
                                                         className={styles['btn-edit']}
                                                         onClick={() => setOpenDialog(state => ({
                                                             ...state,
-                                                            edit: !state.edit,
-                                                            delete: !state.delete
+                                                            edit: !state.edit
                                                         }))}
                                                     >
                                                         Edit Profile
@@ -106,7 +133,6 @@ function UpdatedProfile() {
                                                         className={styles['btn-delete']}
                                                         onClick={() => setOpenDialog(state => ({
                                                             ...state,
-                                                            edit: !state.edit,
                                                             delete: !state.delete
                                                         }))}
                                                     >
