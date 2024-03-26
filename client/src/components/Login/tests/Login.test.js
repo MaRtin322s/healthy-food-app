@@ -29,7 +29,7 @@ describe("Login component functionality tests", () => {
         const heading = screen.getByText(/Login for users/i);
         expect(heading).toBeInTheDocument();
     });
-    test("Renders the login page main title", () => {
+    test("Renders the login form title", () => {
         renderLoginComponent();
         const heading = screen.getByText(/User Information/i);
         expect(heading).toBeInTheDocument();
@@ -46,6 +46,7 @@ describe("Login component functionality tests", () => {
         fireEvent.click(linkElement);
         expect(window.location.pathname).toBe('/register');
     });
+
     test('Login form submits with input values', () => {
         renderLoginComponent();
 
@@ -60,5 +61,20 @@ describe("Login component functionality tests", () => {
         mockContext.mockLogin('testuser', 'password123');
 
         expect(mockContext.mockLogin).toHaveBeenCalledWith('testuser', 'password123');
+    });
+
+    test('Login form submits with empty input values', () => {
+        renderLoginComponent();
+
+        const usernameInput = screen.getByPlaceholderText('Enter email...');
+        const passwordInput = screen.getByPlaceholderText('Enter password...');
+
+        fireEvent.change(usernameInput, { target: { value: '' } });
+        fireEvent.change(passwordInput, { target: { value: '' } });
+
+        const submitButton = screen.getByText('Login');
+        fireEvent.click(submitButton);
+
+        expect(mockContext.mockLogin).not.toHaveBeenCalledWith();
     });
 });
