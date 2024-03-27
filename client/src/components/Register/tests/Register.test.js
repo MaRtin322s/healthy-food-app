@@ -31,7 +31,7 @@ describe('Register component tests', () => {
     });
     test('Render register information', () => {
         renderRegisterComponent();
-        const heading = screen.getByText('Register users information');
+        const heading = screen.getByText('User Information');
         expect(heading).toBeInTheDocument();
     });
     test('Clicking link \'Log In\' navigates to the login page', () => {

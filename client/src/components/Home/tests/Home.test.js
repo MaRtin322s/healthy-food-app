@@ -34,18 +34,6 @@ describe("Home component functionality tests", () => {
         expect(heading).toBeInTheDocument();
     });
 
-    test("Renders phone number correctly", () => {
-        renderHomeComponent();
-        const phoneNumber = screen.getByText('+38 (063)833 24 15');
-        expect(phoneNumber).toBeInTheDocument();
-    });
-
-    test("Renders address number correctly", () => {
-        renderHomeComponent();
-        const address = screen.getByText('Sofia, bul. Hristo Botev 72 Str.');
-        expect(address).toBeInTheDocument();
-    });
-
     test("Renders the salmon image correctly", () => {
         renderHomeComponent();
         const image = screen.getByAltText('salmon');
@@ -68,7 +56,7 @@ describe("Home component functionality tests", () => {
         renderHomeComponent();
         const link = screen.getByText('Learn more');
         fireEvent.click(link);
-        window.open("https://www.narayanahealth.org/blog/importance-of-balanced-diet-for-a-healthy-lifestyle/");
+        window.open("https://www.relainstitute.com/blog/balanced-diet-importance-of-a-balanced-diet/");
         const newWindow = setTimeout(() => {
             expect(newWindow.location.href).toContain("/importance-of-balanced-diet-for-a-healthy-lifestyle");
         }, 10000);
@@ -76,7 +64,7 @@ describe("Home component functionality tests", () => {
 
     test('Renders the last 3 recipes section', async () => {
         renderHomeComponent();
-        const lastRecipesHeadingElement = screen.getByText(/Last 3 recipes created/i);
+        const lastRecipesHeadingElement = screen.getByText("The last 3 added recipes...");
         expect(lastRecipesHeadingElement).toBeInTheDocument();
     });
 

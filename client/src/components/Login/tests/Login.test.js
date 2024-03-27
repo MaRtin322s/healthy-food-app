@@ -31,7 +31,7 @@ describe("Login component functionality tests", () => {
     });
     test("Renders the login page main title", () => {
         renderLoginComponent();
-        const heading = screen.getByText(/Login Information/i);
+        const heading = screen.getByText(/User Information/i);
         expect(heading).toBeInTheDocument();
     });
     test('Clicking the link \'Click here\'navigates to a password reset page', () => {
