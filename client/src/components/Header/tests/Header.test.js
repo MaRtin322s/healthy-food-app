@@ -6,7 +6,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 const renderHeaderComponent = () => {
     const mockContext = {
-        user: jest.fn().mockResolvedValue(mockUser),
+        user: jest.fn().mockResolvedValue(),
     };
 
     render(
@@ -22,3 +22,17 @@ const renderHeaderComponent = () => {
         }
     );
 };
+
+describe("Home page component functionality tests", () => {
+    test("Render header component", () => {
+        renderHeaderComponent();
+        const link = screen.getByText(/Home/i);
+        expect(link).toBeInTheDocument();
+    });
+
+    test("Render header component for guests", () => {
+        renderHeaderComponent();
+        const link = screen.getByText(/Log In/i);
+        expect(link).toBeInTheDocument();
+    });
+});
