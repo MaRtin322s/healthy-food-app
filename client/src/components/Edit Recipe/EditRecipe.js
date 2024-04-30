@@ -47,23 +47,6 @@ const EditRecipe = () => {
     return (
         <div className={styles["wrapper-edit"]}>
             <section className={styles["create-page"]}>
-                <article className={styles["info"]}>
-                    <ul className={styles["steps"]}>
-                        <li>Edit recipe information:</li>
-                        <li>The title specifies the name of the recipe.</li>
-                        <li>
-                            Ingredients list: A list of all the ingredients required for the recipe.
-                            NOTE: Every ingredient must be on the new line!
-                        </li>
-                        <li>
-                            Preparation: Step-by-step instructions on how to prepare the recipe.
-                        </li>
-                        <li>
-                            Category - specifies the type of the recipe - Appetizers, Soups and
-                            stews, Salads, Main dishes, Side dishes, Desserts, Beverages and ect.
-                        </li>
-                    </ul>
-                </article>
                 <form
                     className={styles["create"]}
                     onSubmit={(ev) => submitHandler(ev, newValues, user.accessToken, recipeId)}
