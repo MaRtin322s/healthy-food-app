@@ -4,7 +4,7 @@ import { AuthContext } from "../../contexts/UserContext";
 
 import styles from "./styles/header.module.css";
 import resp from "./styles/responsive.module.css";
-import logo from "./images/logo.png";
+import logo from "./images/image.png";
 
 const Header = () => {
     const { user } = useContext(AuthContext);
