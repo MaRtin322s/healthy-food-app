@@ -214,3 +214,7 @@ h1.bmi-sec {
     text-align: center;
     margin: 30px;
 }
+
+.card-body {
+    height: 15rem;
+}
