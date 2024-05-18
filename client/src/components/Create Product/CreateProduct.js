@@ -7,10 +7,12 @@ import { changeHandler } from "../../utils/handleChangeEvent";
 import Error from '../Error/Error';
 import styles from "./styles/createProduct.module.css";
 import resp from "./styles/responsive.module.css";
+import useFileReader from "../../hooks/useFileReader";
 
 const CreateProduct = () => {
     const [state, dispatch] = useReducer(reducer, initData);
     const navigate = useNavigate();
+    const [dataUrl, setUrl] = useFileReader();
     const { user } = useContext(AuthContext);
     const [error, setError] = useState({
         status: 'false',
@@ -21,6 +23,7 @@ const CreateProduct = () => {
     const submitHandler = (ev, data) => {
         ev.preventDefault();
         const nutrition = data.nutrition.split("\n");
+        data = { ...data, imageUrl: dataUrl.dataURL };
 
         service.createProduct({ ...data, nutrition }, user.accessToken, user._id)
             .then((res) => {
@@ -95,15 +98,14 @@ const CreateProduct = () => {
                             required
                         />
                     </div>
-                    <label htmlFor="imageUrl">Image Url:</label>
+                    <label htmlFor="imageUrl">Image:</label>
                     <div>
                         <input
-                            type="text"
+                            type="file"
                             id="imageUrl"
-                            name="imageUrl"
                             placeholder="https://..."
-                            onChange={(ev) => changeHandler(ev, dispatch)}
-                            value={state.imageUrl}
+                            onChange={(ev) => setUrl(ev, dispatch)}
+                            name={dataUrl.imageUrl}
                             required
                         />
                     </div>
