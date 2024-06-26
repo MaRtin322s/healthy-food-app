@@ -34,7 +34,7 @@ function UpdatedProfile() {
                 dispatch({ type: "SET_OWN_PRODUCTS", ownProducts: result[2] });
                 dispatch({ type: "SET_SAVED", saved: result[3] });
             })
-    }, [user._id, user.accessToken, state]);
+    }, [user._id, user.accessToken]);
 
     const closeDeleteModal = () => {
         setOpenDialog(state => ({
@@ -58,10 +58,10 @@ function UpdatedProfile() {
                 dispatch({ type: "SET_DATA", data: updatedUser });
             });
 
-            setOpenDialog(state => ({
-                ...state,
-                edit: !state.edit
-            }));
+        setOpenDialog(state => ({
+            ...state,
+            edit: !state.edit
+        }));
     }
 
     return (
@@ -76,7 +76,7 @@ function UpdatedProfile() {
             }
             {
                 openDialog.edit &&
-                <EditProfile 
+                <EditProfile
                     closeEditModal={closeEditModal}
                     {...state.data}
                     submitHandler={submitHandler}
