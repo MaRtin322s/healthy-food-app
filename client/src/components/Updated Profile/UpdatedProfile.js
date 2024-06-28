@@ -34,7 +34,7 @@ function UpdatedProfile() {
                 dispatch({ type: "SET_OWN_PRODUCTS", ownProducts: result[2] });
                 dispatch({ type: "SET_SAVED", saved: result[3] });
             })
-    }, [user._id, user.accessToken]);
+    }, [user._id, user.accessToken, state.data]);
 
     const closeDeleteModal = () => {
         setOpenDialog(state => ({
