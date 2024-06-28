@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
+import useFileReader from '../../hooks/useFileReader';
 import * as service from "../../services/recipeService";
 import { AuthContext } from "../../contexts/UserContext";
 
@@ -9,6 +10,7 @@ import styles from "./styles/edit.module.css";
 const EditRecipe = () => {
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
+    const [dataUrl, setUrl] = useFileReader();
     const { recipeId } = useParams();
     const [newValues, setNewValues] = useState({
         title: "",
@@ -35,12 +37,12 @@ const EditRecipe = () => {
                     ingredients: result.ingredients.join("\n")
                 }));
             });
-    }, [recipeId]);
+    }, [recipeId, dataUrl, newValues.imageUrl]);
 
     const submitHandler = (ev, data, token, recipeId) => {
         ev.preventDefault();
         const ingredients = data.ingredients.split("\n");
-        service.editRecipe({ ...newValues, ingredients }, token, recipeId)
+        service.editRecipe({ ...newValues, ingredients, imageUrl: dataUrl.dataURL }, token, recipeId)
             .then(() => navigate(`/details/recipes/${recipeId}`, { replace: true }));
     };
 
@@ -76,15 +78,14 @@ const EditRecipe = () => {
                             required
                         />
                     </div>
-                    <label htmlFor="imageUrl">Image Url:</label>
+                    <label htmlFor="imageUrl">Image:</label>
                     <div>
                         <input
-                            type="text"
+                            type="file"
                             id="imageUrl"
-                            name="imageUrl"
+                            name={dataUrl.fileName}
                             placeholder="https://..."
-                            value={newValues.imageUrl}
-                            onChange={(ev) => changeHandler(ev)}
+                            onChange={(ev) => setUrl(ev)}
                             required
                         />
                     </div>
