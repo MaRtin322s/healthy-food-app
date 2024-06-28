@@ -3,12 +3,14 @@ import { useNavigate, useParams } from "react-router-dom";
 
 import * as service from "../../services/productService";
 import { AuthContext } from "../../contexts/UserContext";
+import useFileReader from '../../hooks/useFileReader';
 
 import styles from "./styles/editProduct.module.css";
 
 const EditProduct = () => {
     const navigate = useNavigate();
     const { productId } = useParams();
+    const [dataUrl, setUrl] = useFileReader();
     const [product, setProduct] = useState({
         title: "",
         type: "",
@@ -37,7 +39,7 @@ const EditProduct = () => {
     const submitHandler = (ev, data, token, id) => {
         ev.preventDefault();
         const nutrition = data.nutrition.split("\n");
-        service.editProduct({ ...data, nutrition }, token, id)
+        service.editProduct({ ...data, nutrition, imageUrl: dataUrl.dataURL }, token, id)
             .then(() => navigate(`/details/products/${productId}`, { replace: true }));
     };
 
@@ -73,15 +75,13 @@ const EditProduct = () => {
                             required
                         />
                     </div>
-                    <label htmlFor="imageUrl">Image Url:</label>
+                    <label htmlFor="imageUrl">Image:</label>
                     <div>
                         <input
-                            type="text"
+                            type="file"
                             id="imageUrl"
-                            name="imageUrl"
-                            placeholder="https://..."
-                            onChange={(ev) => changeHandler(ev)}
-                            value={product.imageUrl}
+                            name={dataUrl.dataURL}
+                            onChange={(ev) => setUrl(ev)}
                             required
                         />
                     </div>
