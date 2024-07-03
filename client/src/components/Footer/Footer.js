@@ -8,15 +8,7 @@ const Footer = memo(() => {
             <div>
                 <h1 className={styles["footer_heading"]}>NutriGit</h1>
                 <p>All rights reserved &copy; by Martin Sofroniev</p>
-                <p>Latest version: v2.03 - (Last updates: 23/10/2023)</p>
             </div>
-            {/* eslint-disable-next-line */}
-            <ul role={"list"}>
-                <li>About us</li>
-                <li>FAQ</li>
-                <li>Terms and Conditions</li>
-                <li>Contacts</li>
-            </ul>
             {/* eslint-disable-next-line */}
             <ul role={"list"}>
                 <li>Follow us on</li>
@@ -43,11 +35,21 @@ const Footer = memo(() => {
                 <li className={styles["footer-item"]}>
                     <a
                         className={styles["footer-link"]}
-                        href="https://www.instagram.com/martin13s18/"
+                        href="https://www.instagram.com/martin_13s18/"
                         target="_blank"
                         rel="noreferrer"
                     >
                         <i className="fab fa-instagram" />
+                    </a>
+                </li>
+                <li className={styles["footer-item"]}>
+                    <a
+                        className={styles["footer-link"]}
+                        href="https://www.linkedin.com/in/martinsofroniev/"
+                        target="_blank"
+                        rel="noreferrer"
+                    >
+                        <i className="fab fa-linkedin"></i>
                     </a>
                 </li>
             </ul>

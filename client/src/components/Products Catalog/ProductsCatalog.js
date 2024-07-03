@@ -48,7 +48,7 @@ const ProductsCatalog = () => {
             {state.currentPage > 1 && (
                 <button
                     className={`${styles["btn-pagination"]} ${resp["btn-pagination"]}`}
-                    onClick={() => 
+                    onClick={() =>
                         dispatch({ type: "SET_CURRENT_PAGE", currentPage: state.currentPage - 1 })
                     }
                 >
@@ -59,7 +59,7 @@ const ProductsCatalog = () => {
                 <>
                     <button
                         className={`${styles["btn-pagination"]} ${resp["btn-pagination"]}`}
-                        onClick={() => 
+                        onClick={() =>
                             dispatch({ type: "SET_CURRENT_PAGE", currentPage: state.currentPage + 1 })
                         }
                     >
@@ -67,7 +67,13 @@ const ProductsCatalog = () => {
                     </button>
                 </>
             )}
-            <h1 className={`${styles["curr-page"]} ${resp["curr-page"]}`}>Current Page: {state.currentPage}</h1>
+            {
+                state.products.length > 0
+                    ?
+                    <h1 className={`${styles["curr-page"]} ${resp["curr-page"]}`}>Current Page: {state.currentPage}</h1>
+                    :
+                    null
+            }
             <section className={`${styles["catalog"]} ${resp["catalog"]}`}>
                 {state.loading
                     ? <Spinner />
@@ -77,7 +83,7 @@ const ProductsCatalog = () => {
                             state.products.length > 0
                                 ?
                                 <>
-                                    {currentItems.map(product => 
+                                    {currentItems.map(product =>
                                         <ProductItem key={product._id} {...product} />)
                                     }
                                 </>

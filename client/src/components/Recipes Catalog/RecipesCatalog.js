@@ -66,7 +66,13 @@ const RecipesCatalog = () => {
                     </button>
                 </>
             )}
-            <h1 className={`${styles["curr-page"]} ${resp["curr-page"]}`}>Current Page: {state.currentPage}</h1>
+            {
+                state.recipes.length > 0
+                    ?
+                    <h1 className={`${styles["curr-page"]} ${resp["curr-page"]}`}>Current Page: {state.currentPage}</h1>
+                    :
+                    null
+            }
             <section className={`${styles["catalog"]} ${resp["catalog"]}`}>
                 {state.loading
                     ?
