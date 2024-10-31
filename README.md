@@ -44,5 +44,5 @@ To run the application locally, follow these steps:
 
 ## Accessing the Application
 The application is hosted live and can be accessed at the following link:
-[Application Link](https://nutrigit-319ca.web.app/)
+[NutriGit](https://nutrigit-319ca.web.app/)
 
