@@ -18,7 +18,6 @@ import ProductDetails from "./components/Product Details/ProductDetails";
 import PrivateRoute from "./guards/PrivateRoute";
 import RouteGuard from "./guards/RouteGuard";
 import Spinner from "./components/Spinner/Spinner";
-import ServerError from "./components/Server Error/ServerError";
 import UpdatedProfile from "./components/Updated Profile/UpdatedProfile";
 import { BMICalculator } from "./components/BMI Calculator/BMICalculator";
 
@@ -39,7 +38,6 @@ function App() {
                             <Route path="/" element={<Home />} />
                             <Route path="/catalog-recipes" element={<RecipesCatalog />} />
                             <Route path="/catalog-products" element={<ProductsCatalog />} />
-                            <Route path="/server-error" element={<ServerError />} />
                             <Route path="*" element={<NotFound />} />
                             <Route path="/updated-profile" element={<Profile />} />
 

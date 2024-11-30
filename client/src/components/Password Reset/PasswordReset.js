@@ -12,6 +12,10 @@ const PasswordReset = memo(() => {
     const [state, dispatch] = useReducer(reducer, initData);
     const navigate = useNavigate();
     const [user, setUser] = useState({});
+    const [verificationCode, setVerificationCode] = useState({
+        code: '',
+        show: true
+    });
     const [showComponent, setShowComponent] = useState({
         title: "",
         show: false
@@ -22,18 +26,55 @@ const PasswordReset = memo(() => {
         dispatch({ type: 'SET_FIELD', field: name, value });
     }, []);
 
+    function generateVerificationCode() {
+        const code = Math.floor(100000 + Math.random() * 900000).toString();
+        return code;
+    }
+
+    function generateAndPersistCode() {
+        const generatedCode = generateVerificationCode();
+        setVerificationCode({ ...verificationCode, code: generatedCode });
+        sessionStorage.setItem('verificationCode', generatedCode);
+    }
+
     const passwordData = { password: state.password, rePass: state.rePass, userId: user._id };
+
+    function sendCode() {
+        fetch('https://api.emailjs.com/api/v1.0/email/send', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                service_id: 'service_m5m75hf',
+                template_id: 'template_41v8civ',
+                user_id: 'HiFE9-y-9jaeb9eqy',
+                accessToken: 'jCc1YG_VYqDZJTz0eY8vH',
+                template_params: {
+                    to_email: state.email,
+                    to_code: sessionStorage.getItem('verificationCode'),
+                    to_name: 'Martin'
+                }
+            })
+        })
+            .then(() => {
+                alert('Email sent');
+                setVerificationCode(state => ({ ...state, show: false }))
+            });
+    }
+
 
     const submitHandler = (ev) => {
         ev.preventDefault();
 
         if (state.email !== "") {
-            service.testForEmail({ email: state.email, secretWord: state.secretWord })
+            service.testForEmail({ email: state.email })
                 .then(result => {
                     if (result.message) {
                         throw result;
                     } else {
                         setUser(result);
+                        generateAndPersistCode();
                     }
                 })
                 .catch(err => {
@@ -70,7 +111,7 @@ const PasswordReset = memo(() => {
                 });
         };
     };
-    
+
     return (
         <>
             {showComponent.show &&
@@ -100,20 +141,26 @@ const PasswordReset = memo(() => {
                                 onChange={(ev) => changeHandler(ev)}
                             />
                         </div>
-                        <label htmlFor="secret">Secret word:</label>
-                        <div>
-                            <input
-                                className={styles["email"]}
-                                type="text"
-                                id="secret"
-                                name="secretWord"
-                                placeholder="Enter your secret word..."
-                                required
-                                value={state.secretWord}
-                                onChange={(ev) => changeHandler(ev)}
-                            />
-                        </div>
-                        {user._id
+                        {verificationCode && user._id
+                            ?
+                            <>
+                                <label htmlFor="secret">One time code:</label>
+                                <div>
+                                    <input
+                                        className={styles["email"]}
+                                        type="text"
+                                        id="secret"
+                                        name="secretCode"
+                                        placeholder="Enter your one time code..."
+                                        required
+                                        value={state.secretWord}
+                                        onChange={(ev) => changeHandler(ev)}
+                                    />
+                                </div>
+                            </>
+                            : null
+                        }
+                        {user._id && verificationCode.code === state.secretCode
                             ?
                             <>
                                 <label htmlFor="email">New Password:</label>
@@ -150,6 +197,15 @@ const PasswordReset = memo(() => {
                             type="submit"
                             value={user._id ? "Reset Password" : "Find user"}
                         />
+
+                        {(user._id && verificationCode.show) &&
+                            <input
+                                className={styles["btn-login"]}
+                                onClick={sendCode}
+                                type="button"
+                                value={"Send code"}
+                            />
+                        }
                     </article>
                 </form>
             </section>
