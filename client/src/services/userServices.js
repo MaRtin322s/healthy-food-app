@@ -1,7 +1,7 @@
 import requester from "./requester";
 
-// const baseUrl = 'https://healthy-food-api.onrender.com/users';
-const baseUrl = 'http://localhost:3030/users'
+const baseUrl = 'https://healthy-food-api.onrender.com/users';
+// const baseUrl = 'http://localhost:3030/users'
 
 export const logoutUser = (token) => requester.get(`${baseUrl}/logout`, { "X-Authorization": token });
 export const getUser = (userId) => requester.get(`${baseUrl}/${userId}`);
