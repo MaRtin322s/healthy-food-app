@@ -1,7 +1,7 @@
 const Product = require('../models/Product');
 
 exports.createProduct = async (data) => {
-    const recipe = await Product.create(data);
+    const recipe = await Product.create(data)
     return recipe;
 };
 exports.getAll = async () => await Product.find();

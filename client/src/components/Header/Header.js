@@ -38,7 +38,7 @@ const Header = () => {
                             Calatog
                         </NavLink>
                     </li>
-                    {user.accessToken
+                    {user.accessToken || user._id
                         ?
                         <>
                             <li className={styles["nav-item"]}>

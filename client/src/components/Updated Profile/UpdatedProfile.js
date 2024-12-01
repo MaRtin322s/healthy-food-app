@@ -21,6 +21,9 @@ function UpdatedProfile() {
         delete: false
     });
 
+    console.dir(user);
+    
+
     useEffect(() => {
         Promise.all([
             userService.getUser(user._id),
@@ -96,14 +99,14 @@ function UpdatedProfile() {
                                                 <div className="profile-img w-shadow">
                                                     <div className="profile-img-overlay" />
                                                     <img
-                                                        src={state.data.imageUrl}
+                                                        src={state.data.imageUrl || user.imageUrl}
                                                         alt="Avatar"
                                                         className="avatar img-circle"
                                                     />
                                                 </div>
-                                                <p className="profile-fullname mt-3">{`${state.data.firstName} ${state.data.lastName}`}</p>
+                                                <p className="profile-fullname mt-3">{`${state.data.firstName || user.firstName} ${state.data.lastName || user.lastName}`}</p>
                                                 <p className="profile-username mb-3 text-muted">
-                                                    {state.data.email}
+                                                    {state.data.email || user.email}
                                                 </p>
                                             </div>
                                             <div className="intro mt-5 mv-hidden">

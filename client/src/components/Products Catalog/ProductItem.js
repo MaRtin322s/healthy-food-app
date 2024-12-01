@@ -19,7 +19,7 @@ export const ProductItem = memo(({
             />
             <h3 className={styles["catalog-recipe-title"]}>{title}</h3>
             <p className={styles["catalog-recipe-category"]}>Type: {type}</p>
-            {user.accessToken
+            {user.accessToken || user._id
                 ?
                 <>
                     <Link className={styles["details-btn"]} to={`/details/products/${_id}`}>

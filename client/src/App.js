@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 
 import { PublicProvider } from "./contexts/PublicationContext";
@@ -20,6 +20,7 @@ import RouteGuard from "./guards/RouteGuard";
 import Spinner from "./components/Spinner/Spinner";
 import UpdatedProfile from "./components/Updated Profile/UpdatedProfile";
 import { BMICalculator } from "./components/BMI Calculator/BMICalculator";
+import { gapi } from 'gapi-script';
 
 const Logout = React.lazy(() => import("./components/Logout/Logout"));
 const Details = React.lazy(() => import("./components/Details/Details"));
@@ -27,7 +28,20 @@ const PasswordReset = React.lazy(() => import("./components/Password Reset/Passw
 const EditRecipe = React.lazy(() => import("./components/Edit Recipe/EditRecipe"));
 const EditProduct = React.lazy(() => import("./components/Edit Product/EditProduct"));
 
+const clientId = '108817696069-jff0rj5c2riujajno2jt1cg6jk9v7pfm.apps.googleusercontent.com';
+
 function App() {
+
+    useEffect(() => {
+        function start() {
+            gapi.client.init({
+                    clientId: clientId,
+                    scope: ''
+            })
+        }
+        gapi.load('client:auth2', start)
+    }, []);
+
     return (
         <>
             <AuthProvider>

@@ -1,5 +1,6 @@
 import { memo, useCallback, useContext, useReducer, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { GoogleLogin } from 'react-google-login';
 
 import { AuthContext } from "../../contexts/UserContext";
 import * as service from "../../services/userServices";
@@ -8,6 +9,8 @@ import { initData, reducer } from "./data/data";
 import Error from "../Error/Error";
 import styles from "./styles/login.module.css";
 import resp from "./styles/responsive.module.css";
+
+const clientId = '108817696069-jff0rj5c2riujajno2jt1cg6jk9v7pfm.apps.googleusercontent.com';
 
 const Login = memo(() => {
     const { userLogin } = useContext(AuthContext);
@@ -23,6 +26,37 @@ const Login = memo(() => {
         const { name, value } = ev.target;
         dispatch({ type: 'SET_FIELD', field: name, value });
     }, []);
+
+    function generateRandomToken(length = 32) {
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        const charactersLength = characters.length;
+        let token = '';
+
+        for (let i = 0; i < length; i++) {
+            const randomIndex = Math.floor(Math.random() * charactersLength);
+            token += characters[randomIndex];
+        }
+
+        return token;
+    }
+
+    function onSuccess(res) {
+        console.log('Login Success! Current user: ', res.profileObj);
+
+        userLogin({
+            _id: res.profileObj.googleId,
+            email: res.profileObj.email,
+            firstName: res.profileObj.givenName,
+            lastName: res.profileObj.familyName,
+            imageUrl: res.profileObj.imageUrl,
+            accessToken: generateRandomToken(32)
+        });
+        navigate("/", { replace: true });
+    }
+
+    function onFailure(res) {
+        console.log('Login Failed! Current user: ', res);
+    }
 
     const showPasswordHandler = () => setShow(!show);
 
@@ -123,6 +157,17 @@ const Login = memo(() => {
                                 ${resp["btn-login"]}`
                             } type="submit"
                             value={"Login"} />
+
+                        <div id="signInButton">
+                            <GoogleLogin
+                                clientId={clientId}
+                                buttonText="Login"
+                                onSuccess={onSuccess}
+                                onFailure={onFailure}
+                                cookiePolicy={'single_host_origin'}
+                                isSignedIn={false}
+                            />
+                        </div>
                     </article>
                 </form>
             </section>

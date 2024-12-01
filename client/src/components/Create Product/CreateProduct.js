@@ -30,7 +30,7 @@ const CreateProduct = () => {
                 if (res.message) {
                     setError(() => ({
                         status: true,
-                        message: res.message.errors.imageUrl.properties.message,
+                        message: res.message.errors.imageUrl?.properties.message,
                         show: true
                     }));
                 } else {

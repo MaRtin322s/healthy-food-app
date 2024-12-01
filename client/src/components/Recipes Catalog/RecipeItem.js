@@ -20,7 +20,7 @@ const RecipeCatalogItem = memo(({
             />
             <h3 className={styles["catalog-recipe-title"]}>{title}</h3>
             <p className={styles["catalog-recipe-category"]}>Category: {category}</p>
-            {user.accessToken
+            {user.accessToken || user._id
                 ?
                 <>
                     <Link className={styles["details-btn"]} to={`/details/recipes/${_id}`}>

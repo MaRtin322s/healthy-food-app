@@ -5,7 +5,7 @@ import { AuthContext } from "../contexts/UserContext";
 const PrivateRoute = ({ children }) => {
     const { user } = useContext(AuthContext);
 
-    if (!user.accessToken) {
+    if (!user._id) {
         return <Navigate to="/login" replace />
     }
 

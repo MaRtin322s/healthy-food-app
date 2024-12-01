@@ -5,7 +5,7 @@ import { AuthContext } from "../contexts/UserContext";
 const RouteGuard = ({ children }) => {
     const { user } = useContext(AuthContext);
 
-    if (user.accessToken) {
+    if (user._id) {
         return <Navigate to="/" replace />
     }
 
